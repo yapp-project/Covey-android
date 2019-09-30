@@ -4,28 +4,25 @@
     <item
         android:id="@+id/menu_home"
         android:title="홈"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/logo"
+        android:enabled="true"
+
         />
 
     <item
         android:id="@+id/menu_apply"
         android:title="지원"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/logo"
+        android:enabled="true"
         />
 
     <item
         android:id="@+id/menu_recruit"
         android:title="모집"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/logo"
+        android:enabled="true"
         />
 
     <item
         android:id="@+id/menu_profile"
         android:title="프로필"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/logo"
+        android:enabled="true"
         />
 </menu>

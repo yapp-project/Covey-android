@@ -7,112 +7,112 @@
     <androidx.constraintlayout.widget.Guideline
         android:layout_height="0dp"
         android:layout_width="0dp"
-        android:id="@+id/gd_signup_email_arrow_right"
+        android:id="@+id/gd_signup_email_code_arrow_right"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.111"
         />
     <androidx.constraintlayout.widget.Guideline
         android:layout_height="0dp"
         android:layout_width="0dp"
-        android:id="@+id/gd_signup_email_arrow_top"
+        android:id="@+id/gd_signup_email_code_arrow_top"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.059"
         />
     <androidx.constraintlayout.widget.Guideline
         android:layout_height="0dp"
         android:layout_width="0dp"
-        android:id="@+id/gd_signup_email_arrow_bottom"
+        android:id="@+id/gd_signup_email_code_arrow_bottom"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.097"
         />
     <androidx.constraintlayout.widget.Guideline
         android:layout_height="0dp"
         android:layout_width="0dp"
-        android:id="@+id/gd_signup_email_title_left"
+        android:id="@+id/gd_signup_email_code_title_left"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.144"
         />
     <androidx.constraintlayout.widget.Guideline
         android:layout_height="0dp"
         android:layout_width="0dp"
-        android:id="@+id/gd_signup_email_left"
+        android:id="@+id/gd_signup_email_code_left"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.044"
         />
     <androidx.constraintlayout.widget.Guideline
         android:layout_height="0dp"
         android:layout_width="0dp"
-        android:id="@+id/gd_signup_email_right"
+        android:id="@+id/gd_signup_email_code_right"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.956"
         />
     <androidx.constraintlayout.widget.Guideline
         android:layout_height="0dp"
         android:layout_width="0dp"
-        android:id="@+id/gd_signup_email_actionbar_top"
+        android:id="@+id/gd_signup_email_code_actionbar_top"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0"
         />
     <androidx.constraintlayout.widget.Guideline
         android:layout_height="0dp"
         android:layout_width="0dp"
-        android:id="@+id/gd_signup_email_actionbar_bottom"
+        android:id="@+id/gd_signup_email_code_actionbar_bottom"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.123"
         />
     <androidx.constraintlayout.widget.Guideline
         android:layout_height="0dp"
         android:layout_width="0dp"
-        android:id="@+id/gd_signup_email_text_top"
+        android:id="@+id/gd_signup_email_code_text_top"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.175"
         />
     <androidx.constraintlayout.widget.Guideline
         android:layout_height="0dp"
         android:layout_width="0dp"
-        android:id="@+id/gd_signup_email_text_bottom"
+        android:id="@+id/gd_signup_email_code_text_bottom"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.212"
         />
     <androidx.constraintlayout.widget.Guideline
         android:layout_height="0dp"
         android:layout_width="0dp"
-        android:id="@+id/gd_signup_email_edittext_top"
+        android:id="@+id/gd_signup_email_code_edittext_top"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.225"
         />
     <androidx.constraintlayout.widget.Guideline
         android:layout_height="0dp"
         android:layout_width="0dp"
-        android:id="@+id/gd_signup_email_edittext_bottom"
+        android:id="@+id/gd_signup_email_code_edittext_bottom"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.294"
         />
     <androidx.constraintlayout.widget.Guideline
         android:layout_height="0dp"
         android:layout_width="0dp"
-        android:id="@+id/gd_signup_email_button_top"
+        android:id="@+id/gd_signup_email_code_button_top"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.369"
         />
     <androidx.constraintlayout.widget.Guideline
         android:layout_height="0dp"
         android:layout_width="0dp"
-        android:id="@+id/gd_signup_email_button_bottom"
+        android:id="@+id/gd_signup_email_code_button_bottom"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.447"
         />
     <androidx.constraintlayout.widget.Guideline
         android:layout_height="0dp"
         android:layout_width="0dp"
-        android:id="@+id/gd_signup_email_error_top"
+        android:id="@+id/gd_signup_email_code_error_top"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.319"
         />
     <androidx.constraintlayout.widget.Guideline
         android:layout_height="0dp"
         android:layout_width="0dp"
-        android:id="@+id/gd_signup_email_error_bottom"
+        android:id="@+id/gd_signup_email_code_error_bottom"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.348"
         />
@@ -121,19 +121,19 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@drawable/gray_underbar_square"
-        app:layout_constraintTop_toBottomOf="@id/gd_signup_email_actionbar_top"
-        app:layout_constraintBottom_toTopOf="@id/gd_signup_email_actionbar_bottom">
+        app:layout_constraintTop_toBottomOf="@id/gd_signup_email_code_actionbar_top"
+        app:layout_constraintBottom_toTopOf="@id/gd_signup_email_code_actionbar_bottom">
     </RelativeLayout>
 
     <ImageView
-        android:id="@+id/signup_email_arrow"
+        android:id="@+id/signup_email_code_arrow"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:srcCompat="@drawable/icon_arrow"
-        app:layout_constraintLeft_toRightOf="@id/gd_signup_email_left"
-        app:layout_constraintRight_toLeftOf="@id/gd_signup_email_arrow_right"
-        app:layout_constraintTop_toBottomOf="@id/gd_signup_email_arrow_top"
-        app:layout_constraintBottom_toTopOf="@id/gd_signup_email_arrow_bottom" />
+        app:layout_constraintLeft_toRightOf="@id/gd_signup_email_code_left"
+        app:layout_constraintRight_toLeftOf="@id/gd_signup_email_code_arrow_right"
+        app:layout_constraintTop_toBottomOf="@id/gd_signup_email_code_arrow_top"
+        app:layout_constraintBottom_toTopOf="@id/gd_signup_email_code_arrow_bottom" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -141,58 +141,59 @@
         android:textSize="20sp"
         android:textColor="#000000"
         android:text="학교 인증"
-        app:layout_constraintLeft_toRightOf="@id/gd_signup_email_title_left"
-        app:layout_constraintTop_toBottomOf="@id/gd_signup_email_arrow_top"
-        app:layout_constraintBottom_toTopOf="@id/gd_signup_email_arrow_bottom" />
+        app:layout_constraintLeft_toRightOf="@id/gd_signup_email_code_title_left"
+        app:layout_constraintTop_toBottomOf="@id/gd_signup_email_code_arrow_top"
+        app:layout_constraintBottom_toTopOf="@id/gd_signup_email_code_arrow_bottom" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:textColor="#000000"
-        android:text="대학 포털 이메일 주소를 입력해주세요."
-        app:layout_constraintLeft_toRightOf="@id/gd_signup_email_left"
-        app:layout_constraintTop_toBottomOf="@id/gd_signup_email_text_top"
-        app:layout_constraintBottom_toTopOf="@id/gd_signup_email_text_bottom" />
+        android:text="이메일로 전송된 인증코드를 입력해주세요."
+        app:layout_constraintLeft_toRightOf="@id/gd_signup_email_code_left"
+        app:layout_constraintTop_toBottomOf="@id/gd_signup_email_code_text_top"
+        app:layout_constraintBottom_toTopOf="@id/gd_signup_email_code_text_bottom" />
 
     <EditText
-        android:id="@+id/signup_email_address"
+        android:id="@+id/signup_email_code_input"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/gray_border_square"
         android:hint="name@example.com"
         android:paddingStart="16dp"
-        app:layout_constraintLeft_toRightOf="@id/gd_signup_email_left"
-        app:layout_constraintRight_toLeftOf="@id/gd_signup_email_right"
-        app:layout_constraintTop_toBottomOf="@id/gd_signup_email_edittext_top"
-        app:layout_constraintBottom_toTopOf="@id/gd_signup_email_edittext_bottom" />
+        app:layout_constraintLeft_toRightOf="@id/gd_signup_email_code_left"
+        app:layout_constraintRight_toLeftOf="@id/gd_signup_email_code_right"
+        app:layout_constraintTop_toBottomOf="@id/gd_signup_email_code_edittext_top"
+        app:layout_constraintBottom_toTopOf="@id/gd_signup_email_code_edittext_bottom" />
 
     <RelativeLayout
+        android:id="@+id/signup_email_code_error"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintLeft_toRightOf="@id/gd_signup_email_left"
-        app:layout_constraintRight_toLeftOf="@id/gd_signup_email_right"
-        app:layout_constraintTop_toBottomOf="@id/gd_signup_email_error_top"
-        app:layout_constraintBottom_toTopOf="@id/gd_signup_email_error_bottom" >
+        app:layout_constraintLeft_toRightOf="@id/gd_signup_email_code_left"
+        app:layout_constraintRight_toLeftOf="@id/gd_signup_email_code_right"
+        app:layout_constraintTop_toBottomOf="@id/gd_signup_email_code_error_top"
+        app:layout_constraintBottom_toTopOf="@id/gd_signup_email_code_error_bottom" >
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:drawableLeft="@drawable/kakaotalk_ic"
             android:textSize="13sp"
             android:textColor="#000000"
-            android:text="  올바르지 않은 이메일 형식입니다."
+            android:text="  인증코드가 일치하지 않습니다."
             android:gravity="start"/>
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/signup_email_button"
+        android:id="@+id/signup_email_code_button"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/gray_square"
-        app:layout_constraintLeft_toRightOf="@id/gd_signup_email_left"
-        app:layout_constraintRight_toLeftOf="@id/gd_signup_email_right"
-        app:layout_constraintTop_toBottomOf="@id/gd_signup_email_button_top"
-        app:layout_constraintBottom_toTopOf="@id/gd_signup_email_button_bottom">
+        app:layout_constraintLeft_toRightOf="@id/gd_signup_email_code_left"
+        app:layout_constraintRight_toLeftOf="@id/gd_signup_email_code_right"
+        app:layout_constraintTop_toBottomOf="@id/gd_signup_email_code_button_top"
+        app:layout_constraintBottom_toTopOf="@id/gd_signup_email_code_button_bottom">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"

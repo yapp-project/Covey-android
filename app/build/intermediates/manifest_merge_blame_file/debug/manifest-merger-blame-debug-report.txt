@@ -46,8 +46,8 @@
 28-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:19:9-26:20
 29            android:name="org.yapp.covey.activity.SignupActivity"
 29-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:19:19-58
-30            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
-30-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:20:13-69
+30            android:theme="@style/AppTheme" >
+30-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:20:13-44
 31            <intent-filter>
 31-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:13:13-17:29
 32                <action android:name="android.intent.action.MAIN" />

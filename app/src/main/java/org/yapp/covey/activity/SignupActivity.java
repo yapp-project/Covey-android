@@ -1,10 +1,11 @@
 package org.yapp.covey.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.view.View;
 
 import org.yapp.covey.R;
 import org.yapp.covey.fragment.*;
@@ -16,15 +17,15 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        Signup_LoginFragment loginFragment = new Signup_LoginFragment();
+        View view = getWindow().getDecorView();
+        view.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.fragment_container_signup, Signup_Login_Fragment.newInstance()).commit();
+    }
 
-        // 여기에서 프래그먼트 트랜잭션, 백스택, 애니메이션 등을 설정합니다.
-        // -----------------------------------------------------------------
-        fragmentTransaction.add(R.id.fragment_container_signup, loginFragment);
-        // -----------------------------------------------------------------
-        fragmentTransaction.commit();
+    public void replaceFragment(Fragment fragment) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container_signup, fragment).commit();
     }
 }

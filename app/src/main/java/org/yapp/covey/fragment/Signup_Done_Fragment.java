@@ -9,7 +9,12 @@ import org.yapp.covey.R;
 
 import androidx.fragment.app.Fragment;
 
-public class Signup_LoginFragment extends Fragment {
+public class Signup_Done_Fragment extends Fragment {
+
+    public static Signup_Done_Fragment newInstance() {
+        return new Signup_Done_Fragment();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_signup_done, container, false);

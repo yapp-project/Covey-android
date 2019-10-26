@@ -5,6 +5,7 @@
     <color name="colorAccent">#D81B60</color>
     
     <color name="tomato">#f24040</color>
+    <color name="salmon">#fa8274</color>
     <color name="easter_purple">#a878ff</color>
     
     <color name="navigation_white">#fafafa</color>
@@ -16,4 +17,6 @@
             <item android:color="@color/navigation_default"  />
         </selector>
     </color>
+
+    <color name="blank">#00000000</color>
 </resources>

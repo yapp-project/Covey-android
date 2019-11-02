@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tomato">
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/gd_signup_login_logo_bottom"
+        app:layout_constraintLeft_toRightOf="@id/gd_signup_login_logo_left"
+        app:layout_constraintRight_toLeftOf="@id/gd_signup_login_logo_right"
+        app:layout_constraintTop_toBottomOf="@id/gd_signup_login_logo_top"
+        app:srcCompat="@drawable/group_8" />
+
+    <RelativeLayout
+        android:id="@+id/signup_login_btn_kakao"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/yellow_square"
+        app:layout_constraintBottom_toTopOf="@id/gd_signup_login_btn1_bottom"
+        app:layout_constraintLeft_toRightOf="@id/gd_signup_login_btn_left"
+        app:layout_constraintRight_toLeftOf="@id/gd_signup_login_btn_right"
+        app:layout_constraintTop_toBottomOf="@id/gd_signup_login_btn1_top">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawableLeft="@drawable/unnamed"
+            android:gravity="center"
+            android:text="      Kakaotalk 계정으로 로그인하기"
+            android:textColor="#000000"
+            android:textSize="13sp"
+            android:lineSpacingExtra="11sp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/signup_login_btn_facebook"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/blue_square"
+        app:layout_constraintBottom_toTopOf="@id/gd_signup_login_btn2_bottom"
+        app:layout_constraintLeft_toRightOf="@id/gd_signup_login_btn_left"
+        app:layout_constraintRight_toLeftOf="@id/gd_signup_login_btn_right"
+        app:layout_constraintTop_toBottomOf="@id/gd_signup_login_btn2_top">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawableLeft="@drawable/bitmap"
+            android:gravity="center"
+            android:text="      Facebook 계정으로 로그인하기"
+            android:textColor="#ffffff"
+            android:textSize="13sp"
+            android:lineSpacingExtra="11sp"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="Odin-Bold"
+        android:text="covey"
+        android:textColor="#ffffff"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@id/gd_signup_login_text_bottom"
+        app:layout_constraintLeft_toRightOf="@id/gd_signup_login_text_left"
+        app:layout_constraintRight_toLeftOf="@id/gd_signup_login_text_right"
+        app:layout_constraintTop_toBottomOf="@id/gd_signup_login_text_top" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gd_signup_login_logo_left"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.386" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gd_signup_login_logo_right"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.617" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gd_signup_login_logo_top"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gd_signup_login_logo_bottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.387" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gd_signup_login_text_left"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.386" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gd_signup_login_text_right"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.614" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gd_signup_login_text_top"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.388" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gd_signup_login_text_bottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.453" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gd_signup_login_btn_left"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.083" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gd_signup_login_btn_right"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.917" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gd_signup_login_btn1_top"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gd_signup_login_btn1_bottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.775" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gd_signup_login_btn2_top"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gd_signup_login_btn2_bottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.875" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,21 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+        <!--NoActionBar-->
+        <item name = "windowNoTitle">true</item>
     </style>
 
+    <style name="AppTheme.StatusBarWhite" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">@color/tomato</item>
+    </style>
+
+    <style name="TextTheme12sp" parent="@android:style/Widget.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:textColor">@color/warm_grey_two</item>
+        <item name="android:textSize">12sp</item>
+    </style>
 </resources>

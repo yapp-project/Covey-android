@@ -42,7 +42,6 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.085" />
 
-
         <ImageView
             android:id="@+id/logo"
             android:layout_width="0dp"
@@ -95,7 +94,7 @@
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:text="커비에서 빠르고 편리한\n알바 대타를 경험해보세요!"
+            android:text=""
             android:textColor="#fff"
             android:textSize="20sp"
             android:layout_marginTop="24dp"
@@ -105,13 +104,12 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_category"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintHeight_percent="0.125"
             app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
-            app:layout_constraintStart_toStartOf="@id/guideline_left"
-            tools:listitem="@layout/item_recycler_home_category"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.125"
+            app:layout_constraintStart_toStartOf="@id/guideline_left" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_bottom"

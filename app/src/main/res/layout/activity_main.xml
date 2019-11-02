@@ -20,6 +20,7 @@
         android:layout_height="?attr/actionBarSize"
         android:layout_gravity="bottom"
         app:itemTextColor="@drawable/color_navigation"
+        app:itemIconTint="@drawable/color_navigation"
         app:itemBackground="@color/navigation_white"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/menu_main" />

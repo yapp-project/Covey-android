@@ -65,8 +65,7 @@
         app:layout_constraintHeight_percent="0.461"
         app:layout_constraintWidth_percent="0.956"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_distance"
-        />
+        app:layout_constraintTop_toBottomOf="@id/tv_distance" />
 
 
     <TextView
@@ -92,6 +91,7 @@
         app:layout_constraintHeight_percent="0.05" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_money"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

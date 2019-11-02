@@ -238,18 +238,20 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/gray_border_square"
+        android:paddingLeft="16px"
+        app:layout_constraintBottom_toTopOf="@id/gd_signup_add_1_spinner_bottom"
         app:layout_constraintLeft_toRightOf="@id/gd_signup_add_1_left"
         app:layout_constraintRight_toLeftOf="@id/gd_signup_add_1_spinner_right"
-        app:layout_constraintTop_toBottomOf="@id/gd_signup_add_1_spinner_top"
-        app:layout_constraintBottom_toTopOf="@id/gd_signup_add_1_spinner_bottom" />
+        app:layout_constraintTop_toBottomOf="@id/gd_signup_add_1_spinner_top" />
 
     <Spinner
         android:id="@+id/signup_add_1_spinner_age"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/gray_border_square"
+        android:paddingLeft="16px"
+        app:layout_constraintBottom_toTopOf="@id/gd_signup_add_1_spinner_bottom"
         app:layout_constraintLeft_toRightOf="@id/gd_signup_add_1_spinner_left"
         app:layout_constraintRight_toLeftOf="@id/gd_signup_add_1_right"
-        app:layout_constraintTop_toBottomOf="@id/gd_signup_add_1_spinner_top"
-        app:layout_constraintBottom_toTopOf="@id/gd_signup_add_1_spinner_bottom" />
+        app:layout_constraintTop_toBottomOf="@id/gd_signup_add_1_spinner_top" />
 </androidx.constraintlayout.widget.ConstraintLayout>

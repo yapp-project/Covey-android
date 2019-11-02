@@ -62,7 +62,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="Odin-Bold"
+        android:fontFamily="@font/odinbold"
         android:text="covey"
         android:textColor="#ffffff"
         android:textSize="35sp"
@@ -118,14 +118,14 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.388" />
+        app:layout_constraintGuide_percent="0.408" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gd_signup_login_text_bottom"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.453" />
+        app:layout_constraintGuide_percent="0.473" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gd_signup_login_btn_left"

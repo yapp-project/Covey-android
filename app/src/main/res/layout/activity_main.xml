@@ -22,6 +22,5 @@
         app:itemTextColor="@drawable/color_navigation"
         app:itemBackground="@color/navigation_white"
         app:labelVisibilityMode="labeled"
-        app:itemIconTint="@color/navigation"
         app:menu="@menu/menu_main" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

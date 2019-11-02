@@ -1,5 +1,6 @@
 package org.yapp.covey.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.yapp.covey.R;
+import org.yapp.covey.etc.CalculateDate;
 import org.yapp.covey.etc.ItemPostVO;
 
 import java.util.ArrayList;
@@ -33,9 +35,9 @@ public class AdapterMoneyList extends RecyclerView.Adapter<AdapterMoneyList.View
     @Override
     public void onBindViewHolder(@NonNull AdapterMoneyList.ViewHolder holder, int position) {
         ItemPostVO data = mDataList.get(position);
-        String time = data.getStartDate()+data.getEndDate();
+        String dDay = "D-" + new CalculateDate().calDateBetween(data.getDueDate());
 
-        holder.tvDDay.setText("D-6");
+        holder.tvDDay.setText(dDay + " | ");
         holder.tvContent.setText(data.getDescription());
         holder.tvMoney.setText(data.getPay().toString()+"원");
         holder.tvTitle.setText(data.getTitle());

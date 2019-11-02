@@ -138,9 +138,25 @@
         android:layout_height="0dp"
         android:background="@drawable/gray_border_square"
         android:paddingLeft="16px"
+        android:popupBackground="@android:color/transparent"
+        android:spinnerMode="dropdown"
+        android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@id/gd_signup_03_spinner_bottom"
         app:layout_constraintLeft_toRightOf="@id/gd_signup_03_left"
         app:layout_constraintRight_toLeftOf="@id/gd_signup_03_spinner_right"
+        app:layout_constraintTop_toBottomOf="@id/gd_signup_03_spinner_top" />
+
+    <Spinner
+        android:id="@+id/signup_03_spinner_age"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/gray_border_square"
+        android:paddingLeft="16px"
+        android:textColor="#000000"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toTopOf="@id/gd_signup_03_spinner_bottom"
+        app:layout_constraintLeft_toRightOf="@id/gd_signup_03_spinner_left"
+        app:layout_constraintRight_toLeftOf="@id/gd_signup_03_right"
         app:layout_constraintTop_toBottomOf="@id/gd_signup_03_spinner_top" />
 
     <Spinner
@@ -149,31 +165,26 @@
         android:layout_height="0dp"
         android:background="@drawable/gray_border_square"
         android:paddingLeft="16px"
-        app:layout_constraintBottom_toTopOf="@id/gd_signup_03_spinner2_bottom"
-        app:layout_constraintLeft_toRightOf="@id/gd_signup_03_spinner_left"
-        app:layout_constraintRight_toLeftOf="@id/gd_signup_03_right"
-        app:layout_constraintTop_toBottomOf="@id/gd_signup_03_spinner2_top" />
-    <Spinner
-        android:id="@+id/signup_03_spinner_location_detail"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/gray_border_square"
-        android:paddingLeft="16px"
+        android:textColor="#000000"
+        android:spinnerMode="dropdown"
         app:layout_constraintBottom_toTopOf="@id/gd_signup_03_spinner2_bottom"
         app:layout_constraintLeft_toRightOf="@id/gd_signup_03_left"
         app:layout_constraintRight_toLeftOf="@id/gd_signup_03_spinner_right"
         app:layout_constraintTop_toBottomOf="@id/gd_signup_03_spinner2_top" />
 
     <Spinner
-        android:id="@+id/signup_03_spinner_age"
+        android:id="@+id/signup_03_spinner_location_detail"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/gray_border_square"
         android:paddingLeft="16px"
-        app:layout_constraintBottom_toTopOf="@id/gd_signup_03_spinner_bottom"
+        android:textColor="#000000"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toTopOf="@id/gd_signup_03_spinner2_bottom"
         app:layout_constraintLeft_toRightOf="@id/gd_signup_03_spinner_left"
         app:layout_constraintRight_toLeftOf="@id/gd_signup_03_right"
-        app:layout_constraintTop_toBottomOf="@id/gd_signup_03_spinner_top" />
+        app:layout_constraintTop_toBottomOf="@id/gd_signup_03_spinner2_top" />
+
     <androidx.constraintlayout.widget.Guideline
         android:layout_height="0dp"
         android:layout_width="0dp"

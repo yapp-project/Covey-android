@@ -43,6 +43,7 @@
         android:text="우리 동네 대타"
         android:textSize="18sp"
         android:textColor="#000"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/guideline_left"
         app:layout_constraintTop_toTopOf="@id/guideline_top"
         app:layout_constraintHeight_percent="0.07"/>
@@ -75,6 +76,7 @@
         android:text="고수익 알바"
         android:textSize="18sp"
         android:textColor="#000"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/guideline_left"
         app:layout_constraintTop_toTopOf="@id/guideline_top2"
         app:layout_constraintHeight_percent="0.07"/>

@@ -42,9 +42,6 @@ public class HomeFragment extends Fragment {
     private ArrayList<String> mArrayData = new ArrayList<>();
 
     private static final String TAG = "HOME";
-    private static final int DATA_PAY = 1;
-    private static final int DATA_LOCATION = 2;
-    private static final int DATA_CATEGORY = 3;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -58,51 +55,8 @@ public class HomeFragment extends Fragment {
 
         setInitView(rootView);
 
-//        getPostData();
-//        getMoneyData();
-        Singleton.retrofit.addressList(1).enqueue(new Callback<ArrayList<ItemPostVO>>() {
-            @Override
-            public void onResponse(Call<ArrayList<ItemPostVO>> call, Response<ArrayList<ItemPostVO>> response) {
-                if (response.isSuccessful()){
-                    if (response.code()==200) {
-                        ArrayList<ItemPostVO> result = response.body();
-                        adapterLocationPost.mDataList.addAll(result);
-                        adapterLocationPost.notifyDataSetChanged();
-                        Log.w(TAG, String.valueOf(response.body())+response.body().size());
-                    }
-                    else
-                        Log.w(TAG, String.valueOf(response.code()));
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<ItemPostVO>> call, Throwable t) {
-
-            }
-        });
-
-        Singleton.retrofit.payList(1).enqueue(new Callback<ArrayList<ItemPostVO>>() {
-            @Override
-            public void onResponse(Call<ArrayList<ItemPostVO>> call, Response<ArrayList<ItemPostVO>> response) {
-                if (response.isSuccessful()){
-                    if (response.code()==200) {
-                        ArrayList<ItemPostVO> result = response.body();
-                        assert result != null;
-                        adapterMoneyList.mDataList.addAll(result);
-                        adapterMoneyList.notifyDataSetChanged();
-
-                        Log.d(TAG, String.valueOf(response.code()));
-                    }
-                    else
-                        Log.d(TAG, String.valueOf(response.code()));
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<ItemPostVO>> call, Throwable t) {
-                Log.w(TAG,"OnFailure PayList");
-            }
-        });
+        getPostData();
+        getMoneyData();
 
         recyclerViewLocation.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
         recyclerViewLocation.addItemDecoration(new ItemDecorationCategory(getContext(),rootView.getWidth()*0.044f));
@@ -136,61 +90,52 @@ public class HomeFragment extends Fragment {
         builder.setSpan(new StyleSpan(Typeface.BOLD),5,18, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         tvTitle.append(builder);
     }
-//
-//    private void setRecyclerView(){
-////        switch (kind){
-////            case DATA_LOCATION:{
-////
-////            }
-////            case DATA_PAY:{
-////
-////            }
-////            case DATA_CATEGORY:{
-//
-////            }
-////        }
-//    }
 
-//    private void getPostData(){
-//        Singleton.retrofit.addressList(1).enqueue(new Callback<ArrayList<ItemPostVO>>() {
-//            @Override
-//            public void onResponse(Call<ArrayList<ItemPostVO>> call, Response<ArrayList<ItemPostVO>> response) {
-//                if (response.isSuccessful()){
-//                    if (response.code()==200) {
-//                        adapterLocationPost = new AdapterLocationList(response.body());
-//                        Log.w(TAG, String.valueOf(response.body()));
-//                    }
-//                    else
-//                        Log.w(TAG, String.valueOf(response.code()));
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ArrayList<ItemPostVO>> call, Throwable t) {
-//
-//            }
-//        });
-//    }
+    private void getPostData(){
+        Singleton.retrofit.addressList(1).enqueue(new Callback<ArrayList<ItemPostVO>>() {
+            @Override
+            public void onResponse(Call<ArrayList<ItemPostVO>> call, Response<ArrayList<ItemPostVO>> response) {
+                if (response.isSuccessful()){
+                    if (response.code()==200) {
+                        ArrayList<ItemPostVO> result = response.body();
+                        adapterLocationPost.mDataList.addAll(result);
+                        adapterLocationPost.notifyDataSetChanged();
+                        Log.w(TAG, String.valueOf(response.body())+response.body().size());
+                    }
+                    else
+                        Log.w(TAG, String.valueOf(response.code()));
+                }
+            }
 
-//    private void getMoneyData(){
-//        Singleton.retrofit.payList(1).enqueue(new Callback<ArrayList<ItemPostVO>>() {
-//            @Override
-//            public void onResponse(Call<ArrayList<ItemPostVO>> call, Response<ArrayList<ItemPostVO>> response) {
-//                if (response.isSuccessful()){
-//                    if (response.code()==200) {
-//                        ArrayList<ItemPostVO> result = response.body();
-//                        adapterMoneyList = new AdapterMoneyList(result);
-//                        Log.d(TAG, String.valueOf(response.code()));
-//                    }
-//                    else
-//                        Log.d(TAG, String.valueOf(response.code()));
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ArrayList<ItemPostVO>> call, Throwable t) {
-//                Log.w(TAG,"OnFailure PayList");
-//            }
-//        });
-//    }
+            @Override
+            public void onFailure(Call<ArrayList<ItemPostVO>> call, Throwable t) {
+                Log.w(TAG,"OnFailure LocationList");
+            }
+        });
+    }
+
+    private void getMoneyData(){
+         Singleton.retrofit.payList(1).enqueue(new Callback<ArrayList<ItemPostVO>>() {
+            @Override
+            public void onResponse(Call<ArrayList<ItemPostVO>> call, Response<ArrayList<ItemPostVO>> response) {
+                if (response.isSuccessful()){
+                    if (response.code()==200) {
+                        ArrayList<ItemPostVO> result = response.body();
+                        assert result != null;
+                        adapterMoneyList.mDataList.addAll(result);
+                        adapterMoneyList.notifyDataSetChanged();
+
+                        Log.w(TAG, String.valueOf(result));
+                    }
+                    else
+                        Log.d(TAG, String.valueOf(response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<ItemPostVO>> call, Throwable t) {
+                Log.w(TAG,"OnFailure PayList");
+            }
+        });
+    }
 }

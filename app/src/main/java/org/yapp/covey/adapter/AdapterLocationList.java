@@ -25,8 +25,7 @@ public class AdapterLocationList extends RecyclerView.Adapter<AdapterLocationLis
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_recycler_home_location,parent,false);
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-        layoutParams.width = (int) (parent.getWidth()*0.411);
-//        layoutParams.height =(int) (parent.getHeight()*0.271);
+        layoutParams.width = (int) (parent.getWidth()*0.451);
         view.setLayoutParams(layoutParams);
 
         return new ViewHolder(view);

@@ -24,11 +24,10 @@ public class AdapterMoneyList extends RecyclerView.Adapter<AdapterMoneyList.View
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_recycler_home_money,parent,false);
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-        layoutParams.width = (int) (parent.getWidth()*0.911);
         layoutParams.height =(int) (parent.getHeight()*0.144);
         view.setLayoutParams(layoutParams);
 
-        return new AdapterMoneyList.ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
@@ -36,8 +35,9 @@ public class AdapterMoneyList extends RecyclerView.Adapter<AdapterMoneyList.View
         ItemPostVO data = mDataList.get(position);
         String time = data.getStartDate()+data.getEndDate();
 
+        holder.tvDDay.setText("D-6");
         holder.tvContent.setText(data.getDescription());
-        holder.tvMoney.setText(data.getPay().toString());
+        holder.tvMoney.setText(data.getPay().toString()+"원");
         holder.tvTitle.setText(data.getTitle());
     }
 

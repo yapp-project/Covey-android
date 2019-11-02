@@ -27,10 +27,6 @@ public class AdapterCategoryList extends RecyclerView.Adapter<AdapterCategoryLis
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context)
                 .inflate(R.layout.item_recycler_home_category , parent,false);
-        ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-        layoutParams.width = (int) (parent.getWidth()*0.125);
-        view.setLayoutParams(layoutParams);
-
         return new ViewHolder(view);
     }
 

@@ -43,14 +43,18 @@
         app:layout_constraintLeft_toRightOf="@id/gd_signup_02_left"
         app:layout_constraintTop_toBottomOf="@id/gd_signup_02_text_top" />
 
-    <EditText
+    <TextView
         android:id="@+id/signup_02_phoneNum"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/gray_border_square"
-        android:hint="'-'표시 없이 숫자만 입력하세요"
+        android:gravity="center_vertical"
         android:paddingStart="16dp"
-        android:textColorHint="#bdbdbf"
+        android:singleLine="true"
+        android:text="asdasdasd"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@id/gd_signup_02_edittext_bottom"
         app:layout_constraintLeft_toRightOf="@id/gd_signup_02_left"
         app:layout_constraintRight_toLeftOf="@id/gd_signup_02_right"
@@ -71,8 +75,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/gray_border_square"
+        android:inputType="number"
         android:hint="7자리 숫자를 입력하세요."
         android:paddingStart="16dp"
+        android:singleLine="true"
         android:textColorHint="#bdbdbf"
         app:layout_constraintBottom_toTopOf="@id/gd_signup_02_edittext2_bottom"
         app:layout_constraintLeft_toRightOf="@id/gd_signup_02_left"

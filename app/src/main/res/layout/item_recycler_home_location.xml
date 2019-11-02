@@ -117,7 +117,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/rounded_rectangle_8dp"
-        android:text="즉시 지원"
+        android:text="자세히 보기"
         android:textColor="#fff"
         android:textSize="14sp"
         app:layout_constraintHeight_percent="0.163"

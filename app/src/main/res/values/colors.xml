@@ -19,5 +19,6 @@
     </color>
 
     <color name="blank">#00000000</color>
-    <color name="warm_gray">#979797</color>
+    <color name="warm_grey">#979797</color>
+    <color name="warm_grey_two">#7d7d7d</color>
 </resources>

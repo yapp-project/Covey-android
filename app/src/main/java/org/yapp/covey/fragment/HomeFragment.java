@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.yapp.covey.R;
 import org.yapp.covey.adapter.AdapterCategoryList;
 import org.yapp.covey.adapter.AdapterLocationList;
+import org.yapp.covey.adapter.AdapterMoneyList;
 import org.yapp.covey.etc.CategoryData;
 import org.yapp.covey.etc.ItemDecorationCategory;
 import org.yapp.covey.etc.ItemPostVO;
@@ -36,13 +37,14 @@ public class HomeFragment extends Fragment {
     TextView tvCome, tvTitle;
     private RecyclerView listViewCategory, recyclerViewLocation, recyclerViewPay;
     private AdapterCategoryList adapterCategory;
-    private AdapterLocationList adapterLocationPost;
+    private AdapterLocationList adapterLocationPost = new AdapterLocationList();
+    private AdapterMoneyList adapterMoneyList = new AdapterMoneyList();
     private ArrayList<String> mArrayData = new ArrayList<>();
-    LinearLayoutManager linearLayoutManager;
 
     private static final String TAG = "HOME";
     private static final int DATA_PAY = 1;
     private static final int DATA_LOCATION = 2;
+    private static final int DATA_CATEGORY = 3;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -54,16 +56,66 @@ public class HomeFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         mArrayData.addAll(Arrays.asList(CategoryData.sData));
 
-        linearLayoutManager = new LinearLayoutManager(getContext()
-                ,LinearLayoutManager.HORIZONTAL,false);
-
         setInitView(rootView);
-        setTitle("커비에서 빠르고 편리한\n" + "알바 대타를 경험해보세요!");
-        setRecyclerView();
 
-        getPostData();
+//        getPostData();
+//        getMoneyData();
+        Singleton.retrofit.addressList(1).enqueue(new Callback<ArrayList<ItemPostVO>>() {
+            @Override
+            public void onResponse(Call<ArrayList<ItemPostVO>> call, Response<ArrayList<ItemPostVO>> response) {
+                if (response.isSuccessful()){
+                    if (response.code()==200) {
+                        ArrayList<ItemPostVO> result = response.body();
+                        adapterLocationPost.mDataList.addAll(result);
+                        adapterLocationPost.notifyDataSetChanged();
+                        Log.w(TAG, String.valueOf(response.body())+response.body().size());
+                    }
+                    else
+                        Log.w(TAG, String.valueOf(response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<ItemPostVO>> call, Throwable t) {
+
+            }
+        });
+
+        Singleton.retrofit.payList(1).enqueue(new Callback<ArrayList<ItemPostVO>>() {
+            @Override
+            public void onResponse(Call<ArrayList<ItemPostVO>> call, Response<ArrayList<ItemPostVO>> response) {
+                if (response.isSuccessful()){
+                    if (response.code()==200) {
+                        ArrayList<ItemPostVO> result = response.body();
+                        assert result != null;
+                        adapterMoneyList.mDataList.addAll(result);
+                        adapterMoneyList.notifyDataSetChanged();
+
+                        Log.d(TAG, String.valueOf(response.code()));
+                    }
+                    else
+                        Log.d(TAG, String.valueOf(response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<ItemPostVO>> call, Throwable t) {
+                Log.w(TAG,"OnFailure PayList");
+            }
+        });
+
         recyclerViewLocation.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+        recyclerViewLocation.addItemDecoration(new ItemDecorationCategory(getContext(),rootView.getWidth()*0.044f));
         recyclerViewLocation.setAdapter(adapterLocationPost);
+
+        recyclerViewPay.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+        recyclerViewPay.setAdapter(adapterMoneyList);
+
+        setTitle("커비에서 빠르고 편리한\n" + "알바 대타를 경험해보세요!");
+        adapterCategory = new AdapterCategoryList(getContext(),mArrayData);
+        listViewCategory.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+        listViewCategory.addItemDecoration(new ItemDecorationCategory(getContext(),4f));
+        listViewCategory.setAdapter(adapterCategory);
 
         return rootView;
     }
@@ -84,32 +136,61 @@ public class HomeFragment extends Fragment {
         builder.setSpan(new StyleSpan(Typeface.BOLD),5,18, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         tvTitle.append(builder);
     }
+//
+//    private void setRecyclerView(){
+////        switch (kind){
+////            case DATA_LOCATION:{
+////
+////            }
+////            case DATA_PAY:{
+////
+////            }
+////            case DATA_CATEGORY:{
+//
+////            }
+////        }
+//    }
 
-    private void setRecyclerView(){
-        adapterCategory = new AdapterCategoryList(getContext(),mArrayData);
-        listViewCategory.setLayoutManager(linearLayoutManager);
-        listViewCategory.addItemDecoration(new ItemDecorationCategory(getContext(),8f));
-        listViewCategory.setAdapter(adapterCategory);
-    }
+//    private void getPostData(){
+//        Singleton.retrofit.addressList(1).enqueue(new Callback<ArrayList<ItemPostVO>>() {
+//            @Override
+//            public void onResponse(Call<ArrayList<ItemPostVO>> call, Response<ArrayList<ItemPostVO>> response) {
+//                if (response.isSuccessful()){
+//                    if (response.code()==200) {
+//                        adapterLocationPost = new AdapterLocationList(response.body());
+//                        Log.w(TAG, String.valueOf(response.body()));
+//                    }
+//                    else
+//                        Log.w(TAG, String.valueOf(response.code()));
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ArrayList<ItemPostVO>> call, Throwable t) {
+//
+//            }
+//        });
+//    }
 
-    public void getPostData(){
-        Singleton.retrofit.addressList(1).enqueue(new Callback<ArrayList<ItemPostVO>>() {
-            @Override
-            public void onResponse(Call<ArrayList<ItemPostVO>> call, Response<ArrayList<ItemPostVO>> response) {
-                if (response.isSuccessful()){
-                    if (response.code()==200) {
-                        adapterLocationPost = new AdapterLocationList(response.body());
-                        Log.d(TAG, String.valueOf(response.body().get(0)));
-                    }
-                    else
-                        Log.d(TAG, String.valueOf(response.code()));
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<ItemPostVO>> call, Throwable t) {
-
-            }
-        });
-    }
+//    private void getMoneyData(){
+//        Singleton.retrofit.payList(1).enqueue(new Callback<ArrayList<ItemPostVO>>() {
+//            @Override
+//            public void onResponse(Call<ArrayList<ItemPostVO>> call, Response<ArrayList<ItemPostVO>> response) {
+//                if (response.isSuccessful()){
+//                    if (response.code()==200) {
+//                        ArrayList<ItemPostVO> result = response.body();
+//                        adapterMoneyList = new AdapterMoneyList(result);
+//                        Log.d(TAG, String.valueOf(response.code()));
+//                    }
+//                    else
+//                        Log.d(TAG, String.valueOf(response.code()));
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ArrayList<ItemPostVO>> call, Throwable t) {
+//                Log.w(TAG,"OnFailure PayList");
+//            }
+//        });
+//    }
 }

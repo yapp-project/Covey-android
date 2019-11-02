@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.049"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.087"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.951"/>
+
+    <TextView
+        android:id="@+id/tv_money_title"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:textSize="16sp"
+        android:textColor="#000"
+        android:gravity="center"
+        android:text="강아지 산책 시키기"
+        app:layout_constraintHeight_percent="0.261"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toTopOf="@id/guideline_top"
+        />
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:textSize="14sp"
+        android:textColor="#000"
+        android:gravity="center"
+        android:layout_marginTop="11dp"
+        android:text="강아지를 좋아하시는 분들 지원 많이 해주세요."
+        app:layout_constraintHeight_percent="0.261"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/tv_money_title"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.891"/>
+
+    <TextView
+        android:id="@+id/tv_d_day"
+        style="@style/TextTheme12sp"
+        app:layout_constraintHeight_percent="0.196"
+        android:text="D-7 | "
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"/>
+
+    <TextView
+        android:id="@+id/tv_payment"
+        style="@style/TextTheme12sp"
+        android:text="10,000원"
+        android:textStyle="bold"
+        app:layout_constraintHeight_percent="0.196"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
+        app:layout_constraintStart_toEndOf="@id/tv_d_day" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_home_title"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@drawable/gradient"
@@ -121,4 +122,17 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/constraint_home_title">
+
+        <include
+            android:id="@+id/layout_product"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/layout_home_content"
+            />
+
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

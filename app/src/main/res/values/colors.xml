@@ -19,4 +19,5 @@
     </color>
 
     <color name="blank">#00000000</color>
+    <color name="warm_gray">#979797</color>
 </resources>

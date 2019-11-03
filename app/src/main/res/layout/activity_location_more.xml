@@ -10,80 +10,72 @@
             type="org.yapp.covey.activity.LocationMoreActivity" />
     </data>
 
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity.LocationMoreActivity">
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_top"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent="0.022"
-        android:orientation="horizontal"
-        />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_top2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent="0.086"
-        android:orientation="horizontal"
-        />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_top3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent="0.017"
-        android:orientation="horizontal"
-        />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent="0.044"
-        android:orientation="vertical"
-        />
-
-    <ImageButton
-        android:id="@+id/image_back"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:src="@drawable/icon_arrow"
-        android:background="#00000000"
-        app:layout_constraintWidth_percent="0.067"
-        app:layout_constraintHeight_percent="0.038"
-        app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintTop_toTopOf="@id/guideline_top" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="12dp"
-        android:text="적게 일하고 많이 받자"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:textColor="#000"
-        app:layout_constraintTop_toTopOf="@id/guideline_top3"
-        app:layout_constraintHeight_percent="0.047"
-        app:layout_constraintStart_toEndOf="@id/image_back" />
-
-    <View
-        android:id="@+id/view"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/white_two"
-        app:layout_constraintTop_toTopOf="@id/guideline_top2" />
+        android:layout_height="match_parent"
+        tools:context=".activity.LocationMoreActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_money_more"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.022"
+            android:orientation="horizontal"
+            />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_top2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.086"
+            android:orientation="horizontal"
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_top3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.017"
+            android:orientation="horizontal"
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.044"
+            android:orientation="vertical"
+            />
+
+        <ImageButton
+            android:id="@+id/image_back"
+            style="@style/ImageButtonArrow"
+            app:layout_constraintWidth_percent="0.067"
+            app:layout_constraintHeight_percent="0.038"
+            app:layout_constraintStart_toStartOf="@id/guideline_left"
+            app:layout_constraintTop_toTopOf="@id/guideline_top" />
+
+        <TextView
+            style="@style/TextThemeTitle20sp"
+            android:layout_marginStart="12dp"
+            android:text="우리 동네 대타"
+            app:layout_constraintTop_toTopOf="@id/guideline_top3"
+            app:layout_constraintHeight_percent="0.047"
+            app:layout_constraintStart_toEndOf="@id/image_back" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/white_two"
+            app:layout_constraintTop_toTopOf="@id/guideline_top2" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_money_more"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

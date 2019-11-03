@@ -1,5 +1,6 @@
 package org.yapp.covey.fragment;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Spannable;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.yapp.covey.R;
+import org.yapp.covey.activity.LocationMoreActivity;
 import org.yapp.covey.adapter.AdapterCategoryList;
 import org.yapp.covey.adapter.AdapterLocationList;
 import org.yapp.covey.adapter.AdapterMoneyList;
@@ -32,9 +34,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements View.OnClickListener{
     ImageButton buttonAlert, buttonFilter;
-    TextView tvCome, tvTitle;
+    TextView tvCome, tvTitle, tvMoreLocationPost, tvMoreMoneyPost;
     private RecyclerView listViewCategory, recyclerViewLocation, recyclerViewPay;
     private AdapterCategoryList adapterCategory;
     private AdapterLocationList adapterLocationPost = new AdapterLocationList();
@@ -78,6 +80,12 @@ public class HomeFragment extends Fragment {
         buttonFilter = view.findViewById(R.id.btn_filter);
         tvCome = view.findViewById(R.id.btn_come);
         tvTitle = view.findViewById(R.id.tv_title);
+
+        tvMoreLocationPost = view.findViewById(R.id.tv_location_more);
+        tvMoreMoneyPost = view.findViewById(R.id.tv_money_more);
+
+        tvMoreLocationPost.setOnClickListener(this);
+        tvMoreMoneyPost.setOnClickListener(this);
 
         listViewCategory = view.findViewById(R.id.recycler_category);
         recyclerViewLocation = view.findViewById(R.id.recycler_distance);
@@ -137,5 +145,19 @@ public class HomeFragment extends Fragment {
                 Log.w(TAG,"OnFailure PayList");
             }
         });
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.tv_location_more:{
+                Intent intentLocationMore = new Intent(getContext(), LocationMoreActivity.class);
+                startActivity(intentLocationMore);
+                break;
+            }
+            case R.id.tv_money_more:{
+
+            }
+        }
     }
 }

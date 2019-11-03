@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+        <variable
+            name="activity"
+            type="org.yapp.covey.activity.LocationMoreActivity" />
+    </data>
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.LocationMoreActivity">
@@ -14,11 +23,20 @@
         app:layout_constraintGuide_percent="0.022"
         android:orientation="horizontal"
         />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_top2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_percent="0.086"
+        android:orientation="horizontal"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_top3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.017"
         android:orientation="horizontal"
         />
 
@@ -30,13 +48,14 @@
         android:orientation="vertical"
         />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/image_back"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:src="@drawable/icon_arrow"
-        app:layout_constraintHeight_percent="0.038"
+        android:background="#00000000"
         app:layout_constraintWidth_percent="0.067"
+        app:layout_constraintHeight_percent="0.038"
         app:layout_constraintStart_toStartOf="@id/guideline_left"
         app:layout_constraintTop_toTopOf="@id/guideline_top" />
 
@@ -48,7 +67,7 @@
         android:gravity="center"
         android:textSize="20sp"
         android:textColor="#000"
-        app:layout_constraintTop_toTopOf="@id/guideline_top"
+        app:layout_constraintTop_toTopOf="@id/guideline_top3"
         app:layout_constraintHeight_percent="0.047"
         app:layout_constraintStart_toEndOf="@id/image_back" />
 
@@ -67,3 +86,4 @@
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

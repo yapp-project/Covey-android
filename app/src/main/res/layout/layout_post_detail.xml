@@ -165,7 +165,26 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_location"
         />
 
+    <TextView
+        android:id="@+id/content"
+        style="@style/TextTheme15sp"
+        android:text="업무 설명"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/divider4" />
 
+    <TextView
+        android:id="@+id/tv_content"
+        style="@style/TextTheme15sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="8sp"
+        android:text="서빙, 음료 제조, 청소, 마감 업무로 인근 거주자나 카페
+업무 경력자 우대합니다. 많은 지원해주세요~!"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintTop_toBottomOf="@+id/content" />
 
     <Button
         android:layout_width="0dp"

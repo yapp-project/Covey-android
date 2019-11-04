@@ -1,203 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="postDetail"
+            type="org.yapp.covey.etc.ItemPostVO" />
+    </data>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_top"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent="0.022"
-        android:orientation="horizontal"
-        />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_top2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent="0.086"
-        android:orientation="horizontal"
-        />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_top3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent="0.017"
-        android:orientation="horizontal"
-        />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent="0.044"
-        android:orientation="vertical"
-        />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent="0.956"
-        android:orientation="vertical"
-        />
-
-    <ImageButton
-        android:id="@+id/image_back"
-        style="@style/ImageButtonArrow"
-        app:layout_constraintWidth_percent="0.067"
-        app:layout_constraintHeight_percent="0.038"
-        app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintTop_toTopOf="@id/guideline_top" />
-
-    <TextView
-        style="@style/TextThemeTitle20sp"
-        android:layout_marginStart="12dp"
-        android:text="상세 정보"
-        app:layout_constraintTop_toTopOf="@id/guideline_top3"
-        app:layout_constraintHeight_percent="0.047"
-        app:layout_constraintStart_toEndOf="@id/image_back" />
-
-    <View
-        android:id="@+id/divider1"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/white_two"
-        app:layout_constraintTop_toTopOf="@id/guideline_top2" />
+        android:layout_height="match_parent">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.022"
+            android:orientation="horizontal"
+            />
 
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="YAPP 카페"
-        android:textSize="17sp"
-        android:textColor="#000"
-        android:textStyle="bold"
-        android:layout_marginTop="32dp"
-        app:layout_constraintTop_toBottomOf="@id/divider1"
-        app:layout_constraintStart_toStartOf="@id/guideline_left"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_top2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.086"
+            android:orientation="horizontal"
+            />
 
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_title"
-        android:layout_marginTop="16dp"
-        android:background="@color/white_two"
-        app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintEnd_toEndOf="@id/guideline_right"
-        />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_top3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.017"
+            android:orientation="horizontal"
+            />
 
-    <LinearLayout
-        android:id="@+id/linear_condition"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintHeight_percent="0.2"
-        app:layout_constraintTop_toBottomOf="@id/divider2"
-        app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="vertical"
-        >
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.044"
+            android:orientation="vertical"
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.956"
+            android:orientation="vertical"
+            />
+
+        <ImageButton
+            android:id="@+id/image_back"
+            style="@style/ImageButtonArrow"
+            app:layout_constraintWidth_percent="0.067"
+            app:layout_constraintHeight_percent="0.038"
+            app:layout_constraintStart_toStartOf="@id/guideline_left"
+            app:layout_constraintTop_toTopOf="@id/guideline_top" />
 
         <TextView
-            style="@style/TextTheme15sp"
-            android:text="근무조건"
+            style="@style/TextThemeTitle20sp"
+            android:layout_marginStart="12dp"
+            android:text="상세 정보"
+            app:layout_constraintTop_toTopOf="@id/guideline_top3"
+            app:layout_constraintHeight_percent="0.047"
+            app:layout_constraintStart_toEndOf="@id/image_back" />
+
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/white_two"
+            app:layout_constraintTop_toTopOf="@id/guideline_top2" />
+
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="YAPP 카페"
+            android:textSize="17sp"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@id/divider1"
+            app:layout_constraintStart_toStartOf="@id/guideline_left"/>
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            android:layout_marginTop="16dp"
+            android:background="@color/white_two"
+            app:layout_constraintStart_toStartOf="@id/guideline_left"
+            app:layout_constraintEnd_toEndOf="@id/guideline_right"
+            />
+
+        <LinearLayout
+            android:id="@+id/linear_condition"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.2"
+            app:layout_constraintTop_toBottomOf="@id/divider2"
+            app:layout_constraintStart_toStartOf="@id/guideline_left"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                style="@style/TextTheme15sp"
+                android:text="근무조건"
+                />
+
+            <TextView
+                style="@style/TextTheme15sp"
+                android:text="일시    2019. 10. 11 ~ 2019. 10. 13"
+                />
+
+            <TextView
+                style="@style/TextTheme15sp"
+                android:text="시간    16:00 ~ 23:00"
+                />
+
+            <TextView
+                style="@style/TextTheme15sp"
+                android:text="시급    8,350원"
+                />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:background="@color/white_two"
+            app:layout_constraintTop_toBottomOf="@+id/linear_condition"
             />
 
         <TextView
+            android:id="@+id/textView"
             style="@style/TextTheme15sp"
-            android:text="일시    2019. 10. 11 ~ 2019. 10. 13"
+            android:text="근무지 정보"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_left"
+            app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintHeight_percent="0.262"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/tv_location"
+            style="@style/TextTheme15sp"
+            android:text="위치     서울시 관악구 관천로 1919"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_left"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
+        <View
+            android:id="@+id/divider4"
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:background="@color/white_two"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_location"
             />
 
         <TextView
+            android:id="@+id/content"
             style="@style/TextTheme15sp"
-            android:text="시간    16:00 ~ 23:00"
-            />
+            android:text="업무 설명"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_left"
+            app:layout_constraintTop_toBottomOf="@+id/divider4" />
 
         <TextView
+            android:id="@+id/tv_content"
             style="@style/TextTheme15sp"
-            android:text="시급    8,350원"
-            />
-    </LinearLayout>
-
-    <View
-        android:id="@+id/divider3"
-        android:layout_width="match_parent"
-        android:layout_height="16dp"
-        android:background="@color/white_two"
-        app:layout_constraintTop_toBottomOf="@+id/linear_condition"
-        />
-
-    <TextView
-        android:id="@+id/textView"
-        style="@style/TextTheme15sp"
-        android:text="근무지 정보"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/divider3" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintHeight_percent="0.262"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/tv_location"
-        style="@style/TextTheme15sp"
-        android:text="위치     서울시 관악구 관천로 1919"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
-
-    <View
-        android:id="@+id/divider4"
-        android:layout_width="match_parent"
-        android:layout_height="16dp"
-        android:background="@color/white_two"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_location"
-        />
-
-    <TextView
-        android:id="@+id/content"
-        style="@style/TextTheme15sp"
-        android:text="업무 설명"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/divider4" />
-
-    <TextView
-        android:id="@+id/tv_content"
-        style="@style/TextTheme15sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:lineSpacingExtra="8sp"
-        android:text="서빙, 음료 제조, 청소, 마감 업무로 인근 거주자나 카페
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="8sp"
+            android:text="서빙, 음료 제조, 청소, 마감 업무로 인근 거주자나 카페
 업무 경력자 우대합니다. 많은 지원해주세요~!"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintEnd_toEndOf="@id/guideline_right"
-        app:layout_constraintTop_toBottomOf="@+id/content" />
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_left"
+            app:layout_constraintEnd_toEndOf="@id/guideline_right"
+            app:layout_constraintTop_toBottomOf="@+id/content" />
 
-    <Button
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintHeight_percent="0.07"
-        android:background="@drawable/rounded_rectangle_8dp"
-        android:backgroundTint="@color/tomato"
-        android:textSize="17sp"
-        android:text="지원하기"
-        android:textColor="#fff"
-        android:layout_marginBottom="37dp"
-        app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintEnd_toEndOf="@id/guideline_right"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.07"
+            android:background="@drawable/rounded_rectangle_8dp"
+            android:backgroundTint="@color/tomato"
+            android:textSize="17sp"
+            android:text="지원하기"
+            android:textColor="#fff"
+            android:layout_marginBottom="37dp"
+            app:layout_constraintStart_toStartOf="@id/guideline_left"
+            app:layout_constraintEnd_toEndOf="@id/guideline_right"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

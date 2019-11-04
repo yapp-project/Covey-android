@@ -30,7 +30,7 @@ public class LocationMoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_location_more);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_location_more);
-        binding.setActivity(this);
+        binding.setMoreLocation(this);
 
         binding.imageBack.setOnClickListener(new View.OnClickListener() {
             @Override

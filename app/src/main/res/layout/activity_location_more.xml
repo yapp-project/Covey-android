@@ -6,7 +6,7 @@
     >
     <data>
         <variable
-            name="activity"
+            name="moreLocation"
             type="org.yapp.covey.activity.LocationMoreActivity" />
     </data>
 

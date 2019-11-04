@@ -34,6 +34,12 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="TextTheme15sp" parent="TextThemeTitle20sp">
+        <item name="android:textSize">15sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
     <style name="ImageButtonArrow" parent="Widget.AppCompat.ImageButton">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>

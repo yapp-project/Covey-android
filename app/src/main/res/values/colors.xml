@@ -21,6 +21,10 @@
     <color name="blank">#00000000</color>
     <color name="warm_grey">#979797</color>
     <color name="warm_grey_two">#7d7d7d</color>
+    <color name="warm_grey_three">#757575</color>
+
     <color name="white_two">#efefef</color>
     <color name="white_three">#f5f5f5</color>
+    
+    <color name="cool_grey">#bdbdbf</color>
 </resources>

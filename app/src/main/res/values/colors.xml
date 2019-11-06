@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     
     <color name="tomato">#f24040</color>
+    <color name="salmon">#fa8274</color>
     <color name="easter_purple">#a878ff</color>
+    
+    <color name="navigation_white">#fafafa</color>
+    <color name="navigation_default">#89000000</color>
+
+    <color name="navigation">
+        <selector>
+            <item android:state_checked="true" android:color="@color/tomato" />
+            <item android:color="@color/navigation_default"  />
+        </selector>
+    </color>
+
+    <color name="blank">#00000000</color>
+    <color name="warm_grey">#979797</color>
+    <color name="warm_grey_two">#7d7d7d</color>
 </resources>

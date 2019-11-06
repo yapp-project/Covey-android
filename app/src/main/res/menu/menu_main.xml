@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_home"
+        android:title="홈"
+        android:enabled="true"
+        android:icon="@drawable/home_ic"
+        />
+
+    <item
+        android:id="@+id/menu_apply"
+        android:title="지원"
+        android:enabled="true"
+        android:icon="@drawable/apply_ic"
+        />
+
+    <item
+        android:id="@+id/menu_recruit"
+        android:title="모집"
+        android:enabled="true"
+        android:icon="@drawable/recruit_ic"
+        />
+
+    <item
+        android:id="@+id/menu_profile"
+        android:title="프로필"
+        android:enabled="true"
+        android:icon="@drawable/user_ic"
+        />
+</menu>

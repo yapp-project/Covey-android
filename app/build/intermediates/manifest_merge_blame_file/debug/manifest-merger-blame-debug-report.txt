@@ -10,55 +10,75 @@
 9        android:targetSdkVersion="28" />
 9-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml
 10
-11    <application
-11-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:5:5-27:19
-12        android:allowBackup="true"
-12-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:6:9-35
-13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-13-->[androidx.core:core:1.0.1] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\72b2b92ec4ab73ff21fb9bc348de3b22\core-1.0.1\AndroidManifest.xml:22:18-86
-14        android:debuggable="true"
-15        android:icon="@mipmap/ic_launcher"
-15-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:7:9-43
-16        android:label="@string/app_name"
-16-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:8:9-41
-17        android:roundIcon="@mipmap/ic_launcher_round"
-17-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:9:9-54
-18        android:supportsRtl="true"
-18-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:10:9-35
-19        android:testOnly="true"
-20        android:theme="@style/AppTheme" >
-20-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:11:9-40
-21        <activity
-21-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:12:9-19:20
-22            android:name="org.yapp.covey.activity.SignupActivity"
-22-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:12:19-58
-23            android:theme="@style/AppTheme" >
-23-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:13:13-44
-24            <intent-filter>
-24-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:14:13-18:29
-25                <action android:name="android.intent.action.MAIN" />
-25-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:15:17-69
-25-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:15:25-66
-26
-27                <category android:name="android.intent.category.LAUNCHER" />
-27-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:17:17-77
-27-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:17:27-74
-28            </intent-filter>
-29        </activity>
-30        <activity android:name="org.yapp.covey.activity.MainActivity" >
-30-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:20:9-26:20
-30-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:20:19-56
-31            <intent-filter>
-31-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:14:13-18:29
-32                <action android:name="android.intent.action.MAIN" />
-32-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:15:17-69
-32-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:15:25-66
-33
-34                <category android:name="android.intent.category.LAUNCHER" />
-34-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:17:17-77
-34-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:17:27-74
-35            </intent-filter>
-36        </activity>
-37    </application>
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:6:5-66
+11-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:6:22-64
+12
+13    <application
+13-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:8:5-33:19
+14        android:allowBackup="true"
+14-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:9:9-35
+15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+15-->[androidx.core:core:1.0.1] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\72b2b92ec4ab73ff21fb9bc348de3b22\core-1.0.1\AndroidManifest.xml:22:18-86
+16        android:debuggable="true"
+17        android:icon="@mipmap/ic_launcher"
+17-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:10:9-43
+18        android:label="@string/app_name"
+18-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:11:9-41
+19        android:roundIcon="@mipmap/ic_launcher_round"
+19-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:12:9-54
+20        android:supportsRtl="true"
+20-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:13:9-35
+21        android:testOnly="true"
+22        android:theme="@style/AppTheme"
+22-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:14:9-40
+23        android:usesCleartextTraffic="true" >
+23-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:15:9-44
+24        <activity
+24-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:17:9-24:20
+25            android:name="org.yapp.covey.activity.MainActivity"
+25-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:17:19-56
+26            android:theme="@style/AppTheme.StatusBarWhite" >
+26-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:18:13-59
+27            <intent-filter>
+27-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:19:13-23:29
+28                <action android:name="android.intent.action.MAIN" />
+28-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:20:17-69
+28-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:20:25-66
+29
+30                <category android:name="android.intent.category.LAUNCHER" />
+30-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:22:17-77
+30-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:22:27-74
+31            </intent-filter>
+32        </activity>
+33        <activity
+33-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:25:9-32:20
+34            android:name="org.yapp.covey.activity.SignupActivity"
+34-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:25:19-58
+35            android:theme="@style/AppTheme" >
+35-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:26:13-44
+36            <intent-filter>
+36-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:19:13-23:29
+37                <action android:name="android.intent.action.MAIN" />
+37-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:20:17-69
+37-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:20:25-66
 38
-39</manifest>
+39                <category android:name="android.intent.category.LAUNCHER" />
+39-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:22:17-77
+39-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:22:27-74
+40            </intent-filter>
+41        </activity>
+42
+43        <provider
+43-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\bba9e662e9f4bf0da774229f97b853fc\lifecycle-process-2.0.0\AndroidManifest.xml:23:9-27:43
+44            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+44-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\bba9e662e9f4bf0da774229f97b853fc\lifecycle-process-2.0.0\AndroidManifest.xml:24:13-79
+45            android:authorities="org.yapp.covey.lifecycle-process"
+45-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\bba9e662e9f4bf0da774229f97b853fc\lifecycle-process-2.0.0\AndroidManifest.xml:25:13-69
+46            android:exported="false"
+46-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\bba9e662e9f4bf0da774229f97b853fc\lifecycle-process-2.0.0\AndroidManifest.xml:26:13-37
+47            android:multiprocess="true" />
+47-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\bba9e662e9f4bf0da774229f97b853fc\lifecycle-process-2.0.0\AndroidManifest.xml:27:13-40
+48    </application>
+49
+50</manifest>

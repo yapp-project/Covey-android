@@ -73,3 +73,4 @@ app/build/generated/source/buildConfig/debug/org/yapp/covey/BuildConfig.java
 app/build/generated/source/buildConfig/androidTest/debug/org/yapp/covey/test/BuildConfig.java
 app/app.iml
 .idea/.name
+app/src/main/java/org/yapp/covey/util/Config.java

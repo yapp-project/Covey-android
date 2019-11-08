@@ -3,6 +3,8 @@ package org.yapp.covey.fragment;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +12,19 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListPopupWindow;
+import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
 import org.yapp.covey.R;
 import org.yapp.covey.activity.SignupActivity;
 
+import java.lang.reflect.Field;
+
 import androidx.fragment.app.Fragment;
+
+import static androidx.annotation.Dimension.DP;
 
 public class Signup_03_Fragment extends Fragment {
 
@@ -38,6 +46,9 @@ public class Signup_03_Fragment extends Fragment {
         String[] genderStr = getResources().getStringArray(R.array.gender);
         String[] ageStr = getResources().getStringArray(R.array.age);
         String[] locationStr = getResources().getStringArray(R.array.city);
+
+        final DisplayMetrics outMetrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(outMetrics);
 
         name.addTextChangedListener(new TextWatcher() {
             @Override
@@ -66,16 +77,16 @@ public class Signup_03_Fragment extends Fragment {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
         });
 
-        ArrayAdapter<String> genderAdapter= new ArrayAdapter<String>(getContext(),R.layout.spinner_item, genderStr);
-        genderAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        ArrayAdapter<String> genderAdapter= new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item, genderStr);
+        genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genderSpinner.setAdapter(genderAdapter);
 
-        ArrayAdapter<String> ageAdapter= new ArrayAdapter<String>(getContext(),R.layout.spinner_item, ageStr);
-        ageAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        ArrayAdapter<String> ageAdapter= new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item, ageStr);
+        ageAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ageSpinner.setAdapter(ageAdapter);
 
-        ArrayAdapter<String> locationAdapter= new ArrayAdapter<String>(getContext(),R.layout.spinner_item, locationStr);
-        locationAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        ArrayAdapter<String> locationAdapter= new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item, locationStr);
+        locationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         locationSpinner.setAdapter(locationAdapter);
 
         locationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -131,14 +142,15 @@ public class Signup_03_Fragment extends Fragment {
                     case 15:
                         locationDetailStr = getResources().getStringArray(R.array.jeju);
                 }
-                ArrayAdapter<String> locationDetailAdapter= new ArrayAdapter<String>(getContext(),R.layout.spinner_item, locationDetailStr);
-                locationDetailAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+                ArrayAdapter<String> locationDetailAdapter= new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item, locationDetailStr);
+                locationDetailAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 locationDetailSpinner.setAdapter(locationDetailAdapter);
             }
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {}
 
         });
+
         next_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

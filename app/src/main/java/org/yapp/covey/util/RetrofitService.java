@@ -1,13 +1,15 @@
 package org.yapp.covey.util;
 
 import org.yapp.covey.etc.ItemPostVO;
+import org.yapp.covey.etc.phoneNumClass;
 
 import java.util.ArrayList;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 
 public interface RetrofitService {
     @GET("api/post/payList/{page}")
@@ -17,4 +19,12 @@ public interface RetrofitService {
     @GET("api/post/addressList/{page}")
     Call<ArrayList<ItemPostVO>>
     addressList(@Path("page") Integer page);
+
+    @POST("api/auth/phone")
+    Call<phoneNumClass>
+    phoneVerify(@Body phoneNumClass body);
+
+    @POST("api/auth/verify")
+    Call<phoneNumClass>
+    phoneVerifyCheck(@Body phoneNumClass body);
 }

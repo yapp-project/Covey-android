@@ -14,7 +14,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".activity.PostDetailActivity"/>
         <activity
-            android:name=".activity.LocationMoreActivity"
+            android:name=".activity.MorePostActivity"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".activity.MainActivity"

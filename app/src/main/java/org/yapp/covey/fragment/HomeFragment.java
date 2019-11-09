@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.StyleSpan;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,11 +18,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
-
 import org.yapp.covey.R;
-import org.yapp.covey.activity.LocationMoreActivity;
-import org.yapp.covey.activity.MainActivity;
+import org.yapp.covey.activity.MorePostActivity;
 import org.yapp.covey.adapter.AdapterCategoryList;
 import org.yapp.covey.adapter.AdapterLocationList;
 import org.yapp.covey.adapter.AdapterMoneyList;
@@ -34,7 +30,6 @@ import org.yapp.covey.util.Singleton;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -171,20 +166,26 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
+        Intent intentLocationMore = new Intent(getContext(), MorePostActivity.class);
         switch (view.getId()){
+
             case R.id.tv_location_more:{
-                Intent intentLocationMore = new Intent(getContext(), LocationMoreActivity.class);
+                intentLocationMore.putExtra("category","우리 동네 대타");
+                intentLocationMore.putExtra("categoryNum",1);
                 startActivity(intentLocationMore);
                 break;
             }
             case R.id.tv_money_more:{
-
+                intentLocationMore.putExtra("category","고수익 알바");
+                intentLocationMore.putExtra("categoryNum",2);
+                startActivity(intentLocationMore);
+                break;
             }
             case R.id.btn_filter:{
 //                showBottomSheetFragment(view);
                 FilterDialogFragment filterDialogFragment = new FilterDialogFragment();
                 filterDialogFragment.show(getFragmentManager(),"filter");
-
+                break;
             }
         }
     }

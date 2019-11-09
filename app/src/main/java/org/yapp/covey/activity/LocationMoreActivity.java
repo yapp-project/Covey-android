@@ -32,16 +32,9 @@ public class LocationMoreActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_location_more);
         binding.setMoreLocation(this);
 
-        binding.imageBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-
         getPostData();
-        binding.recyclerMoneyMore.setLayoutManager(new GridLayoutManager(this,2));
-        binding.recyclerMoneyMore.setAdapter(mAdapter);
+        binding.recyclerMorePost.setLayoutManager(new GridLayoutManager(this,2));
+        binding.recyclerMorePost.setAdapter(mAdapter);
     }
     public void getPostData(){
         Singleton.retrofit.addressList(1).enqueue(new Callback<ArrayList<ItemPostVO>>() {

@@ -19,7 +19,7 @@
             android:id="@+id/guideline_top"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintGuide_percent="0.022"
+            app:layout_constraintGuide_percent="0.013"
             android:orientation="horizontal"
             />
 
@@ -27,7 +27,7 @@
             android:id="@+id/guideline_top2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintGuide_percent="0.086"
+            app:layout_constraintGuide_percent="0.03"
             android:orientation="horizontal"
             />
 
@@ -35,7 +35,7 @@
             android:id="@+id/guideline_top3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintGuide_percent="0.017"
+            app:layout_constraintGuide_percent="0.128"
             android:orientation="horizontal"
             />
 
@@ -47,35 +47,77 @@
             android:orientation="vertical"
             />
 
-        <ImageButton
-            android:id="@+id/image_back"
-            style="@style/ImageButtonArrow"
-            app:layout_constraintWidth_percent="0.067"
-            app:layout_constraintHeight_percent="0.038"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.956"
+            android:orientation="vertical"
+            />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintWidth_percent="0.264"
+            app:layout_constraintHeight_percent="0.066"
+            app:layout_constraintTop_toTopOf="@id/guideline_top"
             app:layout_constraintStart_toStartOf="@id/guideline_left"
-            app:layout_constraintTop_toTopOf="@id/guideline_top" />
+            android:src="@drawable/logo_red"
+            />
+
+        <ImageButton
+            android:id="@+id/btn_alert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/alert_ic"
+            android:tint="@color/tomato"
+            android:background="#00000000"
+            app:layout_constraintEnd_toEndOf="@id/guideline_right"
+            app:layout_constraintTop_toTopOf="@id/guideline_top2"
+            />
+
+        <ImageButton
+            android:id="@+id/btn_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/filter_ic"
+            android:tint="@color/tomato"
+            android:background="#00000000"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@id/btn_alert"
+            app:layout_constraintTop_toTopOf="@id/guideline_top2"
+            />
 
         <TextView
+            android:id="@+id/btn_come"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blank"
+            android:text="대타등록"
+            android:textColor="@color/tomato"
+            android:textSize="14sp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/btn_filter"
+            app:layout_constraintBottom_toBottomOf="@id/btn_filter" />
+
+
+        <TextView
+            android:id="@+id/tv_title_location"
             style="@style/TextThemeTitle20sp"
-            android:layout_marginStart="12dp"
             android:text="우리 동네 대타"
             app:layout_constraintTop_toTopOf="@id/guideline_top3"
-            app:layout_constraintHeight_percent="0.047"
-            app:layout_constraintStart_toEndOf="@id/image_back" />
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@color/white_two"
-            app:layout_constraintTop_toTopOf="@id/guideline_top2" />
+            app:layout_constraintStart_toStartOf="@id/guideline_left"
+            />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_money_more"
-            android:layout_width="match_parent"
+            android:id="@+id/recycler_more_post"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view" />
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@id/guideline_left"
+            app:layout_constraintEnd_toEndOf="@id/guideline_right"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_location"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -59,6 +59,7 @@
             android:hint="시작 날짜"
             android:layout_marginTop="8dp"
             app:layout_constraintHeight_percent="0.085"
+            android:drawableEnd="@drawable/calendar_ic"
             app:layout_constraintStart_toStartOf="@id/guideline_left"
             app:layout_constraintTop_toBottomOf="@id/tv_duration"
             app:layout_constraintWidth_percent="0.444" />
@@ -67,6 +68,7 @@
             android:id="@+id/tv_end_date"
             style="@style/TextThemeRound"
             android:hint="종료 날짜"
+            android:drawableEnd="@drawable/calendar_ic"
             app:layout_constraintBottom_toBottomOf="@+id/tv_start_date"
             app:layout_constraintEnd_toEndOf="@id/guideline_right"
             app:layout_constraintHeight_percent="0.085"

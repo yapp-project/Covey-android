@@ -18,7 +18,8 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".activity.MainActivity"
-            android:theme="@style/AppTheme.StatusBarWhite">
+            android:theme="@style/AppTheme.StatusBarWhite"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 

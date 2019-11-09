@@ -15,13 +15,19 @@ import org.yapp.covey.R;
 import org.yapp.covey.databinding.LayoutDialogFilterBinding;
 
 public class FilterDialogFragment extends BottomSheetDialogFragment {
-    LayoutDialogFilterBinding binding;
+    private LayoutDialogFilterBinding binding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.layout_post_detail,container,false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.layout_dialog_filter,container,false);
 
+        binding.tvCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dismiss();
+            }
+        });
 
         return binding.getRoot();
     }

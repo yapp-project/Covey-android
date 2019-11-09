@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.StyleSpan;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,8 +18,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+
 import org.yapp.covey.R;
 import org.yapp.covey.activity.LocationMoreActivity;
+import org.yapp.covey.activity.MainActivity;
 import org.yapp.covey.adapter.AdapterCategoryList;
 import org.yapp.covey.adapter.AdapterLocationList;
 import org.yapp.covey.adapter.AdapterMoneyList;
@@ -29,6 +33,7 @@ import org.yapp.covey.util.Singleton;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -78,6 +83,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private void setInitView(View view){
         buttonAlert = view.findViewById(R.id.btn_alert);
         buttonFilter = view.findViewById(R.id.btn_filter);
+        buttonFilter.setOnClickListener(this);
         tvCome = view.findViewById(R.id.btn_come);
         tvTitle = view.findViewById(R.id.tv_title);
 
@@ -147,6 +153,19 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         });
     }
 
+//    public void showBottomSheetFragment(View view) {
+//        FilterDialogFragment filterDialogFragment = new FilterDialogFragment();
+//
+//        DisplayMetrics displayMetrics = getActivity().getResources().getDisplayMetrics();
+//
+//        int width = displayMetrics.widthPixels;
+//        int height = displayMetrics.heightPixels;
+//
+//        BottomSheetBehavior mBehavior = BottomSheetBehavior.from(view);
+//        mBehavior.setPeekHeight((int) (height*0.73));
+//        filterDialogFragment.show(getFragmentManager(),"filter");
+//    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -156,6 +175,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 break;
             }
             case R.id.tv_money_more:{
+
+            }
+            case R.id.btn_filter:{
+//                showBottomSheetFragment(view);
+                FilterDialogFragment filterDialogFragment = new FilterDialogFragment();
+                filterDialogFragment.show(getFragmentManager(),"filter");
 
             }
         }

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:maxHeight="470dp">
     <data>
         <variable
             name="bottomSheetFilter"
@@ -10,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="470dp"
+        android:layout_height="match_parent"
         android:background="@drawable/rounded_top_rectangle_15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHeight_percent="0.734"
@@ -83,13 +84,13 @@
         <EditText
             style="@style/TextThemeRound"
             android:id="@+id/et_payment"
-            android:drawableEnd="null"
             android:hint="숫자만 입력하세요"
             android:layout_marginTop="8dp"
             app:layout_constraintHeight_percent="0.085"
             app:layout_constraintStart_toStartOf="@+id/guideline_left"
             app:layout_constraintTop_toBottomOf="@id/tv_payment"
-            app:layout_constraintWidth_percent="0.444" />
+            app:layout_constraintWidth_percent="0.444"
+            android:inputType="number" />
 
         <TextView
             style="@style/TextTheme14sp"

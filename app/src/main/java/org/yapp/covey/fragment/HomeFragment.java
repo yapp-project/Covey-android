@@ -1,6 +1,7 @@
 package org.yapp.covey.fragment;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Spannable;
@@ -85,6 +86,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         buttonFilter = view.findViewById(R.id.btn_filter);
         buttonFilter.setOnClickListener(this);
         tvCome = view.findViewById(R.id.btn_come);
+        tvCome.setPaintFlags(tvCome.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
         tvTitle = view.findViewById(R.id.tv_title);
 
         tvMoreLocationPost = view.findViewById(R.id.tv_location_more);

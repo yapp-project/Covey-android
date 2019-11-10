@@ -3,6 +3,7 @@ package org.yapp.covey.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,7 +17,17 @@ import java.util.ArrayList;
 public class AdapterLocationMoreList extends RecyclerView.Adapter<AdapterLocationMoreList.ViewHolder>{
     public ArrayList<ItemPostVO> mDataList = new ArrayList<>();
 
+
     public AdapterLocationMoreList() {
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(View v, int position);
+    }
+
+    private OnItemClickListener mListener = null;
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.mListener = listener;
     }
 
     @NonNull
@@ -60,6 +71,18 @@ public class AdapterLocationMoreList extends RecyclerView.Adapter<AdapterLocatio
             tvLocation = itemView.findViewById(R.id.tv_location);
             tvMoney = itemView.findViewById(R.id.tv_money);
             tvTime = itemView.findViewById(R.id.tv_time);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION){
+                        if (mListener != null){
+                            mListener.onItemClick(view,position);
+                        }
+                    }
+                }
+            });
         }
     }
 }

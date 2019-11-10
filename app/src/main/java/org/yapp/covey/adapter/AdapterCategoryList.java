@@ -22,6 +22,15 @@ public class AdapterCategoryList extends RecyclerView.Adapter<AdapterCategoryLis
         this.dataCategory = list;
     }
 
+    public interface OnItemClickListener{
+        void onItemClick(View v, int position);
+    }
+
+    private OnItemClickListener mListener = null;
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.mListener = listener;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -48,6 +57,18 @@ public class AdapterCategoryList extends RecyclerView.Adapter<AdapterCategoryLis
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             tv = itemView.findViewById(R.id.tv_category_name);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION){
+                        if (mListener != null){
+                            mListener.onItemClick(view,position);
+                        }
+                    }
+                }
+            });
         }
     }
 

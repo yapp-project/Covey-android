@@ -27,8 +27,6 @@ public class MorePostActivity extends AppCompatActivity {
     AdapterLocationMoreList mLocationAdapter = new AdapterLocationMoreList();
     AdapterMoneyList mMoneyAdapter = new AdapterMoneyList();
     private static String TAG = "MORE POST ACTIVITY";
-    private static int LOCATION = 1;
-    private static int PAY = 2;
     String categoryTitle;
 
     @Override
@@ -45,7 +43,9 @@ public class MorePostActivity extends AppCompatActivity {
 
     }
     public void getPostData(int category){
-        if (category==LOCATION) {
+        int LOCATION = 1;
+        int PAY = 2;
+        if (category== LOCATION) {
             Singleton.retrofit.addressList(1).enqueue(new Callback<ArrayList<ItemPostVO>>() {
                 @Override
                 public void onResponse(Call<ArrayList<ItemPostVO>> call, Response<ArrayList<ItemPostVO>> response) {

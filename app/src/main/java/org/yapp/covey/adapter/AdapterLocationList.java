@@ -19,6 +19,15 @@ public class AdapterLocationList extends RecyclerView.Adapter<AdapterLocationLis
     public AdapterLocationList() {
     }
 
+    public interface OnItemClickListener{
+        void onItemClick(View v, int position);
+    }
+
+    private OnItemClickListener mListener = null;
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.mListener = listener;
+    }
+
     @NonNull
     @Override
     public AdapterLocationList.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -59,6 +68,18 @@ public class AdapterLocationList extends RecyclerView.Adapter<AdapterLocationLis
             tvLocation = itemView.findViewById(R.id.tv_location);
             tvMoney = itemView.findViewById(R.id.tv_money);
             tvTime = itemView.findViewById(R.id.tv_time);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION){
+                        if (mListener != null){
+                            mListener.onItemClick(view,position);
+                        }
+                    }
+                }
+            });
         }
     }
 

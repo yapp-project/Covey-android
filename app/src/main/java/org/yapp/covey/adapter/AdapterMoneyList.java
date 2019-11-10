@@ -20,6 +20,15 @@ public class AdapterMoneyList extends RecyclerView.Adapter<AdapterMoneyList.View
 
     public AdapterMoneyList() { }
 
+    public interface OnItemClickListener{
+        void onItemClick(View v, int position);
+    }
+
+    private OnItemClickListener mListener = null;
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.mListener = listener;
+    }
+
     @NonNull
     @Override
     public AdapterMoneyList.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -57,6 +66,18 @@ public class AdapterMoneyList extends RecyclerView.Adapter<AdapterMoneyList.View
             tvTitle = itemView.findViewById(R.id.tv_money_title);
             tvDDay = itemView.findViewById(R.id.tv_d_day);
             tvMoney = itemView.findViewById(R.id.tv_payment);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION){
+                        if (mListener != null){
+                            mListener.onItemClick(view,position);
+                        }
+                    }
+                }
+            });
         }
     }
 

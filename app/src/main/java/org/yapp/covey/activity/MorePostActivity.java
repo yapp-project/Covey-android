@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import org.yapp.covey.R;
 import org.yapp.covey.adapter.AdapterLocationList;
@@ -22,8 +23,8 @@ import retrofit2.Response;
 
 public class MorePostActivity extends AppCompatActivity {
     ActivityLocationMoreBinding binding;
-    AdapterLocationList mLocationAdapter;
-    AdapterMoneyList mMoneyAdapter;
+    AdapterLocationList mLocationAdapter = new AdapterLocationList();
+    AdapterMoneyList mMoneyAdapter = new AdapterMoneyList();
     private static String TAG = "MORE POST ACTIVITY";
     private static int LOCATION = 1;
     private static int PAY = 2;
@@ -40,8 +41,7 @@ public class MorePostActivity extends AppCompatActivity {
         binding.tvTitle.setText(categoryTitle);
 
         getPostData(getIntent().getIntExtra("categoryNum",0));
-        binding.recyclerMorePost.setLayoutManager(new GridLayoutManager(this,2));
-        binding.recyclerMorePost.setAdapter(mLocationAdapter);
+
     }
     public void getPostData(int category){
         if (category==LOCATION) {
@@ -61,9 +61,12 @@ public class MorePostActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<ArrayList<ItemPostVO>> call, Throwable t) {
-                    Log.w(TAG, "OnFailure LocationList");
+                    Log.w(TAG, call.toString());
                 }
             });
+
+            binding.recyclerMorePost.setLayoutManager(new GridLayoutManager(this,2));
+            binding.recyclerMorePost.setAdapter(mLocationAdapter);
         }
         else if (category == PAY){
             Singleton.retrofit.payList(1).enqueue(new Callback<ArrayList<ItemPostVO>>() {
@@ -81,9 +84,12 @@ public class MorePostActivity extends AppCompatActivity {
                 }
                 @Override
                 public void onFailure(Call<ArrayList<ItemPostVO>> call, Throwable t) {
-
+                    Log.w(TAG, "OnFailure Pay");
                 }
             });
+
+            binding.recyclerMorePost.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+            binding.recyclerMorePost.setAdapter(mMoneyAdapter);
         }
     }
 }

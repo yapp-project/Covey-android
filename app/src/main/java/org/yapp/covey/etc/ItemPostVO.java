@@ -7,75 +7,60 @@ public class ItemPostVO {
     @SerializedName("id")
     @Expose
     private Integer id;
-
     @SerializedName("title")
     @Expose
     private String title;
-
     @SerializedName("startDate")
     @Expose
     private String startDate;
-
     @SerializedName("endDate")
     @Expose
     private String endDate;
-
     @SerializedName("dueDate")
     @Expose
     private String dueDate;
-
+    @SerializedName("isDue")
+    @Expose
+    private Boolean isDue;
     @SerializedName("workingTime")
     @Expose
     private String workingTime;
-
     @SerializedName("address1")
     @Expose
     private String address1;
-
     @SerializedName("address2")
     @Expose
     private String address2;
-
     @SerializedName("address3")
     @Expose
     private String address3;
-
     @SerializedName("pay")
     @Expose
     private Integer pay;
-
     @SerializedName("description")
     @Expose
     private String description;
-
     @SerializedName("category")
     @Expose
     private String category;
-
     @SerializedName("img1")
     @Expose
     private Object img1;
-
     @SerializedName("img2")
     @Expose
     private Object img2;
-
     @SerializedName("img3")
     @Expose
     private Object img3;
-
     @SerializedName("createdAt")
     @Expose
     private String createdAt;
-
     @SerializedName("updatedAt")
     @Expose
     private String updatedAt;
-
     @SerializedName("deletedAt")
     @Expose
     private Object deletedAt;
-
     @SerializedName("userId")
     @Expose
     private Integer userId;
@@ -118,6 +103,14 @@ public class ItemPostVO {
 
     public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
+    }
+
+    public Boolean getIsDue() {
+        return isDue;
+    }
+
+    public void setIsDue(Boolean isDue) {
+        this.isDue = isDue;
     }
 
     public String getWorkingTime() {

@@ -9,9 +9,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import org.yapp.covey.R;
-import org.yapp.covey.adapter.AdapterLocationList;
+import org.yapp.covey.adapter.AdapterLocationMoreList;
 import org.yapp.covey.adapter.AdapterMoneyList;
 import org.yapp.covey.databinding.ActivityLocationMoreBinding;
+import org.yapp.covey.etc.ItemDecorationGrid;
 import org.yapp.covey.etc.ItemPostVO;
 import org.yapp.covey.util.Singleton;
 
@@ -23,7 +24,7 @@ import retrofit2.Response;
 
 public class MorePostActivity extends AppCompatActivity {
     ActivityLocationMoreBinding binding;
-    AdapterLocationList mLocationAdapter = new AdapterLocationList();
+    AdapterLocationMoreList mLocationAdapter = new AdapterLocationMoreList();
     AdapterMoneyList mMoneyAdapter = new AdapterMoneyList();
     private static String TAG = "MORE POST ACTIVITY";
     private static int LOCATION = 1;
@@ -66,6 +67,7 @@ public class MorePostActivity extends AppCompatActivity {
             });
 
             binding.recyclerMorePost.setLayoutManager(new GridLayoutManager(this,2));
+            binding.recyclerMorePost.addItemDecoration(new ItemDecorationGrid(this,8f,8f));
             binding.recyclerMorePost.setAdapter(mLocationAdapter);
         }
         else if (category == PAY){

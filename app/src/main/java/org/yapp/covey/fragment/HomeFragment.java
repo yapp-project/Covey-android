@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.yapp.covey.R;
+import org.yapp.covey.activity.AlertActivity;
 import org.yapp.covey.activity.MorePostActivity;
 import org.yapp.covey.adapter.AdapterCategoryList;
 import org.yapp.covey.adapter.AdapterLocationList;
@@ -78,6 +79,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     }
     private void setInitView(View view){
         buttonAlert = view.findViewById(R.id.btn_alert);
+        buttonAlert.setOnClickListener(this);
+
         buttonFilter = view.findViewById(R.id.btn_filter);
         buttonFilter.setOnClickListener(this);
         tvCome = view.findViewById(R.id.btn_come);
@@ -168,7 +171,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         Intent intentLocationMore = new Intent(getContext(), MorePostActivity.class);
         switch (view.getId()){
-
+            case R.id.btn_alert:{
+                Intent intentAlert = new Intent(getContext(), AlertActivity.class);
+                startActivity(intentAlert);
+                break;
+            }
             case R.id.tv_location_more:{
                 intentLocationMore.putExtra("category","우리 동네 대타");
                 intentLocationMore.putExtra("categoryNum",1);

@@ -12,7 +12,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.AlertActivity"/>
+        <activity android:name=".activity.AlertActivity"
+            android:theme="@style/AppTheme.CustomAppBar"/>
         <activity android:name=".activity.PostDetailActivity" />
         <activity
             android:name=".activity.MorePostActivity"

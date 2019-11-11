@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import org.yapp.covey.R;
 import org.yapp.covey.adapter.AdapterLocationMoreList;
 import org.yapp.covey.adapter.AdapterMoneyList;
-import org.yapp.covey.databinding.ActivityLocationMoreBinding;
+import org.yapp.covey.databinding.ActivityMorePostBinding;
 import org.yapp.covey.etc.ItemDecorationGrid;
 import org.yapp.covey.etc.ItemPostVO;
 import org.yapp.covey.util.Singleton;
@@ -23,7 +23,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MorePostActivity extends AppCompatActivity {
-    ActivityLocationMoreBinding binding;
+    ActivityMorePostBinding binding;
     AdapterLocationMoreList mLocationAdapter = new AdapterLocationMoreList();
     AdapterMoneyList mMoneyAdapter = new AdapterMoneyList();
     private static String TAG = "MORE POST ACTIVITY";
@@ -32,8 +32,8 @@ public class MorePostActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_location_more);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_location_more);
+//        setContentView(R.layout.activity_more_post);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_more_post);
         binding.setMoreLocation(this);
 
         categoryTitle = getIntent().getStringExtra("category");

@@ -62,3 +62,15 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
+app/build/outputs/logs/manifest-merger-debug-report.txt
+app/build/intermediates/merged_manifests/debugAndroidTest/AndroidManifest.xml
+app/build/intermediates/merged_manifests/debug/AndroidManifest.xml
+app/build/intermediates/manifest_merge_blame_file/debugAndroidTest/manifest-merger-blame-debug-androidTest-report.txt
+app/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt
+app/build/intermediates/instant_app_manifest/debug/AndroidManifest.xml
+app/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/AndroidManifest.xml
+app/build/generated/source/buildConfig/debug/org/yapp/covey/BuildConfig.java
+app/build/generated/source/buildConfig/androidTest/debug/org/yapp/covey/test/BuildConfig.java
+app/app.iml
+.idea/.name
+app/src/main/java/org/yapp/covey/util/Config.java

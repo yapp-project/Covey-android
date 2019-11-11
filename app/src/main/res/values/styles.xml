@@ -9,14 +9,28 @@
 
         <item name="android:statusBarColor">#fff</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">#fff</item>
+        <item name="android:background">#fff</item>
 
         <!--NoActionBar-->
         <item name = "windowNoTitle">true</item>
     </style>
 
+    <style name="AppBottomSheetDialogTheme"
+        parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle"
+        parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/rounded_top_rectangle_15dp</item>
+    </style>
+
     <style name="AppTheme.StatusBarWhite" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:statusBarColor">@color/tomato</item>
+
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
     </style>
 
     <style name="TextTheme12sp" parent="@android:style/Widget.TextView">
@@ -24,5 +38,43 @@
         <item name="android:layout_height">0dp</item>
         <item name="android:textColor">@color/warm_grey_two</item>
         <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextTheme14sp" parent="@android:style/Widget.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextThemeRound" parent="TextTheme14sp">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:background">@drawable/rounded_rectangle_outline_8dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:textColorHint">@color/cool_grey</item>
+    </style>
+
+    <style name="TextThemeTitle20sp" parent="@android:style/Widget.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="TextTheme15sp" parent="TextThemeTitle20sp">
+        <item name="android:textSize">15sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="ImageButtonArrow" parent="Widget.AppCompat.ImageButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:src">@drawable/icon_arrow</item>
+        <item name="android:background">#00000000</item>
     </style>
 </resources>

@@ -1,5 +1,7 @@
 package org.yapp.covey.fragment;
 
+import android.content.Intent;
+import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Spannable;
@@ -17,6 +19,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.yapp.covey.R;
+import org.yapp.covey.activity.AlertActivity;
+import org.yapp.covey.activity.MorePostActivity;
 import org.yapp.covey.adapter.AdapterCategoryList;
 import org.yapp.covey.adapter.AdapterLocationList;
 import org.yapp.covey.adapter.AdapterMoneyList;
@@ -32,9 +36,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements View.OnClickListener{
     ImageButton buttonAlert, buttonFilter;
-    TextView tvCome, tvTitle;
+    TextView tvCome, tvTitle, tvMoreLocationPost, tvMoreMoneyPost;
     private RecyclerView listViewCategory, recyclerViewLocation, recyclerViewPay;
     private AdapterCategoryList adapterCategory;
     private AdapterLocationList adapterLocationPost = new AdapterLocationList();
@@ -75,9 +79,20 @@ public class HomeFragment extends Fragment {
     }
     private void setInitView(View view){
         buttonAlert = view.findViewById(R.id.btn_alert);
+        buttonAlert.setOnClickListener(this);
+
         buttonFilter = view.findViewById(R.id.btn_filter);
+        buttonFilter.setOnClickListener(this);
         tvCome = view.findViewById(R.id.btn_come);
+        tvCome.setPaintFlags(tvCome.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
         tvTitle = view.findViewById(R.id.tv_title);
+
+        tvMoreLocationPost = view.findViewById(R.id.tv_location_more);
+        tvMoreMoneyPost = view.findViewById(R.id.tv_money_more);
+
+        tvMoreLocationPost.setOnClickListener(this);
+        tvMoreMoneyPost.setOnClickListener(this);
 
         listViewCategory = view.findViewById(R.id.recycler_category);
         recyclerViewLocation = view.findViewById(R.id.recycler_distance);
@@ -137,5 +152,48 @@ public class HomeFragment extends Fragment {
                 Log.w(TAG,"OnFailure PayList");
             }
         });
+    }
+
+//    public void showBottomSheetFragment(View view) {
+//        FilterDialogFragment filterDialogFragment = new FilterDialogFragment();
+//
+//        DisplayMetrics displayMetrics = getActivity().getResources().getDisplayMetrics();
+//
+//        int width = displayMetrics.widthPixels;
+//        int height = displayMetrics.heightPixels;
+//
+//        BottomSheetBehavior mBehavior = BottomSheetBehavior.from(view);
+//        mBehavior.setPeekHeight((int) (height*0.73));
+//        filterDialogFragment.show(getFragmentManager(),"filter");
+//    }
+
+    @Override
+    public void onClick(View view) {
+        Intent intentLocationMore = new Intent(getContext(), MorePostActivity.class);
+        switch (view.getId()){
+            case R.id.btn_alert:{
+                Intent intentAlert = new Intent(getContext(), AlertActivity.class);
+                startActivity(intentAlert);
+                break;
+            }
+            case R.id.tv_location_more:{
+                intentLocationMore.putExtra("category","우리 동네 대타");
+                intentLocationMore.putExtra("categoryNum",1);
+                startActivity(intentLocationMore);
+                break;
+            }
+            case R.id.tv_money_more:{
+                intentLocationMore.putExtra("category","고수익 알바");
+                intentLocationMore.putExtra("categoryNum",2);
+                startActivity(intentLocationMore);
+                break;
+            }
+            case R.id.btn_filter:{
+//                showBottomSheetFragment(view);
+                FilterDialogFragment filterDialogFragment = new FilterDialogFragment();
+                filterDialogFragment.show(getFragmentManager(),"filter");
+                break;
+            }
+        }
     }
 }

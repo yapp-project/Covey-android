@@ -3,6 +3,7 @@ package org.yapp.covey.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,10 +14,11 @@ import org.yapp.covey.etc.ItemPostVO;
 
 import java.util.ArrayList;
 
-public class AdapterLocationList extends RecyclerView.Adapter<AdapterLocationList.ViewHolder> {
+public class AdapterLocationMoreList extends RecyclerView.Adapter<AdapterLocationMoreList.ViewHolder>{
     public ArrayList<ItemPostVO> mDataList = new ArrayList<>();
 
-    public AdapterLocationList() {
+
+    public AdapterLocationMoreList() {
     }
 
     public interface OnItemClickListener{
@@ -30,18 +32,19 @@ public class AdapterLocationList extends RecyclerView.Adapter<AdapterLocationLis
 
     @NonNull
     @Override
-    public AdapterLocationList.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterLocationMoreList.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_recycler_home_location,parent,false);
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-        layoutParams.width = (int) (parent.getWidth()*0.451);
+        layoutParams.width = (int) (parent.getWidth()*0.48);
+        layoutParams.height = (int)(parent.getHeight()*0.377);
         view.setLayoutParams(layoutParams);
 
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterLocationList.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AdapterLocationMoreList.ViewHolder holder, int position) {
         ItemPostVO data = mDataList.get(position);
         String time = data.getWorkingTime();
         String location = data.getAddress1()+" "+data.getAddress2()+"...";
@@ -82,5 +85,4 @@ public class AdapterLocationList extends RecyclerView.Adapter<AdapterLocationLis
             });
         }
     }
-
 }

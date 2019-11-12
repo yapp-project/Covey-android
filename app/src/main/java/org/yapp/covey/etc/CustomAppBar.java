@@ -1,11 +1,11 @@
 package org.yapp.covey.etc;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
@@ -13,11 +13,20 @@ import androidx.appcompat.widget.Toolbar;
 import org.yapp.covey.R;
 
 public class CustomAppBar{
-    private Activity activity;
+    private Context context;
     private ActionBar actionBar;
 
-    public CustomAppBar(Activity activity, ActionBar actionBar){
-        this.activity = activity;
+    private backClickListener backClickListener = null;
+    public interface backClickListener{
+        void onBackClick(View v);
+    }
+
+    public void setBackClickListener(backClickListener backClickListener) {
+        this.backClickListener = backClickListener;
+    }
+
+    public CustomAppBar(Context context, ActionBar actionBar){
+        this.context = context;
         this.actionBar = actionBar;
     }
 
@@ -27,9 +36,18 @@ public class CustomAppBar{
         actionBar.setDisplayHomeAsUpEnabled(false);
         actionBar.setDisplayShowTitleEnabled(false);
 
-        View mCustomView = LayoutInflater.from(activity).inflate(R.layout.layout_title_bar,null);
+        View mCustomView = LayoutInflater.from(context).inflate(R.layout.layout_custom_app_bar,null);
         TextView tvTitle= mCustomView.findViewById(R.id.tv_title);
         tvTitle.setText(title);
+        ImageButton btnBack = mCustomView.findViewById(R.id.iv_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (backClickListener != null){
+                      backClickListener.onBackClick(view);
+                }
+            }
+        });
 
         actionBar.setCustomView(mCustomView);
         actionBar.setElevation(0);
@@ -40,4 +58,5 @@ public class CustomAppBar{
         ActionBar.LayoutParams params = new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
         actionBar.setCustomView(mCustomView,params);
     }
+
 }

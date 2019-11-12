@@ -61,6 +61,11 @@ public class PostDetailActivity extends AppCompatActivity {
         });
     }
     private void setPostData(){
+        String location = itemPostData.getAddress1()+itemPostData.getAddress2()+itemPostData.getAddress3();
+        binding.tvLocation.setText("위치\t\t"+location);
+        binding.tvPay.setText("시급\t\t"+itemPostData.getPay()+"원");
+        binding.tvStartToEndDate.setText("일시\t\t"+itemPostData.getStartDate()+"~"+itemPostData.getEndDate());
+        binding.tvTime.setText("시간\t\t"+itemPostData.getWorkingTime());
     }
     private void setCustomAppBar(){
         CustomAppBar customAppBar = new CustomAppBar(this, getSupportActionBar());

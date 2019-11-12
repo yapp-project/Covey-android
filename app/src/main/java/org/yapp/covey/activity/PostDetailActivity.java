@@ -5,10 +5,12 @@ import androidx.databinding.DataBindingUtil;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import org.yapp.covey.R;
 import org.yapp.covey.databinding.LayoutPostDetailBinding;
+import org.yapp.covey.etc.CustomAppBar;
 import org.yapp.covey.etc.ItemPostVO;
 import org.yapp.covey.util.Singleton;
 
@@ -33,6 +35,7 @@ public class PostDetailActivity extends AppCompatActivity {
         postId = getIntent().getIntExtra("postId",0);
         Log.d(TAG, String.valueOf(postId));
 
+        setCustomAppBar();
         getPostData();
         setPostData();
     }
@@ -58,5 +61,15 @@ public class PostDetailActivity extends AppCompatActivity {
         });
     }
     private void setPostData(){
+    }
+    private void setCustomAppBar(){
+        CustomAppBar customAppBar = new CustomAppBar(this, getSupportActionBar());
+        customAppBar.setCustomAppBar("상세 정보");
+        customAppBar.setBackClickListener(new CustomAppBar.backClickListener() {
+            @Override
+            public void onBackClick(View v) {
+                finish();
+            }
+        });
     }
 }

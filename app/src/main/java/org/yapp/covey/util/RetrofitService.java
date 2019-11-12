@@ -1,5 +1,7 @@
 package org.yapp.covey.util;
 
+import com.google.gson.JsonObject;
+
 import org.yapp.covey.etc.ItemPostVO;
 import org.yapp.covey.etc.phoneNumClass;
 
@@ -10,8 +12,15 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface RetrofitService {
+
+    // post
+    @GET("api/post/categoryList/{page}")
+    Call<ArrayList<ItemPostVO>>
+    categoryList(@Path("page") Integer page, @Query("category") String category);
+
     @GET("api/post/payList/{page}")
     Call<ArrayList<ItemPostVO>>
     payList(@Path("page") Integer page);
@@ -24,6 +33,7 @@ public interface RetrofitService {
     Call<ItemPostVO>
     postDetail(@Path("postId") Integer postId);
 
+    // auth
     @POST("api/auth/phone")
     Call<phoneNumClass>
     phoneVerify(@Body phoneNumClass body);

@@ -13,7 +13,19 @@
         app:layout_constraintLeft_toRightOf="@id/gd_signup_login_logo_left"
         app:layout_constraintRight_toLeftOf="@id/gd_signup_login_logo_right"
         app:layout_constraintTop_toBottomOf="@id/gd_signup_login_logo_top"
-        app:srcCompat="@drawable/group_8" />
+        app:srcCompat="@drawable/group_8"
+        android:background="@android:color/transparent" />
+
+
+    <com.kakao.usermgmt.LoginButton
+        android:id="@+id/com_kakao_login"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/gd_signup_login_btn1_bottom"
+        app:layout_constraintLeft_toRightOf="@id/gd_signup_login_btn_left"
+        app:layout_constraintRight_toLeftOf="@id/gd_signup_login_btn_right"
+        app:layout_constraintTop_toBottomOf="@id/gd_signup_login_btn1_top"/>
 
     <RelativeLayout
         android:id="@+id/signup_login_btn_kakao"
@@ -34,8 +46,20 @@
             android:text="      Kakaotalk 계정으로 로그인하기"
             android:textColor="#000000"
             android:textSize="13sp"
+            android:background="@android:color/transparent"
             android:lineSpacingExtra="11sp"/>
     </RelativeLayout>
+
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/btn_facebook_login"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/gd_signup_login_btn2_bottom"
+        app:layout_constraintLeft_toRightOf="@id/gd_signup_login_btn_left"
+        app:layout_constraintRight_toLeftOf="@id/gd_signup_login_btn_right"
+        app:layout_constraintTop_toBottomOf="@id/gd_signup_login_btn2_top"/>
 
     <RelativeLayout
         android:id="@+id/signup_login_btn_facebook"
@@ -56,6 +80,7 @@
             android:text="      Facebook 계정으로 로그인하기"
             android:textColor="#ffffff"
             android:textSize="13sp"
+            android:background="@android:color/transparent"
             android:lineSpacingExtra="11sp"/>
     </RelativeLayout>
 
@@ -66,6 +91,7 @@
         android:text="covey"
         android:textColor="#ffffff"
         android:textSize="35sp"
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toTopOf="@id/gd_signup_login_text_bottom"
         app:layout_constraintLeft_toRightOf="@id/gd_signup_login_text_left"
         app:layout_constraintRight_toLeftOf="@id/gd_signup_login_text_right"

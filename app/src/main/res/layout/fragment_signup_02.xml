@@ -100,7 +100,8 @@
             android:gravity="center"
             android:text="인증하기"
             android:textColor="#ffffff"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:background="@android:color/transparent" />
     </RelativeLayout>
 
     <TextView

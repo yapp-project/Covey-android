@@ -9,11 +9,16 @@
 
         <item name="android:statusBarColor">#fff</item>
         <item name="android:windowLightStatusBar">true</item>
-        <item name="android:statusBarColor">#fff</item>
         <item name="android:background">#fff</item>
 
         <!--NoActionBar-->
         <item name = "windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.CustomAppBar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:statusBarColor">#fff</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:background">#fff</item>
     </style>
 
     <style name="AppBottomSheetDialogTheme"

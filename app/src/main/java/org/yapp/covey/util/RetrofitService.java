@@ -20,6 +20,10 @@ public interface RetrofitService {
     Call<ArrayList<ItemPostVO>>
     addressList(@Path("page") Integer page);
 
+    @GET("api/post/{postId}")
+    Call<ItemPostVO>
+    postDetail(@Path("postId") Integer postId);
+
     @POST("api/auth/phone")
     Call<phoneNumClass>
     phoneVerify(@Body phoneNumClass body);

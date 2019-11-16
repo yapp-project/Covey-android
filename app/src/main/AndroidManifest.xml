@@ -18,8 +18,10 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".activity.UploadActivity"
             android:theme="@style/AppTheme.CustomAppBar"/>
+
         <activity android:name=".activity.ProfileEditActivity"
             android:theme="@style/AppTheme.CustomAppBar"/>
+
         <activity android:name=".activity.SettingActivity"
             android:theme="@style/AppTheme.CustomAppBar"/>
 
@@ -29,6 +31,10 @@
         <activity
             android:name=".activity.DetailActivity"
             android:theme="@style/AppTheme.CustomAppBar" />
+
+        <activity android:name=".activity.CareerActivity"
+            android:theme="@style/AppTheme.CustomAppBar"/>
+
         <activity
             android:name=".activity.MoreItemActivity"
             android:theme="@style/AppTheme" />

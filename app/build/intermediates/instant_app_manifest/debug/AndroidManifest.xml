@@ -40,6 +40,9 @@
             android:name="org.yapp.covey.activity.DetailActivity"
             android:theme="@style/AppTheme.CustomAppBar" />
         <activity
+            android:name="org.yapp.covey.activity.CareerActivity"
+            android:theme="@style/AppTheme.CustomAppBar" />
+        <activity
             android:name="org.yapp.covey.activity.MoreItemActivity"
             android:theme="@style/AppTheme" />
         <activity

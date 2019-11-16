@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import org.yapp.covey.R;
+import org.yapp.covey.activity.CareerActivity;
 import org.yapp.covey.activity.ProfileEditActivity;
 import org.yapp.covey.activity.SettingActivity;
 
@@ -50,6 +51,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
                 break;
             }
             case R.id.profile_career_edit:{
+                Intent intentCareerEdit = new Intent(getContext(), CareerActivity.class);
+                startActivity(intentCareerEdit);
+                break;
             }
             case R.id.profile_setting:{
                 Intent intentSetting = new Intent(getContext(), SettingActivity.class);

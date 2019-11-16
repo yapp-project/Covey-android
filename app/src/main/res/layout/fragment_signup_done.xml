@@ -173,6 +173,7 @@
             android:textColor="#ffffff"
             android:text="시작하기"
             android:gravity="center_horizontal"
-            android:layout_centerInParent="true"/>
+            android:layout_centerInParent="true"
+            android:background="@android:color/transparent"/>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

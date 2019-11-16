@@ -27,6 +27,12 @@
             android:name="org.yapp.covey.activity.UploadActivity"
             android:theme="@style/AppTheme.CustomAppBar" />
         <activity
+            android:name="org.yapp.covey.activity.ProfileEditActivity"
+            android:theme="@style/AppTheme.CustomAppBar" />
+        <activity
+            android:name="org.yapp.covey.activity.SettingActivity"
+            android:theme="@style/AppTheme.CustomAppBar" />
+        <activity
             android:name="org.yapp.covey.activity.AlertActivity"
             android:theme="@style/AppTheme.CustomAppBar" />
         <activity

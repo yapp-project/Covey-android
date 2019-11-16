@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
-import androidx.annotation.ColorRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -16,6 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import org.yapp.covey.R;
 import org.yapp.covey.fragment.ApplyFragment;
 import org.yapp.covey.fragment.HomeFragment;
+import org.yapp.covey.fragment.ProfileFragment;
 import org.yapp.covey.fragment.RecruitFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     Fragment fragmentHome = new HomeFragment();
     Fragment fragmentApply = new ApplyFragment();
     Fragment fragmentRecruit = new RecruitFragment();
+    Fragment fragmentProfile = new ProfileFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +51,15 @@ public class MainActivity extends AppCompatActivity {
                         changeFragment(fragmentApply);
                         setStatusBarColor(false);
                         break;
+
                     case R.id.menu_recruit:
                         changeFragment(fragmentRecruit);
                         setStatusBarColor(false);
                         break;
+
                     case R.id.menu_profile:
+                        changeFragment(fragmentProfile);
+                        setStatusBarColor(true);
 
                 }
                 return true;

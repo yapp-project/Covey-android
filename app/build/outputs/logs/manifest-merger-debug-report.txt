@@ -7,6 +7,7 @@ INJECTED from C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main
 MERGED from [androidx.databinding:databinding-adapters:3.5.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\053e9c87eb50abcf67189f50de43015e\databinding-adapters-3.5.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.databinding:databinding-runtime:3.5.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\d2a4a4674c12e64aea297b49a1101c84\databinding-runtime-3.5.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\cb634fe4b4d1fdfcd5255e485d30a0c1\material-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.github.florent37:shapeofview:1.4.7] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\7de8ca9c1001126e75336e43d38bfac0\shapeofview-1.4.7\AndroidManifest.xml:2:1-11:12
 MERGED from [com.facebook.android:facebook-android-sdk:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\750353ede61e354811817e690919a63b\facebook-android-sdk-4.42.0\AndroidManifest.xml:21:1-31:12
 MERGED from [com.facebook.android:facebook-login:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\0a6e8dd5b5786a956ae02d15b9784d94\jetified-facebook-login-4.42.0\AndroidManifest.xml:21:1-31:12
 MERGED from [com.facebook.android:facebook-share:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\5eb3e2c5ba3c08cb9917661490327a87\jetified-facebook-share-4.42.0\AndroidManifest.xml:21:1-31:12
@@ -205,6 +206,8 @@ MERGED from [androidx.databinding:databinding-runtime:3.5.0] C:\Users\jgw97\.gra
 MERGED from [androidx.databinding:databinding-runtime:3.5.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\d2a4a4674c12e64aea297b49a1101c84\databinding-runtime-3.5.0\AndroidManifest.xml:22:5-44
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\cb634fe4b4d1fdfcd5255e485d30a0c1\material-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\cb634fe4b4d1fdfcd5255e485d30a0c1\material-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.github.florent37:shapeofview:1.4.7] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\7de8ca9c1001126e75336e43d38bfac0\shapeofview-1.4.7\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.florent37:shapeofview:1.4.7] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\7de8ca9c1001126e75336e43d38bfac0\shapeofview-1.4.7\AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.android:facebook-android-sdk:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\750353ede61e354811817e690919a63b\facebook-android-sdk-4.42.0\AndroidManifest.xml:24:5-26:41
 MERGED from [com.facebook.android:facebook-android-sdk:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\750353ede61e354811817e690919a63b\facebook-android-sdk-4.42.0\AndroidManifest.xml:24:5-26:41
 MERGED from [com.facebook.android:facebook-login:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\0a6e8dd5b5786a956ae02d15b9784d94\jetified-facebook-login-4.42.0\AndroidManifest.xml:24:5-26:41

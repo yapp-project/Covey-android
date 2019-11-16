@@ -130,7 +130,8 @@
             android:gravity="center"
             android:text="가입 완료"
             android:textColor="#ffffff"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:background="@android:color/transparent" />
     </RelativeLayout>
 
     <Spinner

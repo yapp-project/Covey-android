@@ -10,8 +10,6 @@ import org.yapp.covey.etc.CustomAppBar;
 
 public class AlertActivity extends AppCompatActivity {
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +17,7 @@ public class AlertActivity extends AppCompatActivity {
         setCustomAppBar();
 
     }
-    public void setCustomAppBar(){
+    private void setCustomAppBar(){
         CustomAppBar customAppBar = new CustomAppBar(this, getSupportActionBar());
         customAppBar.setCustomAppBar("알림");
         customAppBar.setBackClickListener(new CustomAppBar.backClickListener() {
@@ -29,5 +27,4 @@ public class AlertActivity extends AppCompatActivity {
             }
         });
     }
-
 }

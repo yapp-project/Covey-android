@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.yapp.covey.R;
 import org.yapp.covey.activity.AlertActivity;
 import org.yapp.covey.activity.MorePostActivity;
+import org.yapp.covey.activity.PostDetailActivity;
 import org.yapp.covey.adapter.AdapterCategoryList;
 import org.yapp.covey.adapter.AdapterLocationList;
 import org.yapp.covey.adapter.AdapterMoneyList;
@@ -64,6 +65,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
         recyclerViewLocation.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
         recyclerViewLocation.addItemDecoration(new ItemDecorationCategory(getContext(),rootView.getWidth()*0.044f));
+
+        adapterLocationPost.setOnItemClickListener(new AdapterLocationList.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                Intent intentPostDetail = new Intent(getContext(), PostDetailActivity.class);
+                intentPostDetail.putExtra("postId",adapterLocationPost.mDataList.get(position).getId());
+            }
+        });
         recyclerViewLocation.setAdapter(adapterLocationPost);
 
         recyclerViewPay.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));

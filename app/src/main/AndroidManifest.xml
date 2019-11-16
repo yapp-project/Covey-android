@@ -15,7 +15,8 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".activity.AlertActivity"
             android:theme="@style/AppTheme.CustomAppBar"/>
-        <activity android:name=".activity.PostDetailActivity" />
+        <activity android:name=".activity.PostDetailActivity"
+            android:theme="@style/AppTheme.CustomAppBar"/>
         <activity
             android:name=".activity.MorePostActivity"
             android:theme="@style/AppTheme" />

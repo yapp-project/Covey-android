@@ -26,7 +26,6 @@ import org.yapp.covey.activity.UploadActivity;
 import org.yapp.covey.adapter.AdapterCategoryList;
 import org.yapp.covey.adapter.AdapterLocationList;
 import org.yapp.covey.adapter.AdapterMoneyList;
-import org.yapp.covey.etc.CategoryData;
 import org.yapp.covey.etc.ItemDecorationCategory;
 import org.yapp.covey.etc.ItemPostVO;
 import org.yapp.covey.util.Singleton;
@@ -57,7 +56,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        mArrayData.addAll(Arrays.asList(CategoryData.sData));
+        mArrayData.addAll(Arrays.asList(getResources().getStringArray(R.array.category)));
 
         setInitView(rootView);
 

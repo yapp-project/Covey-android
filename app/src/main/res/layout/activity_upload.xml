@@ -68,14 +68,9 @@
                 app:layout_constraintTop_toBottomOf="@id/edit_title" />
 
             <Spinner
+                style="@style/SpinnerCustom"
                 android:id="@+id/spinner_category"
-                android:layout_width="0dp"
-                android:layout_height="44dp"
-                android:layout_marginTop="8dp"
-                android:spinnerMode="dropdown"
-                android:background="@drawable/rounded_rectangle_outline_8dp"
                 android:dropDownSelector="#f2f2f4"
-                android:dropDownVerticalOffset="48dp"
                 app:layout_constraintEnd_toEndOf="@id/guideline_end"
                 app:layout_constraintStart_toStartOf="@id/guideline_start"
                 app:layout_constraintTop_toBottomOf="@id/tv_post_category" />
@@ -152,29 +147,17 @@
                 app:layout_constraintStart_toEndOf="@id/tv_post_time" />
 
             <Spinner
+                style="@style/SpinnerCustom"
                 android:id="@+id/spinner_time_hour"
-                android:layout_width="0dp"
-                android:layout_height="44dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="4dp"
-                android:spinnerMode="dropdown"
-                android:background="@drawable/rounded_rectangle_outline_8dp"
                 android:dropDownSelector="#f2f2f4"
-                android:dropDownVerticalOffset="48dp"
                 app:layout_constraintWidth_percent="0.444"
                 app:layout_constraintStart_toStartOf="@id/guideline_start"
                 app:layout_constraintTop_toBottomOf="@id/tv_post_time" />
 
             <Spinner
+                style="@style/SpinnerCustom"
                 android:id="@+id/spinner_time_min"
-                android:layout_width="0dp"
-                android:layout_height="44dp"
-                android:layout_marginTop="8dp"
-                android:hint="분"
-                android:spinnerMode="dropdown"
-                android:background="@drawable/rounded_rectangle_outline_8dp"
                 android:dropDownSelector="#f2f2f4"
-                android:dropDownVerticalOffset="48dp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline_end"
                 app:layout_constraintWidth_percent="0.444"
                 app:layout_constraintTop_toBottomOf="@id/tv_post_time" />

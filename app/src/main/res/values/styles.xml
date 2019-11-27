@@ -52,6 +52,10 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="TextThemeRound.15sp" parent="TextThemeRound">
+        <item name="android:textSize">15sp</item>
+    </style>
+
     <style name="TextThemeRound" parent="TextTheme14sp">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>

@@ -11,12 +11,11 @@
 
         <EditText
             android:id="@+id/edit_title"
-            android:layout_width="0dp"
             android:layout_height="44dp"
             android:layout_marginTop="8dp"
-            android:background="@drawable/rounded_rectangle_outline_8dp"
             android:hint="업체명을 입력하세요"
             android:paddingStart="16dp"
+            style="@style/TextThemeRound.15sp"
             app:layout_constraintEnd_toEndOf="@id/guideline_end"
             app:layout_constraintStart_toStartOf="@id/guideline_start"
             app:layout_constraintTop_toBottomOf="@id/tv_post_title" />
@@ -36,19 +35,17 @@
             android:id="@+id/tv_post_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:text="업체명 "
             android:textColor="#000"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@id/guideline_start"
             app:layout_constraintTop_toBottomOf="@id/view_divider2" />
 
-
         <TextView
             android:id="@+id/tv_post_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:text="(필수)"
             android:textColor="#000"
             android:textSize="12sp"
@@ -70,7 +67,7 @@
             android:id="@+id/tv_post_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:text="일시 "
             android:textColor="#000"
             android:textSize="14sp"
@@ -81,7 +78,6 @@
             android:id="@+id/tv_post_date_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:text="(필수)"
             android:textColor="#000"
             android:textSize="12sp"
@@ -121,7 +117,7 @@
             android:id="@+id/tv_post_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:text="시간 "
             android:textColor="#000"
             android:textSize="14sp"
@@ -132,7 +128,6 @@
             android:id="@+id/tv_post_time_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:text="(필수)"
             android:textColor="#000"
             android:textSize="12sp"
@@ -161,6 +156,73 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline_end"
             app:layout_constraintWidth_percent="0.444"
             app:layout_constraintTop_toBottomOf="@id/tv_post_time" />
+
+        <TextView
+            android:id="@+id/tv_post_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="위치 "
+            android:textColor="#000"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_time_hour" />
+
+        <TextView
+            android:id="@+id/tv_post_location_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(필수)"
+            android:textColor="#000"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_post_location"
+            app:layout_constraintStart_toEndOf="@id/tv_post_location" />
+
+        <TextView
+            android:id="@+id/tv_post_select_location"
+            android:layout_height="44dp"
+            android:layout_marginTop="8dp"
+            android:hint="위치를 입력하세요"
+            android:paddingStart="16dp"
+            style="@style/TextThemeRound.15sp"
+            android:drawableEnd="@drawable/search_ic"
+            app:layout_constraintTop_toBottomOf="@id/tv_post_location"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"/>
+
+        <TextView
+            android:id="@+id/tv_post_payment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="시급 "
+            android:textColor="#000"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/tv_post_select_location"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(필수)"
+            android:textColor="#000"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_post_payment"
+            app:layout_constraintStart_toEndOf="@id/tv_post_payment"/>
+
+
+        <EditText
+            android:id="@+id/edit_payment"
+            style="@style/TextThemeRound.15sp"
+            android:inputType="number"
+            android:layout_height="44dp"
+            android:layout_marginTop="8dp"
+            android:hint="숫자만 입력하세요"
+            android:paddingStart="16dp"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/tv_post_payment" />
 
         <View
             android:id="@+id/view_divider2"

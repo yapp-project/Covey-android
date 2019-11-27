@@ -22,6 +22,7 @@ import org.yapp.covey.R;
 import org.yapp.covey.activity.AlertActivity;
 import org.yapp.covey.activity.MorePostActivity;
 import org.yapp.covey.activity.PostDetailActivity;
+import org.yapp.covey.activity.UploadActivity;
 import org.yapp.covey.adapter.AdapterCategoryList;
 import org.yapp.covey.adapter.AdapterLocationList;
 import org.yapp.covey.adapter.AdapterMoneyList;
@@ -39,7 +40,7 @@ import retrofit2.Response;
 
 public class HomeFragment extends Fragment implements View.OnClickListener{
     ImageButton buttonAlert, buttonFilter;
-    TextView tvCome, tvTitle, tvMoreLocationPost, tvMoreMoneyPost;
+    TextView tvUpload, tvTitle, tvMoreLocationPost, tvMoreMoneyPost;
     private RecyclerView listViewCategory, recyclerViewLocation, recyclerViewPay;
     private AdapterCategoryList adapterCategory;
     private AdapterLocationList adapterLocationPost = new AdapterLocationList();
@@ -92,8 +93,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
         buttonFilter = view.findViewById(R.id.btn_filter);
         buttonFilter.setOnClickListener(this);
-        tvCome = view.findViewById(R.id.btn_come);
-        tvCome.setPaintFlags(tvCome.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        tvUpload = view.findViewById(R.id.btn_upload);
+        tvUpload.setPaintFlags(tvUpload.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        tvUpload.setOnClickListener(this);
 
         tvTitle = view.findViewById(R.id.tv_title);
 
@@ -201,6 +203,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 //                showBottomSheetFragment(view);
                 FilterDialogFragment filterDialogFragment = new FilterDialogFragment();
                 filterDialogFragment.show(getFragmentManager(),"filter");
+                break;
+            }
+            case R.id.btn_upload:{
+                Intent intentUpload = new Intent(getContext(), UploadActivity.class);
+                startActivity(intentUpload);
                 break;
             }
         }

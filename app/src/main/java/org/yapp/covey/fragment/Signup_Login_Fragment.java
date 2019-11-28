@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.facebook.CallbackManager;
+import com.facebook.Profile;
 import com.kakao.auth.ErrorCode;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
@@ -99,9 +100,9 @@ public class Signup_Login_Fragment extends Fragment {
                     Log.e("UserProfile", userProfile.getId() + "");
 
                     Fragment next = Signup_01_Fragment.newInstance();
-                    /*
-                    * user 정보 bundle에 넣어야함
-                    */
+                    Bundle bundle = new Bundle();
+                    bundle.putString("snsid", userProfile.getId() + "");
+                    next.setArguments(bundle);
                     ((SignupActivity)getActivity()).replaceFragment(next);
                 }
             });
@@ -142,12 +143,10 @@ public class Signup_Login_Fragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         facebookCallbackManager.onActivityResult(requestCode, resultCode, data);
 
-        Log.d("facebook",data.toString());
-
         Fragment next = Signup_01_Fragment.newInstance();
-        /*
-         * user 정보 bundle에 넣어야함
-         */
+        Bundle bundle = new Bundle();
+        //bundle.putInt("snsid", (int)data.id);
+        next.setArguments(bundle);
         ((SignupActivity)getActivity()).replaceFragment(next);
     }
 }

@@ -80,6 +80,7 @@ public class Signup_01_Fragment extends Fragment {
 
                         Fragment next = Signup_02_Fragment.newInstance();
                         Bundle bundle = new Bundle();
+                        if(getArguments() != null) bundle.putString("snsid", getArguments().getString("snsid"));
                         bundle.putString("phoneNum", phoneNum.getText().toString());
                         next.setArguments(bundle);
                         ((SignupActivity)getActivity()).replaceFragment(next);

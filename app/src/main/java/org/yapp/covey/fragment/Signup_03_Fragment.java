@@ -38,9 +38,9 @@ public class Signup_03_Fragment extends Fragment {
         final RelativeLayout next_button = view.findViewById(R.id.signup_03_button);
         ImageView prev_button = view.findViewById(R.id.signup_03_arrow);
         final EditText name = view.findViewById(R.id.signup_03_name);
-        Spinner genderSpinner = view.findViewById(R.id.signup_03_spinner_gender);
-        Spinner ageSpinner = view.findViewById(R.id.signup_03_spinner_age);
-        Spinner locationSpinner = view.findViewById(R.id.signup_03_spinner_location);
+        final Spinner genderSpinner = view.findViewById(R.id.signup_03_spinner_gender);
+        final Spinner ageSpinner = view.findViewById(R.id.signup_03_spinner_age);
+        final Spinner locationSpinner = view.findViewById(R.id.signup_03_spinner_location);
         final Spinner locationDetailSpinner = view.findViewById(R.id.signup_03_spinner_location_detail);
 
         String[] genderStr = getResources().getStringArray(R.array.gender);
@@ -59,8 +59,15 @@ public class Signup_03_Fragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             Fragment next = Signup_Done_Fragment.newInstance();
+                            String snsId = getArguments().getString("snsid");
+                            String phoneNum = getArguments().getString("phoneNum");
+                            String userName = name.getText().toString();
+                            String userAge = ageSpinner.getSelectedItem().toString();
+                            String userGender = genderSpinner.getSelectedItem().toString();
+                            String address1 = locationSpinner.getSelectedItem().toString();
+                            String address2 = locationDetailSpinner.getSelectedItem().toString();
                             /*
-                            서버로 유저 데이터 전송
+                             서버에 입력받은 유저 정보 저장
                              */
                             ((SignupActivity)getActivity()).replaceFragment(next);
                         }
@@ -151,12 +158,6 @@ public class Signup_03_Fragment extends Fragment {
 
         });
 
-        next_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((SignupActivity)getActivity()).replaceFragment(Signup_Done_Fragment.newInstance());
-            }
-        });
         prev_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

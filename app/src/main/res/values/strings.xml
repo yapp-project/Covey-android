@@ -2,5 +2,8 @@
     <string name="app_name">Covey</string>
     <string name="kakao_app_key">24bfb6e394afd41f5fb6e35fb6f2f7a2</string>
     <string name="facebook_app_key">550651232420270</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
 

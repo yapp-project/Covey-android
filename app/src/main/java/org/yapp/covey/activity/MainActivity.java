@@ -14,11 +14,13 @@ import androidx.fragment.app.FragmentManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.yapp.covey.R;
+import org.yapp.covey.fragment.ApplyFragment;
 import org.yapp.covey.fragment.HomeFragment;
 
 public class MainActivity extends AppCompatActivity {
     private FragmentManager fragmentManager = getSupportFragmentManager();
     Fragment fragmentHome = new HomeFragment();
+    Fragment fragmentApply = new ApplyFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.menu_apply:
+                        changeFragment(fragmentApply);
                         setStatusBarColor(false);
                     case R.id.menu_recruit:
                     case R.id.menu_profile:

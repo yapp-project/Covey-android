@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment.ApplyFragment"
+    tools:context=".fragment.RecruitFragment"
     android:background="#fff">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraint_no_apply"
+        android:id="@+id/constraint_no_recruit"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -26,7 +26,7 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="지원한 내역이 없어요."
+            android:text="모집한 내역이 없어요."
             android:textColor="#000"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +36,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="다양한 알바 대타에 도전해보세요."
+            android:text="필요한 알바 대타를 모집해보세요."
             android:textColor="@color/greyish_brown"
             android:textSize="15sp"
             android:layout_marginTop="8dp"
@@ -64,7 +64,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_apply"
+        android:id="@+id/recycler_recruit"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white_three"

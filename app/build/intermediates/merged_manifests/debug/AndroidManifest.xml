@@ -22,8 +22,12 @@
         android:testOnly="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
-        <activity android:name="org.yapp.covey.activity.AlertActivity" />
-        <activity android:name="org.yapp.covey.activity.PostDetailActivity" />
+        <activity
+            android:name="org.yapp.covey.activity.AlertActivity"
+            android:theme="@style/AppTheme.CustomAppBar" />
+        <activity
+            android:name="org.yapp.covey.activity.PostDetailActivity"
+            android:theme="@style/AppTheme.CustomAppBar" />
         <activity
             android:name="org.yapp.covey.activity.MorePostActivity"
             android:theme="@style/AppTheme" />

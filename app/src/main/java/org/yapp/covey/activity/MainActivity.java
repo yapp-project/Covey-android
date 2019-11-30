@@ -51,12 +51,10 @@ public class MainActivity extends AppCompatActivity {
                         changeFragment(fragmentApply);
                         setStatusBarColor(false);
                         break;
-
                     case R.id.menu_recruit:
                         changeFragment(fragmentRecruit);
                         setStatusBarColor(false);
                         break;
-
                     case R.id.menu_profile:
                         changeFragment(fragmentProfile);
                         setStatusBarColor(true);

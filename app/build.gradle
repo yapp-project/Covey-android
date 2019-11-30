@@ -44,5 +44,6 @@ dependencies {
 
     // 페이스북 SDK
     implementation 'com.facebook.android:facebook-android-sdk:4.+'
+
     implementation 'com.github.florent37:shapeofview:1.4.7'
 }

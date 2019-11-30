@@ -66,11 +66,15 @@ public class Signup_03_Fragment extends Fragment {
                     next_button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            Fragment next = Signup_Done_Fragment.newInstance();
+                            String snsId = getArguments().getString("snsid");
+                            String phoneNum = getArguments().getString("phoneNum");
                             String userName = name.getText().toString();
                             String userAge = ageSpinner.getSelectedItem().toString();
                             String userGender = genderSpinner.getSelectedItem().toString();
                             String address1 = locationSpinner.getSelectedItem().toString();
                             String address2 = locationDetailSpinner.getSelectedItem().toString();
+
                             userClass user = new userClass();
                             user.setName(userName);
                             user.setAge(userAge);
@@ -79,6 +83,12 @@ public class Signup_03_Fragment extends Fragment {
                             user.setAddress1(address1);
                             user.setAddress2(address2);
                             userInfo(user);
+
+                            /*
+                             서버에 입력받은 유저 정보 저장
+                             */
+                            ((SignupActivity)getActivity()).replaceFragment(next);
+
                         }
                     });
                 }

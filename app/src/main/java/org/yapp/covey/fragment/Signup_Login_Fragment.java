@@ -15,6 +15,8 @@ import com.facebook.FacebookException;
 import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.login.LoginResult;
+import com.facebook.Profile;
+
 import com.kakao.auth.ErrorCode;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
@@ -27,17 +29,10 @@ import com.kakao.util.exception.KakaoException;
 
 import org.yapp.covey.R;
 import org.yapp.covey.activity.SignupActivity;
-import org.yapp.covey.etc.phoneNumClass;
 import org.yapp.covey.util.FacebookLoginCallback;
-import org.yapp.covey.util.Singleton;
-
 import java.util.Arrays;
 
 import androidx.fragment.app.Fragment;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 public class Signup_Login_Fragment extends Fragment {
 
     private static final String TAG = "Login";
@@ -63,7 +58,6 @@ public class Signup_Login_Fragment extends Fragment {
         requestMe();
 
         facebookCallbackManager = CallbackManager.Factory.create();
-        facebookCallback = new FacebookLoginCallback();
 
         facebookButton.setReadPermissions(Arrays.asList("public_profile", "email"));
         facebookButton.registerCallback(facebookCallbackManager, new FacebookCallback<LoginResult>() {
@@ -223,6 +217,9 @@ public class Signup_Login_Fragment extends Fragment {
         facebookCallbackManager.onActivityResult(requestCode, resultCode, data);
 
         Fragment next = Signup_01_Fragment.newInstance();
+        Bundle bundle = new Bundle();
+        //bundle.putInt("snsid", (int)data.id);
+        next.setArguments(bundle);
         ((SignupActivity)getActivity()).replaceFragment(next);
     }
 }

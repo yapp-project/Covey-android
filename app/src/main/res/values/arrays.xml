@@ -292,4 +292,15 @@
         <item >제주시</item>
         <item >서귀포시</item>
     </string-array>
+    
+    <string-array name="category">
+        <item>식당</item>
+        <item>카페</item>
+        <item>술집</item>
+        <item>편의점</item>
+        <item>잡화매장</item>
+        <item>독서실</item>
+        <item>PC방</item>
+        <item>기타</item>
+    </string-array>
 </resources>

@@ -13,10 +13,14 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.AlertActivity"
+        <activity android:name=".activity.UploadActivity"
             android:theme="@style/AppTheme.CustomAppBar"/>
-        <activity android:name=".activity.PostDetailActivity"
-            android:theme="@style/AppTheme.CustomAppBar"/>
+        <activity
+            android:name=".activity.AlertActivity"
+            android:theme="@style/AppTheme.CustomAppBar" />
+        <activity
+            android:name=".activity.PostDetailActivity"
+            android:theme="@style/AppTheme.CustomAppBar" />
         <activity
             android:name=".activity.MorePostActivity"
             android:theme="@style/AppTheme" />
@@ -30,7 +34,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.SignupActivity"
+        <activity
+            android:name=".activity.SignupActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,7 +47,6 @@
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />
-
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_key" />

@@ -33,6 +33,14 @@ public interface RetrofitService {
     Call<ItemPostVO>
     postDetail(@Path("postId") Integer postId);
 
+    @GET("api/auth/kakao")
+    Call<Void>
+    kakaoLogin();
+
+    @GET("api/auth/facebook")
+    Call<Void>
+    facebookLogin();
+
     // auth
     @POST("api/auth/phone")
     Call<phoneNumClass>
@@ -41,4 +49,6 @@ public interface RetrofitService {
     @POST("api/auth/verify")
     Call<phoneNumClass>
     phoneVerifyCheck(@Body phoneNumClass body);
+
+
 }

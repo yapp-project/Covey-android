@@ -35,6 +35,14 @@ public interface RetrofitService {
     Call<ArrayList<ItemDataModel>>
     registerList();
 
+    @GET("api/auth/kakao")
+    Call<Void>
+    kakaoLogin();
+
+    @GET("api/auth/facebook")
+    Call<Void>
+    facebookLogin();
+
     // auth
     @POST("api/auth/phone")
     Call<phoneNumClass>

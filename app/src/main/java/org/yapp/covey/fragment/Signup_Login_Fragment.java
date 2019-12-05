@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import com.facebook.CallbackManager;
@@ -22,11 +23,16 @@ import com.kakao.util.exception.KakaoException;
 
 import org.yapp.covey.R;
 import org.yapp.covey.activity.SignupActivity;
+import org.yapp.covey.etc.phoneNumClass;
 import org.yapp.covey.util.FacebookLoginCallback;
+import org.yapp.covey.util.Singleton;
 
 import java.util.Arrays;
 
 import androidx.fragment.app.Fragment;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Signup_Login_Fragment extends Fragment {
 
@@ -48,10 +54,10 @@ public class Signup_Login_Fragment extends Fragment {
         final LoginButton kakaoButton = view.findViewById(R.id.com_kakao_login);
         final com.facebook.login.widget.LoginButton facebookButton = view.findViewById(R.id.btn_facebook_login);
 
-        kakaoCallback = new KakaoSessionCallback();
+        /*kakaoCallback = new KakaoSessionCallback();
         Session.getCurrentSession().addCallback(kakaoCallback);
         requestMe();
-
+*/
         facebookCallbackManager = CallbackManager.Factory.create();
         facebookCallback = new FacebookLoginCallback();
 
@@ -62,17 +68,59 @@ public class Signup_Login_Fragment extends Fragment {
         login_kakao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                kakaoButton.performClick();
+                kakaoLogin();
             }
         });
         login_facebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                facebookButton.performClick();
+                facebookLogin();
             }
         });
 
         return view;
+    }
+
+    private void kakaoLogin(){
+        Singleton.retrofit.kakaoLogin().enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()){
+                    if (response.code() == 200){
+                        Fragment next = Signup_01_Fragment.newInstance();
+                        ((SignupActivity)getActivity()).replaceFragment(next);
+                    }
+                    else
+                        Log.w(TAG, String.valueOf(response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.w(TAG,"OnFailure phoneVerify");
+            }
+        });
+    }
+
+    private void facebookLogin(){
+        Singleton.retrofit.facebookLogin().enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()){
+                    if (response.code() == 200){
+                        Fragment next = Signup_01_Fragment.newInstance();
+                        ((SignupActivity)getActivity()).replaceFragment(next);
+                    }
+                    else
+                        Log.w(TAG, String.valueOf(response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.w(TAG,"OnFailure phoneVerify");
+            }
+        });
     }
 
     class KakaoSessionCallback implements ISessionCallback {

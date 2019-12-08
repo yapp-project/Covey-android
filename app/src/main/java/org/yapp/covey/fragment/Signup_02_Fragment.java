@@ -83,6 +83,7 @@ public class Signup_02_Fragment extends Fragment {
                 if (response.isSuccessful()){
                     if (response.code()==201){
                         final TextView phoneNum = view.findViewById(R.id.signup_02_phoneNum);
+                        Log.w(TAG, String.valueOf(response.code()));
 
                         Fragment next = Signup_03_Fragment.newInstance();
                         Bundle bundle = new Bundle();

@@ -14,7 +14,7 @@ import org.yapp.covey.R;
 import org.yapp.covey.adapter.AdapterLocationList;
 import org.yapp.covey.adapter.AdapterLocationMoreList;
 import org.yapp.covey.adapter.AdapterMoneyList;
-import org.yapp.covey.databinding.ActivityMorePostBinding;
+import org.yapp.covey.databinding.ActivityMoreDetailBinding;
 import org.yapp.covey.etc.ItemDecorationGrid;
 import org.yapp.covey.etc.ItemPostVO;
 import org.yapp.covey.util.Singleton;
@@ -26,7 +26,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MoreDetailActivity extends AppCompatActivity {
-    ActivityMorePostBinding binding;
+    ActivityMoreDetailBinding binding;
     AdapterLocationMoreList mLocationAdapter = new AdapterLocationMoreList();
     AdapterMoneyList mMoneyAdapter = new AdapterMoneyList();
     private static String TAG = "MORE POST ACTIVITY";
@@ -39,7 +39,7 @@ public class MoreDetailActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_more_detail);
         binding.setMoreLocation(this);
 
-        final Intent intentDetail = new Intent(this, PostDetailActivity.class);
+        final Intent intentDetail = new Intent(this, DetailActivity.class);
 
         categoryTitle = getIntent().getStringExtra("category");
         binding.tvTitle.setText(categoryTitle);

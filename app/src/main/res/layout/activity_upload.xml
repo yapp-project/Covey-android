@@ -149,6 +149,7 @@
             <Spinner
                 style="@style/SpinnerCustom"
                 android:id="@+id/spinner_time_hour"
+                android:maxHeight="206dp"
                 android:dropDownSelector="#f2f2f4"
                 app:layout_constraintWidth_percent="0.444"
                 app:layout_constraintStart_toStartOf="@id/guideline_start"

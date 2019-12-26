@@ -20,8 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.yapp.covey.R;
 import org.yapp.covey.activity.AlertActivity;
-import org.yapp.covey.activity.MorePostActivity;
-import org.yapp.covey.activity.PostDetailActivity;
+import org.yapp.covey.activity.DetailActivity;
+import org.yapp.covey.activity.MoreDetailActivity;
 import org.yapp.covey.activity.UploadActivity;
 import org.yapp.covey.adapter.AdapterCategoryList;
 import org.yapp.covey.adapter.AdapterLocationList;
@@ -69,7 +69,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         adapterLocationPost.setOnItemClickListener(new AdapterLocationList.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                Intent intentPostDetail = new Intent(getContext(), PostDetailActivity.class);
+                Intent intentPostDetail = new Intent(getContext(), DetailActivity.class);
                 intentPostDetail.putExtra("postId",adapterLocationPost.mDataList.get(position).getId());
             }
         });
@@ -179,7 +179,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
-        Intent intentLocationMore = new Intent(getContext(), MorePostActivity.class);
+        Intent intentLocationMore = new Intent(getContext(), MoreDetailActivity.class);
         switch (view.getId()){
             case R.id.btn_alert:{
                 Intent intentAlert = new Intent(getContext(), AlertActivity.class);

@@ -15,7 +15,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PostDetailActivity extends AppCompatActivity {
+public class DetailActivity extends AppCompatActivity {
     int postId;
     LayoutPostDetailBinding binding;
     private ItemPostVO itemPostData;

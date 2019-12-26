@@ -25,7 +25,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MorePostActivity extends AppCompatActivity {
+public class MoreDetailActivity extends AppCompatActivity {
     ActivityMorePostBinding binding;
     AdapterLocationMoreList mLocationAdapter = new AdapterLocationMoreList();
     AdapterMoneyList mMoneyAdapter = new AdapterMoneyList();
@@ -35,8 +35,8 @@ public class MorePostActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_more_post);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_more_post);
+//        setContentView(R.layout.activity_more_detail);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_more_detail);
         binding.setMoreLocation(this);
 
         final Intent intentDetail = new Intent(this, PostDetailActivity.class);

@@ -7,7 +7,7 @@
     <data>
         <variable
             name="moreLocation"
-            type="org.yapp.covey.activity.MorePostActivity" />
+            type="org.yapp.covey.activity.MoreDetailActivity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

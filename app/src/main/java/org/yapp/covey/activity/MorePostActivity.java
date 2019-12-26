@@ -1,7 +1,9 @@
 package org.yapp.covey.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -9,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import org.yapp.covey.R;
+import org.yapp.covey.adapter.AdapterLocationList;
 import org.yapp.covey.adapter.AdapterLocationMoreList;
 import org.yapp.covey.adapter.AdapterMoneyList;
 import org.yapp.covey.databinding.ActivityMorePostBinding;
@@ -36,11 +39,27 @@ public class MorePostActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_more_post);
         binding.setMoreLocation(this);
 
+        final Intent intentDetail = new Intent(this, PostDetailActivity.class);
+
         categoryTitle = getIntent().getStringExtra("category");
         binding.tvTitle.setText(categoryTitle);
 
         getPostData(getIntent().getIntExtra("categoryNum",0));
+        mLocationAdapter.setOnItemClickListener(new AdapterLocationList.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                intentDetail.putExtra("postId",mLocationAdapter.mDataList.get(position).getId());
+                startActivity(intentDetail);
+            }
+        });
 
+        mMoneyAdapter.setOnItemClickListener(new AdapterMoneyList.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                intentDetail.putExtra("postId",mLocationAdapter.mDataList.get(position).getId());
+                startActivity(intentDetail);
+            }
+        });
     }
     public void getPostData(int category){
         int LOCATION = 1;

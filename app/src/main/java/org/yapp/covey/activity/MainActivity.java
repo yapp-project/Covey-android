@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void setStatusBarColor(boolean enabled) {
         View view = getWindow().getDecorView();
-        if (enabled) {
+            if (enabled) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.tomato));
 
         }else{

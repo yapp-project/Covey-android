@@ -21,6 +21,9 @@ public class AdapterLocationMoreList extends RecyclerView.Adapter<AdapterLocatio
     public AdapterLocationMoreList() {
     }
 
+    public void setOnItemClickListener(AdapterLocationList.OnItemClickListener onItemClickListener) {
+    }
+
     public interface OnItemClickListener{
         void onItemClick(View v, int position);
     }

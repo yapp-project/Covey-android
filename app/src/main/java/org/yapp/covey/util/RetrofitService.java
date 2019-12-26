@@ -33,6 +33,10 @@ public interface RetrofitService {
     Call<ItemPostVO>
     postDetail(@Path("postId") Integer postId);
 
+    @GET("api/post/registerList")
+    Call<ArrayList<ItemPostVO>>
+    registerList();
+
     // auth
     @POST("api/auth/phone")
     Call<phoneNumClass>

@@ -71,6 +71,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             public void onItemClick(View v, int position) {
                 Intent intentPostDetail = new Intent(getContext(), DetailActivity.class);
                 intentPostDetail.putExtra("postId",adapterLocationPost.mDataList.get(position).getId());
+                startActivity(intentPostDetail);
             }
         });
         adapterLocationPost.mDataList.clear();
@@ -78,6 +79,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
         recyclerViewPay.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
 
+        adapterMoneyList.setOnItemClickListener(new AdapterMoneyList.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                Intent intentPostDetail = new Intent(getContext(), DetailActivity.class);
+                intentPostDetail.putExtra("postId",adapterLocationPost.mDataList.get(position).getId());
+                startActivity(intentPostDetail);
+            }
+        });
         adapterMoneyList.mDataList.clear();
         recyclerViewPay.setAdapter(adapterMoneyList);
 

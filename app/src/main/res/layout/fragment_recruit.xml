@@ -8,10 +8,18 @@
     tools:context=".fragment.RecruitFragment"
     android:background="#fff">
 
+    <include
+        android:id="@+id/layout_title_recruit"
+        layout="@layout/layout_custom_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"/>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_no_recruit"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_title_recruit">
 
         <ImageView
             android:id="@+id/image_no_content"
@@ -66,8 +74,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_recruit"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:background="@color/white_three"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@id/layout_title_recruit"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

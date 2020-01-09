@@ -27,7 +27,7 @@ import org.yapp.covey.adapter.AdapterCategoryList;
 import org.yapp.covey.adapter.AdapterLocationList;
 import org.yapp.covey.adapter.AdapterMoneyList;
 import org.yapp.covey.etc.ItemDecorationCategory;
-import org.yapp.covey.etc.ItemPostVO;
+import org.yapp.covey.model.ItemDataModel;
 import org.yapp.covey.util.Singleton;
 
 import java.util.ArrayList;
@@ -60,7 +60,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
         setInitView(rootView);
 
-        getPostData();
+        getAddressData();
         getMoneyData();
 
         recyclerViewLocation.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
@@ -73,9 +73,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 intentPostDetail.putExtra("postId",adapterLocationPost.mDataList.get(position).getId());
             }
         });
+        adapterLocationPost.mDataList.clear();
         recyclerViewLocation.setAdapter(adapterLocationPost);
 
         recyclerViewPay.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+
+        adapterMoneyList.mDataList.clear();
         recyclerViewPay.setAdapter(adapterMoneyList);
 
         setTitle("커비에서 빠르고 편리한\n" + "알바 대타를 경험해보세요!");
@@ -83,6 +86,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         listViewCategory.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
         listViewCategory.addItemDecoration(new ItemDecorationCategory(getContext(),4f));
         listViewCategory.setAdapter(adapterCategory);
+
+
 
         return rootView;
     }
@@ -116,36 +121,35 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         tvTitle.append(builder);
     }
 
-    private void getPostData(){
-        Singleton.retrofit.addressList(1).enqueue(new Callback<ArrayList<ItemPostVO>>() {
+    private void getAddressData(){
+        Singleton.retrofit.addressList(1).enqueue(new Callback<ArrayList<ItemDataModel>>() {
             @Override
-            public void onResponse(Call<ArrayList<ItemPostVO>> call, Response<ArrayList<ItemPostVO>> response) {
+            public void onResponse(Call<ArrayList<ItemDataModel>> call, Response<ArrayList<ItemDataModel>> response) {
                 if (response.isSuccessful()){
-                    if (response.code()==200) {
-                        ArrayList<ItemPostVO> result = response.body();
+                    int code = response.code();
+                    if (code == 200){
+                        ArrayList<ItemDataModel> result = response.body();
                         adapterLocationPost.mDataList.addAll(result);
                         adapterLocationPost.notifyDataSetChanged();
                         Log.w(TAG, String.valueOf(response.body())+response.body().size());
                     }
-                    else
-                        Log.w(TAG, String.valueOf(response.code()));
                 }
             }
 
             @Override
-            public void onFailure(Call<ArrayList<ItemPostVO>> call, Throwable t) {
-                Log.w(TAG,"OnFailure LocationList");
+            public void onFailure(Call<ArrayList<ItemDataModel>> call, Throwable t) {
+                Log.w(TAG, t+"addressList");
             }
         });
     }
 
     private void getMoneyData(){
-         Singleton.retrofit.payList(1).enqueue(new Callback<ArrayList<ItemPostVO>>() {
+         Singleton.retrofit.payList(1).enqueue(new Callback<ArrayList<ItemDataModel>>() {
             @Override
-            public void onResponse(Call<ArrayList<ItemPostVO>> call, Response<ArrayList<ItemPostVO>> response) {
+            public void onResponse(Call<ArrayList<ItemDataModel>> call, Response<ArrayList<ItemDataModel>> response) {
                 if (response.isSuccessful()){
                     if (response.code()==200) {
-                        ArrayList<ItemPostVO> result = response.body();
+                        ArrayList<ItemDataModel> result = response.body();
                         assert result != null;
                         adapterMoneyList.mDataList.addAll(result);
                         adapterMoneyList.notifyDataSetChanged();
@@ -158,8 +162,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             }
 
             @Override
-            public void onFailure(Call<ArrayList<ItemPostVO>> call, Throwable t) {
-                Log.w(TAG,"OnFailure PayList");
+            public void onFailure(Call<ArrayList<ItemDataModel>> call, Throwable t) {
+                Log.w(TAG,t+"payList");
             }
         });
     }

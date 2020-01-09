@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="org.yapp.covey">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name=".util.GlobalApplication"
         android:allowBackup="true"
@@ -17,7 +20,7 @@
             android:theme="@style/AppTheme.CustomAppBar"/>
         <activity
             android:name=".activity.AlertActivity"
-            android:theme="@style/AppTheme.CustomAppBar" />
+            android:theme="@style/AppTheme.CustomAppBar" />m
         <activity
             android:name=".activity.DetailActivity"
             android:theme="@style/AppTheme.CustomAppBar" />
@@ -51,7 +54,4 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_key" />
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
-
 </manifest>

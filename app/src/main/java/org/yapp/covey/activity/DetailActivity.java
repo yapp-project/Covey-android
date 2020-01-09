@@ -9,7 +9,7 @@ import android.widget.Toast;
 import org.yapp.covey.R;
 import org.yapp.covey.databinding.LayoutPostDetailBinding;
 import org.yapp.covey.etc.CustomAppBar;
-import org.yapp.covey.etc.ItemPostVO;
+import org.yapp.covey.model.ItemDataModel;
 import org.yapp.covey.util.Singleton;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,7 +18,7 @@ import retrofit2.Response;
 public class DetailActivity extends AppCompatActivity {
     int postId;
     LayoutPostDetailBinding binding;
-    private ItemPostVO itemPostData;
+    private ItemDataModel itemPostData;
     private static String TAG = "POST DETAIL ACTIVITY";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +32,9 @@ public class DetailActivity extends AppCompatActivity {
         getPostData(postId);
     }
     private void getPostData(int postId){
-        Singleton.retrofit.postDetail(postId).enqueue(new Callback<ItemPostVO>() {
+        Singleton.retrofit.postDetail(postId).enqueue(new Callback<ItemDataModel>() {
             @Override
-            public void onResponse(Call<ItemPostVO> call, Response<ItemPostVO> response) {
+            public void onResponse(Call<ItemDataModel> call, Response<ItemDataModel> response) {
                 if (response.code()==200){
                     itemPostData = response.body();
                     Log.w(TAG, itemPostData.getTitle());
@@ -46,13 +46,13 @@ public class DetailActivity extends AppCompatActivity {
                 }
             }
             @Override
-            public void onFailure(Call<ItemPostVO> call, Throwable t) {
+            public void onFailure(Call<ItemDataModel> call, Throwable t) {
                 Log.d(TAG, "onFailure");
                 Toast.makeText(getApplicationContext(),"서버 연결을 확인해주세요",Toast.LENGTH_SHORT).show();
             }
         });
     }
-    private void setPostData(ItemPostVO itemPostData){
+    private void setPostData(ItemDataModel itemPostData){
         String location = itemPostData.getAddress1()+" "+itemPostData.getAddress2()+" "+itemPostData.getAddress3();
         binding.tvLocation.setText("위치\t\t"+location);
         binding.tvPay.setText("시급\t\t"+itemPostData.getPay()+"원");

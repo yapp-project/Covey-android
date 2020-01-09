@@ -16,7 +16,7 @@ import org.yapp.covey.adapter.AdapterLocationMoreList;
 import org.yapp.covey.adapter.AdapterMoneyList;
 import org.yapp.covey.databinding.ActivityMoreDetailBinding;
 import org.yapp.covey.etc.ItemDecorationGrid;
-import org.yapp.covey.etc.ItemPostVO;
+import org.yapp.covey.model.ItemDataModel;
 import org.yapp.covey.util.Singleton;
 
 import java.util.ArrayList;
@@ -31,6 +31,7 @@ public class MoreDetailActivity extends AppCompatActivity {
     AdapterMoneyList mMoneyAdapter = new AdapterMoneyList();
     private static String TAG = "MORE POST ACTIVITY";
     String categoryTitle;
+    int categoryNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,9 @@ public class MoreDetailActivity extends AppCompatActivity {
         categoryTitle = getIntent().getStringExtra("category");
         binding.tvTitle.setText(categoryTitle);
 
-        getPostData(getIntent().getIntExtra("categoryNum",0));
+        categoryNum = getIntent().getIntExtra("categoryNum",0);
+        Log.w("categoryNum", String.valueOf(categoryNum));
+        getDetailData(categoryNum);
         mLocationAdapter.setOnItemClickListener(new AdapterLocationList.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
@@ -61,16 +64,16 @@ public class MoreDetailActivity extends AppCompatActivity {
             }
         });
     }
-    public void getPostData(int category){
+    public void getDetailData(int category){
         int LOCATION = 1;
         int PAY = 2;
-        if (category== LOCATION) {
-            Singleton.retrofit.addressList(1).enqueue(new Callback<ArrayList<ItemPostVO>>() {
+        if (category == LOCATION) {
+            Singleton.retrofit.addressList(1).enqueue(new Callback<ArrayList<ItemDataModel>>() {
                 @Override
-                public void onResponse(Call<ArrayList<ItemPostVO>> call, Response<ArrayList<ItemPostVO>> response) {
+                public void onResponse(Call<ArrayList<ItemDataModel>> call, Response<ArrayList<ItemDataModel>> response) {
                     if (response.isSuccessful()) {
                         if (response.code() == 200) {
-                            ArrayList<ItemPostVO> result = response.body();
+                            ArrayList<ItemDataModel> result = response.body();
                             mLocationAdapter.mDataList.addAll(result);
                             mLocationAdapter.notifyDataSetChanged();
                             Log.w(TAG, String.valueOf(response.body()) + response.body().size());
@@ -80,7 +83,7 @@ public class MoreDetailActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<ArrayList<ItemPostVO>> call, Throwable t) {
+                public void onFailure(Call<ArrayList<ItemDataModel>> call, Throwable t) {
                     Log.w(TAG, call.toString());
                 }
             });
@@ -90,12 +93,12 @@ public class MoreDetailActivity extends AppCompatActivity {
             binding.recyclerMorePost.setAdapter(mLocationAdapter);
         }
         else if (category == PAY){
-            Singleton.retrofit.payList(1).enqueue(new Callback<ArrayList<ItemPostVO>>() {
+            Singleton.retrofit.payList(1).enqueue(new Callback<ArrayList<ItemDataModel>>() {
                 @Override
-                public void onResponse(Call<ArrayList<ItemPostVO>> call, Response<ArrayList<ItemPostVO>> response) {
+                public void onResponse(Call<ArrayList<ItemDataModel>> call, Response<ArrayList<ItemDataModel>> response) {
                     if (response.isSuccessful()) {
                         if (response.code() == 200) {
-                            ArrayList<ItemPostVO> result = response.body();
+                            ArrayList<ItemDataModel> result = response.body();
                             mMoneyAdapter.mDataList.addAll(result);
                             mMoneyAdapter.notifyDataSetChanged();
                             Log.w(TAG, String.valueOf(response.body()) + response.body().size());
@@ -104,7 +107,7 @@ public class MoreDetailActivity extends AppCompatActivity {
                     }
                 }
                 @Override
-                public void onFailure(Call<ArrayList<ItemPostVO>> call, Throwable t) {
+                public void onFailure(Call<ArrayList<ItemDataModel>> call, Throwable t) {
                     Log.w(TAG, "OnFailure Pay");
                 }
             });

@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Singleton {
         public static final RetrofitService retrofit = new Retrofit.Builder()
-                .baseUrl(Config.serverUrl)
+                .baseUrl("https://coveyyy.tk/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build().create(RetrofitService.class);
         private Singleton() {

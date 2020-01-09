@@ -11,14 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.yapp.covey.R;
 import org.yapp.covey.etc.CalculateDate;
-import org.yapp.covey.etc.ItemPostVO;
+import org.yapp.covey.model.ItemDataModel;
 
 import java.util.ArrayList;
 
 public class AdapterApplyRecruit extends RecyclerView.Adapter<AdapterApplyRecruit.ViewHolder> {
-    ArrayList<ItemPostVO> mDataList = new ArrayList<>();
+    ArrayList<ItemDataModel> mDataList = new ArrayList<>();
 
-    public AdapterApplyRecruit(ArrayList<ItemPostVO> mDataList){
+    public AdapterApplyRecruit(ArrayList<ItemDataModel> mDataList){
         this.mDataList = mDataList;
     }
 
@@ -42,7 +42,7 @@ public class AdapterApplyRecruit extends RecyclerView.Adapter<AdapterApplyRecrui
     @SuppressLint({"SetTextI18n", "ResourceAsColor"})
     @Override
     public void onBindViewHolder(@NonNull AdapterApplyRecruit.ViewHolder holder, int position) {
-        ItemPostVO mData = mDataList.get(position);
+        ItemDataModel mData = mDataList.get(position);
 
         long dDay = new CalculateDate().calDateBetween(mData.getDueDate());
         if (dDay<4){

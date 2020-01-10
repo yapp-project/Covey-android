@@ -1,8 +1,9 @@
 package org.yapp.covey.util;
 
 import org.yapp.covey.etc.phoneNumClass;
-import org.yapp.covey.model.ItemDataModel;
 import org.yapp.covey.etc.userClass;
+import org.yapp.covey.model.ItemDataModel;
+
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -60,4 +61,12 @@ public interface RetrofitService {
     @GET("api/apply/appliedList")
     Call<ArrayList<ItemDataModel>>
     applyList();
+
+    @GET("api/user")
+    Call<userClass>
+    getUser();
+
+    @PUT("api/user")
+    Call<userClass>
+    editUser(@Body userClass body);
 }

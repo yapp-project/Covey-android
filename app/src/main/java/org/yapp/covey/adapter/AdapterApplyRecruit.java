@@ -16,12 +16,13 @@ import org.yapp.covey.model.ItemDataModel;
 import java.util.ArrayList;
 
 public class AdapterApplyRecruit extends RecyclerView.Adapter<AdapterApplyRecruit.ViewHolder> {
-    ArrayList<ItemDataModel> mDataList = new ArrayList<>();
+    public ArrayList<ItemDataModel> mDataList = new ArrayList<>();
 
     public AdapterApplyRecruit(ArrayList<ItemDataModel> mDataList){
         this.mDataList = mDataList;
     }
 
+    public AdapterApplyRecruit(){}
     public interface OnItemClickListener{
         void onItemClick(View v, int position);
     }

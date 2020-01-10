@@ -34,7 +34,6 @@ public class AdapterMoneyList extends RecyclerView.Adapter<AdapterMoneyList.View
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_recycler_home_money,parent,false);
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-        layoutParams.height =(int) (parent.getHeight()*0.144);
         view.setLayoutParams(layoutParams);
 
         return new ViewHolder(view);

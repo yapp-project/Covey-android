@@ -14,7 +14,7 @@ import org.yapp.covey.R;
 import org.yapp.covey.adapter.AdapterLocationList;
 import org.yapp.covey.adapter.AdapterLocationMoreList;
 import org.yapp.covey.adapter.AdapterMoneyList;
-import org.yapp.covey.databinding.ActivityMoreDetailBinding;
+import org.yapp.covey.databinding.ActivityMoreItemBinding;
 import org.yapp.covey.etc.ItemDecorationGrid;
 import org.yapp.covey.model.ItemDataModel;
 import org.yapp.covey.util.Singleton;
@@ -25,19 +25,19 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MoreDetailActivity extends AppCompatActivity {
-    ActivityMoreDetailBinding binding;
-    AdapterLocationMoreList mLocationAdapter = new AdapterLocationMoreList();
+public class MoreItemActivity extends AppCompatActivity {
+    ActivityMoreItemBinding binding;
+    AdapterLocationList mLocationAdapter = new AdapterLocationList();
     AdapterMoneyList mMoneyAdapter = new AdapterMoneyList();
-    private static String TAG = "MORE POST ACTIVITY";
+    private static String TAG = "MORE ITEM ACTIVITY";
     String categoryTitle;
     int categoryNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_more_detail);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_more_detail);
+//        setContentView(R.layout.activity_more_item);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_more_item);
         binding.setMoreLocation(this);
 
         final Intent intentDetail = new Intent(this, DetailActivity.class);
@@ -59,7 +59,7 @@ public class MoreDetailActivity extends AppCompatActivity {
         mMoneyAdapter.setOnItemClickListener(new AdapterMoneyList.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                intentDetail.putExtra("postId",mLocationAdapter.mDataList.get(position).getId());
+                intentDetail.putExtra("postId",mMoneyAdapter.mDataList.get(position).getId());
                 startActivity(intentDetail);
             }
         });
@@ -88,9 +88,9 @@ public class MoreDetailActivity extends AppCompatActivity {
                 }
             });
 
-            binding.recyclerMorePost.setLayoutManager(new GridLayoutManager(this,2));
-            binding.recyclerMorePost.addItemDecoration(new ItemDecorationGrid(this,8f,8f));
-            binding.recyclerMorePost.setAdapter(mLocationAdapter);
+            binding.recyclerMoreItem.setLayoutManager(new GridLayoutManager(this,2));
+            binding.recyclerMoreItem.addItemDecoration(new ItemDecorationGrid(this,8f,8f));
+            binding.recyclerMoreItem.setAdapter(mLocationAdapter);
         }
         else if (category == PAY){
             Singleton.retrofit.payList(1).enqueue(new Callback<ArrayList<ItemDataModel>>() {
@@ -112,8 +112,8 @@ public class MoreDetailActivity extends AppCompatActivity {
                 }
             });
 
-            binding.recyclerMorePost.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-            binding.recyclerMorePost.setAdapter(mMoneyAdapter);
+            binding.recyclerMoreItem.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+            binding.recyclerMoreItem.setAdapter(mMoneyAdapter);
         }
     }
 }

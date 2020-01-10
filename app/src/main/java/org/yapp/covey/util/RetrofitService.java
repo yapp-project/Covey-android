@@ -1,9 +1,7 @@
 package org.yapp.covey.util;
 
-import com.google.gson.JsonObject;
-
-import org.yapp.covey.etc.ItemPostVO;
 import org.yapp.covey.etc.phoneNumClass;
+import org.yapp.covey.model.ItemDataModel;
 
 import java.util.ArrayList;
 
@@ -18,20 +16,24 @@ public interface RetrofitService {
 
     // post
     @GET("api/post/categoryList/{page}")
-    Call<ArrayList<ItemPostVO>>
+    Call<ArrayList<ItemDataModel>>
     categoryList(@Path("page") Integer page, @Query("category") String category);
 
     @GET("api/post/payList/{page}")
-    Call<ArrayList<ItemPostVO>>
+    Call<ArrayList<ItemDataModel>>
     payList(@Path("page") Integer page);
 
     @GET("api/post/addressList/{page}")
-    Call<ArrayList<ItemPostVO>>
+    Call<ArrayList<ItemDataModel>>
     addressList(@Path("page") Integer page);
 
     @GET("api/post/{postId}")
-    Call<ItemPostVO>
+    Call<ItemDataModel>
     postDetail(@Path("postId") Integer postId);
+
+    @GET("api/post/registerList")
+    Call<ArrayList<ItemDataModel>>
+    registerList();
 
     // auth
     @POST("api/auth/phone")
@@ -41,4 +43,8 @@ public interface RetrofitService {
     @POST("api/auth/verify")
     Call<phoneNumClass>
     phoneVerifyCheck(@Body phoneNumClass body);
+
+    @GET("api/apply/appliedList")
+    Call<ArrayList<ItemDataModel>>
+    applyList();
 }

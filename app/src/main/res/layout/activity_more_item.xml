@@ -7,7 +7,7 @@
     <data>
         <variable
             name="moreLocation"
-            type="org.yapp.covey.activity.MorePostActivity" />
+            type="org.yapp.covey.activity.MoreItemActivity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -110,7 +110,7 @@
             />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_more_post"
+            android:id="@+id/recycler_more_item"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"

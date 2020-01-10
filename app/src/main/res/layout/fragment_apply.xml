@@ -8,10 +8,18 @@
     tools:context=".fragment.ApplyFragment"
     android:background="#fff">
 
+    <include
+        android:id="@+id/layout_title_apply"
+        layout="@layout/layout_custom_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"/>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_no_apply"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_title_apply">
 
         <ImageView
             android:id="@+id/image_no_content"
@@ -36,10 +44,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="다양한 알바 대타에 도전해보세요."
             android:textColor="@color/greyish_brown"
             android:textSize="15sp"
-            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -61,6 +69,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintGuide_percent="0.28"
             app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -68,6 +77,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white_three"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@id/layout_title_apply"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

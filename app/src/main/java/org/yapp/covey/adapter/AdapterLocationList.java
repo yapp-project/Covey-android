@@ -9,12 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.yapp.covey.R;
-import org.yapp.covey.etc.ItemPostVO;
+import org.yapp.covey.model.ItemDataModel;
 
 import java.util.ArrayList;
 
 public class AdapterLocationList extends RecyclerView.Adapter<AdapterLocationList.ViewHolder> {
-    public ArrayList<ItemPostVO> mDataList = new ArrayList<>();
+    public ArrayList<ItemDataModel> mDataList = new ArrayList<>();
 
     public AdapterLocationList() {
     }
@@ -42,7 +42,7 @@ public class AdapterLocationList extends RecyclerView.Adapter<AdapterLocationLis
 
     @Override
     public void onBindViewHolder(@NonNull AdapterLocationList.ViewHolder holder, int position) {
-        ItemPostVO data = mDataList.get(position);
+        ItemDataModel data = mDataList.get(position);
         String time = data.getWorkingTime();
         String location = data.getAddress1()+" "+data.getAddress2()+"...";
 

@@ -7,7 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,10 +29,11 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class ApplyFragment extends Fragment {
-    String TAG = "APPLY";
+    private String TAG = "APPLY";
 
+    private ConstraintLayout constraintNothing;
     private RecyclerView recyclerViewApply;
-    AdapterApplyRecruit adapterApply = new AdapterApplyRecruit();
+    private AdapterApplyRecruit adapterApply = new AdapterApplyRecruit();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,13 +41,13 @@ public class ApplyFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_apply, container, false);
 
+        constraintNothing = rootView.findViewById(R.id.constraint_no_apply);
         TextView titleText = rootView.findViewById(R.id.tv_title);
         titleText.setText("지원 내역");
 
-        if (adapterApply.mDataList!=null) adapterApply.mDataList.clear();
-
         recyclerViewApply = rootView.findViewById(R.id.recycler_apply);
         recyclerViewApply.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+        recyclerViewApply.setAdapter(adapterApply);
 
         Singleton.retrofit.applyList().enqueue(new Callback<ArrayList<ItemDataModel>>() {
             @Override
@@ -52,13 +55,22 @@ public class ApplyFragment extends Fragment {
                 if (response.isSuccessful()){
                     if (response.code() == 200){
                         ArrayList<ItemDataModel> resultData = response.body();
-                        adapterApply.mDataList.addAll(resultData);
-                        adapterApply.notifyDataSetChanged();
+                        if (adapterApply.mDataList.size()!=0) adapterApply.mDataList.clear();
+
+                        if (resultData.size() == 0){
+                            setViewVisible(constraintNothing,recyclerViewApply,true);
+                        }else{
+                            adapterApply.mDataList.addAll(resultData);
+                            adapterApply.notifyDataSetChanged();
+                            setViewVisible(constraintNothing,recyclerViewApply,false);
+                        }
 
                         Log.w(TAG,"apply list success");
                     }
                     else{
                         Log.w(TAG, String.valueOf(response.code()));
+                        Toast.makeText(getContext(),"서버 연결을 확인해주세요",Toast.LENGTH_SHORT).show();
+                        setViewVisible(constraintNothing,recyclerViewApply,true);
                     }
                 }
             }
@@ -68,7 +80,15 @@ public class ApplyFragment extends Fragment {
                 Log.w(TAG,"onFailure" + t);
             }
         });
-        recyclerViewApply.setAdapter(adapterApply);
         return rootView;
+    }
+    private void setViewVisible(ConstraintLayout constraintNothing, RecyclerView recyclerView, Boolean visible){
+        if (visible){
+            constraintNothing.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.INVISIBLE);
+        }else{
+            constraintNothing.setVisibility(View.INVISIBLE);
+            recyclerView.setVisibility(View.VISIBLE);
+        }
     }
 }

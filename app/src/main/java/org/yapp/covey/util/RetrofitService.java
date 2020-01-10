@@ -43,4 +43,8 @@ public interface RetrofitService {
     @POST("api/auth/verify")
     Call<phoneNumClass>
     phoneVerifyCheck(@Body phoneNumClass body);
+
+    @GET("api/apply/appliedList")
+    Call<ArrayList<ItemDataModel>>
+    applyList();
 }

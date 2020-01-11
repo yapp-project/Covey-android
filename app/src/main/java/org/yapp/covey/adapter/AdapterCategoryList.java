@@ -71,6 +71,5 @@ public class AdapterCategoryList extends RecyclerView.Adapter<AdapterCategoryLis
             });
         }
     }
-
 }
 

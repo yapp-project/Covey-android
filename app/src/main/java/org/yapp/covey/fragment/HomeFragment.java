@@ -38,13 +38,16 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HomeFragment extends Fragment implements View.OnClickListener{
-    ImageButton buttonAlert, buttonFilter;
-    TextView tvUpload, tvTitle, tvMoreLocationPost, tvMoreMoneyPost;
+    private ImageButton buttonAlert, buttonFilter;
+    private TextView tvUpload, tvTitle, tvMoreLocationPost, tvMoreMoneyPost;
     private RecyclerView listViewCategory, recyclerViewLocation, recyclerViewPay;
     private AdapterCategoryList adapterCategory;
     private AdapterLocationList adapterLocationPost = new AdapterLocationList();
     private AdapterMoneyList adapterMoneyList = new AdapterMoneyList();
     private ArrayList<String> mArrayData = new ArrayList<>();
+
+    private boolean emptyData = true;
+    Intent intentItemDetail;
 
     private static final String TAG = "HOME";
 
@@ -56,12 +59,21 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        mArrayData.addAll(Arrays.asList(getResources().getStringArray(R.array.category)));
+        if (emptyData){
+            mArrayData.addAll(Arrays.asList(getResources().getStringArray(R.array.category)));
+            emptyData = false;
+        }
+        adapterCategory = new AdapterCategoryList(getContext(),mArrayData);
 
         setInitView(rootView);
 
         getAddressData();
         getMoneyData();
+
+        intentItemDetail = new Intent(getContext(), DetailActivity.class);
+
+        adapterMoneyList.mDataList.clear();
+        adapterLocationPost.mDataList.clear();
 
         recyclerViewLocation.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
         recyclerViewLocation.addItemDecoration(new ItemDecorationCategory(getContext(),rootView.getWidth()*0.044f));
@@ -69,34 +81,39 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         adapterLocationPost.setOnItemClickListener(new AdapterLocationList.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                Intent intentPostDetail = new Intent(getContext(), DetailActivity.class);
-                intentPostDetail.putExtra("postId",adapterLocationPost.mDataList.get(position).getId());
-                startActivity(intentPostDetail);
+                intentItemDetail.putExtra("postId",adapterLocationPost.mDataList.get(position).getId());
+                startActivity(intentItemDetail);
             }
         });
-        adapterLocationPost.mDataList.clear();
-        recyclerViewLocation.setAdapter(adapterLocationPost);
 
+        recyclerViewLocation.setAdapter(adapterLocationPost);
         recyclerViewPay.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
 
         adapterMoneyList.setOnItemClickListener(new AdapterMoneyList.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                Intent intentPostDetail = new Intent(getContext(), DetailActivity.class);
-                intentPostDetail.putExtra("postId",adapterLocationPost.mDataList.get(position).getId());
-                startActivity(intentPostDetail);
+                intentItemDetail.putExtra("postId",adapterLocationPost.mDataList.get(position).getId());
+                startActivity(intentItemDetail);
             }
         });
-        adapterMoneyList.mDataList.clear();
         recyclerViewPay.setAdapter(adapterMoneyList);
 
         setTitle("커비에서 빠르고 편리한\n" + "알바 대타를 경험해보세요!");
-        adapterCategory = new AdapterCategoryList(getContext(),mArrayData);
+
         listViewCategory.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
         listViewCategory.addItemDecoration(new ItemDecorationCategory(getContext(),4f));
+
+        adapterCategory.setOnItemClickListener(new AdapterCategoryList.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                Intent intentMoreItem = new Intent(getContext(), MoreItemActivity.class);
+                intentMoreItem.putExtra("category",mArrayData.get(position));
+                intentMoreItem.putExtra("categoryNum",3);
+                startActivity(intentMoreItem);
+            }
+        });
+
         listViewCategory.setAdapter(adapterCategory);
-
-
 
         return rootView;
     }
@@ -192,7 +209,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
-        Intent intentLocationMore = new Intent(getContext(), MoreItemActivity.class);
+        Intent intentMoreItem = new Intent(getContext(), MoreItemActivity.class);
         switch (view.getId()){
             case R.id.btn_alert:{
                 Intent intentAlert = new Intent(getContext(), AlertActivity.class);
@@ -200,15 +217,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 break;
             }
             case R.id.tv_location_more:{
-                intentLocationMore.putExtra("category","우리 동네 대타");
-                intentLocationMore.putExtra("categoryNum",1);
-                startActivity(intentLocationMore);
+                intentMoreItem.putExtra("title","우리 동네 대타");
+                intentMoreItem.putExtra("categoryNum",1);
+                startActivity(intentMoreItem);
                 break;
             }
             case R.id.tv_money_more:{
-                intentLocationMore.putExtra("category","고수익 알바");
-                intentLocationMore.putExtra("categoryNum",2);
-                startActivity(intentLocationMore);
+                intentMoreItem.putExtra("title","고수익 알바");
+                intentMoreItem.putExtra("categoryNum",2);
+                startActivity(intentMoreItem);
                 break;
             }
             case R.id.btn_filter:{

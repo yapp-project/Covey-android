@@ -1,5 +1,6 @@
 package org.yapp.covey.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,23 +31,30 @@ public class MoreItemActivity extends AppCompatActivity {
     AdapterLocationList mLocationAdapter = new AdapterLocationList();
     AdapterMoneyList mMoneyAdapter = new AdapterMoneyList();
     private static String TAG = "MORE ITEM ACTIVITY";
-    String categoryTitle;
+    String category, title;
     int categoryNum;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_more_item);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_more_item);
         binding.setMoreLocation(this);
 
         final Intent intentDetail = new Intent(this, DetailActivity.class);
 
-        categoryTitle = getIntent().getStringExtra("category");
-        binding.tvTitle.setText(categoryTitle);
+        category = getIntent().getStringExtra("category");
+        title = getIntent().getStringExtra("title");
 
         categoryNum = getIntent().getIntExtra("categoryNum",0);
         Log.w("categoryNum", String.valueOf(categoryNum));
+
+        if (categoryNum == 3){
+            binding.tvTitle.setText(category + " 대타");
+        }else{
+            binding.tvTitle.setText(title);
+        }
+
         getDetailData(categoryNum);
         mLocationAdapter.setOnItemClickListener(new AdapterLocationList.OnItemClickListener() {
             @Override
@@ -64,56 +72,87 @@ public class MoreItemActivity extends AppCompatActivity {
             }
         });
     }
-    public void getDetailData(int category){
-        int LOCATION = 1;
-        int PAY = 2;
-        if (category == LOCATION) {
-            Singleton.retrofit.addressList(1).enqueue(new Callback<ArrayList<ItemDataModel>>() {
-                @Override
-                public void onResponse(Call<ArrayList<ItemDataModel>> call, Response<ArrayList<ItemDataModel>> response) {
-                    if (response.isSuccessful()) {
-                        if (response.code() == 200) {
-                            ArrayList<ItemDataModel> result = response.body();
-                            mLocationAdapter.mDataList.addAll(result);
-                            mLocationAdapter.notifyDataSetChanged();
-                            Log.w(TAG, String.valueOf(response.body()) + response.body().size());
-                        } else
-                            Log.w(TAG, String.valueOf(response.code()));
+    public void getDetailData(int categoryNum){
+
+        switch (categoryNum){
+            case 1:{
+                Singleton.retrofit.addressList(1).enqueue(new Callback<ArrayList<ItemDataModel>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<ItemDataModel>> call, Response<ArrayList<ItemDataModel>> response) {
+                        if (response.isSuccessful()) {
+                            if (response.code() == 200) {
+                                ArrayList<ItemDataModel> result = response.body();
+                                mLocationAdapter.mDataList.addAll(result);
+                                mLocationAdapter.notifyDataSetChanged();
+                                Log.w(TAG, String.valueOf(response.body()) + response.body().size());
+                            } else
+                                Log.w(TAG, String.valueOf(response.code()));
+                        }
                     }
-                }
 
-                @Override
-                public void onFailure(Call<ArrayList<ItemDataModel>> call, Throwable t) {
-                    Log.w(TAG, call.toString());
-                }
-            });
-
-            binding.recyclerMoreItem.setLayoutManager(new GridLayoutManager(this,2));
-            binding.recyclerMoreItem.addItemDecoration(new ItemDecorationGrid(this,8f,8f));
-            binding.recyclerMoreItem.setAdapter(mLocationAdapter);
-        }
-        else if (category == PAY){
-            Singleton.retrofit.payList(1).enqueue(new Callback<ArrayList<ItemDataModel>>() {
-                @Override
-                public void onResponse(Call<ArrayList<ItemDataModel>> call, Response<ArrayList<ItemDataModel>> response) {
-                    if (response.isSuccessful()) {
-                        if (response.code() == 200) {
-                            ArrayList<ItemDataModel> result = response.body();
-                            mMoneyAdapter.mDataList.addAll(result);
-                            mMoneyAdapter.notifyDataSetChanged();
-                            Log.w(TAG, String.valueOf(response.body()) + response.body().size());
-                        } else
-                            Log.w(TAG, String.valueOf(response.code()));
+                    @Override
+                    public void onFailure(Call<ArrayList<ItemDataModel>> call, Throwable t) {
+                        Log.w(TAG, call.toString());
                     }
-                }
-                @Override
-                public void onFailure(Call<ArrayList<ItemDataModel>> call, Throwable t) {
-                    Log.w(TAG, "OnFailure Pay");
-                }
-            });
+                });
 
-            binding.recyclerMoreItem.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-            binding.recyclerMoreItem.setAdapter(mMoneyAdapter);
+                binding.recyclerMoreItem.setLayoutManager(new GridLayoutManager(this,2));
+                binding.recyclerMoreItem.addItemDecoration(new ItemDecorationGrid(this,8f,8f));
+                binding.recyclerMoreItem.setAdapter(mLocationAdapter);
+
+                break;
+            }
+            case 2:{
+                Singleton.retrofit.payList(1).enqueue(new Callback<ArrayList<ItemDataModel>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<ItemDataModel>> call, Response<ArrayList<ItemDataModel>> response) {
+                        if (response.isSuccessful()) {
+                            if (response.code() == 200) {
+                                ArrayList<ItemDataModel> result = response.body();
+                                mMoneyAdapter.mDataList.addAll(result);
+                                mMoneyAdapter.notifyDataSetChanged();
+                                Log.w(TAG, String.valueOf(response.body()) + response.body().size());
+                            } else
+                                Log.w(TAG, String.valueOf(response.code()));
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<ArrayList<ItemDataModel>> call, Throwable t) {
+                        Log.w(TAG, "OnFailure Pay");
+                    }
+                });
+
+                binding.recyclerMoreItem.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+                binding.recyclerMoreItem.setAdapter(mMoneyAdapter);
+
+                break;
+            }
+
+            case 3:{
+                Singleton.retrofit.categoryList(1,category).enqueue(new Callback<ArrayList<ItemDataModel>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<ItemDataModel>> call, Response<ArrayList<ItemDataModel>> response) {
+                        if (response.isSuccessful()) {
+                            if (response.code() == 200) {
+                                ArrayList<ItemDataModel> result = response.body();
+                                mLocationAdapter.mDataList.addAll(result);
+                                mLocationAdapter.notifyDataSetChanged();
+                                Log.w(TAG, String.valueOf(response.body()) + response.body().size());
+                            } else
+                                Log.w(TAG, String.valueOf(response.code()));
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<ArrayList<ItemDataModel>> call, Throwable t) {
+                        Log.w(TAG, "OnFailure category loading");
+                    }
+                });
+                binding.recyclerMoreItem.setLayoutManager(new GridLayoutManager(this,2));
+                binding.recyclerMoreItem.addItemDecoration(new ItemDecorationGrid(this,8f,8f));
+                binding.recyclerMoreItem.setAdapter(mLocationAdapter);
+
+                break;
+            }
         }
     }
 }

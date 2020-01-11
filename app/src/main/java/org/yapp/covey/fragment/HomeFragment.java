@@ -64,6 +64,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             emptyData = false;
         }
         adapterCategory = new AdapterCategoryList(getContext(),mArrayData);
+        mArrayData.addAll(Arrays.asList(getResources().getStringArray(R.array.category)));
 
         setInitView(rootView);
 
@@ -85,10 +86,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 startActivity(intentItemDetail);
             }
         });
-
         recyclerViewLocation.setAdapter(adapterLocationPost);
-        recyclerViewPay.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
 
+        recyclerViewPay.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
         adapterMoneyList.setOnItemClickListener(new AdapterMoneyList.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {

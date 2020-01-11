@@ -28,7 +28,7 @@ public class userClass {
 
     public void setName(String name) { this.name = name; }
 
-    public boolean isGender() { return gender; }
+    public boolean getGender() { return gender; }
 
     public void setGender(boolean gender) { this.gender = gender; }
 

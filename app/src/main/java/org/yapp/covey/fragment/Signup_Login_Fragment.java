@@ -6,8 +6,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -26,18 +28,11 @@ import com.kakao.usermgmt.response.model.UserProfile;
 import com.kakao.util.exception.KakaoException;
 
 import org.yapp.covey.R;
+import org.yapp.covey.activity.MainActivity;
 import org.yapp.covey.activity.SignupActivity;
-import org.yapp.covey.etc.phoneNumClass;
 import org.yapp.covey.util.FacebookLoginCallback;
-import org.yapp.covey.util.Singleton;
 
 import java.util.Arrays;
-
-import androidx.fragment.app.Fragment;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 public class Signup_Login_Fragment extends Fragment {
 
     private static final String TAG = "Login";
@@ -58,12 +53,21 @@ public class Signup_Login_Fragment extends Fragment {
         final LoginButton kakaoButton = view.findViewById(R.id.com_kakao_login);
         final com.facebook.login.widget.LoginButton facebookButton = view.findViewById(R.id.btn_facebook_login);
 
+        TextView tvGoMain = view.findViewById(R.id.tv_go_main);
+        tvGoMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentMain = new Intent(getContext(),MainActivity.class);
+                startActivity(intentMain);
+            }
+        });
+
+
         kakaoCallback = new KakaoSessionCallback();
         Session.getCurrentSession().addCallback(kakaoCallback);
         requestMe();
 
         facebookCallbackManager = CallbackManager.Factory.create();
-        facebookCallback = new FacebookLoginCallback();
 
         facebookButton.setReadPermissions(Arrays.asList("public_profile", "email"));
         facebookButton.registerCallback(facebookCallbackManager, new FacebookCallback<LoginResult>() {
@@ -223,6 +227,9 @@ public class Signup_Login_Fragment extends Fragment {
         facebookCallbackManager.onActivityResult(requestCode, resultCode, data);
 
         Fragment next = Signup_01_Fragment.newInstance();
+        Bundle bundle = new Bundle();
+        //bundle.putInt("snsid", (int)data.id);
+        next.setArguments(bundle);
         ((SignupActivity)getActivity()).replaceFragment(next);
     }
 }

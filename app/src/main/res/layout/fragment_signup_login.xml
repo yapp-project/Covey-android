@@ -97,6 +97,19 @@
         app:layout_constraintRight_toLeftOf="@id/gd_signup_login_text_right"
         app:layout_constraintTop_toBottomOf="@id/gd_signup_login_text_top" />
 
+    <TextView
+        android:id="@+id/tv_go_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/blank"
+        android:text="커비 둘러보기"
+        android:textColor="#fff"
+        android:textSize="14sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/gd_signup_login_btn2_bottom" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gd_signup_login_logo_left"
         android:layout_width="0dp"
@@ -193,5 +206,5 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.875" />
+        app:layout_constraintGuide_begin="640dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

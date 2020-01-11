@@ -89,8 +89,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
                             ageGender.setText(response.body().getAge() + " / 남");
                         else
                             ageGender.setText(response.body().getAge() + " / 여");
-                        phone.setText(response.body().getPhoneNum().substring(0,2) + " " + response.body().getPhoneNum().substring(3,6) + " " + response.body().getPhoneNum().substring(7));
-                        intro.setText(response.body().getIntro());
+//                        phone.setText(response.body().getPhoneNum().substring(0,2) + " " + response.body().getPhoneNum().substring(3,6) + " " + response.body().getPhoneNum().substring(7));
+//                        intro.setText(response.body().getIntro());
                     }
                     else
                         Log.w(TAG, String.valueOf(response.code()));

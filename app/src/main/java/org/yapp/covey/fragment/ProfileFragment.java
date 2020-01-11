@@ -80,8 +80,17 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
             public void onResponse(Call<userClass> call, Response<userClass> response) {
                 if (response.isSuccessful()){
                     if (response.code()==200){
-                        TextView test = view.findViewById(R.id.profile_name);
-                        test.setText(response.body().getName());
+                        TextView name = view.findViewById(R.id.profile_name);
+                        TextView ageGender = view.findViewById(R.id.profile_age_gender);
+                        TextView phone = view.findViewById(R.id.profile_phone);
+                        TextView intro = view.findViewById(R.id.profile_introduction);
+                        name.setText(response.body().getName());
+                        if(response.body().getGender())
+                            ageGender.setText(response.body().getAge() + " / 남");
+                        else
+                            ageGender.setText(response.body().getAge() + " / 여");
+                        phone.setText(response.body().getPhoneNum().substring(0,2) + " " + response.body().getPhoneNum().substring(3,6) + " " + response.body().getPhoneNum().substring(7));
+                        intro.setText(response.body().getIntro());
                     }
                     else
                         Log.w(TAG, String.valueOf(response.code()));

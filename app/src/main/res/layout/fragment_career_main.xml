@@ -6,124 +6,30 @@
     android:layout_height="match_parent"
     android:background="@color/white_three">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="143dp"
-        android:background="#ffffff"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline_top" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="알림"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:layout_marginTop="31dp"
-        app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintTop_toTopOf="@id/guideline_top" />
-
-    <Switch
-        android:id="@+id/setting_alert_switch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="31dp"
-        app:layout_constraintEnd_toEndOf="@id/guideline_right"
-        app:layout_constraintTop_toTopOf="@id/guideline_top" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="앱 정보"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:layout_marginTop="87dp"
-        app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintTop_toTopOf="@id/guideline_top" />
-
-    <TextView
-        android:id="@+id/setting_app_info"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="87dp"
-        android:gravity="center_horizontal|center_vertical"
-        android:text=">"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@id/guideline_right"
-        app:layout_constraintTop_toTopOf="@id/guideline_top" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="96dp"
-        android:layout_marginTop="159dp"
-        android:background="#ffffff"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline_top" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="회원 탈퇴"
-        android:textColor="@color/tomato"
-        android:textSize="16sp"
-        android:layout_marginTop="183dp"
-        app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintTop_toTopOf="@id/guideline_top" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="개인 정보와 설정이 모두 삭제됩니다."
-        android:textColor="#333333"
-        android:textSize="14sp"
-        android:layout_marginTop="211dp"
-        app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintTop_toTopOf="@id/guideline_top" />
-
-    <TextView
-        android:id="@+id/setting_logout"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="195dp"
-        android:gravity="center_horizontal|center_vertical"
-        android:text=">"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@id/guideline_right"
-        app:layout_constraintTop_toTopOf="@id/guideline_top" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="버전 정보 V.0.0.1"
-        android:textColor="#333333"
-        android:background="@android:color/transparent"
-        android:textSize="14sp"
-        android:layout_marginTop="279dp"
-        app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintTop_toTopOf="@id/guideline_top" />
-
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_left"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.067" />
+        app:layout_constraintGuide_percent="0.044"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_right"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.956" />
+        app:layout_constraintGuide_percent="0.956"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_top"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_career"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0" />
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toEndOf="@id/guideline_left"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,14 +20,21 @@ import android.widget.Spinner;
 
 import org.yapp.covey.R;
 import org.yapp.covey.activity.SignupActivity;
+import org.yapp.covey.etc.userClass;
+import org.yapp.covey.util.Singleton;
 
 import java.lang.reflect.Field;
 
 import androidx.fragment.app.Fragment;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static androidx.annotation.Dimension.DP;
 
 public class Signup_03_Fragment extends Fragment {
+
+    private static final String TAG = "signup03";
 
     public static Signup_03_Fragment newInstance() {
         return new Signup_03_Fragment();
@@ -58,18 +66,19 @@ public class Signup_03_Fragment extends Fragment {
                     next_button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Fragment next = Signup_Done_Fragment.newInstance();
-                            String snsId = getArguments().getString("snsid");
-                            String phoneNum = getArguments().getString("phoneNum");
                             String userName = name.getText().toString();
                             String userAge = ageSpinner.getSelectedItem().toString();
                             String userGender = genderSpinner.getSelectedItem().toString();
                             String address1 = locationSpinner.getSelectedItem().toString();
                             String address2 = locationDetailSpinner.getSelectedItem().toString();
-                            /*
-                             서버에 입력받은 유저 정보 저장
-                             */
-                            ((SignupActivity)getActivity()).replaceFragment(next);
+                            userClass user = new userClass();
+                            user.setName(userName);
+                            user.setAge(userAge);
+                            if(userGender == "남자") user.setGender(true);
+                            else user.setGender(false);
+                            user.setAddress1(address1);
+                            user.setAddress2(address2);
+                            userInfo(user);
                         }
                     });
                 }
@@ -166,5 +175,30 @@ public class Signup_03_Fragment extends Fragment {
         });
 
         return view;
+    }
+
+    private void userInfo(userClass body){
+        Log.w(TAG, "userinfo 실행");
+        Singleton.retrofit.userInfo(body).enqueue(new Callback<userClass>() {
+            @Override
+            public void onResponse(Call<userClass> call, Response<userClass> response) {
+                Log.w(TAG, "userinfo response");
+                Log.w(TAG, response.toString());
+                if (response.isSuccessful()){
+                    Log.w(TAG, String.valueOf(response.code()));
+                    if (response.code() == 201){
+                        Fragment next = Signup_Done_Fragment.newInstance();
+                        ((SignupActivity)getActivity()).replaceFragment(next);
+                    }
+                    else
+                        Log.w(TAG, String.valueOf(response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<userClass> call, Throwable t) {
+                Log.w(TAG,"OnFailure");
+            }
+        });
     }
 }

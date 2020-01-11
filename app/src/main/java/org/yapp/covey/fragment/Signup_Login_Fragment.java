@@ -6,10 +6,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
 import com.facebook.Profile;
+import com.facebook.ProfileTracker;
+import com.facebook.login.LoginResult;
 import com.kakao.auth.ErrorCode;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
@@ -22,11 +27,16 @@ import com.kakao.util.exception.KakaoException;
 
 import org.yapp.covey.R;
 import org.yapp.covey.activity.SignupActivity;
+import org.yapp.covey.etc.phoneNumClass;
 import org.yapp.covey.util.FacebookLoginCallback;
+import org.yapp.covey.util.Singleton;
 
 import java.util.Arrays;
 
 import androidx.fragment.app.Fragment;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Signup_Login_Fragment extends Fragment {
 
@@ -56,7 +66,34 @@ public class Signup_Login_Fragment extends Fragment {
         facebookCallback = new FacebookLoginCallback();
 
         facebookButton.setReadPermissions(Arrays.asList("public_profile", "email"));
-        facebookButton.registerCallback(facebookCallbackManager, facebookCallback);
+        facebookButton.registerCallback(facebookCallbackManager, new FacebookCallback<LoginResult>() {
+            private ProfileTracker mProfileTracker;
+
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                if(Profile.getCurrentProfile() == null) {
+                    mProfileTracker = new ProfileTracker() {
+                        @Override
+                        protected void onCurrentProfileChanged(Profile oldProfile, Profile currentProfile) {
+                            Log.v("facebook - profile", currentProfile.getId());
+                            mProfileTracker.stopTracking();
+                        }
+                    };
+                }
+                else {
+                    Profile profile = Profile.getCurrentProfile();
+                    Log.v("facebook - profile", profile.getFirstName());
+                }
+            }
+            @Override
+            public void onCancel() {
+                Log.v("facebook - onCancel", "cancelled");
+            }
+            @Override
+            public void onError(FacebookException e) {
+                Log.v("facebook - onError", e.getMessage());
+            }
+        });
         facebookButton.setFragment(this);
 
         login_kakao.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +111,48 @@ public class Signup_Login_Fragment extends Fragment {
 
         return view;
     }
+
+    /*private void kakaoLogin(){
+        Singleton.retrofit.kakaoLogin().enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()){
+                    if (response.code() == 200){
+                        Fragment next = Signup_01_Fragment.newInstance();
+                        ((SignupActivity)getActivity()).replaceFragment(next);
+                    }
+                    else
+                        Log.w(TAG, String.valueOf(response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.w(TAG,"OnFailure");
+            }
+        });
+    }
+
+    private void facebookLogin(){
+        Singleton.retrofit.facebookLogin().enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()){
+                    if (response.code() == 200){
+                        Fragment next = Signup_01_Fragment.newInstance();
+                        ((SignupActivity)getActivity()).replaceFragment(next);
+                    }
+                    else
+                        Log.w(TAG, String.valueOf(response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.w(TAG,"OnFailure phoneVerify");
+            }
+        });
+    }*/
 
     class KakaoSessionCallback implements ISessionCallback {
         @Override
@@ -144,9 +223,6 @@ public class Signup_Login_Fragment extends Fragment {
         facebookCallbackManager.onActivityResult(requestCode, resultCode, data);
 
         Fragment next = Signup_01_Fragment.newInstance();
-        Bundle bundle = new Bundle();
-        //bundle.putInt("snsid", (int)data.id);
-        next.setArguments(bundle);
         ((SignupActivity)getActivity()).replaceFragment(next);
     }
 }

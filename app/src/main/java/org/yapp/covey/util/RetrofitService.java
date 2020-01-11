@@ -2,13 +2,14 @@ package org.yapp.covey.util;
 
 import org.yapp.covey.etc.phoneNumClass;
 import org.yapp.covey.model.ItemDataModel;
-
+import org.yapp.covey.etc.userClass;
 import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -34,6 +35,18 @@ public interface RetrofitService {
     @GET("api/post/registerList")
     Call<ArrayList<ItemDataModel>>
     registerList();
+
+    @GET("api/auth/kakao")
+    Call<Void>
+    kakaoLogin();
+
+    @GET("api/auth/facebook")
+    Call<Void>
+    facebookLogin();
+
+    @PUT("api/user")
+    Call<userClass>
+    userInfo(@Body userClass body);
 
     // auth
     @POST("api/auth/phone")

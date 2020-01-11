@@ -6,184 +6,192 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="24"
-8-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml
+8-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="28" />
-9-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml
+9-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:51:5-67
-11-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:51:22-64
-12
-13    <application
-13-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:6:5-49:19
-14        android:name="org.yapp.covey.util.GlobalApplication"
-14-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:7:9-47
-15        android:allowBackup="true"
-15-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:8:9-35
-16        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-16-->[androidx.core:core:1.0.1] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\72b2b92ec4ab73ff21fb9bc348de3b22\core-1.0.1\AndroidManifest.xml:22:18-86
-17        android:debuggable="true"
-18        android:icon="@mipmap/ic_launcher"
-18-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:9:9-43
-19        android:label="@string/app_name"
-19-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:10:9-41
-20        android:roundIcon="@mipmap/ic_launcher_round"
-20-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:11:9-54
-21        android:supportsRtl="true"
-21-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:12:9-35
-22        android:testOnly="true"
-23        android:theme="@style/AppTheme"
-23-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:13:9-40
-24        android:usesCleartextTraffic="true" >
-24-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:14:9-44
-25        <activity
-25-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:16:9-17:59
-26            android:name="org.yapp.covey.activity.AlertActivity"
-26-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:16:19-57
-27            android:theme="@style/AppTheme.CustomAppBar" />
-27-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:17:13-57
-28        <activity
-28-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:18:9-19:59
-29            android:name="org.yapp.covey.activity.PostDetailActivity"
-29-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:18:19-62
-30            android:theme="@style/AppTheme.CustomAppBar" />
-30-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:19:13-57
-31        <activity
-31-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:20:9-22:47
-32            android:name="org.yapp.covey.activity.MorePostActivity"
-32-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:21:13-54
-33            android:theme="@style/AppTheme" />
-33-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:22:13-44
-34        <activity
-34-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:23:9-32:20
-35            android:name="org.yapp.covey.activity.MainActivity"
-35-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:24:13-50
-36            android:theme="@style/AppTheme.StatusBarWhite"
-36-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:25:13-59
-37            android:windowSoftInputMode="adjustPan" >
-37-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:26:13-52
-38            <intent-filter>
-38-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:27:13-31:29
-39                <action android:name="android.intent.action.MAIN" />
-39-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:28:17-69
-39-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:28:25-66
-40
-41                <category android:name="android.intent.category.LAUNCHER" />
-41-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:30:17-77
-41-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:30:27-74
-42            </intent-filter>
-43        </activity>
-44        <activity
-44-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:33:9-40:20
-45            android:name="org.yapp.covey.activity.SignupActivity"
-45-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:33:19-58
-46            android:theme="@style/AppTheme" >
-46-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:34:13-44
-47            <intent-filter>
-47-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:27:13-31:29
-48                <action android:name="android.intent.action.MAIN" />
-48-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:28:17-69
-48-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:28:25-66
-49
-50                <category android:name="android.intent.category.LAUNCHER" />
-50-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:30:17-77
-50-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:30:27-74
-51            </intent-filter>
-52        </activity>
+11-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:6:5-67
+11-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:6:22-64
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:7:5-79
+12-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:7:22-76
+13
+14    <application
+14-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:9:5-56:19
+15        android:name="org.yapp.covey.util.GlobalApplication"
+15-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:10:9-47
+16        android:allowBackup="true"
+16-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:11:9-35
+17        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+17-->[androidx.core:core:1.0.1] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\72b2b92ec4ab73ff21fb9bc348de3b22\core-1.0.1\AndroidManifest.xml:22:18-86
+18        android:debuggable="true"
+19        android:icon="@mipmap/ic_launcher"
+19-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:12:9-43
+20        android:label="@string/app_name"
+20-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:13:9-41
+21        android:roundIcon="@mipmap/ic_launcher_round"
+21-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:14:9-54
+22        android:supportsRtl="true"
+22-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:15:9-35
+23        android:testOnly="true"
+24        android:theme="@style/AppTheme"
+24-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:16:9-40
+25        android:usesCleartextTraffic="true" >
+25-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:17:9-44
+26        <activity
+26-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:19:9-20:59
+27            android:name="org.yapp.covey.activity.UploadActivity"
+27-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:19:19-58
+28            android:theme="@style/AppTheme.CustomAppBar" />
+28-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:20:13-57
+29        <activity
+29-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:21:9-23:60
+30            android:name="org.yapp.covey.activity.AlertActivity"
+30-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:22:13-51
+31            android:theme="@style/AppTheme.CustomAppBar" />
+31-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:23:13-57
+32        <activity
+32-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:24:9-26:60
+33            android:name="org.yapp.covey.activity.DetailActivity"
+33-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:25:13-52
+34            android:theme="@style/AppTheme.CustomAppBar" />
+34-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:26:13-57
+35        <activity
+35-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:27:9-29:47
+36            android:name="org.yapp.covey.activity.MoreItemActivity"
+36-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:28:13-54
+37            android:theme="@style/AppTheme" />
+37-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:29:13-44
+38        <activity
+38-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:30:9-39:20
+39            android:name="org.yapp.covey.activity.MainActivity"
+39-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:31:13-50
+40            android:theme="@style/AppTheme.StatusBarWhite"
+40-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:32:13-59
+41            android:windowSoftInputMode="adjustPan" >
+41-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:33:13-52
+42            <intent-filter>
+42-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:34:13-38:29
+43                <action android:name="android.intent.action.MAIN" />
+43-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:35:17-69
+43-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:35:25-66
+44
+45                <category android:name="android.intent.category.LAUNCHER" />
+45-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:37:17-77
+45-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:37:27-74
+46            </intent-filter>
+47        </activity>
+48        <activity
+48-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:40:9-48:20
+49            android:name="org.yapp.covey.activity.SignupActivity"
+49-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:41:13-52
+50            android:theme="@style/AppTheme" >
+50-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:42:13-44
+51            <intent-filter>
+51-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:34:13-38:29
+52                <action android:name="android.intent.action.MAIN" />
+52-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:35:17-69
+52-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:35:25-66
 53
-54        <meta-data
-54-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:42:9-44:53
-55            android:name="com.kakao.sdk.AppKey"
-55-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:43:13-48
-56            android:value="@string/kakao_app_key" />
-56-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:44:13-50
-57        <meta-data
-57-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:46:9-48:56
-58            android:name="com.facebook.sdk.ApplicationId"
-58-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:47:13-58
-59            android:value="@string/facebook_app_key" />
-59-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:48:13-53
-60
-61        <activity
-61-->[com.facebook.android:facebook-common:4.42.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\f1b7d19197dfe981d6faa3efca5321ba\jetified-facebook-common-4.42.0\AndroidManifest.xml:29:9-32:66
-62            android:name="com.facebook.FacebookActivity"
-62-->[com.facebook.android:facebook-common:4.42.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\f1b7d19197dfe981d6faa3efca5321ba\jetified-facebook-common-4.42.0\AndroidManifest.xml:30:13-57
-63            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-63-->[com.facebook.android:facebook-common:4.42.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\f1b7d19197dfe981d6faa3efca5321ba\jetified-facebook-common-4.42.0\AndroidManifest.xml:31:13-96
-64            android:theme="@style/com_facebook_activity_theme" />
-64-->[com.facebook.android:facebook-common:4.42.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\f1b7d19197dfe981d6faa3efca5321ba\jetified-facebook-common-4.42.0\AndroidManifest.xml:32:13-63
-65        <activity android:name="com.facebook.CustomTabMainActivity" />
-65-->[com.facebook.android:facebook-common:4.42.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\f1b7d19197dfe981d6faa3efca5321ba\jetified-facebook-common-4.42.0\AndroidManifest.xml:33:9-71
-65-->[com.facebook.android:facebook-common:4.42.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\f1b7d19197dfe981d6faa3efca5321ba\jetified-facebook-common-4.42.0\AndroidManifest.xml:33:19-68
-66        <activity android:name="com.facebook.CustomTabActivity" />
-66-->[com.facebook.android:facebook-common:4.42.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\f1b7d19197dfe981d6faa3efca5321ba\jetified-facebook-common-4.42.0\AndroidManifest.xml:34:9-67
-66-->[com.facebook.android:facebook-common:4.42.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\f1b7d19197dfe981d6faa3efca5321ba\jetified-facebook-common-4.42.0\AndroidManifest.xml:34:19-64
-67        <!--
-68         The initialization ContentProvider will call FacebookSdk.sdkInitialize automatically
-69         with the application context. This config is merged in with the host app's manifest,
-70         but there can only be one provider with the same authority activated at any given
-71         point; so if the end user has two or more different apps that use Facebook SDK, only the
-72         first one will be able to use the provider. To work around this problem, we use the
-73         following placeholder in the authority to identify each host application as if it was
-74         a completely different provider.
-75        -->
-76        <provider
-76-->[com.facebook.android:facebook-core:4.42.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\436c7ec600a1594d1cf845e684198b2a\jetified-facebook-core-4.42.0\AndroidManifest.xml:39:9-42:40
-77            android:name="com.facebook.internal.FacebookInitProvider"
-77-->[com.facebook.android:facebook-core:4.42.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\436c7ec600a1594d1cf845e684198b2a\jetified-facebook-core-4.42.0\AndroidManifest.xml:40:13-70
-78            android:authorities="org.yapp.covey.FacebookInitProvider"
-78-->[com.facebook.android:facebook-core:4.42.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\436c7ec600a1594d1cf845e684198b2a\jetified-facebook-core-4.42.0\AndroidManifest.xml:41:13-72
-79            android:exported="false" />
-79-->[com.facebook.android:facebook-core:4.42.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\436c7ec600a1594d1cf845e684198b2a\jetified-facebook-core-4.42.0\AndroidManifest.xml:42:13-37
-80
-81        <receiver
-81-->[com.facebook.android:facebook-core:4.42.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\436c7ec600a1594d1cf845e684198b2a\jetified-facebook-core-4.42.0\AndroidManifest.xml:44:9-50:20
-82            android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver"
-82-->[com.facebook.android:facebook-core:4.42.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\436c7ec600a1594d1cf845e684198b2a\jetified-facebook-core-4.42.0\AndroidManifest.xml:45:13-86
-83            android:exported="false" >
-83-->[com.facebook.android:facebook-core:4.42.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\436c7ec600a1594d1cf845e684198b2a\jetified-facebook-core-4.42.0\AndroidManifest.xml:46:13-37
-84            <intent-filter>
-84-->[com.facebook.android:facebook-core:4.42.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\436c7ec600a1594d1cf845e684198b2a\jetified-facebook-core-4.42.0\AndroidManifest.xml:47:13-49:29
-85                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED" />
-85-->[com.facebook.android:facebook-core:4.42.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\436c7ec600a1594d1cf845e684198b2a\jetified-facebook-core-4.42.0\AndroidManifest.xml:48:17-95
-85-->[com.facebook.android:facebook-core:4.42.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\436c7ec600a1594d1cf845e684198b2a\jetified-facebook-core-4.42.0\AndroidManifest.xml:48:25-92
-86            </intent-filter>
-87        </receiver>
-88
-89        <activity
-89-->[com.kakao.sdk:auth:1.5.1] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\5d37ed0e4978902823fb2c3898f80dbe\jetified-auth-1.5.1\AndroidManifest.xml:12:9-23:20
-90            android:name="com.kakao.auth.authorization.authcode.KakaoWebViewActivity"
-90-->[com.kakao.sdk:auth:1.5.1] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\5d37ed0e4978902823fb2c3898f80dbe\jetified-auth-1.5.1\AndroidManifest.xml:13:13-86
-91            android:configChanges="orientation|screenSize"
-91-->[com.kakao.sdk:auth:1.5.1] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\5d37ed0e4978902823fb2c3898f80dbe\jetified-auth-1.5.1\AndroidManifest.xml:14:13-59
-92            android:label="@string/com_kakao_login_button"
-92-->[com.kakao.sdk:auth:1.5.1] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\5d37ed0e4978902823fb2c3898f80dbe\jetified-auth-1.5.1\AndroidManifest.xml:15:13-59
-93            android:launchMode="singleTop"
-93-->[com.kakao.sdk:auth:1.5.1] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\5d37ed0e4978902823fb2c3898f80dbe\jetified-auth-1.5.1\AndroidManifest.xml:16:13-43
-94            android:windowSoftInputMode="adjustResize" >
-94-->[com.kakao.sdk:auth:1.5.1] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\5d37ed0e4978902823fb2c3898f80dbe\jetified-auth-1.5.1\AndroidManifest.xml:17:13-55
-95            <intent-filter>
-95-->[com.kakao.sdk:auth:1.5.1] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\5d37ed0e4978902823fb2c3898f80dbe\jetified-auth-1.5.1\AndroidManifest.xml:18:13-22:29
-96                <action android:name="android.intent.action.MAIN" />
-96-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:28:17-69
-96-->C:\GitHub\Covey-android\app\src\main\AndroidManifest.xml:28:25-66
-97
-98                <category android:name="android.intent.category.DEFAULT" />
-98-->[com.kakao.sdk:auth:1.5.1] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\5d37ed0e4978902823fb2c3898f80dbe\jetified-auth-1.5.1\AndroidManifest.xml:21:17-76
-98-->[com.kakao.sdk:auth:1.5.1] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\5d37ed0e4978902823fb2c3898f80dbe\jetified-auth-1.5.1\AndroidManifest.xml:21:27-73
-99            </intent-filter>
-100        </activity>
-101
-102        <provider
-102-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\bba9e662e9f4bf0da774229f97b853fc\lifecycle-process-2.0.0\AndroidManifest.xml:23:9-27:43
-103            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-103-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\bba9e662e9f4bf0da774229f97b853fc\lifecycle-process-2.0.0\AndroidManifest.xml:24:13-79
-104            android:authorities="org.yapp.covey.lifecycle-process"
-104-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\bba9e662e9f4bf0da774229f97b853fc\lifecycle-process-2.0.0\AndroidManifest.xml:25:13-69
-105            android:exported="false"
-105-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\bba9e662e9f4bf0da774229f97b853fc\lifecycle-process-2.0.0\AndroidManifest.xml:26:13-37
-106            android:multiprocess="true" />
-106-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\bba9e662e9f4bf0da774229f97b853fc\lifecycle-process-2.0.0\AndroidManifest.xml:27:13-40
-107    </application>
-108
-109</manifest>
+54                <category android:name="android.intent.category.LAUNCHER" />
+54-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:37:17-77
+54-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:37:27-74
+55            </intent-filter>
+56        </activity>
+57
+58        <meta-data
+58-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:50:9-52:53
+59            android:name="com.kakao.sdk.AppKey"
+59-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:51:13-48
+60            android:value="@string/kakao_app_key" />
+60-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:52:13-50
+61        <meta-data
+61-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:53:9-55:56
+62            android:name="com.facebook.sdk.ApplicationId"
+62-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:54:13-58
+63            android:value="@string/facebook_app_key" />
+63-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:55:13-53
+64
+65        <activity
+65-->[com.facebook.android:facebook-common:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\55d23eae501a8b69c1b280a2147e6c3a\jetified-facebook-common-4.42.0\AndroidManifest.xml:29:9-32:66
+66            android:name="com.facebook.FacebookActivity"
+66-->[com.facebook.android:facebook-common:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\55d23eae501a8b69c1b280a2147e6c3a\jetified-facebook-common-4.42.0\AndroidManifest.xml:30:13-57
+67            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+67-->[com.facebook.android:facebook-common:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\55d23eae501a8b69c1b280a2147e6c3a\jetified-facebook-common-4.42.0\AndroidManifest.xml:31:13-96
+68            android:theme="@style/com_facebook_activity_theme" />
+68-->[com.facebook.android:facebook-common:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\55d23eae501a8b69c1b280a2147e6c3a\jetified-facebook-common-4.42.0\AndroidManifest.xml:32:13-63
+69        <activity android:name="com.facebook.CustomTabMainActivity" />
+69-->[com.facebook.android:facebook-common:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\55d23eae501a8b69c1b280a2147e6c3a\jetified-facebook-common-4.42.0\AndroidManifest.xml:33:9-71
+69-->[com.facebook.android:facebook-common:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\55d23eae501a8b69c1b280a2147e6c3a\jetified-facebook-common-4.42.0\AndroidManifest.xml:33:19-68
+70        <activity android:name="com.facebook.CustomTabActivity" />
+70-->[com.facebook.android:facebook-common:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\55d23eae501a8b69c1b280a2147e6c3a\jetified-facebook-common-4.42.0\AndroidManifest.xml:34:9-67
+70-->[com.facebook.android:facebook-common:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\55d23eae501a8b69c1b280a2147e6c3a\jetified-facebook-common-4.42.0\AndroidManifest.xml:34:19-64
+71        <activity
+71-->[com.kakao.sdk:auth:1.5.1] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\3dac752f4c97ce2d4a2902915b56eec3\jetified-auth-1.5.1\AndroidManifest.xml:12:9-23:20
+72            android:name="com.kakao.auth.authorization.authcode.KakaoWebViewActivity"
+72-->[com.kakao.sdk:auth:1.5.1] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\3dac752f4c97ce2d4a2902915b56eec3\jetified-auth-1.5.1\AndroidManifest.xml:13:13-86
+73            android:configChanges="orientation|screenSize"
+73-->[com.kakao.sdk:auth:1.5.1] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\3dac752f4c97ce2d4a2902915b56eec3\jetified-auth-1.5.1\AndroidManifest.xml:14:13-59
+74            android:label="@string/com_kakao_login_button"
+74-->[com.kakao.sdk:auth:1.5.1] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\3dac752f4c97ce2d4a2902915b56eec3\jetified-auth-1.5.1\AndroidManifest.xml:15:13-59
+75            android:launchMode="singleTop"
+75-->[com.kakao.sdk:auth:1.5.1] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\3dac752f4c97ce2d4a2902915b56eec3\jetified-auth-1.5.1\AndroidManifest.xml:16:13-43
+76            android:windowSoftInputMode="adjustResize" >
+76-->[com.kakao.sdk:auth:1.5.1] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\3dac752f4c97ce2d4a2902915b56eec3\jetified-auth-1.5.1\AndroidManifest.xml:17:13-55
+77            <intent-filter>
+77-->[com.kakao.sdk:auth:1.5.1] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\3dac752f4c97ce2d4a2902915b56eec3\jetified-auth-1.5.1\AndroidManifest.xml:18:13-22:29
+78                <action android:name="android.intent.action.MAIN" />
+78-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:35:17-69
+78-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\src\main\AndroidManifest.xml:35:25-66
+79
+80                <category android:name="android.intent.category.DEFAULT" />
+80-->[com.kakao.sdk:auth:1.5.1] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\3dac752f4c97ce2d4a2902915b56eec3\jetified-auth-1.5.1\AndroidManifest.xml:21:17-76
+80-->[com.kakao.sdk:auth:1.5.1] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\3dac752f4c97ce2d4a2902915b56eec3\jetified-auth-1.5.1\AndroidManifest.xml:21:27-73
+81            </intent-filter>
+82        </activity>
+83        <!--
+84         The initialization ContentProvider will call FacebookSdk.sdkInitialize automatically
+85         with the application context. This config is merged in with the host app's manifest,
+86         but there can only be one provider with the same authority activated at any given
+87         point; so if the end user has two or more different apps that use Facebook SDK, only the
+88         first one will be able to use the provider. To work around this problem, we use the
+89         following placeholder in the authority to identify each host application as if it was
+90         a completely different provider.
+91        -->
+92        <provider
+92-->[com.facebook.android:facebook-core:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\1ff03949211588c5929ab6d5077e0ba6\jetified-facebook-core-4.42.0\AndroidManifest.xml:39:9-42:40
+93            android:name="com.facebook.internal.FacebookInitProvider"
+93-->[com.facebook.android:facebook-core:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\1ff03949211588c5929ab6d5077e0ba6\jetified-facebook-core-4.42.0\AndroidManifest.xml:40:13-70
+94            android:authorities="org.yapp.covey.FacebookInitProvider"
+94-->[com.facebook.android:facebook-core:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\1ff03949211588c5929ab6d5077e0ba6\jetified-facebook-core-4.42.0\AndroidManifest.xml:41:13-72
+95            android:exported="false" />
+95-->[com.facebook.android:facebook-core:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\1ff03949211588c5929ab6d5077e0ba6\jetified-facebook-core-4.42.0\AndroidManifest.xml:42:13-37
+96
+97        <receiver
+97-->[com.facebook.android:facebook-core:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\1ff03949211588c5929ab6d5077e0ba6\jetified-facebook-core-4.42.0\AndroidManifest.xml:44:9-50:20
+98            android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver"
+98-->[com.facebook.android:facebook-core:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\1ff03949211588c5929ab6d5077e0ba6\jetified-facebook-core-4.42.0\AndroidManifest.xml:45:13-86
+99            android:exported="false" >
+99-->[com.facebook.android:facebook-core:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\1ff03949211588c5929ab6d5077e0ba6\jetified-facebook-core-4.42.0\AndroidManifest.xml:46:13-37
+100            <intent-filter>
+100-->[com.facebook.android:facebook-core:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\1ff03949211588c5929ab6d5077e0ba6\jetified-facebook-core-4.42.0\AndroidManifest.xml:47:13-49:29
+101                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED" />
+101-->[com.facebook.android:facebook-core:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\1ff03949211588c5929ab6d5077e0ba6\jetified-facebook-core-4.42.0\AndroidManifest.xml:48:17-95
+101-->[com.facebook.android:facebook-core:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\1ff03949211588c5929ab6d5077e0ba6\jetified-facebook-core-4.42.0\AndroidManifest.xml:48:25-92
+102            </intent-filter>
+103        </receiver>
+104
+105        <provider
+105-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\bba9e662e9f4bf0da774229f97b853fc\lifecycle-process-2.0.0\AndroidManifest.xml:23:9-27:43
+106            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+106-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\bba9e662e9f4bf0da774229f97b853fc\lifecycle-process-2.0.0\AndroidManifest.xml:24:13-79
+107            android:authorities="org.yapp.covey.lifecycle-process"
+107-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\bba9e662e9f4bf0da774229f97b853fc\lifecycle-process-2.0.0\AndroidManifest.xml:25:13-69
+108            android:exported="false"
+108-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\bba9e662e9f4bf0da774229f97b853fc\lifecycle-process-2.0.0\AndroidManifest.xml:26:13-37
+109            android:multiprocess="true" />
+109-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\bba9e662e9f4bf0da774229f97b853fc\lifecycle-process-2.0.0\AndroidManifest.xml:27:13-40
+110    </application>
+111
+112</manifest>

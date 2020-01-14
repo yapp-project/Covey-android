@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.yapp.covey.R;
 import org.yapp.covey.etc.CalculateDate;
 import org.yapp.covey.model.ItemDataModel;
-
 import java.util.ArrayList;
 
 public class AdapterApplyRecruit extends RecyclerView.Adapter<AdapterApplyRecruit.ViewHolder> {
@@ -23,6 +22,7 @@ public class AdapterApplyRecruit extends RecyclerView.Adapter<AdapterApplyRecrui
     }
 
     public AdapterApplyRecruit(){}
+
     public interface OnItemClickListener{
         void onItemClick(View v, int position);
     }

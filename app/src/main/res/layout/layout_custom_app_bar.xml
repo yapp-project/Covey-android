@@ -23,6 +23,19 @@
         app:layout_constraintTop_toTopOf="@id/iv_back"
         app:layout_constraintBottom_toBottomOf="@id/iv_back"/>
 
+
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/iv_add"
+        app:srcCompat="@drawable/add_ic"
+        android:background="@android:color/transparent"
+        android:visibility="invisible"
+        app:layout_constraintHeight_percent="0.428"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintTop_toTopOf="@+id/guideline_top"
+        app:layout_constraintWidth_percent="0.067" />
+
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
@@ -44,4 +57,10 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.044" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.956" />
 </androidx.constraintlayout.widget.ConstraintLayout>

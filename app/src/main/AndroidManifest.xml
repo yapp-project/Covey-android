@@ -18,24 +18,31 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".activity.UploadActivity"
             android:theme="@style/AppTheme.CustomAppBar"/>
+
+        <activity android:name=".activity.ProfileEditActivity"
+            android:theme="@style/AppTheme.CustomAppBar"/>
+
+        <activity android:name=".activity.SettingActivity"
+            android:theme="@style/AppTheme.CustomAppBar"/>
+
         <activity
             android:name=".activity.AlertActivity"
             android:theme="@style/AppTheme.CustomAppBar" />
         <activity
             android:name=".activity.DetailActivity"
             android:theme="@style/AppTheme.CustomAppBar" />
+
+        <activity android:name=".activity.CareerActivity"
+            android:theme="@style/AppTheme.CustomAppBar"/>
+
         <activity
             android:name=".activity.MoreItemActivity"
             android:theme="@style/AppTheme" />
+
         <activity
             android:name=".activity.MainActivity"
             android:theme="@style/AppTheme.StatusBarWhite"
             android:windowSoftInputMode="adjustPan">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activity.SignupActivity"

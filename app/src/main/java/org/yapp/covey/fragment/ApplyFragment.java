@@ -1,6 +1,5 @@
 package org.yapp.covey.fragment;
 
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,7 +23,6 @@ import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -34,11 +32,9 @@ public class ApplyFragment extends Fragment {
     private ConstraintLayout constraintNothing;
     private RecyclerView recyclerViewApply;
     private AdapterApplyRecruit adapterApply = new AdapterApplyRecruit();
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_apply, container, false);
 
         constraintNothing = rootView.findViewById(R.id.constraint_no_apply);

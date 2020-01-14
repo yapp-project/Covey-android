@@ -1,19 +1,17 @@
 package org.yapp.covey.fragment;
 
-
 import android.os.Bundle;
-
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.yapp.covey.R;
 import org.yapp.covey.adapter.AdapterApplyRecruit;
@@ -35,7 +33,6 @@ public class RecruitFragment extends Fragment {
     private RecyclerView recyclerViewRecruit;
     private AdapterApplyRecruit adapterRecruit = new AdapterApplyRecruit();
     private ConstraintLayout constraintNothing;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -1,5 +1,4 @@
 <resources>
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
@@ -19,6 +18,18 @@
         <item name="android:statusBarColor">#fff</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:background">#fff</item>
+
+    </style>
+
+    <style name="DatePickerTheme" parent="Theme.AppCompat.Dialog">
+        <item name="android:calendarTextColor">@color/greyish_brown</item>
+        <item name="android:colorForeground">@color/tomato</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:background">#fff</item>
+        <item name="colorPrimary">@color/salmon</item>
+        <item name="colorPrimaryDark">@color/tomato</item>
+        <item name="colorAccent">@color/salmon</item>
+        <item name="android:textColorHighlight">#fff</item>
     </style>
 
     <style name="AppBottomSheetDialogTheme"

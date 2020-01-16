@@ -15,6 +15,7 @@ import android.widget.TextView;
 import org.yapp.covey.R;
 import org.yapp.covey.etc.CustomAppBar;
 import org.yapp.covey.etc.userClass;
+import org.yapp.covey.etc.userResponseClass;
 import org.yapp.covey.util.Singleton;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +24,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProfileEditActivity extends AppCompatActivity {
-    private userClass kk;
+    private userResponseClass kk;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,8 +36,8 @@ public class ProfileEditActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 EditText test = findViewById(R.id.profile_edit_name);
-                kk.setName(test.getText().toString());
-                Log.d("dd",kk.getName());
+                kk.getUser().setName(test.getText().toString());
+                Log.d("dd",kk.getUser().getName());
                 editUser(kk);
             }
         });
@@ -125,13 +126,13 @@ public class ProfileEditActivity extends AppCompatActivity {
     }
 
     private void getUser(){
-        Singleton.retrofit.getUser().enqueue(new Callback<userClass>() {
+        Singleton.retrofit.getUser().enqueue(new Callback<userResponseClass>() {
             @Override
-            public void onResponse(Call<userClass> call, Response<userClass> response) {
+            public void onResponse(Call<userResponseClass> call, Response<userResponseClass> response) {
                 if (response.isSuccessful()){
                     if (response.code()==200){
                         TextView test = findViewById(R.id.profile_edit_name);
-                        test.setText(response.body().getName());
+                        test.setText(response.body().getUser().getName());
                         kk = response.body();
                     }
                     else;
@@ -140,16 +141,16 @@ public class ProfileEditActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<userClass> call, Throwable t) {
+            public void onFailure(Call<userResponseClass> call, Throwable t) {
                 //Log.w(TAG,"OnFailure phoneVerify");
             }
         });
     }
 
-    private void editUser(userClass body){
-        Singleton.retrofit.editUser(body).enqueue(new Callback<userClass>() {
+    private void editUser(userResponseClass body){
+        Singleton.retrofit.editUser(body).enqueue(new Callback<userResponseClass>() {
             @Override
-            public void onResponse(Call<userClass> call, Response<userClass> response) {
+            public void onResponse(Call<userResponseClass> call, Response<userResponseClass> response) {
                 if (response.isSuccessful()){
                     if (response.code()==201){
                         Log.d("201", "success");
@@ -161,7 +162,7 @@ public class ProfileEditActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<userClass> call, Throwable t) {
+            public void onFailure(Call<userResponseClass> call, Throwable t) {
                 Log.w("asd","OnFailure");
             }
         });

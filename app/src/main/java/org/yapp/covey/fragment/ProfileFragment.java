@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,8 +13,6 @@ import org.yapp.covey.R;
 import org.yapp.covey.activity.CareerActivity;
 import org.yapp.covey.activity.ProfileEditActivity;
 import org.yapp.covey.activity.SettingActivity;
-import org.yapp.covey.activity.SignupActivity;
-import org.yapp.covey.etc.phoneNumClass;
 import org.yapp.covey.etc.userClass;
 import org.yapp.covey.util.Singleton;
 
@@ -89,8 +86,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
                             ageGender.setText(response.body().getAge() + " / 남");
                         else
                             ageGender.setText(response.body().getAge() + " / 여");
-//                        phone.setText(response.body().getPhoneNum().substring(0,2) + " " + response.body().getPhoneNum().substring(3,6) + " " + response.body().getPhoneNum().substring(7));
-//                        intro.setText(response.body().getIntro());
+//                       phone.setText(response.body().getPhoneNum().substring(0,2) + " " + response.body().getPhoneNum().substring(3,6) + " " + response.body().getPhoneNum().substring(7));
+//                       intro.setText(response.body().getIntro());
                     }
                     else
                         Log.w(TAG, String.valueOf(response.code()));

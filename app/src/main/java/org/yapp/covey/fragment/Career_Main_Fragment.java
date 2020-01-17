@@ -12,6 +12,7 @@ import org.yapp.covey.activity.CareerActivity;
 import org.yapp.covey.activity.SettingActivity;
 import org.yapp.covey.adapter.AdapterCareerList;
 import org.yapp.covey.etc.ItemCareer;
+import org.yapp.covey.etc.ItemDecorationCategory;
 import org.yapp.covey.etc.careerClass;
 import org.yapp.covey.util.Singleton;
 
@@ -38,9 +39,10 @@ public class Career_Main_Fragment extends Fragment implements View.OnClickListen
         ((CareerActivity)getActivity()).setCustomAppBar("경력사항");
 
         careerListView = view.findViewById(R.id.recycler_career);
-        careerAdapter.mDataList.clear();
+
         getCareerData();
-        careerListView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+
+        careerListView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
         careerListView.setAdapter(careerAdapter);
 
         return view;

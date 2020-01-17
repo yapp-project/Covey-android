@@ -15,12 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class AdapterCareerList extends RecyclerView.Adapter<AdapterCareerList.ViewHolder> {
-    private ArrayList<String> dataCategory;
-    private Context context;
-    public ArrayList<careerClass> mDataList;
+    public ArrayList<careerClass> mDataList = new ArrayList<>();
 
-    public AdapterCareerList(){
-    }
+    public AdapterCareerList(){ }
 
     public interface OnItemClickListener{
         void onItemClick(View v, int position);
@@ -38,30 +35,35 @@ public class AdapterCareerList extends RecyclerView.Adapter<AdapterCareerList.Vi
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context)
+        View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_recycler_career , parent,false);
+        ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
+        view.setLayoutParams(layoutParams);
+
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull AdapterCareerList.ViewHolder holder, int position) {
-        String item = dataCategory.get(position);
+        careerClass item = mDataList.get(position);
 
-        holder.title.setText(item);
+        holder.title.setText(item.getJob());
+        holder.time.setText(item.getPeriodNum() + item.getPeriodUnit());
     }
 
     @Override
     public int getItemCount() {
-        return dataCategory.size();
+        return mDataList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView delete, title;
+        TextView delete, title, time;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.career_title);
             delete = itemView.findViewById(R.id.career_delete);
+            time = itemView.findViewById(R.id.career_time);
 
             delete.setOnClickListener(new View.OnClickListener(){
                 @Override

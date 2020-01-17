@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import org.yapp.covey.R;
+import org.yapp.covey.etc.careerClass;
 
 import java.util.ArrayList;
 
@@ -16,10 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 public class AdapterCareerList extends RecyclerView.Adapter<AdapterCareerList.ViewHolder> {
     private ArrayList<String> dataCategory;
     private Context context;
+    public ArrayList<careerClass> mDataList;
 
-    public AdapterCareerList(Context context, ArrayList<String> list){
-        this.context = context;
-        this.dataCategory = list;
+    public AdapterCareerList(){
     }
 
     public interface OnItemClickListener{

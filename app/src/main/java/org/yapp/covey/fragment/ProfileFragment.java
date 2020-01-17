@@ -83,13 +83,15 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
                         TextView ageGender = view.findViewById(R.id.profile_age_gender);
                         TextView phone = view.findViewById(R.id.profile_phone);
                         TextView intro = view.findViewById(R.id.profile_introduction);
+                        TextView address = view.findViewById(R.id.profile_address);
                         name.setText(user.getName());
                         if(user.getGender())
                             ageGender.setText(user.getAge() + " / 남");
                         else
                             ageGender.setText(user.getAge() + " / 여");
-//                       phone.setText(response.body().getPhoneNum().substring(0,2) + " " + response.body().getPhoneNum().substring(3,6) + " " + response.body().getPhoneNum().substring(7));
-//                       intro.setText(response.body().getIntro());
+                       phone.setText(user.getPhoneNum());
+                       address.setText(user.getAddress1() + " " + user.getAddress2());
+                       intro.setText(user.getIntro());
                     }
                     else
                         Log.w(TAG, String.valueOf(response.code()));

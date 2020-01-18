@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,9 +13,8 @@ import org.yapp.covey.R;
 import org.yapp.covey.activity.CareerActivity;
 import org.yapp.covey.activity.ProfileEditActivity;
 import org.yapp.covey.activity.SettingActivity;
-import org.yapp.covey.activity.SignupActivity;
-import org.yapp.covey.etc.phoneNumClass;
 import org.yapp.covey.etc.userClass;
+import org.yapp.covey.etc.userResponseClass;
 import org.yapp.covey.util.Singleton;
 
 import androidx.fragment.app.Fragment;
@@ -75,22 +73,25 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
     }
 
     private void getUser(final View view){
-        Singleton.retrofit.getUser().enqueue(new Callback<userClass>() {
+        Singleton.retrofit.getUser().enqueue(new Callback<userResponseClass>() {
             @Override
-            public void onResponse(Call<userClass> call, Response<userClass> response) {
+            public void onResponse(Call<userResponseClass> call, Response<userResponseClass> response) {
                 if (response.isSuccessful()){
                     if (response.code()==200){
+                        userClass user = response.body().getUser();
                         TextView name = view.findViewById(R.id.profile_name);
                         TextView ageGender = view.findViewById(R.id.profile_age_gender);
                         TextView phone = view.findViewById(R.id.profile_phone);
                         TextView intro = view.findViewById(R.id.profile_introduction);
-                        name.setText(response.body().getName());
-                        if(response.body().getGender())
-                            ageGender.setText(response.body().getAge() + " / 남");
+                        TextView address = view.findViewById(R.id.profile_address);
+                        name.setText(user.getName());
+                        if(user.getGender())
+                            ageGender.setText(user.getAge() + " / 남");
                         else
-                            ageGender.setText(response.body().getAge() + " / 여");
-//                        phone.setText(response.body().getPhoneNum().substring(0,2) + " " + response.body().getPhoneNum().substring(3,6) + " " + response.body().getPhoneNum().substring(7));
-//                        intro.setText(response.body().getIntro());
+                            ageGender.setText(user.getAge() + " / 여");
+                       phone.setText(user.getPhoneNum());
+                       address.setText(user.getAddress1() + " " + user.getAddress2());
+                       intro.setText(user.getIntro());
                     }
                     else
                         Log.w(TAG, String.valueOf(response.code()));
@@ -98,7 +99,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
             }
 
             @Override
-            public void onFailure(Call<userClass> call, Throwable t) {
+            public void onFailure(Call<userResponseClass> call, Throwable t) {
                 Log.w(TAG,"OnFailure phoneVerify");
             }
         });

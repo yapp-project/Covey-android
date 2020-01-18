@@ -3,77 +3,31 @@
 3    package="org.yapp.covey.test" >
 4
 5    <uses-sdk
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-5-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger2127776607671632426.xml:5:5-74
+5-->C:\GitHub\profile\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7868630989477534922.xml:5:5-74
 6        android:minSdkVersion="24"
-6-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger2127776607671632426.xml:5:15-41
+6-->C:\GitHub\profile\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7868630989477534922.xml:5:15-41
 7        android:targetSdkVersion="28" />
-7-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger2127776607671632426.xml:5:42-71
+7-->C:\GitHub\profile\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7868630989477534922.xml:5:42-71
 8
 9    <instrumentation
-9-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger2127776607671632426.xml:11:5-15:64
+9-->C:\GitHub\profile\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7868630989477534922.xml:11:5-15:64
 10        android:name="androidx.test.runner.AndroidJUnitRunner"
-10-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger2127776607671632426.xml:11:22-76
+10-->C:\GitHub\profile\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7868630989477534922.xml:11:22-76
 11        android:functionalTest="false"
-11-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger2127776607671632426.xml:14:22-52
+11-->C:\GitHub\profile\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7868630989477534922.xml:14:22-52
 12        android:handleProfiling="false"
-12-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger2127776607671632426.xml:13:22-53
+12-->C:\GitHub\profile\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7868630989477534922.xml:13:22-53
 13        android:label="Tests for org.yapp.covey"
-13-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger2127776607671632426.xml:15:22-62
+13-->C:\GitHub\profile\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7868630989477534922.xml:15:22-62
 14        android:targetPackage="org.yapp.covey" />
-14-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger2127776607671632426.xml:12:22-60
+14-->C:\GitHub\profile\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7868630989477534922.xml:12:22-60
 15
 16    <application android:debuggable="true" >
-16-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger2127776607671632426.xml:7:5-9:19
-16-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger2127776607671632426.xml:7:18-43
+16-->C:\GitHub\profile\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7868630989477534922.xml:7:5-9:19
+16-->C:\GitHub\profile\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7868630989477534922.xml:7:18-43
 17        <uses-library android:name="android.test.runner" />
-17-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger2127776607671632426.xml:8:9-60
-17-->C:\Users\jgw97\Desktop\Covey_AOS_BackUp\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger2127776607671632426.xml:8:23-57
-=======
-5-->C:\GitHub\123\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7137191980363533099.xml:5:5-74
-=======
-5-->C:\GitHub\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger165868026753761907.xml:5:5-74
->>>>>>> pull test
-=======
-5-->C:\GitHub\123asd\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5034041737871949613.xml:5:5-74
->>>>>>> profile
-6        android:minSdkVersion="24"
-6-->C:\GitHub\123asd\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5034041737871949613.xml:5:15-41
-7        android:targetSdkVersion="28" />
-7-->C:\GitHub\123asd\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5034041737871949613.xml:5:42-71
-8
-9    <instrumentation
-9-->C:\GitHub\123asd\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5034041737871949613.xml:11:5-15:64
-10        android:name="androidx.test.runner.AndroidJUnitRunner"
-10-->C:\GitHub\123asd\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5034041737871949613.xml:11:22-76
-11        android:functionalTest="false"
-11-->C:\GitHub\123asd\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5034041737871949613.xml:14:22-52
-12        android:handleProfiling="false"
-12-->C:\GitHub\123asd\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5034041737871949613.xml:13:22-53
-13        android:label="Tests for org.yapp.covey"
-13-->C:\GitHub\123asd\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5034041737871949613.xml:15:22-62
-14        android:targetPackage="org.yapp.covey" />
-14-->C:\GitHub\123asd\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5034041737871949613.xml:12:22-60
-15
-16    <application android:debuggable="true" >
-16-->C:\GitHub\123asd\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5034041737871949613.xml:7:5-9:19
-16-->C:\GitHub\123asd\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5034041737871949613.xml:7:18-43
-17        <uses-library android:name="android.test.runner" />
-<<<<<<< HEAD
-<<<<<<< HEAD
-17-->C:\GitHub\123\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7137191980363533099.xml:8:9-60
-17-->C:\GitHub\123\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7137191980363533099.xml:8:23-57
->>>>>>> test
-=======
-17-->C:\GitHub\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger165868026753761907.xml:8:9-60
-17-->C:\GitHub\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger165868026753761907.xml:8:23-57
->>>>>>> pull test
-=======
-17-->C:\GitHub\123asd\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5034041737871949613.xml:8:9-60
-17-->C:\GitHub\123asd\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5034041737871949613.xml:8:23-57
->>>>>>> profile
+17-->C:\GitHub\profile\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7868630989477534922.xml:8:9-60
+17-->C:\GitHub\profile\Covey-android\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7868630989477534922.xml:8:23-57
 18    </application>
 19
 20</manifest>

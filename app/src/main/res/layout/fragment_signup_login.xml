@@ -108,7 +108,8 @@
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/gd_signup_login_btn2_bottom" />
+        app:layout_constraintTop_toTopOf="@+id/gd_signup_login_btn2_bottom"
+        app:layout_constraintBottom_toTopOf="@id/gd_signup_login_bottom" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gd_signup_login_logo_left"
@@ -206,5 +207,12 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="640dp" />
+        app:layout_constraintGuide_percent="0.881" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gd_signup_login_bottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.937" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,6 +23,7 @@ import org.yapp.covey.activity.AlertActivity;
 import org.yapp.covey.activity.DetailActivity;
 import org.yapp.covey.activity.MoreItemActivity;
 import org.yapp.covey.activity.UploadActivity;
+import org.yapp.covey.adapter.AdapterApplyRecruit;
 import org.yapp.covey.adapter.AdapterCategoryList;
 import org.yapp.covey.adapter.AdapterLocationList;
 import org.yapp.covey.adapter.AdapterMoneyList;
@@ -41,12 +42,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private ImageButton buttonAlert, buttonFilter;
     private TextView tvUpload, tvTitle, tvMoreLocationPost, tvMoreMoneyPost;
     private RecyclerView listViewCategory, recyclerViewLocation, recyclerViewPay;
-    private AdapterCategoryList adapterCategory;
+    private AdapterCategoryList adapterCategory = new AdapterCategoryList();
     private AdapterLocationList adapterLocationPost = new AdapterLocationList();
     private AdapterMoneyList adapterMoneyList = new AdapterMoneyList();
     private ArrayList<String> mArrayData = new ArrayList<>();
 
-    private boolean emptyData = true;
     Intent intentItemDetail;
 
     private static final String TAG = "HOME";
@@ -59,12 +59,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        if (emptyData){
+        if (adapterCategory.dataEnable){
             mArrayData.addAll(Arrays.asList(getResources().getStringArray(R.array.category)));
-            emptyData = false;
+            adapterCategory = new AdapterCategoryList(getContext(),mArrayData,false);
         }
-        adapterCategory = new AdapterCategoryList(getContext(),mArrayData);
-        mArrayData.addAll(Arrays.asList(getResources().getStringArray(R.array.category)));
 
         setInitView(rootView);
 

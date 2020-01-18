@@ -16,11 +16,15 @@ import java.util.ArrayList;
 public class AdapterCategoryList extends RecyclerView.Adapter<AdapterCategoryList.ViewHolder> {
     private ArrayList<String> dataCategory;
     private Context context;
+    public boolean dataEnable = true;
 
-    public AdapterCategoryList(Context context, ArrayList<String> list){
+    public AdapterCategoryList(Context context, ArrayList<String> list, Boolean dataEnable){
         this.context = context;
         this.dataCategory = list;
+        this.dataEnable = dataEnable;
     }
+
+    public AdapterCategoryList(){}
 
     public interface OnItemClickListener{
         void onItemClick(View v, int position);

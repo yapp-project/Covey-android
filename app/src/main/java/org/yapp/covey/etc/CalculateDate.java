@@ -7,6 +7,7 @@ import java.util.Date;
 
 public class CalculateDate {
     private String today = getCurrentDate();
+    int currentYear, currentMonth, currentDay;
 
     public long calDateBetween(String date)
     {
@@ -32,6 +33,16 @@ public class CalculateDate {
     private String getCurrentDate(){
         // Date 로 구하기
         SimpleDateFormat fm1 = new SimpleDateFormat("yyyy-MM-dd");
+
         return fm1.format(new Date());
+    }
+    public void setCurrentDate(){
+        SimpleDateFormat formatYear = new SimpleDateFormat("yyyy");
+        SimpleDateFormat formatMonth = new SimpleDateFormat("MM");
+        SimpleDateFormat formatDay = new SimpleDateFormat("dd");
+
+        currentYear = Integer.parseInt(formatYear.format(new Date()));
+        currentMonth = Integer.parseInt(formatMonth.format(new Date()));
+        currentDay = Integer.parseInt(formatDay.format(new Date()));
     }
 }

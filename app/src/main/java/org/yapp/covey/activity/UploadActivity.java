@@ -3,13 +3,16 @@ package org.yapp.covey.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.Spinner;
 
 import org.yapp.covey.R;
 import org.yapp.covey.adapter.AdapterCustomSpinner;
 import org.yapp.covey.databinding.ActivityUploadBinding;
+import org.yapp.covey.etc.CalculateDate;
 import org.yapp.covey.etc.CustomAppBar;
 
 import java.util.ArrayList;
@@ -19,6 +22,9 @@ import java.util.List;
 public class UploadActivity extends AppCompatActivity {
     ActivityUploadBinding binding;
     AdapterCustomSpinner mAdapterSpinner;
+
+    private int year, month, day ;
+    private String startDate, endDate;
 
     List<String> hourArray = new ArrayList<>();
     List<String> minArray = new ArrayList<>();
@@ -34,6 +40,21 @@ public class UploadActivity extends AppCompatActivity {
         setSpinner(binding.spinnerCategory, Arrays.asList(getResources().getStringArray(R.array.category)),"카테고리를 선택하세요");
         setSpinner(binding.spinnerTimeHour, hourArray,"시");
         setSpinner(binding.spinnerTimeMin, minArray ,"분");
+
+
+
+        binding.tvPostDateStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDatePicker();
+            }
+        });
+        binding.tvPostDateEnd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDatePicker();
+            }
+        });
 
         setCustomAppBar();
     }
@@ -63,5 +84,20 @@ public class UploadActivity extends AppCompatActivity {
         for (int i = 0 ; i<= 5 ; i++){
             minArray.add(String.valueOf(i*10));
         }
+    }
+
+    private void showDatePicker(){
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,R.style.DatePickerTheme, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int yyyy, int mm, int dd) {
+                year = yyyy;
+                month = mm+1;
+                day = dd;
+                startDate = year+"-"+month+"-"+day;
+            }
+        }, 2020,1,1);
+        datePickerDialog.setTitle("날짜 선택");
+
+        datePickerDialog.show();
     }
 }

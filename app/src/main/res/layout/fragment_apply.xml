@@ -10,7 +10,7 @@
 
     <include
         android:id="@+id/layout_title_apply"
-        layout="@layout/layout_custom_app_bar"
+        layout="@layout/layout_custom_app_bar_basic"
         android:layout_width="match_parent"
         android:layout_height="56dp"/>
 
@@ -74,7 +74,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_apply"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:background="@color/white_three"
         android:visibility="invisible"
         app:layout_constraintTop_toBottomOf="@id/layout_title_apply"

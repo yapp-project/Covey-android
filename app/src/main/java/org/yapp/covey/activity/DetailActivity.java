@@ -106,7 +106,7 @@ public class DetailActivity extends AppCompatActivity {
 //            }
 //        });
 
-        binding.btnApply.setBackgroundColor(R.color.white_four);
-        binding.btnApply.setTextColor(R.color.warm_grey);
+      binding.btnApply.setVisibility(View.INVISIBLE);
+      binding.btnApplied.setVisibility(View.VISIBLE);
     }
 }

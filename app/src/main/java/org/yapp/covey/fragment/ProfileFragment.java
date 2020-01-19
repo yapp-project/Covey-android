@@ -46,6 +46,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
 
         getCareerData();
 
+        profileCareerAdapter.mDataList.clear();
+
         profileCareerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
         profileCareerView.setAdapter(profileCareerAdapter);
 

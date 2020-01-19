@@ -76,7 +76,7 @@ public class Career_Main_Fragment extends Fragment implements View.OnClickListen
 
             @Override
             public void onFailure(Call<ArrayList<careerClass>> call, Throwable t) {
-                Log.w(TAG,"OnFailure LocationList");
+                Log.w(TAG,"OnFailure");
             }
         });
     }

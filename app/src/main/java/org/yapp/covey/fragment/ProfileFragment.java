@@ -13,17 +13,25 @@ import org.yapp.covey.R;
 import org.yapp.covey.activity.CareerActivity;
 import org.yapp.covey.activity.ProfileEditActivity;
 import org.yapp.covey.activity.SettingActivity;
+import org.yapp.covey.adapter.AdapterProfileCareer;
+import org.yapp.covey.etc.careerClass;
 import org.yapp.covey.etc.userClass;
 import org.yapp.covey.etc.userResponseClass;
 import org.yapp.covey.util.Singleton;
 
+import java.util.ArrayList;
+
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener{
     private ImageView profile_edit, career_edit, setting;
+    private RecyclerView profileCareerView;
+    private AdapterProfileCareer profileCareerAdapter = new AdapterProfileCareer();
     private static final String TAG = "Profile";
 
     public ProfileFragment() {
@@ -36,11 +44,18 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
 
         setInitView(rootView);
 
+        getCareerData();
+
+        profileCareerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+        profileCareerView.setAdapter(profileCareerAdapter);
+
         return rootView;
     }
 
     private void setInitView(View view){
         getUser(view);
+
+        profileCareerView = view.findViewById(R.id.recycler_profile_career);
 
         profile_edit = view.findViewById(R.id.profile_edit);
         profile_edit.setOnClickListener(this);
@@ -101,6 +116,30 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
             @Override
             public void onFailure(Call<userResponseClass> call, Throwable t) {
                 Log.w(TAG,"OnFailure phoneVerify");
+            }
+        });
+    }
+
+    private void getCareerData(){
+        Singleton.retrofit.getCareer().enqueue(new Callback<ArrayList<careerClass>>() {
+            @Override
+            public void onResponse(Call<ArrayList<careerClass>> call, Response<ArrayList<careerClass>> response) {
+                if (response.isSuccessful()){
+                    if (response.code()==200) {
+                        ArrayList<careerClass> result = response.body();
+                        assert result != null;
+                        profileCareerAdapter.mDataList.addAll(result);
+                        profileCareerAdapter.notifyDataSetChanged();
+                        Log.w(TAG, String.valueOf(response.body())+response.body().size());
+                    }
+                    else
+                        Log.w(TAG, String.valueOf(response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<careerClass>> call, Throwable t) {
+                Log.w(TAG,"OnFailure");
             }
         });
     }

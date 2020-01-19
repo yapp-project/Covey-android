@@ -2,6 +2,9 @@ package org.yapp.covey.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+
+import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +23,7 @@ public class DetailActivity extends AppCompatActivity {
     LayoutPostDetailBinding binding;
     private ItemDataModel itemPostData;
     private static String TAG = "POST DETAIL ACTIVITY";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +34,13 @@ public class DetailActivity extends AppCompatActivity {
         Log.d(TAG, String.valueOf(postId));
         setCustomAppBar();
         getPostData(postId);
+
+        binding.btnApply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickApply(postId);
+            }
+        });
     }
     private void getPostData(int postId){
         Singleton.retrofit.postDetail(postId).enqueue(new Callback<ItemDataModel>() {
@@ -70,5 +81,32 @@ public class DetailActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    @SuppressLint("ResourceAsColor")
+    public void clickApply(int postId){
+//        Singleton.retrofit.apply(postId).enqueue(new Callback<JSONArray>() {
+//            @SuppressLint("ResourceAsColor")
+//            @Override
+//            public void onResponse(Call<JSONArray> call, Response<JSONArray> response) {
+//                if (response.isSuccessful()){
+//                    if (response.code()==201){
+//                        Log.d("성공","apply posting");
+//                        binding.btnApply.setBackgroundColor(R.color.white_four);
+//                        binding.btnApply.setTextColor(R.color.warm_grey);
+//                    }
+//                }
+//                else{
+//                    Toast.makeText(getApplicationContext(), "서버연결을 확인해주세요",Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<JSONArray> call, Throwable t) {
+//
+//            }
+//        });
+
+        binding.btnApply.setBackgroundColor(R.color.white_four);
+        binding.btnApply.setTextColor(R.color.warm_grey);
     }
 }

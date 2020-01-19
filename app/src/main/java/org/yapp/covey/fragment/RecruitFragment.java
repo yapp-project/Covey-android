@@ -1,5 +1,6 @@
 package org.yapp.covey.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.yapp.covey.R;
+import org.yapp.covey.activity.DetailActivity;
 import org.yapp.covey.adapter.AdapterApplyRecruit;
 import org.yapp.covey.model.ItemDataModel;
 import org.yapp.covey.util.Singleton;
@@ -44,6 +46,16 @@ public class RecruitFragment extends Fragment {
 
         recyclerViewRecruit = rootView.findViewById(R.id.recycler_recruit);
         recyclerViewRecruit.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+
+        adapterRecruit.setOnItemClickListener(new AdapterApplyRecruit.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                Intent intentDetail = new Intent(getContext(), DetailActivity.class);
+                intentDetail.putExtra("postId",adapterRecruit.mDataList.get(position).getId());
+                startActivity(intentDetail);
+            }
+        });
+
         recyclerViewRecruit.setAdapter(adapterRecruit);
 
         Singleton.retrofit.registerList().enqueue(new Callback<ArrayList<ItemDataModel>>() {

@@ -41,8 +41,6 @@ public class UploadActivity extends AppCompatActivity {
         setSpinner(binding.spinnerTimeHour, hourArray,"시");
         setSpinner(binding.spinnerTimeMin, minArray ,"분");
 
-
-
         binding.tvPostDateStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

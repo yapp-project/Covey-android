@@ -208,19 +208,17 @@
         app:layout_constraintTop_toBottomOf="@id/gd_profile_careertext_top" />
 
 
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_profile_career"
+        android:elevation="4dp"
+        android:overScrollMode="never"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/gd_profile_careers_bottom"
         app:layout_constraintLeft_toRightOf="@id/gd_profile_text_left"
         app:layout_constraintRight_toLeftOf="@id/gd_profile_text_right"
-        app:layout_constraintTop_toBottomOf="@id/gd_profile_careers_top">
+        app:layout_constraintTop_toBottomOf="@id/gd_profile_careers_top" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
 
     <androidx.constraintlayout.widget.Guideline
         android:layout_height="0dp"

@@ -19,19 +19,19 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DetailActivity extends AppCompatActivity {
-    int postId;
+    int postId, activityCategory;
     LayoutPostDetailBinding binding;
     private ItemDataModel itemPostData;
     private static String TAG = "POST DETAIL ACTIVITY";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.layout_post_detail);
         binding = DataBindingUtil.setContentView(this, R.layout.layout_post_detail);
 
+        activityCategory = getIntent().getIntExtra("detailCategory",0);
         postId = getIntent().getIntExtra("postId",0);
         Log.d(TAG, String.valueOf(postId));
+        setButtonText(activityCategory);
         setCustomAppBar();
         getPostData(postId);
 
@@ -42,6 +42,23 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
     }
+    public void setButtonText(int activityCategory){
+        switch (activityCategory){
+            case 1:{
+                binding.btnApply.setText("지원하기");
+                break;
+            }
+            case 2:{
+                binding.btnApply.setText("지원 취소");
+                break;
+            }
+            case 3:{
+                binding.btnApply.setText("모집마감");
+                break;
+            }
+        }
+    }
+
     private void getPostData(int postId){
         Singleton.retrofit.postDetail(postId).enqueue(new Callback<ItemDataModel>() {
             @Override

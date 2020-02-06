@@ -49,7 +49,12 @@ public class AdapterCustomSpinner extends BaseAdapter {
 
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
-        convertView = inflater.inflate(R.layout.item_spinner_dropdown,parent,false);
+        convertView = inflater.inflate(R.layout.item_spinner_dropdown, parent, false);
+        if (position == 0) {
+            convertView.setBackgroundResource(R.drawable.rounded_top_rectangle_outline_8dp);
+        } else if (position == dataList.size()-1) {
+            convertView.setBackgroundResource(R.drawable.rounded_bottom_rectangle_outline_8dp);
+        }
         String data = dataList.get(position);
         TextView tvData = convertView.findViewById(R.id.tv_spinner_item);
         tvData.setText(data);

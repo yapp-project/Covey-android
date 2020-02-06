@@ -19,7 +19,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DetailActivity extends AppCompatActivity {
-    int postId, activityCategory;
+    int activityCategory;
+    String postId;
     LayoutPostDetailBinding binding;
     private ItemDataModel itemPostData;
     private static String TAG = "POST DETAIL ACTIVITY";
@@ -29,8 +30,8 @@ public class DetailActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.layout_post_detail);
 
         activityCategory = getIntent().getIntExtra("detailCategory",0);
-        postId = getIntent().getIntExtra("postId",0);
-        Log.d(TAG, String.valueOf(postId));
+        postId = getIntent().getStringExtra("postId");
+        Log.d(TAG, postId);
         setButtonText(activityCategory);
         setCustomAppBar();
         getPostData(postId);
@@ -59,12 +60,13 @@ public class DetailActivity extends AppCompatActivity {
         }
     }
 
-    private void getPostData(int postId){
+    private void getPostData(final String postId){
         Singleton.retrofit.postDetail(postId).enqueue(new Callback<ItemDataModel>() {
             @Override
             public void onResponse(Call<ItemDataModel> call, Response<ItemDataModel> response) {
                 if (response.code()==200){
                     itemPostData = response.body();
+                    Log.w(TAG, postId);
                     Log.w(TAG, itemPostData.getTitle());
                     setPostData(itemPostData);
                 }
@@ -84,7 +86,7 @@ public class DetailActivity extends AppCompatActivity {
         String location = itemPostData.getAddress1()+" "+itemPostData.getAddress2()+" "+itemPostData.getAddress3();
         binding.tvLocation.setText("위치\t\t"+location);
         binding.tvPay.setText("시급\t\t"+itemPostData.getPay()+"원");
-        binding.tvStartToEndDate.setText("일시\t\t"+itemPostData.getStartDate()+"~"+itemPostData.getEndDate());
+        binding.tvStartToEndDate.setText("일시\t\t"+itemPostData.getStartDate().substring(0,10)+" ~ "+itemPostData.getEndDate().substring(0,10));
         binding.tvTime.setText("시간\t\t"+itemPostData.getWorkingTime());
         binding.tvContent.setText(itemPostData.getDescription());
         binding.tvTitle.setText(itemPostData.getTitle());
@@ -100,7 +102,7 @@ public class DetailActivity extends AppCompatActivity {
         });
     }
     @SuppressLint("ResourceAsColor")
-    public void clickApply(int postId){
+    public void clickApply(String postId){
 //        Singleton.retrofit.apply(postId).enqueue(new Callback<JSONArray>() {
 //            @SuppressLint("ResourceAsColor")
 //            @Override

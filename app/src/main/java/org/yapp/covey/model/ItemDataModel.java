@@ -8,6 +8,10 @@ public class ItemDataModel {
     @Expose
     private String id;
 
+    @SerializedName("userId")
+    @Expose
+    private String userId;
+
     @SerializedName("title")
     @Expose
     private String title;
@@ -68,21 +72,17 @@ public class ItemDataModel {
     @Expose
     private String img3;
 
-    @SerializedName("createdAt")
-    @Expose
-    private String createdAt;
-
-    @SerializedName("updatedAt")
-    @Expose
-    private String updatedAt;
-
-    @SerializedName("deletedAt")
-    @Expose
-    private String deletedAt;
-
-    @SerializedName("userId")
-    @Expose
-    private String userId;
+//    @SerializedName("createdAt")
+//    @Expose
+//    private String createdAt;
+//
+//    @SerializedName("updatedAt")
+//    @Expose
+//    private String updatedAt;
+//
+//    @SerializedName("deletedAt")
+//    @Expose
+//    private String deletedAt;
 
     public String getId() {
         return id;
@@ -188,21 +188,21 @@ public class ItemDataModel {
         this.category = category;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
+//    public String getCreatedAt() {
+//        return createdAt;
+//    }
+//
+//    public void setCreatedAt(String createdAt) {
+//        this.createdAt = createdAt;
+//    }
+//
+//    public String getUpdatedAt() {
+//        return updatedAt;
+//    }
+//
+//    public void setUpdatedAt(String updatedAt) {
+//        this.updatedAt = updatedAt;
+//    }
 
     public String getUserId() {
         return userId;
@@ -236,11 +236,11 @@ public class ItemDataModel {
         this.img3 = img3;
     }
 
-    public String getDeletedAt() {
-        return deletedAt;
-    }
-
-    public void setDeletedAt(String deletedAt) {
-        this.deletedAt = deletedAt;
-    }
+//    public String getDeletedAt() {
+//        return deletedAt;
+//    }
+//
+//    public void setDeletedAt(String deletedAt) {
+//        this.deletedAt = deletedAt;
+//    }
 }

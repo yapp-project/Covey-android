@@ -33,7 +33,7 @@ public interface RetrofitService {
 
     @GET("api/post/{postId}")
     Call<ItemDataModel>
-    postDetail(@Path("postId") Integer postId);
+    postDetail(@Path("postId") String postId);
 
     @GET("api/post/registerList")
     Call<ArrayList<ItemDataModel>>

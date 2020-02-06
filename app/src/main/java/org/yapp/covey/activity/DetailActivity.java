@@ -2,6 +2,7 @@ package org.yapp.covey.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
@@ -10,10 +11,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import org.yapp.covey.R;
+import org.yapp.covey.adapter.AdapterApplyImage;
 import org.yapp.covey.databinding.LayoutPostDetailBinding;
 import org.yapp.covey.etc.CustomAppBar;
 import org.yapp.covey.model.ItemDataModel;
 import org.yapp.covey.util.Singleton;
+
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -22,19 +27,22 @@ public class DetailActivity extends AppCompatActivity {
     int activityCategory;
     String postId;
     LayoutPostDetailBinding binding;
+    AdapterApplyImage adapterApplyImage = new AdapterApplyImage();
+    ArrayList<String> imageUriList = new ArrayList<>();
     private ItemDataModel itemPostData;
     private static String TAG = "POST DETAIL ACTIVITY";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.layout_post_detail);
 
-        activityCategory = getIntent().getIntExtra("detailCategory",0);
         postId = getIntent().getStringExtra("postId");
-        Log.d(TAG, postId);
         setButtonText(activityCategory);
         setCustomAppBar();
         getPostData(postId);
+
+        binding.recyclerImage.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
 
         binding.btnApply.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,11 +54,11 @@ public class DetailActivity extends AppCompatActivity {
     public void setButtonText(int activityCategory){
         switch (activityCategory){
             case 1:{
-                binding.btnApply.setText("지원하기");
+                binding.btnApply.setText("지원 취소");
                 break;
             }
             case 2:{
-                binding.btnApply.setText("지원 취소");
+                binding.btnApply.setText("지원 하기");
                 break;
             }
             case 3:{
@@ -67,9 +75,14 @@ public class DetailActivity extends AppCompatActivity {
                 if (response.code()==200){
                     itemPostData = response.body();
                     Log.w(TAG, postId);
-                    Log.w(TAG, itemPostData.getTitle());
+
+                    imageUriList.add(itemPostData.getImg1());
+                    imageUriList.add(itemPostData.getImg2());
+                    imageUriList.add(itemPostData.getImg3());
+                    setImageRecycler(imageUriList);
                     setPostData(itemPostData);
-                }
+//                    setButtonText(activityCategory);
+            }
                 else if (response.code() ==404){
                     Log.d(TAG, "code 404");
                     Toast.makeText(getApplicationContext(),"해당 게시글을 찾을 수 없습니다",Toast.LENGTH_SHORT).show();
@@ -91,6 +104,13 @@ public class DetailActivity extends AppCompatActivity {
         binding.tvContent.setText(itemPostData.getDescription());
         binding.tvTitle.setText(itemPostData.getTitle());
     }
+
+    private void setImageRecycler(ArrayList<String> imageList){
+        adapterApplyImage.imageUriList = imageList;
+        binding.recyclerImage.setAdapter(adapterApplyImage);
+        adapterApplyImage.notifyDataSetChanged();
+    }
+
     private void setCustomAppBar(){
         CustomAppBar customAppBar = new CustomAppBar(this, getSupportActionBar());
         customAppBar.setCustomAppBar("상세 정보");

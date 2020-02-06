@@ -8,11 +8,13 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ItemDecorationCategory extends RecyclerView.ItemDecoration{
+public class ItemDecorationLinear extends RecyclerView.ItemDecoration{
     private int MARGIN_WIDTH;
+    private int amount;
 
-    public ItemDecorationCategory(Context context, Float width) {
+    public ItemDecorationLinear(Context context, Float width, int itemAmount) {
         MARGIN_WIDTH = dpToPx(context, width);
+        this.amount = --itemAmount;
     }
 
     @Override
@@ -25,18 +27,17 @@ public class ItemDecorationCategory extends RecyclerView.ItemDecoration{
         if(position == 0) {
             outRect.left = 0;
             outRect.right = MARGIN_WIDTH;
-        } else if (position == 7){
+        } else if (position == amount){
             outRect.left = MARGIN_WIDTH;
             outRect.right = 0;
-
+        }else{
+            outRect.right = MARGIN_WIDTH;
+            outRect.left = MARGIN_WIDTH;
         }
-        outRect.right = MARGIN_WIDTH;
-        outRect.left = MARGIN_WIDTH;
     }
 
     // dp -> pixel 단위로 변경
     private int dpToPx(Context context, double dp) {
-
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, (float) dp, context.getResources().getDisplayMetrics());
     }
 }

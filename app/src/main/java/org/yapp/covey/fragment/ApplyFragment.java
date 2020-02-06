@@ -50,6 +50,7 @@ public class ApplyFragment extends Fragment {
             public void onItemClick(View v, int position) {
                 Intent intentDetail = new Intent(getContext(), DetailActivity.class);
                 intentDetail.putExtra("postId",adapterApply.mDataList.get(position).getId());
+                intentDetail.putExtra("activityCategory",1);
                 startActivity(intentDetail);
             }
         });

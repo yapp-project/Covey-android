@@ -5,14 +5,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import org.yapp.covey.R;
 import org.yapp.covey.activity.CareerActivity;
-import org.yapp.covey.activity.SettingActivity;
 import org.yapp.covey.adapter.AdapterCareerList;
-import org.yapp.covey.etc.ItemCareer;
-import org.yapp.covey.etc.ItemDecorationCategory;
 import org.yapp.covey.etc.careerClass;
 import org.yapp.covey.util.Singleton;
 

@@ -23,8 +23,9 @@ public class UploadActivity extends AppCompatActivity {
     ActivityUploadBinding binding;
     AdapterCustomSpinner mAdapterSpinner;
 
-    private int year, month, day ;
-    private String startDate, endDate;
+    private int year, day ;
+    String month;
+    private String startDate, endDate, selectDate;
 
     List<String> hourArray = new ArrayList<>();
     List<String> minArray = new ArrayList<>();
@@ -44,13 +45,13 @@ public class UploadActivity extends AppCompatActivity {
         binding.tvPostDateStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDatePicker();
+                showDatePicker("startDate");
             }
         });
         binding.tvPostDateEnd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDatePicker();
+                showDatePicker("endDate");
             }
         });
 
@@ -84,18 +85,26 @@ public class UploadActivity extends AppCompatActivity {
         }
     }
 
-    private void showDatePicker(){
+    private void showDatePicker(final String dateStyle){
         DatePickerDialog datePickerDialog = new DatePickerDialog(this,R.style.DatePickerTheme, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int yyyy, int mm, int dd) {
                 year = yyyy;
-                month = mm+1;
+                if (mm+1<10){
+                    month = "0"+ mm+1;
+                }else{
+                    month = String.valueOf(mm+1);
+                }
                 day = dd;
-                startDate = year+"-"+month+"-"+day;
+                selectDate = yyyy+"-"+month+"-"+dd;
+                if (dateStyle.equals("startDate")){
+                    binding.tvPostDateStart.setText(selectDate);
+                }else{
+                    binding.tvPostDateEnd.setText(selectDate);
+                }
             }
         }, 2020,1,1);
-        datePickerDialog.setTitle("날짜 선택");
-
         datePickerDialog.show();
+
     }
 }

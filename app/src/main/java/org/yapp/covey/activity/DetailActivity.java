@@ -14,6 +14,7 @@ import org.yapp.covey.R;
 import org.yapp.covey.adapter.AdapterApplyImage;
 import org.yapp.covey.databinding.LayoutPostDetailBinding;
 import org.yapp.covey.etc.CustomAppBar;
+import org.yapp.covey.etc.ItemDecorationLinear;
 import org.yapp.covey.model.ItemDataModel;
 import org.yapp.covey.util.Singleton;
 
@@ -43,6 +44,7 @@ public class DetailActivity extends AppCompatActivity {
         getPostData(postId);
 
         binding.recyclerImage.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        binding.recyclerImage.addItemDecoration(new ItemDecorationLinear(this,8f,2));
 
         binding.btnApply.setOnClickListener(new View.OnClickListener() {
             @Override

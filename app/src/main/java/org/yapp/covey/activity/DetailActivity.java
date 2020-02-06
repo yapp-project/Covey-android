@@ -103,28 +103,20 @@ public class DetailActivity extends AppCompatActivity {
     }
     @SuppressLint("ResourceAsColor")
     public void clickApply(String postId){
-//        Singleton.retrofit.apply(postId).enqueue(new Callback<JSONArray>() {
-//            @SuppressLint("ResourceAsColor")
-//            @Override
-//            public void onResponse(Call<JSONArray> call, Response<JSONArray> response) {
-//                if (response.isSuccessful()){
-//                    if (response.code()==201){
-//                        Log.d("성공","apply posting");
-//                        binding.btnApply.setBackgroundColor(R.color.white_four);
-//                        binding.btnApply.setTextColor(R.color.warm_grey);
-//                    }
-//                }
-//                else{
-//                    Toast.makeText(getApplicationContext(), "서버연결을 확인해주세요",Toast.LENGTH_SHORT).show();
-//                }
+        switch (activityCategory){
+//            case 1:{
+//                // apply code server err
+//                break;
 //            }
-//
-//            @Override
-//            public void onFailure(Call<JSONArray> call, Throwable t) {
-//
+//            case 2:{
+//                // cancel code server err
+//                break;
 //            }
-//        });
-
+//            case 3:{
+//                binding.btnApply.setText("모집마감");
+//                break;
+//            }
+        }
       binding.btnApply.setVisibility(View.INVISIBLE);
       binding.btnApplied.setVisibility(View.VISIBLE);
     }

@@ -42,9 +42,8 @@ public class AdapterCustomSpinner extends BaseAdapter {
     @Override
     public View getView(int position, View view, ViewGroup parent) {
         view = inflater.inflate(R.layout.item_spinner,parent,false);
-            String hint = title;
-            TextView tvData = view.findViewById(R.id.tv_spinner_hint);
-            tvData.setText(hint);
+        String text = dataList.get(position);
+        ((TextView)view.findViewById(R.id.tv_spinner_hint)).setText(text);
         return view;
     }
 

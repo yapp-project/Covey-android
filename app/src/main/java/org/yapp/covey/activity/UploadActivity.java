@@ -1,11 +1,13 @@
 package org.yapp.covey.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.ListPopupWindow;
 import androidx.databinding.DataBindingUtil;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 
@@ -15,6 +17,7 @@ import org.yapp.covey.databinding.ActivityUploadBinding;
 import org.yapp.covey.etc.CalculateDate;
 import org.yapp.covey.etc.CustomAppBar;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -54,7 +57,6 @@ public class UploadActivity extends AppCompatActivity {
                 showDatePicker("endDate");
             }
         });
-
         setCustomAppBar();
     }
     private void setCustomAppBar(){

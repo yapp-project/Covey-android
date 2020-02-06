@@ -14,7 +14,7 @@ public class ItemDecorationLinear extends RecyclerView.ItemDecoration{
 
     public ItemDecorationLinear(Context context, Float width, int itemAmount) {
         MARGIN_WIDTH = dpToPx(context, width);
-        this.amount = itemAmount;
+        this.amount = --itemAmount;
     }
 
     @Override
@@ -30,7 +30,6 @@ public class ItemDecorationLinear extends RecyclerView.ItemDecoration{
         } else if (position == amount){
             outRect.left = MARGIN_WIDTH;
             outRect.right = 0;
-
         }else{
             outRect.right = MARGIN_WIDTH;
             outRect.left = MARGIN_WIDTH;

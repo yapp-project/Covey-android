@@ -23,11 +23,10 @@ import org.yapp.covey.activity.AlertActivity;
 import org.yapp.covey.activity.DetailActivity;
 import org.yapp.covey.activity.MoreItemActivity;
 import org.yapp.covey.activity.UploadActivity;
-import org.yapp.covey.adapter.AdapterApplyRecruit;
 import org.yapp.covey.adapter.AdapterCategoryList;
 import org.yapp.covey.adapter.AdapterLocationList;
 import org.yapp.covey.adapter.AdapterMoneyList;
-import org.yapp.covey.etc.ItemDecorationCategory;
+import org.yapp.covey.etc.ItemDecorationLinear;
 import org.yapp.covey.model.ItemDataModel;
 import org.yapp.covey.util.Singleton;
 
@@ -76,7 +75,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         adapterLocationPost.mDataList.clear();
 
         recyclerViewLocation.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
-        recyclerViewLocation.addItemDecoration(new ItemDecorationCategory(getContext(),rootView.getWidth()*0.044f));
+        recyclerViewLocation.addItemDecoration(new ItemDecorationLinear(getContext(),rootView.getWidth()*0.044f, 8));
 
         adapterLocationPost.setOnItemClickListener(new AdapterLocationList.OnItemClickListener() {
             @Override
@@ -100,7 +99,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         setTitle("커비에서 빠르고 편리한\n" + "알바 대타를 경험해보세요!");
 
         listViewCategory.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
-        listViewCategory.addItemDecoration(new ItemDecorationCategory(getContext(),4f));
+        listViewCategory.addItemDecoration(new ItemDecorationLinear(getContext(),4f, 8));
 
         adapterCategory.setOnItemClickListener(new AdapterCategoryList.OnItemClickListener() {
             @Override

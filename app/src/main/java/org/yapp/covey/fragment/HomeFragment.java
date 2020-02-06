@@ -70,6 +70,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         getMoneyData();
 
         intentItemDetail = new Intent(getContext(), DetailActivity.class);
+        intentItemDetail.putExtra("activityCategory",2);
 
         adapterMoneyList.mDataList.clear();
         adapterLocationPost.mDataList.clear();

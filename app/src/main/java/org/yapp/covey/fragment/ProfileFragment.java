@@ -102,7 +102,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
                         TextView intro = view.findViewById(R.id.profile_introduction);
                         TextView address = view.findViewById(R.id.profile_address);
                         name.setText(user.getName());
-                        if(user.getGender())
+                        if(user.isGender())
                             ageGender.setText(user.getAge() + " / 남");
                         else
                             ageGender.setText(user.getAge() + " / 여");

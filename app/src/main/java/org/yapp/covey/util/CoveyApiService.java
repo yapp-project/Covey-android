@@ -16,8 +16,7 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-public interface RetrofitService {
-
+public interface CoveyApiService {
     // post
     @GET("api/post/categoryList/{page}")
     Call<ArrayList<ItemDataModel>>

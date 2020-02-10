@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 public class ItemDataModel {
     @SerializedName("_id")
     @Expose
-    private String id;
+    private String _id;
 
     @SerializedName("userId")
     @Expose
@@ -85,11 +85,11 @@ public class ItemDataModel {
 //    private String deletedAt;
 
     public String getId() {
-        return id;
+        return _id;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this._id = id;
     }
 
     public String getTitle() {

@@ -1,5 +1,6 @@
 -- Merging decision tree log ---
 manifest
+
 ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:2:1-64:12
 INJECTED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:2:1-64:12
 INJECTED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:2:1-64:12
@@ -61,159 +62,128 @@ INJECTED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\m
 INJECTED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:2:1-64:12
 INJECTED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:2:1-64:12
 	package
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:4:5-29
-		INJECTED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:4:5-29
+		INJECTED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:2:1-64:12
-		INJECTED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:2:1-64:12
+		INJECTED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml
 	xmlns:tools
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:3:5-51
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
-		INJECTED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:2:1-64:12
-		INJECTED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:2:1-64:12
+		INJECTED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.INTERNET
-ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:6:5-67
+ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:6:5-67
 	android:name
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:6:22-64
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:6:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:7:5-79
+ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:7:5-79
 	android:name
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:7:22-76
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:7:22-76
 application
-ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:9:5-63:19
-MERGED from [com.google.android.material:material:1.0.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\cb634fe4b4d1fdfcd5255e485d30a0c1\material-1.0.0\AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.material:material:1.0.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\cb634fe4b4d1fdfcd5255e485d30a0c1\material-1.0.0\AndroidManifest.xml:22:5-20
-MERGED from [com.facebook.android:facebook-android-sdk:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\750353ede61e354811817e690919a63b\facebook-android-sdk-4.42.0\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-android-sdk:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\750353ede61e354811817e690919a63b\facebook-android-sdk-4.42.0\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-login:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\10ae76a84c4be33efd3d8d506de0485b\jetified-facebook-login-4.42.0\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-login:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\10ae76a84c4be33efd3d8d506de0485b\jetified-facebook-login-4.42.0\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-share:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\1cf08e89796742d0b9a7a08e54dbb4d8\jetified-facebook-share-4.42.0\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-share:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\1cf08e89796742d0b9a7a08e54dbb4d8\jetified-facebook-share-4.42.0\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-common:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\67f3c4d8ff8b7e451d3d6d57745e088c\jetified-facebook-common-4.42.0\AndroidManifest.xml:28:5-35:19
-MERGED from [com.facebook.android:facebook-common:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\67f3c4d8ff8b7e451d3d6d57745e088c\jetified-facebook-common-4.42.0\AndroidManifest.xml:28:5-35:19
-MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\8392647ca9531c13a8f0d6b7ad086e7e\constraintlayout-1.1.3\AndroidManifest.xml:9:5-20
-MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\8392647ca9531c13a8f0d6b7ad086e7e\constraintlayout-1.1.3\AndroidManifest.xml:9:5-20
-MERGED from [androidx.lifecycle:lifecycle-extensions:2.0.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\e694a7e2aff166e32bb925c16729a19b\lifecycle-extensions-2.0.0\AndroidManifest.xml:22:5-23:19
-MERGED from [androidx.lifecycle:lifecycle-extensions:2.0.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\e694a7e2aff166e32bb925c16729a19b\lifecycle-extensions-2.0.0\AndroidManifest.xml:22:5-23:19
-MERGED from [com.kakao.sdk:auth:1.5.1] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\2745877c51fba735b3221b0ec5a2ebad\jetified-auth-1.5.1\AndroidManifest.xml:11:5-24:19
-MERGED from [com.kakao.sdk:auth:1.5.1] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\2745877c51fba735b3221b0ec5a2ebad\jetified-auth-1.5.1\AndroidManifest.xml:11:5-24:19
-MERGED from [com.facebook.android:facebook-places:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\32cc727ed8f596119acbbcb28b90b111\facebook-places-4.42.0\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-places:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\32cc727ed8f596119acbbcb28b90b111\facebook-places-4.42.0\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-applinks:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\30cf81f65bc2e43da4a09c6f581e0b53\facebook-applinks-4.42.0\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-applinks:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\30cf81f65bc2e43da4a09c6f581e0b53\facebook-applinks-4.42.0\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-messenger:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\b800951b5f60c7c525d47a6cc5f7291f\facebook-messenger-4.42.0\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-messenger:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\b800951b5f60c7c525d47a6cc5f7291f\facebook-messenger-4.42.0\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-core:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\a50eec51e5ad8936f5921350686cefbe\jetified-facebook-core-4.42.0\AndroidManifest.xml:28:5-51:19
-MERGED from [com.facebook.android:facebook-core:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\a50eec51e5ad8936f5921350686cefbe\jetified-facebook-core-4.42.0\AndroidManifest.xml:28:5-51:19
-MERGED from [androidx.core:core:1.0.1] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\72b2b92ec4ab73ff21fb9bc348de3b22\core-1.0.1\AndroidManifest.xml:22:5-89
-MERGED from [androidx.core:core:1.0.1] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\72b2b92ec4ab73ff21fb9bc348de3b22\core-1.0.1\AndroidManifest.xml:22:5-89
-MERGED from [androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\bba9e662e9f4bf0da774229f97b853fc\lifecycle-process-2.0.0\AndroidManifest.xml:22:5-28:19
-MERGED from [androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\bba9e662e9f4bf0da774229f97b853fc\lifecycle-process-2.0.0\AndroidManifest.xml:22:5-28:19
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\07608d1ce0a2b5e25216bbe877b06158\versionedparcelable-1.0.0\AndroidManifest.xml:22:5-23:19
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\07608d1ce0a2b5e25216bbe877b06158\versionedparcelable-1.0.0\AndroidManifest.xml:22:5-23:19
 	android:appComponentFactory
-		ADDED from [androidx.core:core:1.0.1] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\72b2b92ec4ab73ff21fb9bc348de3b22\core-1.0.1\AndroidManifest.xml:22:18-86
+		ADDED from [androidx.core:core:1.0.1] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\72b2b92ec4ab73ff21fb9bc348de3b22\core-1.0.1\AndroidManifest.xml:22:18-86
 	android:supportsRtl
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:15:9-35
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:15:9-35
 	android:label
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:13:9-41
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:13:9-41
 	tools:ignore
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:18:9-48
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:18:9-48
 	android:roundIcon
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:14:9-54
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:14:9-54
 	android:icon
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:12:9-43
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:12:9-43
 	android:allowBackup
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:11:9-35
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:11:9-35
 	android:theme
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:16:9-40
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:16:9-40
 	android:usesCleartextTraffic
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:17:9-44
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:17:9-44
 	android:name
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:10:9-47
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:10:9-47
 activity#org.yapp.covey.activity.UploadActivity
-ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:19:9-20:59
+ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:19:9-20:59
 	android:theme
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:20:13-57
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:20:13-57
 	android:name
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:19:19-58
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:19:19-58
 activity#org.yapp.covey.activity.ProfileEditActivity
-ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:22:9-23:59
+ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:22:9-23:59
 	android:theme
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:23:13-57
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:23:13-57
 	android:name
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:22:19-63
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:22:19-63
 activity#org.yapp.covey.activity.SettingActivity
-ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:25:9-26:59
+ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:25:9-26:59
 	android:theme
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:26:13-57
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:26:13-57
 	android:name
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:25:19-59
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:25:19-59
 activity#org.yapp.covey.activity.AlertActivity
-ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:28:9-30:60
+ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:28:9-30:60
 	android:theme
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:30:13-57
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:30:13-57
 	android:name
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:29:13-51
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:29:13-51
 activity#org.yapp.covey.activity.DetailActivity
-ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:31:9-33:60
+ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:31:9-33:60
 	android:theme
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:33:13-57
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:33:13-57
 	android:name
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:32:13-52
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:32:13-52
 activity#org.yapp.covey.activity.CareerActivity
-ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:35:9-36:59
+ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:35:9-36:59
 	android:theme
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:36:13-57
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:36:13-57
 	android:name
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:35:19-58
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:35:19-58
 activity#org.yapp.covey.activity.MoreItemActivity
-ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:38:9-40:47
+ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:38:9-40:47
 	android:theme
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:40:13-44
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:40:13-44
 	android:name
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:39:13-54
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:39:13-54
 activity#org.yapp.covey.activity.MainActivity
-ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:42:9-46:20
+ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:42:9-46:20
 	android:windowSoftInputMode
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:45:13-52
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:45:13-52
 	android:theme
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:44:13-59
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:44:13-59
 	android:name
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:43:13-50
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:43:13-50
 activity#org.yapp.covey.activity.SignupActivity
-ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:47:9-55:20
+ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:47:9-55:20
 	android:theme
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:49:13-44
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:49:13-44
 	android:name
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:48:13-52
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:48:13-52
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:50:13-54:29
+ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:50:13-54:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:51:17-69
+ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:51:17-69
 	android:name
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:51:25-66
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:51:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:53:17-77
+ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:53:17-77
 	android:name
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:53:27-74
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:53:27-74
 meta-data#com.kakao.sdk.AppKey
-ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:57:9-59:53
+ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:57:9-59:53
 	android:value
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:59:13-50
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:59:13-50
 	android:name
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:58:13-48
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:58:13-48
 meta-data#com.facebook.sdk.ApplicationId
-ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:60:9-62:56
+ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:60:9-62:56
 	android:value
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:62:13-53
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:62:13-53
 	android:name
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml:61:13-58
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml:61:13-58
 uses-sdk
 INJECTED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml
@@ -327,13 +297,13 @@ MERGED from [com.kakao.sdk:util:1.5.1] C:\Users\jgw97\.gradle\caches\transforms-
 INJECTED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml
 INJECTED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\jgw97\AndroidStudioProjects\Covey\Covey-android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml
+		ADDED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\GitHub\profile\Covey-android\app\src\main\AndroidManifest.xml
 activity#com.facebook.FacebookActivity
 ADDED from [com.facebook.android:facebook-common:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\67f3c4d8ff8b7e451d3d6d57745e088c\jetified-facebook-common-4.42.0\AndroidManifest.xml:29:9-32:66
 	android:configChanges
@@ -389,12 +359,12 @@ ADDED from [com.facebook.android:facebook-core:4.42.0] C:\Users\jgw97\.gradle\ca
 	android:name
 		ADDED from [com.facebook.android:facebook-core:4.42.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\a50eec51e5ad8936f5921350686cefbe\jetified-facebook-core-4.42.0\AndroidManifest.xml:48:25-92
 provider#androidx.lifecycle.ProcessLifecycleOwnerInitializer
-ADDED from [androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\bba9e662e9f4bf0da774229f97b853fc\lifecycle-process-2.0.0\AndroidManifest.xml:23:9-27:43
+ADDED from [androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\bba9e662e9f4bf0da774229f97b853fc\lifecycle-process-2.0.0\AndroidManifest.xml:23:9-27:43
 	android:authorities
-		ADDED from [androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\bba9e662e9f4bf0da774229f97b853fc\lifecycle-process-2.0.0\AndroidManifest.xml:25:13-69
+		ADDED from [androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\bba9e662e9f4bf0da774229f97b853fc\lifecycle-process-2.0.0\AndroidManifest.xml:25:13-69
 	android:multiprocess
-		ADDED from [androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\bba9e662e9f4bf0da774229f97b853fc\lifecycle-process-2.0.0\AndroidManifest.xml:27:13-40
+		ADDED from [androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\bba9e662e9f4bf0da774229f97b853fc\lifecycle-process-2.0.0\AndroidManifest.xml:27:13-40
 	android:exported
-		ADDED from [androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\bba9e662e9f4bf0da774229f97b853fc\lifecycle-process-2.0.0\AndroidManifest.xml:26:13-37
+		ADDED from [androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\bba9e662e9f4bf0da774229f97b853fc\lifecycle-process-2.0.0\AndroidManifest.xml:26:13-37
 	android:name
-		ADDED from [androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\jgw97\.gradle\caches\transforms-2\files-2.1\bba9e662e9f4bf0da774229f97b853fc\lifecycle-process-2.0.0\AndroidManifest.xml:24:13-79
+		ADDED from [androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\kin16\.gradle\caches\transforms-2\files-2.1\bba9e662e9f4bf0da774229f97b853fc\lifecycle-process-2.0.0\AndroidManifest.xml:24:13-79

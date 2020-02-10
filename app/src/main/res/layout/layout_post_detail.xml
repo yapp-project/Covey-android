@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -104,22 +104,13 @@
                 app:layout_constraintStart_toStartOf="@+id/guideline_left"
                 app:layout_constraintTop_toBottomOf="@+id/divider3" />
 
-            <!--        <androidx.recyclerview.widget.RecyclerView-->
-            <!--            android:id="@+id/recycler_post_image"-->
-            <!--            android:layout_width="match_parent"-->
-            <!--            android:layout_height="0dp"-->
-            <!--            android:layout_marginTop="8dp"-->
-            <!--            android:visibility="invisible"-->
-            <!--            app:layout_constraintHeight_percent="0.262"-->
-            <!--            app:layout_constraintTop_toBottomOf="@+id/tv_location_info" />-->
-
-            <ImageView
-                android:id="@+id/image_no_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_image"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_marginTop="8dp"
-                android:src="@drawable/no_image_img"
-                app:layout_constraintStart_toStartOf="parent"
+                tools:listitem="@layout/item_recycler_apply_image"
+                app:layout_constraintHeight_percent="0.262"
                 app:layout_constraintTop_toBottomOf="@+id/tv_location_info" />
 
             <TextView
@@ -128,7 +119,7 @@
                 android:text="위치\t\t서울시 관악구 관천로 1919"
                 android:layout_marginTop="16dp"
                 app:layout_constraintStart_toStartOf="@+id/guideline_left"
-                app:layout_constraintTop_toBottomOf="@+id/image_no_image" />
+                app:layout_constraintTop_toBottomOf="@+id/recycler_image" />
 
             <View
                 android:id="@+id/divider4"
@@ -166,7 +157,7 @@
                 android:background="@drawable/rounded_rectangle_8dp"
                 android:backgroundTint="@color/tomato"
                 android:textSize="17sp"
-                android:text="지원하기"
+                android:text=""
                 android:textColor="#fff"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="37dp"
@@ -180,7 +171,7 @@
                 android:layout_height="50dp"
                 android:background="@drawable/gray_square"
                 android:textSize="17sp"
-                android:text="지원하기"
+                android:text="지원취소"
                 android:textColor="@color/warm_grey_four"
                 android:visibility="invisible"
                 android:layout_marginTop="8dp"

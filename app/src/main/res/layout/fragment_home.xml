@@ -103,7 +103,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline_right"
             app:layout_constraintHeight_percent="0.125"
             app:layout_constraintStart_toStartOf="@id/guideline_left" />
 

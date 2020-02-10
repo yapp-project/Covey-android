@@ -52,6 +52,7 @@ public class RecruitFragment extends Fragment {
             public void onItemClick(View v, int position) {
                 Intent intentDetail = new Intent(getContext(), DetailActivity.class);
                 intentDetail.putExtra("postId",adapterRecruit.mDataList.get(position).getId());
+                intentDetail.putExtra("activityCategory",3);
                 startActivity(intentDetail);
             }
         });

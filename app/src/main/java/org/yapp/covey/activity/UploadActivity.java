@@ -5,11 +5,15 @@ import androidx.appcompat.widget.ListPopupWindow;
 import androidx.databinding.DataBindingUtil;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.Spinner;
+
+import com.yongbeom.aircalendar.AirCalendarDatePickerActivity;
+import com.yongbeom.aircalendar.core.AirCalendarIntent;
 
 import org.yapp.covey.R;
 import org.yapp.covey.adapter.AdapterCustomSpinner;
@@ -20,15 +24,16 @@ import org.yapp.covey.etc.CustomAppBar;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 public class UploadActivity extends AppCompatActivity {
     ActivityUploadBinding binding;
     AdapterCustomSpinner mAdapterSpinner;
 
-    private int year, day ;
-    String month;
     private String startDate, endDate, selectDate;
+
+    private static int REQUEST_CODE = 202;
 
     List<String> hourArray = new ArrayList<>();
     List<String> minArray = new ArrayList<>();
@@ -48,13 +53,7 @@ public class UploadActivity extends AppCompatActivity {
         binding.tvPostDateStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDatePicker("startDate");
-            }
-        });
-        binding.tvPostDateEnd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDatePicker("endDate");
+                showDatePicker();
             }
         });
         setCustomAppBar();
@@ -87,26 +86,38 @@ public class UploadActivity extends AppCompatActivity {
         }
     }
 
-    private void showDatePicker(final String dateStyle){
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this,R.style.DatePickerTheme, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int yyyy, int mm, int dd) {
-                year = yyyy;
-                if (mm+1<10){
-                    month = "0"+ mm+1;
-                }else{
-                    month = String.valueOf(mm+1);
-                }
-                day = dd;
-                selectDate = yyyy+"-"+month+"-"+dd;
-                if (dateStyle.equals("startDate")){
-                    binding.tvPostDateStart.setText(selectDate);
-                }else{
-                    binding.tvPostDateEnd.setText(selectDate);
-                }
-            }
-        }, 2020,1,1);
-        datePickerDialog.show();
+    private void showDatePicker(){
+        AirCalendarIntent intent = new AirCalendarIntent(this);
+        intent.isBooking(false);
+        intent.isSelect(false);
+        intent.isMonthLabels(false);
+        intent.setSelectButtonText("날짜 선택");
+        intent.setResetBtnText("초기화");
+        intent.setWeekStart(Calendar.MONDAY);
+        intent.setWeekDaysLanguage(AirCalendarIntent.Language.KO);
 
+        ArrayList<String> weekDay = new ArrayList<>();
+        weekDay.add("M");
+        weekDay.add("T");
+        weekDay.add("W");
+        weekDay.add("T");
+        weekDay.add("F");
+        weekDay.add("S");
+        weekDay.add("S");
+        intent.setCustomWeekDays(weekDay);
+
+        startActivityForResult(intent, REQUEST_CODE);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
+            if(data != null){
+                startDate = data.getStringExtra(AirCalendarDatePickerActivity.RESULT_SELECT_START_DATE);
+                endDate = data.getStringExtra(AirCalendarDatePickerActivity.RESULT_SELECT_END_DATE);
+                binding.tvPostDateStart.setText(startDate);
+                binding.tvPostDateEnd.setText(endDate);
+            }
+        }
     }
 }

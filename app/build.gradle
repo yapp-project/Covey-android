@@ -54,4 +54,10 @@ dependencies {
     //lombok
     compileOnly 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
+
+    //calendar
+    implementation 'com.github.yongbeam:AirCalendar:1.2.1'
+}
+repositories {
+    maven { url 'https://jitpack.io' }
 }

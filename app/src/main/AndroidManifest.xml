@@ -3,10 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="org.yapp.covey">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-
     <application
         android:name=".util.GlobalApplication"
         android:allowBackup="true"
@@ -17,34 +13,31 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.UploadActivity"
-            android:theme="@style/AppTheme.CustomAppBar"/>
-
-        <activity android:name=".activity.ProfileEditActivity"
-            android:theme="@style/AppTheme.CustomAppBar"/>
-
-        <activity android:name=".activity.SettingActivity"
-            android:theme="@style/AppTheme.CustomAppBar"/>
-
+        <activity
+            android:name=".activity.UploadActivity"
+            android:theme="@style/AppTheme.CustomAppBar" />
+        <activity
+            android:name=".activity.ProfileEditActivity"
+            android:theme="@style/AppTheme.CustomAppBar" />
+        <activity
+            android:name=".activity.SettingActivity"
+            android:theme="@style/AppTheme.CustomAppBar" />
         <activity
             android:name=".activity.AlertActivity"
             android:theme="@style/AppTheme.CustomAppBar" />
         <activity
             android:name=".activity.DetailActivity"
             android:theme="@style/AppTheme.CustomAppBar" />
-
-        <activity android:name=".activity.CareerActivity"
-            android:theme="@style/AppTheme.CustomAppBar"/>
-
+        <activity
+            android:name=".activity.CareerActivity"
+            android:theme="@style/AppTheme.CustomAppBar" />
         <activity
             android:name=".activity.MoreItemActivity"
             android:theme="@style/AppTheme" />
-
         <activity
             android:name=".activity.MainActivity"
             android:theme="@style/AppTheme.StatusBarWhite"
-            android:windowSoftInputMode="adjustPan">
-        </activity>
+            android:windowSoftInputMode="adjustPan"></activity>
         <activity
             android:name=".activity.SignupActivity"
             android:theme="@style/AppTheme">
@@ -54,13 +47,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.yongbeom.aircalendar.AirCalendarDatePickerActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <meta-data
             android:name="com.kakao.sdk.AppKey"
-            android:value="@string/kakao_app_key"/>
+            android:value="@string/kakao_app_key" />
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_key" />
     </application>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
 </manifest>

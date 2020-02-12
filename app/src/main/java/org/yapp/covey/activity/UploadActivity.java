@@ -1,35 +1,36 @@
 package org.yapp.covey.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.ListPopupWindow;
-import androidx.databinding.DataBindingUtil;
-
-import android.app.DatePickerDialog;
-import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.DatePicker;
 import android.widget.Spinner;
 
-import com.yongbeom.aircalendar.AirCalendarDatePickerActivity;
-import com.yongbeom.aircalendar.core.AirCalendarIntent;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.OrientationHelper;
+
+import com.applikeysolutions.cosmocalendar.dialog.CalendarDialog;
+import com.applikeysolutions.cosmocalendar.dialog.OnDaysSelectionListener;
+import com.applikeysolutions.cosmocalendar.model.Day;
+import com.applikeysolutions.cosmocalendar.utils.SelectionType;
+import com.applikeysolutions.cosmocalendar.view.CalendarView;
 
 import org.yapp.covey.R;
 import org.yapp.covey.adapter.AdapterCustomSpinner;
 import org.yapp.covey.databinding.ActivityUploadBinding;
-import org.yapp.covey.etc.CalculateDate;
 import org.yapp.covey.etc.CustomAppBar;
+import org.yapp.covey.etc.CustomCalendarDialog;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.List;
 
 public class UploadActivity extends AppCompatActivity {
     ActivityUploadBinding binding;
     AdapterCustomSpinner mAdapterSpinner;
+
+    CalendarView calendarView;
 
     private String startDate, endDate, selectDate;
 
@@ -86,38 +87,31 @@ public class UploadActivity extends AppCompatActivity {
         }
     }
 
-    private void showDatePicker(){
-        AirCalendarIntent intent = new AirCalendarIntent(this);
-        intent.isBooking(false);
-        intent.isSelect(false);
-        intent.isMonthLabels(false);
-        intent.setSelectButtonText("날짜 선택");
-        intent.setResetBtnText("초기화");
-        intent.setWeekStart(Calendar.MONDAY);
-        intent.setWeekDaysLanguage(AirCalendarIntent.Language.KO);
-
-        ArrayList<String> weekDay = new ArrayList<>();
-        weekDay.add("M");
-        weekDay.add("T");
-        weekDay.add("W");
-        weekDay.add("T");
-        weekDay.add("F");
-        weekDay.add("S");
-        weekDay.add("S");
-        intent.setCustomWeekDays(weekDay);
-
-        startActivityForResult(intent, REQUEST_CODE);
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
-            if(data != null){
-                startDate = data.getStringExtra(AirCalendarDatePickerActivity.RESULT_SELECT_START_DATE);
-                endDate = data.getStringExtra(AirCalendarDatePickerActivity.RESULT_SELECT_END_DATE);
+    public void showDatePicker(){
+        CustomCalendarDialog calendarDialog = new CustomCalendarDialog(this, new OnDaysSelectionListener() {
+            @Override
+            public void onDaysSelected(List<Day> selectedDays) {
+                startDate = String.valueOf(selectedDays.get(0));
+                endDate = String.valueOf(selectedDays.get(selectedDays.size()));
                 binding.tvPostDateStart.setText(startDate);
                 binding.tvPostDateEnd.setText(endDate);
             }
-        }
+        });
+//        calendarDialog.setCalendarBackgroundColor(Color.parseColor("#fa8274"));
+//        calendarDialog.setSelectionType(SelectionType.RANGE);
+
+        calendarDialog.show();
     }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
+//            if(data != null){
+//                startDate = data.getStringExtra(AirCalendarDatePickerActivity.RESULT_SELECT_START_DATE);
+//                endDate = data.getStringExtra(AirCalendarDatePickerActivity.RESULT_SELECT_END_DATE);
+//                binding.tvPostDateStart.setText(startDate);
+//                binding.tvPostDateEnd.setText(endDate);
+//            }
+//        }
+//    }
 }

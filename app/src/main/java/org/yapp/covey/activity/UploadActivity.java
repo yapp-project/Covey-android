@@ -1,26 +1,20 @@
 package org.yapp.covey.activity;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.recyclerview.widget.OrientationHelper;
 
-import com.applikeysolutions.cosmocalendar.dialog.CalendarDialog;
 import com.applikeysolutions.cosmocalendar.dialog.OnDaysSelectionListener;
 import com.applikeysolutions.cosmocalendar.model.Day;
-import com.applikeysolutions.cosmocalendar.utils.SelectionType;
-import com.applikeysolutions.cosmocalendar.view.CalendarView;
 
 import org.yapp.covey.R;
 import org.yapp.covey.adapter.AdapterCustomSpinner;
+import org.yapp.covey.adapter.CustomCalendarDialog;
 import org.yapp.covey.databinding.ActivityUploadBinding;
 import org.yapp.covey.etc.CustomAppBar;
-import org.yapp.covey.etc.CustomCalendarDialog;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,7 +24,6 @@ public class UploadActivity extends AppCompatActivity {
     ActivityUploadBinding binding;
     AdapterCustomSpinner mAdapterSpinner;
 
-    CalendarView calendarView;
 
     private String startDate, endDate, selectDate;
 

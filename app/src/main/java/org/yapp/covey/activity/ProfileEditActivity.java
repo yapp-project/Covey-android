@@ -24,7 +24,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProfileEditActivity extends AppCompatActivity {
-    private userResponseClass kk;
+    private userResponseClass userResponse;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,12 +35,10 @@ public class ProfileEditActivity extends AppCompatActivity {
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText test = findViewById(R.id.profile_edit_name);
-                kk.getUser().setName(test.getText().toString());
-                Log.d("dd",kk.getUser().getName());
-                editUser(kk);
+                editUser(userResponse);
             }
         });
+
         final Context mContext = getApplicationContext();
         Spinner locationSpinner = findViewById(R.id.profile_edit_spinner_location);
         final Spinner locationDetailSpinner = findViewById(R.id.profile_edit_spinner_location_detail);
@@ -131,9 +129,20 @@ public class ProfileEditActivity extends AppCompatActivity {
             public void onResponse(Call<userResponseClass> call, Response<userResponseClass> response) {
                 if (response.isSuccessful()){
                     if (response.code()==200){
-                        TextView test = findViewById(R.id.profile_edit_name);
-                        test.setText(response.body().getUser().getName());
-                        kk = response.body();
+                        TextView name = findViewById(R.id.profile_edit_name);
+                        TextView gender = findViewById(R.id.profile_edit_gender);
+                        TextView age = findViewById(R.id.profile_edit_age);
+                        TextView phone = findViewById(R.id.profile_edit_phone);
+
+                        name.setText(response.body().getUser().getName());
+                        age.setText(response.body().getUser().getAge());
+                        phone.setText(response.body().getUser().getPhoneNum());
+                        if(response.body().getUser().getGender())
+                            gender.setText("남");
+                        else
+                            gender.setText("여");
+
+                        userResponse = response.body();
                     }
                     else;
                     //Log.w(TAG, String.valueOf(response.code()));

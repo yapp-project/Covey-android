@@ -57,11 +57,12 @@ public class Career_Edit_Fragment extends Fragment implements View.OnClickListen
         careerAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                careerClass newCareer = new careerClass();
-                newCareer.setJob(careerTitle.getText().toString());
-                newCareer.setName(careerCompany.getText().toString());
-                newCareer.setPeriodNum(careerTime.getText().toString());
-                newCareer.setPeriodUnit(careerSpinner.getSelectedItem().toString());
+                careerClass editedCareer = new careerClass();
+                editedCareer.setJob(careerTitle.getText().toString());
+                editedCareer.setName(careerCompany.getText().toString());
+                editedCareer.setPeriodNum(careerTime.getText().toString());
+                editedCareer.setPeriodUnit(careerSpinner.getSelectedItem().toString());
+                editCareer(careerId, editedCareer);
             }
         });
 
@@ -99,11 +100,12 @@ public class Career_Edit_Fragment extends Fragment implements View.OnClickListen
                     careerAddButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            careerClass newCareer = new careerClass();
-                            newCareer.setJob(careerTitle.getText().toString());
-                            newCareer.setName(careerCompany.getText().toString());
-                            newCareer.setPeriodNum(careerTime.getText().toString());
-                            newCareer.setPeriodUnit(careerSpinner.getSelectedItem().toString());
+                            careerClass editedCareer = new careerClass();
+                            editedCareer.setJob(careerTitle.getText().toString());
+                            editedCareer.setName(careerCompany.getText().toString());
+                            editedCareer.setPeriodNum(careerTime.getText().toString());
+                            editedCareer.setPeriodUnit(careerSpinner.getSelectedItem().toString());
+                            editCareer(careerId, editedCareer);
                         }
                     });
                 }
@@ -150,4 +152,24 @@ public class Career_Edit_Fragment extends Fragment implements View.OnClickListen
         });
     }
 
+    private void editCareer(String id, careerClass body){
+        Singleton.retrofit.editCareer(id, body).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()){
+                    if (response.code()==201) {
+                        Fragment next = Career_Main_Fragment.newInstance();
+                        ((CareerActivity)getActivity()).replaceFragment(next);
+                    }
+                    else
+                        Log.w(TAG, String.valueOf(response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.w(TAG,"OnFailure");
+            }
+        });
+    }
 }

@@ -23,6 +23,7 @@ import retrofit2.Response;
 
 public class Career_Main_Fragment extends Fragment implements View.OnClickListener{
     private final String TAG = "Career";
+    private View rootview;
     private RecyclerView careerListView;
     private AdapterCareerList careerAdapter = new AdapterCareerList();
     public static Career_Main_Fragment newInstance() {
@@ -31,9 +32,24 @@ public class Career_Main_Fragment extends Fragment implements View.OnClickListen
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_career_main, container, false);
+        rootview = inflater.inflate(R.layout.fragment_career_main, container, false);
         ((CareerActivity)getActivity()).setCustomAppBar("경력사항");
 
+        setInitView(rootview);
+
+        return rootview;
+    }
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            /*case R.id.setting_app_info:{
+                ((SettingActivity)getActivity()).replaceFragment(Setting_AppInfo_Fragment.newInstance());
+                break;
+            }*/
+        }
+    }
+
+    private void setInitView(View view){
         careerListView = view.findViewById(R.id.recycler_career);
 
         getCareerData();
@@ -49,18 +65,13 @@ public class Career_Main_Fragment extends Fragment implements View.OnClickListen
                 ((CareerActivity)getActivity()).replaceFragment(next);
             }
         });
+        careerAdapter.setOndeleteClickListener(new AdapterCareerList.OnItemClickListener(){
+            @Override
+            public void onItemClick(View v, int position) {
+                deleteCareer(careerAdapter.mDataList.get(position).get_id());
+            }
+        });
         careerListView.setAdapter(careerAdapter);
-
-        return view;
-    }
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            /*case R.id.setting_app_info:{
-                ((SettingActivity)getActivity()).replaceFragment(Setting_AppInfo_Fragment.newInstance());
-                break;
-            }*/
-        }
     }
 
     private void getCareerData(){
@@ -87,4 +98,25 @@ public class Career_Main_Fragment extends Fragment implements View.OnClickListen
         });
     }
 
+    private void deleteCareer(String id){
+        Singleton.retrofit.deleteCareer(id).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()){
+                    if (response.code()==204) {
+                        careerAdapter.mDataList.clear();
+                        setInitView(rootview);
+                        //careerAdapter.notifyDataSetChanged();
+                    }
+                    else
+                        Log.w(TAG, String.valueOf(response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.w(TAG,"OnFailure");
+            }
+        });
+    }
 }

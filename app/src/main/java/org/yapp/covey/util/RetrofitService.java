@@ -76,6 +76,9 @@ public interface RetrofitService {
     Call<ArrayList<careerClass>>
     getCareer();
 
+    @POST("api/career")
+    Call<Void>
+    addCareer(@Body careerClass body);
     // apply
 //    @POST("api/apply/{postId}")
 //    Call<JSONArray>

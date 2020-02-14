@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 
 import org.yapp.covey.R;
 import org.yapp.covey.activity.CareerActivity;
@@ -19,7 +20,8 @@ public class Career_Add_Fragment extends Fragment implements View.OnClickListene
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_career_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_career_add, container, false);
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         ((CareerActivity)getActivity()).setCustomAppBar("경력사항 추가");
 

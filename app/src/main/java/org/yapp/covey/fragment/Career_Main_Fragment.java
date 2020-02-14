@@ -39,6 +39,16 @@ public class Career_Main_Fragment extends Fragment implements View.OnClickListen
         getCareerData();
 
         careerListView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+        careerAdapter.setOnItemClickListener(new AdapterCareerList.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                Fragment next = Career_Edit_Fragment.newInstance();
+                Bundle bundle = new Bundle();
+                bundle.putString("careerId", careerAdapter.mDataList.get(position).get_id());
+                next.setArguments(bundle);
+                ((CareerActivity)getActivity()).replaceFragment(next);
+            }
+        });
         careerListView.setAdapter(careerAdapter);
 
         return view;

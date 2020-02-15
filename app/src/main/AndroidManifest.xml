@@ -13,10 +13,14 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.yongbeom.aircalendar.AirCalendarDatePickerActivity"
+        <activity android:name=".activity.SearchAddressActivity"
+            android:theme="@style/AppTheme.CustomAppBar"/>
+        <activity
+            android:name="com.yongbeom.aircalendar.AirCalendarDatePickerActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".activity.CustomCalendarActivity"
-            android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity
+            android:name=".activity.CustomCalendarActivity"
+            android:theme="@style/Theme.Design.NoActionBar" />
         <activity
             android:name=".activity.UploadActivity"
             android:theme="@style/AppTheme.CustomAppBar" />
@@ -59,9 +63,9 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_key" />
     </application>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 </manifest>

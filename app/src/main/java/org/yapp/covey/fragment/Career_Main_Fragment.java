@@ -23,6 +23,7 @@ import retrofit2.Response;
 
 public class Career_Main_Fragment extends Fragment implements View.OnClickListener{
     private final String TAG = "Career";
+    private View rootview;
     private RecyclerView careerListView;
     private AdapterCareerList careerAdapter = new AdapterCareerList();
     public static Career_Main_Fragment newInstance() {
@@ -31,17 +32,12 @@ public class Career_Main_Fragment extends Fragment implements View.OnClickListen
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_career_main, container, false);
+        rootview = inflater.inflate(R.layout.fragment_career_main, container, false);
         ((CareerActivity)getActivity()).setCustomAppBar("경력사항");
 
-        careerListView = view.findViewById(R.id.recycler_career);
+        setInitView(rootview);
 
-        getCareerData();
-
-        careerListView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
-        careerListView.setAdapter(careerAdapter);
-
-        return view;
+        return rootview;
     }
     @Override
     public void onClick(View view) {
@@ -51,6 +47,31 @@ public class Career_Main_Fragment extends Fragment implements View.OnClickListen
                 break;
             }*/
         }
+    }
+
+    private void setInitView(View view){
+        careerListView = view.findViewById(R.id.recycler_career);
+
+        getCareerData();
+
+        careerListView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+        careerAdapter.setOnItemClickListener(new AdapterCareerList.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                Fragment next = Career_Edit_Fragment.newInstance();
+                Bundle bundle = new Bundle();
+                bundle.putString("careerId", careerAdapter.mDataList.get(position).get_id());
+                next.setArguments(bundle);
+                ((CareerActivity)getActivity()).replaceFragment(next);
+            }
+        });
+        careerAdapter.setOndeleteClickListener(new AdapterCareerList.OnItemClickListener(){
+            @Override
+            public void onItemClick(View v, int position) {
+                deleteCareer(careerAdapter.mDataList.get(position).get_id());
+            }
+        });
+        careerListView.setAdapter(careerAdapter);
     }
 
     private void getCareerData(){
@@ -77,4 +98,25 @@ public class Career_Main_Fragment extends Fragment implements View.OnClickListen
         });
     }
 
+    private void deleteCareer(String id){
+        Singleton.retrofit.deleteCareer(id).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()){
+                    if (response.code()==204) {
+                        careerAdapter.mDataList.clear();
+                        setInitView(rootview);
+                        //careerAdapter.notifyDataSetChanged();
+                    }
+                    else
+                        Log.w(TAG, String.valueOf(response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.w(TAG,"OnFailure");
+            }
+        });
+    }
 }

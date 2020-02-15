@@ -29,6 +29,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener{
+    private View rootView;
     private ImageView profile_edit, career_edit, setting;
     private RecyclerView profileCareerView;
     private AdapterProfileCareer profileCareerAdapter = new AdapterProfileCareer();
@@ -40,23 +41,23 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
+        rootView = inflater.inflate(R.layout.fragment_profile, container, false);
 
         setInitView(rootView);
-
-        getCareerData();
-
-        profileCareerAdapter.mDataList.clear();
-
-        profileCareerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
-        profileCareerView.setAdapter(profileCareerAdapter);
 
         return rootView;
     }
 
+    @Override
+    public void onResume() {
+        getCareerData();
+        profileCareerAdapter.mDataList.clear();
+        profileCareerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+        profileCareerView.setAdapter(profileCareerAdapter);
+        getUser(rootView);
+        super.onResume();
+    }
     private void setInitView(View view){
-        getUser(view);
-
         profileCareerView = view.findViewById(R.id.recycler_profile_career);
 
         profile_edit = view.findViewById(R.id.profile_edit);

@@ -54,6 +54,14 @@ public class UploadActivity extends AppCompatActivity {
             }
         });
         setCustomAppBar();
+
+        binding.tvSelectAddress.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intentAddress = new Intent(getApplicationContext(), SearchAddressActivity.class);
+                startActivity(intentAddress);
+            }
+        });
     }
     private void setCustomAppBar(){
         CustomAppBar customAppBar = new CustomAppBar(this, getSupportActionBar());

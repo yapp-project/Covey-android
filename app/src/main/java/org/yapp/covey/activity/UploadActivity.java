@@ -1,5 +1,6 @@
 package org.yapp.covey.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Spinner;
@@ -7,17 +8,17 @@ import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
-import com.applikeysolutions.cosmocalendar.dialog.OnDaysSelectionListener;
-import com.applikeysolutions.cosmocalendar.model.Day;
+import com.yongbeom.aircalendar.AirCalendarDatePickerActivity;
+import com.yongbeom.aircalendar.core.AirCalendarIntent;
 
 import org.yapp.covey.R;
 import org.yapp.covey.adapter.AdapterCustomSpinner;
-import org.yapp.covey.adapter.CustomCalendarDialog;
 import org.yapp.covey.databinding.ActivityUploadBinding;
 import org.yapp.covey.etc.CustomAppBar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 public class UploadActivity extends AppCompatActivity {
@@ -81,30 +82,37 @@ public class UploadActivity extends AppCompatActivity {
     }
 
     public void showDatePicker(){
-        CustomCalendarDialog calendarDialog = new CustomCalendarDialog(this, new OnDaysSelectionListener() {
-            @Override
-            public void onDaysSelected(List<Day> selectedDays) {
-                startDate = String.valueOf(selectedDays.get(0));
-                endDate = String.valueOf(selectedDays.get(selectedDays.size()));
+        AirCalendarIntent intent = new AirCalendarIntent(this);
+        intent.isBooking(false);
+        intent.isSelect(false);
+        intent.isMonthLabels(false);
+        intent.setSelectButtonText("선택"); //the select button text
+        intent.setResetBtnText("리셋"); //the reset button text
+        intent.setWeekStart(Calendar.MONDAY);
+        intent.setWeekDaysLanguage(AirCalendarIntent.Language.EN); //language for the weekdays
+
+        ArrayList<String> weekDay = new ArrayList<>();
+        weekDay.add("MON");
+        weekDay.add("TUE");
+        weekDay.add("WED");
+        weekDay.add("THR");
+        weekDay.add("FRI");
+        weekDay.add("SAT");
+        weekDay.add("SUN");
+        intent.setCustomWeekDays(weekDay); //custom weekdays
+
+        startActivityForResult(intent, REQUEST_CODE);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
+            if(data != null){
+                startDate = data.getStringExtra(CustomCalendarActivity.RESULT_SELECT_START_DATE);
+                endDate = data.getStringExtra(CustomCalendarActivity.RESULT_SELECT_END_DATE);
                 binding.tvPostDateStart.setText(startDate);
                 binding.tvPostDateEnd.setText(endDate);
             }
-        });
-//        calendarDialog.setCalendarBackgroundColor(Color.parseColor("#fa8274"));
-//        calendarDialog.setSelectionType(SelectionType.RANGE);
-
-        calendarDialog.show();
+        }
     }
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
-//            if(data != null){
-//                startDate = data.getStringExtra(AirCalendarDatePickerActivity.RESULT_SELECT_START_DATE);
-//                endDate = data.getStringExtra(AirCalendarDatePickerActivity.RESULT_SELECT_END_DATE);
-//                binding.tvPostDateStart.setText(startDate);
-//                binding.tvPostDateEnd.setText(endDate);
-//            }
-//        }
-//    }
 }

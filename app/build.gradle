@@ -53,5 +53,9 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
 
-    implementation 'com.github.applikeysolutions:cosmocalendar:1.0.4'
+    // datePicker Library
+    implementation 'com.github.yongbeam:AirCalendar:1.2.1'
+}
+repositories {
+    maven { url 'https://jitpack.io' }
 }

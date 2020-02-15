@@ -42,8 +42,11 @@ public class UploadActivity extends AppCompatActivity {
         setMinArray(minArray);
 
         setSpinner(binding.spinnerCategory, Arrays.asList(getResources().getStringArray(R.array.category)),"카테고리를 선택하세요");
-        setSpinner(binding.spinnerTimeHour, hourArray,"시");
-        setSpinner(binding.spinnerTimeMin, minArray ,"분");
+        setSpinner(binding.spinnerStartTimeHour, hourArray,"시");
+        setSpinner(binding.spinnerStartTimeMin, minArray ,"분");
+
+        setSpinner(binding.spinnerEndTimeHour, hourArray,"시");
+        setSpinner(binding.spinnerEndTimeMin, minArray ,"분");
 
         binding.tvPostDateStart.setOnClickListener(new View.OnClickListener() {
             @Override

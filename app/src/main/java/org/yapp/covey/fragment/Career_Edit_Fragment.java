@@ -9,14 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
 import org.yapp.covey.R;
 import org.yapp.covey.activity.CareerActivity;
-import org.yapp.covey.activity.SettingActivity;
 import org.yapp.covey.etc.careerClass;
 import org.yapp.covey.util.Singleton;
 
@@ -27,15 +25,16 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Career_Add_Fragment extends Fragment implements View.OnClickListener{
+public class Career_Edit_Fragment extends Fragment implements View.OnClickListener{
+    private String careerId;
     private Spinner careerSpinner;
     private RelativeLayout careerAddButton;
     private EditText careerCompany, careerTitle, careerTime;
-    private final String TAG = "careerAdd";
+    private final String TAG = "careerEdit";
     ArrayList<String> spinnerItems = new ArrayList<String>();
 
-    public static Career_Add_Fragment newInstance() {
-        return new Career_Add_Fragment();
+    public static Career_Edit_Fragment newInstance() {
+        return new Career_Edit_Fragment();
     }
 
     @Override
@@ -43,7 +42,7 @@ public class Career_Add_Fragment extends Fragment implements View.OnClickListene
         View view = inflater.inflate(R.layout.fragment_career_add, container, false);
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
-        ((CareerActivity)getActivity()).setCustomAppBar("경력사항 추가");
+        ((CareerActivity)getActivity()).setCustomAppBar("경력사항 수정");
 
         spinnerItems.add("주");
         spinnerItems.add("개월");
@@ -54,6 +53,18 @@ public class Career_Add_Fragment extends Fragment implements View.OnClickListene
         careerTitle = view.findViewById((R.id.career_edit_title));
         careerTime = view.findViewById((R.id.career_edit_time));
 
+        careerAddButton.setBackground(getResources().getDrawable(R.drawable.red_square));
+        careerAddButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                careerClass editedCareer = new careerClass();
+                editedCareer.setJob(careerTitle.getText().toString());
+                editedCareer.setName(careerCompany.getText().toString());
+                editedCareer.setPeriodNum(careerTime.getText().toString());
+                editedCareer.setPeriodUnit(careerSpinner.getSelectedItem().toString());
+                editCareer(careerId, editedCareer);
+            }
+        });
 
         ArrayAdapter<String> spinnerAdapter= new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item, spinnerItems);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -62,6 +73,10 @@ public class Career_Add_Fragment extends Fragment implements View.OnClickListene
         careerCompany.addTextChangedListener(careerTextWatcher());
         careerTitle.addTextChangedListener(careerTextWatcher());
         careerTime.addTextChangedListener(careerTextWatcher());
+
+        careerId = getArguments().getString("careerId");
+
+        getCareerDetail(careerId);
 
         return view;
     }
@@ -85,12 +100,12 @@ public class Career_Add_Fragment extends Fragment implements View.OnClickListene
                     careerAddButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            careerClass newCareer = new careerClass();
-                            newCareer.setJob(careerTitle.getText().toString());
-                            newCareer.setName(careerCompany.getText().toString());
-                            newCareer.setPeriodNum(careerTime.getText().toString());
-                            newCareer.setPeriodUnit(careerSpinner.getSelectedItem().toString());
-                            addCareer(newCareer);
+                            careerClass editedCareer = new careerClass();
+                            editedCareer.setJob(careerTitle.getText().toString());
+                            editedCareer.setName(careerCompany.getText().toString());
+                            editedCareer.setPeriodNum(careerTime.getText().toString());
+                            editedCareer.setPeriodUnit(careerSpinner.getSelectedItem().toString());
+                            editCareer(careerId, editedCareer);
                         }
                     });
                 }
@@ -105,14 +120,44 @@ public class Career_Add_Fragment extends Fragment implements View.OnClickListene
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
         };
     }
+    private void getCareerDetail(String id){
+        Singleton.retrofit.getCareerDetail(id).enqueue(new Callback<careerClass>() {
+            @Override
+            public void onResponse(Call<careerClass> call, Response<careerClass> response) {
+                if (response.isSuccessful()){
+                    if (response.code()==200) {
+                        careerTitle.setText(response.body().getJob());
+                        careerCompany.setText(response.body().getName());
+                        careerTime.setText(response.body().getPeriodNum());
+                        switch(response.body().getPeriodUnit()) {
+                            case "주":
+                                careerSpinner.setSelection(0);
+                                break;
+                            case "개월":
+                                careerSpinner.setSelection(1);
+                                break;
+                            case "년":
+                                careerSpinner.setSelection(2);
+                        }
+                    }
+                    else
+                        Log.w(TAG, String.valueOf(response.code()));
+                }
+            }
 
-    private void addCareer(careerClass body){
-        Singleton.retrofit.addCareer(body).enqueue(new Callback<Void>() {
+            @Override
+            public void onFailure(Call<careerClass> call, Throwable t) {
+                Log.w(TAG,"OnFailure");
+            }
+        });
+    }
+
+    private void editCareer(String id, careerClass body){
+        Singleton.retrofit.editCareer(id, body).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()){
-                    Log.w(TAG, String.valueOf(response.code()));
-                    if (response.code()==201){
+                    if (response.code()==201) {
                         Fragment next = Career_Main_Fragment.newInstance();
                         ((CareerActivity)getActivity()).replaceFragment(next);
                     }
@@ -123,7 +168,7 @@ public class Career_Add_Fragment extends Fragment implements View.OnClickListene
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Log.w(TAG,"OnFailure phoneVerifyCheck");
+                Log.w(TAG,"OnFailure");
             }
         });
     }

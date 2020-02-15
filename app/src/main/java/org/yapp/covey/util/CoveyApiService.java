@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -74,6 +75,22 @@ public interface CoveyApiService {
     @GET("api/career/list")
     Call<ArrayList<careerClass>>
     getCareer();
+
+    @POST("api/career")
+    Call<Void>
+    addCareer(@Body careerClass body);
+
+    @GET("api/career/{careerId}")
+    Call<careerClass>
+    getCareerDetail(@Path("careerId") String careerId);
+
+    @PUT("api/career/{careerId}")
+    Call<Void>
+    editCareer(@Path("careerId") String careerId, @Body careerClass body);
+
+    @DELETE("api/career/{careerId}")
+    Call<Void>
+    deleteCareer(@Path("careerId") String careerId);
 
     // apply
 //    @POST("api/apply/{postId}")

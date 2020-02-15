@@ -3,20 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:focusable="true"
-    android:focusableInTouchMode="true">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/profile_edit_text_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="개인 정보"
+        android:text="경력사항"
         android:textColor="#000000"
         android:textSize="16sp"
+        app:layout_constraintHeight_percent="0.07"
         app:layout_constraintStart_toStartOf="@id/guideline_left_1"
-        app:layout_constraintTop_toTopOf="@id/guideline_top"
-        app:layout_constraintHeight_percent="0.07" />
+        app:layout_constraintTop_toTopOf="@id/guideline_top" />
 
 
     <TextView
@@ -31,172 +29,46 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="이름"
-        android:textColor="#000000"
-        android:textSize="16sp"
         android:layout_marginTop="33dp"
-        app:layout_constraintLeft_toRightOf="@id/guideline_left_1"
-        app:layout_constraintTop_toBottomOf="@id/profile_edit_text_1" />
-
-    <TextView
-        android:id="@+id/profile_edit_name"
-        android:layout_width="0dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="61dp"
-        android:background="@drawable/lightgray_square"
-        android:gravity="center_vertical"
-        android:paddingLeft="16dp"
-        android:text=""
-        android:textColor="#888888"
-        android:textSize="15sp"
-        app:layout_constraintLeft_toRightOf="@id/guideline_left_1"
-        app:layout_constraintRight_toLeftOf="@id/guideline_right_1"
-        app:layout_constraintTop_toBottomOf="@id/profile_edit_text_1" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="성별"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:layout_marginTop="121dp"
-        app:layout_constraintLeft_toRightOf="@id/guideline_left_1"
-        app:layout_constraintTop_toBottomOf="@id/profile_edit_text_1" />
-
-    <TextView
-        android:id="@+id/profile_edit_gender"
-        android:layout_width="0dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="149dp"
-        android:background="@drawable/lightgray_square"
-        android:gravity="center_vertical"
-        android:paddingLeft="16dp"
-        android:textColor="#888888"
-        android:textSize="15sp"
-        app:layout_constraintLeft_toRightOf="@id/guideline_left_1"
-        app:layout_constraintRight_toLeftOf="@id/guideline_right_2"
-        app:layout_constraintTop_toBottomOf="@id/profile_edit_text_1" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="나이"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:layout_marginTop="121dp"
-        app:layout_constraintLeft_toRightOf="@id/guideline_left_2"
-        app:layout_constraintTop_toBottomOf="@id/profile_edit_text_1" />
-
-    <TextView
-        android:id="@+id/profile_edit_age"
-        android:layout_width="0dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="149dp"
-        android:background="@drawable/lightgray_square"
-        android:gravity="center_vertical"
-        android:paddingLeft="16dp"
-        android:textColor="#888888"
-        android:textSize="15sp"
-        app:layout_constraintLeft_toRightOf="@id/guideline_left_2"
-        app:layout_constraintRight_toLeftOf="@id/guideline_right_1"
-        app:layout_constraintTop_toBottomOf="@id/profile_edit_text_1" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="휴대폰 번호"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:layout_marginTop="209dp"
-        app:layout_constraintLeft_toRightOf="@id/guideline_left_1"
-        app:layout_constraintTop_toBottomOf="@id/profile_edit_text_1" />
-
-    <TextView
-        android:id="@+id/profile_edit_phone"
-        android:layout_width="0dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="237dp"
-        android:background="@drawable/lightgray_square"
-        android:gravity="center_vertical"
-        android:paddingLeft="16dp"
-        android:textColor="#888888"
-        android:textSize="15sp"
-        app:layout_constraintLeft_toRightOf="@id/guideline_left_1"
-        app:layout_constraintRight_toLeftOf="@id/guideline_right_1"
-        app:layout_constraintTop_toBottomOf="@id/profile_edit_text_1" />
-
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="8dp"
-        android:layout_marginTop="297dp"
-        android:background="@color/white_two"
-        app:layout_constraintLeft_toRightOf="@id/guideline_left_0"
-        app:layout_constraintRight_toLeftOf="@id/guideline_right_0"
-        app:layout_constraintTop_toBottomOf="@id/profile_edit_text_1" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="321dp"
-        android:text="주소"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintLeft_toRightOf="@id/guideline_left_1"
-        app:layout_constraintTop_toBottomOf="@id/profile_edit_text_1" />
-
-    <Spinner
-        android:id="@+id/profile_edit_spinner_location"
-        android:layout_width="0dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="349dp"
-        android:background="@drawable/gray_border_square"
-        android:dropDownVerticalOffset="-4dp"
-        android:gravity="center_vertical"
-        android:overlapAnchor="false"
-        android:popupBackground="@drawable/spinner_background"
-        android:popupElevation="0dp"
-        android:popupTheme="@style/AppTheme"
-        android:spinnerMode="dropdown"
-        android:textSize="15sp"
-        app:layout_constraintLeft_toRightOf="@id/guideline_left_1"
-        app:layout_constraintRight_toLeftOf="@id/guideline_right_2"
-        app:layout_constraintTop_toBottomOf="@id/profile_edit_text_1" />
-
-    <Spinner
-        android:id="@+id/profile_edit_spinner_location_detail"
-        android:layout_width="0dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="349dp"
-        android:background="@drawable/gray_border_square"
-        android:dropDownVerticalOffset="-4dp"
-        android:gravity="center_vertical"
-        android:overlapAnchor="false"
-        android:popupBackground="@drawable/spinner_background"
-        android:popupElevation="0dp"
-        android:popupTheme="@style/AppTheme"
-        android:spinnerMode="dropdown"
-        android:textSize="15sp"
-        app:layout_constraintLeft_toRightOf="@id/guideline_left_2"
-        app:layout_constraintRight_toLeftOf="@id/guideline_right_1"
-        app:layout_constraintTop_toBottomOf="@id/profile_edit_text_1" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="409dp"
-        android:text="한 줄 소개"
+        android:text="업체명"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintLeft_toRightOf="@id/guideline_left_1"
         app:layout_constraintTop_toBottomOf="@id/profile_edit_text_1" />
 
     <EditText
-        android:id="@+id/profile_edit_introduction"
+        android:id="@+id/career_edit_company"
         android:layout_width="0dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="437dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="61dp"
         android:background="@drawable/gray_border_square"
         android:gravity="center_vertical"
+        android:hint="업체명을 입력하세요"
+        android:paddingLeft="16dp"
+        android:text=""
+        android:textSize="15sp"
+        app:layout_constraintLeft_toRightOf="@id/guideline_left_1"
+        app:layout_constraintRight_toLeftOf="@id/guideline_right_1"
+        app:layout_constraintTop_toBottomOf="@id/profile_edit_text_1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="121dp"
+        android:text="직무"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toRightOf="@id/guideline_left_1"
+        app:layout_constraintTop_toBottomOf="@id/profile_edit_text_1" />
+
+    <EditText
+        android:id="@+id/career_edit_title"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="149dp"
+        android:background="@drawable/gray_border_square"
+        android:gravity="center_vertical"
+        android:hint="직무를 입력하세요"
         android:paddingLeft="16dp"
         android:textSize="15sp"
         app:layout_constraintLeft_toRightOf="@id/guideline_left_1"
@@ -204,23 +76,64 @@
         app:layout_constraintTop_toBottomOf="@id/profile_edit_text_1" />
 
     <TextView
-        android:layout_width="0dp"
-        android:layout_height="76dp"
-        android:layout_marginTop="540dp"
-        android:background="@color/white_two"
-        app:layout_constraintLeft_toRightOf="@id/guideline_left_0"
-        app:layout_constraintRight_toLeftOf="@id/guideline_right_0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="209dp"
+        android:text="근무기간"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toRightOf="@id/guideline_left_1"
         app:layout_constraintTop_toBottomOf="@id/profile_edit_text_1" />
 
-    <RelativeLayout
-        android:id="@+id/profile_edit_button"
+    <EditText
+        android:id="@+id/career_edit_time"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="551dp"
-        android:background="@drawable/red_square"
+        android:layout_height="44dp"
+        android:layout_marginTop="237dp"
+        android:background="@drawable/gray_border_square"
+        android:gravity="center_vertical"
+        android:hint="숫자만 입력하세요"
+        android:paddingLeft="16dp"
+        android:textSize="15sp"
+        android:inputType="number"
         app:layout_constraintLeft_toRightOf="@id/guideline_left_1"
+        app:layout_constraintRight_toLeftOf="@id/guideline_right_2"
+        app:layout_constraintTop_toBottomOf="@id/profile_edit_text_1" />
+
+    <Spinner
+        android:id="@+id/career_spinner"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="237dp"
+        android:background="@drawable/gray_border_square"
+        android:overlapAnchor="false"
+        android:popupBackground="@drawable/spinner_background"
+        android:popupElevation="0dp"
+        android:spinnerMode="dropdown"
+        android:textColor="#000000"
+        android:dropDownVerticalOffset="4dp"
+        app:layout_constraintLeft_toRightOf="@id/guideline_left_2"
         app:layout_constraintRight_toLeftOf="@id/guideline_right_1"
-        app:layout_constraintTop_toBottomOf="@id/profile_edit_text_1">
+        app:layout_constraintTop_toBottomOf="@id/profile_edit_text_1" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/white_three"
+        app:layout_constraintLeft_toRightOf="@id/guideline_left_0"
+        app:layout_constraintRight_toLeftOf="@id/guideline_right_0"
+        app:layout_constraintBottom_toTopOf="@id/guideline_bottom_2"
+        app:layout_constraintTop_toBottomOf="@id/guideline_bottom_1" />
+
+    <RelativeLayout
+        android:id="@+id/career_edit_button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/gray_square"
+        app:layout_constraintBottom_toTopOf="@id/guideline_button_bottom"
+        app:layout_constraintTop_toBottomOf="@id/guideline_button_top"
+        app:layout_constraintLeft_toRightOf="@id/guideline_left_1"
+        app:layout_constraintRight_toLeftOf="@id/guideline_right_1">
 
         <TextView
             android:layout_width="wrap_content"
@@ -251,7 +164,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.511" />
+        app:layout_constraintGuide_percent="0.603" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_right_0"
@@ -272,13 +185,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.489" />
+        app:layout_constraintGuide_percent="0.581" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintGuide_percent="0.035"
+        android:orientation="horizontal"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_bottom_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="357dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_bottom_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="1"
+        android:orientation="horizontal"
+        />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_button_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.897" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_button_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.975"
         android:orientation="horizontal"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

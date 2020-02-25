@@ -13,6 +13,7 @@ import com.yongbeom.aircalendar.core.AirCalendarIntent;
 import org.yapp.covey.R;
 import org.yapp.covey.adapter.AdapterCustomSpinner;
 import org.yapp.covey.databinding.ActivityUploadBinding;
+import org.yapp.covey.databinding.LayoutUploadImageBinding;
 import org.yapp.covey.etc.CustomAppBar;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ import java.util.List;
 
 public class UploadActivity extends AppCompatActivity {
     ActivityUploadBinding binding;
+    LayoutUploadImageBinding bindingImageLayout;
     AdapterCustomSpinner mAdapterSpinner;
 
 
@@ -35,6 +37,8 @@ public class UploadActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        bindingImageLayout = DataBindingUtil.setContentView(this, R.layout.layout_upload_image);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_upload);
 
         setHourArray(hourArray);
@@ -60,6 +64,13 @@ public class UploadActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intentAddress = new Intent(getApplicationContext(), SearchAddressActivity.class);
                 startActivity(intentAddress);
+            }
+        });
+
+        bindingImageLayout.tvAddPhoto.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+
             }
         });
     }

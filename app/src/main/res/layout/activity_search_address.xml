@@ -29,44 +29,46 @@
 
     <EditText
         android:id="@+id/edit_search_address"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        style="@style/TextThemeRound.15sp"
         android:hint="도로명, 건물명, 번지 검색"
         android:textSize="14sp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
         android:drawableEnd="@drawable/search_ic"
-        android:gravity="center_vertical"
         android:singleLine="true"
-        android:background="@drawable/rounded_rectangle_outline_8dp"
         app:layout_constraintStart_toEndOf="@id/guideline_start"
         app:layout_constraintEnd_toStartOf="@id/guideline_end"
         app:layout_constraintTop_toBottomOf="@id/guideline_top"
         app:layout_constraintHeight_percent="0.078"/>
 
     <TextView
+        style="@style/TextTheme14sp"
         android:id="@+id/tv_search_tip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="우편번호 통합검색 Tip"
         android:layout_marginTop="16dp"
-        android:textColor="#000"
-        android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@id/guideline_start"
         app:layout_constraintTop_toBottomOf="@+id/edit_search_address" />
 
     <TextView
+        style="@style/TextTheme14sp"
         android:id="@+id/tv_search_tips"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="* 도로명 + 건물번호 (예: 판교로 123)
         \n* 동/읍/면/리 + 번지 (예: 백현동 1-10)
         \n* 건물명, 아파트명 (예: 판교알파리움)"
-        android:textSize="14sp"
         android:layout_marginTop="8dp"
         android:textColor="@color/warm_grey"
         app:layout_constraintStart_toEndOf="@id/guideline_start"
         app:layout_constraintTop_toBottomOf="@+id/tv_search_tip" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_address"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@id/edit_search_address"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

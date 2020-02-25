@@ -57,12 +57,11 @@ public class SearchAddressActivity extends AppCompatActivity {
     private void getAddress(){
         addressStr = binding.editSearchAddress.getText().toString();
         String appKey = getResources().getString(R.string.kakao_app_key);
-        Singleton.KakaoMaoApi.categoryList(appKey,1,addressStr).enqueue(new Callback<KaKaoMapSearchModel>() {
+        Singleton.KakaoMaoApi.categoryList(1,addressStr).enqueue(new Callback<KaKaoMapSearchModel>() {
             @Override
             public void onResponse(Call<KaKaoMapSearchModel> call, Response<KaKaoMapSearchModel> response) {
-                if (response.code() == 200){
-                    Log.d(TAG, "response success");
-                }
+
+                Log.d(TAG, "response success"+ response.code());
             }
 
             @Override

@@ -38,8 +38,16 @@ public class AdapterKeywordSearchList extends RecyclerView.Adapter<AdapterKeywor
     @Override
     public void onBindViewHolder(@NonNull AdapterKeywordSearchList.ViewHolder holder, int position) {
         Document addressItem = mSearchList.get(position);
-        holder.tvRoadAddressName.setText(addressItem.getRoadAddressName());
-        holder.tvRoadAddress.setText(addressItem.getAddressName());
+        String roadAddressName = addressItem.getRoadAddressName();
+        String addressName = addressItem.getAddressName();
+        if (roadAddressName.length()==0){
+            roadAddressName = "도로명 주소가 없습니다";
+        }
+        if (addressName.length()==0){
+            addressName = "지번 주소가 없습니다";
+        }
+        holder.tvRoadAddressName.setText(roadAddressName);
+        holder.tvRoadAddress.setText(addressName);
     }
 
     @Override

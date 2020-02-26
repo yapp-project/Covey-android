@@ -11,6 +11,7 @@ import android.view.KeyEvent;
 import android.view.View;
 
 import org.yapp.covey.R;
+import org.yapp.covey.adapter.AdapterKeywordSearchList;
 import org.yapp.covey.databinding.ActivitySearchAddressBinding;
 import org.yapp.covey.etc.CustomAppBar;
 import org.yapp.covey.model.KaKaoMapSearchModel;
@@ -22,6 +23,7 @@ import retrofit2.Response;
 
 public class SearchAddressActivity extends AppCompatActivity {
 
+    AdapterKeywordSearchList mAdaper = new AdapterKeywordSearchList();
     private static ActivitySearchAddressBinding binding;
     private String addressStr;
     private static final String TAG = "SEARCH_ADDRESS";
@@ -44,6 +46,7 @@ public class SearchAddressActivity extends AppCompatActivity {
         });
         binding.recyclerAddress.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         getAddress();
+        binding.recyclerAddress.setAdapter(mAdaper);
     }
 
     private void setCustomAppBar(){
@@ -62,7 +65,14 @@ public class SearchAddressActivity extends AppCompatActivity {
         Singleton.KakaoMaoApi.categoryList(1,addressStr).enqueue(new Callback<KaKaoMapSearchModel>() {
             @Override
             public void onResponse(Call<KaKaoMapSearchModel> call, Response<KaKaoMapSearchModel> response) {
-
+                if (response.code() == 200){
+                    if (response.body() != null){
+                        setResultView(true);
+                        mAdaper.setmSearchList(response.body());
+                    }else{
+                        setResultView(false);
+                    }
+                }
                 Log.d(TAG, "response success"+ response.code());
             }
 
@@ -71,6 +81,18 @@ public class SearchAddressActivity extends AppCompatActivity {
                 Log.d(TAG, "OnFailure"+ t.toString());
             }
         });
+    }
+
+    private void setResultView(Boolean hasData){
+        if (hasData){
+            binding.tvSearchTip.setVisibility(View.INVISIBLE);
+            binding.tvSearchTips.setVisibility(View.INVISIBLE);
+            binding.recyclerAddress.setVisibility(View.VISIBLE);
+        }else{
+            binding.tvSearchTip.setVisibility(View.VISIBLE);
+            binding.tvSearchTips.setVisibility(View.VISIBLE);
+            binding.recyclerAddress.setVisibility(View.INVISIBLE);
+        }
     }
 
 }

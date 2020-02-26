@@ -2,6 +2,8 @@ package org.yapp.covey.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -40,6 +42,7 @@ public class SearchAddressActivity extends AppCompatActivity {
                 return false;
             }
         });
+        binding.recyclerAddress.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         getAddress();
     }
 
@@ -56,7 +59,6 @@ public class SearchAddressActivity extends AppCompatActivity {
 
     private void getAddress(){
         addressStr = binding.editSearchAddress.getText().toString();
-        String appKey = getResources().getString(R.string.kakao_app_key);
         Singleton.KakaoMaoApi.categoryList(1,addressStr).enqueue(new Callback<KaKaoMapSearchModel>() {
             @Override
             public void onResponse(Call<KaKaoMapSearchModel> call, Response<KaKaoMapSearchModel> response) {

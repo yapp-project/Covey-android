@@ -31,14 +31,16 @@
         <EditText
             android:id="@+id/edit_search_address"
             style="@style/TextThemeRound.15sp"
+            android:layout_height="wrap_content"
             android:hint="도로명, 건물명, 번지 검색"
             android:textSize="14sp"
         android:drawableEnd="@drawable/search_ic"
             android:singleLine="true"
+            android:paddingTop="11dp"
+            android:paddingBottom="11dp"
             app:layout_constraintStart_toEndOf="@id/guideline_start"
             app:layout_constraintEnd_toStartOf="@id/guideline_end"
-            app:layout_constraintTop_toBottomOf="@id/guideline_top"
-            app:layout_constraintHeight_percent="0.078"/>
+            app:layout_constraintTop_toBottomOf="@id/guideline_top"/>
 
         <TextView
             style="@style/TextTheme14sp"

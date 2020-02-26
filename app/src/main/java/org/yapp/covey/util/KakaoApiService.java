@@ -1,6 +1,5 @@
 package org.yapp.covey.util;
 
-import org.yapp.covey.R;
 import org.yapp.covey.model.KaKaoMapSearchModel;
 
 import retrofit2.Call;

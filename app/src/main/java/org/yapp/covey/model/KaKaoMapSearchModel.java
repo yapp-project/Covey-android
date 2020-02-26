@@ -16,7 +16,7 @@ public class KaKaoMapSearchModel {
 
     @SerializedName("documents")
     @Expose
-    private document documents;
+    private ArrayList<document> documents;
 }
 @Data
 class meta{
@@ -34,7 +34,7 @@ class meta{
 
     @SerializedName("same_name")
     @Expose
-    private ArrayList<same> sameName;
+    private same sameName;
 }
 
 @Data

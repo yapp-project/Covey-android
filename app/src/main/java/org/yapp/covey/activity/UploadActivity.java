@@ -27,9 +27,10 @@ public class UploadActivity extends AppCompatActivity {
     AdapterCustomSpinner mAdapterSpinner;
 
 
-    private String startDate, endDate, selectDate;
+    private String startDate, endDate, selectDate, selectAddress;
 
     private static int REQUEST_CODE = 202;
+    private static int REQUEST_CODE_ADDRESS = 204;
 
     List<String> hourArray = new ArrayList<>();
     List<String> minArray = new ArrayList<>();
@@ -63,7 +64,7 @@ public class UploadActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intentAddress = new Intent(getApplicationContext(), SearchAddressActivity.class);
-                startActivity(intentAddress);
+                startActivityForResult(intentAddress, REQUEST_CODE_ADDRESS);
             }
         });
 
@@ -127,12 +128,17 @@ public class UploadActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
-            if(data != null){
+        if (resultCode == RESULT_OK) {
+            if(requestCode == REQUEST_CODE && data != null){
                 startDate = data.getStringExtra(CustomCalendarActivity.RESULT_SELECT_START_DATE);
                 endDate = data.getStringExtra(CustomCalendarActivity.RESULT_SELECT_END_DATE);
                 binding.tvPostDateStart.setText(startDate);
                 binding.tvPostDateEnd.setText(endDate);
+            }
+            else if(requestCode == REQUEST_CODE_ADDRESS){
+                assert data != null;
+                selectAddress = data.getStringExtra("select Data");
+                binding.tvSelectAddress.setText(selectAddress);
             }
         }
     }

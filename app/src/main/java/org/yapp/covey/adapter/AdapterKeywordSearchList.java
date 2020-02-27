@@ -18,7 +18,7 @@ public class AdapterKeywordSearchList extends RecyclerView.Adapter<AdapterKeywor
     ArrayList<Document> mSearchList = new ArrayList<>();
 
     public interface OnItemClickListener{
-        void onItemClick(View v, int position);
+        void onItemClick(View v, String address);
     }
 
     private OnItemClickListener mListener = null;
@@ -68,7 +68,11 @@ public class AdapterKeywordSearchList extends RecyclerView.Adapter<AdapterKeywor
                     int position = getAdapterPosition();
                     if (position != RecyclerView.NO_POSITION){
                         if (mListener != null){
-                            mListener.onItemClick(view,position);
+                            if (mSearchList.get(position).getRoadAddressName().length() != 0 ){
+                                mListener.onItemClick(view, tvRoadAddressName.getText().toString());
+                            }else {
+                                mListener.onItemClick(view, tvRoadAddress.getText().toString());
+                            }
                         }
                     }
                 }

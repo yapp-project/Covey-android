@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -47,6 +48,7 @@ public class SearchAddressActivity extends AppCompatActivity {
         });
         binding.recyclerAddress.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         getAddress();
+        setFinishAction();
         DividerItemDecoration itemDecoration = new DividerItemDecoration(this, LinearLayoutManager.VERTICAL);
         itemDecoration.setDrawable(getResources().getDrawable(R.drawable.divider_vertical_1dp));
         binding.recyclerAddress.addItemDecoration(itemDecoration);
@@ -59,6 +61,18 @@ public class SearchAddressActivity extends AppCompatActivity {
         customAppBar.setBackClickListener(new CustomAppBar.backClickListener() {
             @Override
             public void onBackClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    public void setFinishAction(){
+        mAdaper.setOnItemClickListener(new AdapterKeywordSearchList.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, String address) {
+                Intent intentAddress = new Intent();
+                intentAddress.putExtra("select Data", address);
+                setResult(RESULT_OK, intentAddress);
                 finish();
             }
         });

@@ -69,9 +69,9 @@ public class SearchAddressActivity extends AppCompatActivity {
     public void setFinishAction(){
         mAdaper.setOnItemClickListener(new AdapterKeywordSearchList.OnItemClickListener() {
             @Override
-            public void onItemClick(View v, String address) {
+            public void onItemClick(View v, String address, String placeName) {
                 Intent intentAddress = new Intent();
-                intentAddress.putExtra("select Data", address);
+                intentAddress.putExtra("select Data", address+placeName);
                 setResult(RESULT_OK, intentAddress);
                 finish();
             }

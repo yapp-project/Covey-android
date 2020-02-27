@@ -1,5 +1,6 @@
 package org.yapp.covey.adapter;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,7 @@ public class AdapterKeywordSearchList extends RecyclerView.Adapter<AdapterKeywor
     ArrayList<Document> mSearchList = new ArrayList<>();
 
     public interface OnItemClickListener{
-        void onItemClick(View v, String address);
+        void onItemClick(View v, String address, String placeName);
     }
 
     private OnItemClickListener mListener = null;
@@ -35,18 +36,20 @@ public class AdapterKeywordSearchList extends RecyclerView.Adapter<AdapterKeywor
         return new ViewHolder(itemView);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull AdapterKeywordSearchList.ViewHolder holder, int position) {
         Document addressItem = mSearchList.get(position);
         String roadAddressName = addressItem.getRoadAddressName();
         String addressName = addressItem.getAddressName();
+        String placeName = addressItem.getPlaceName();
         if (roadAddressName.length()==0){
             roadAddressName = "도로명 주소가 없습니다";
         }
         if (addressName.length()==0){
             addressName = "지번 주소가 없습니다";
         }
-        holder.tvRoadAddressName.setText(roadAddressName);
+        holder.tvRoadAddressName.setText(roadAddressName+ " (" + placeName + ")");
         holder.tvRoadAddress.setText(addressName);
     }
 
@@ -68,10 +71,12 @@ public class AdapterKeywordSearchList extends RecyclerView.Adapter<AdapterKeywor
                     int position = getAdapterPosition();
                     if (position != RecyclerView.NO_POSITION){
                         if (mListener != null){
-                            if (mSearchList.get(position).getRoadAddressName().length() != 0 ){
-                                mListener.onItemClick(view, tvRoadAddressName.getText().toString());
+                            Document addressItem = mSearchList.get(position);
+                            String placeName = " ("+addressItem.getPlaceName()+")";
+                            if (addressItem.getRoadAddressName().length() != 0 ){
+                                mListener.onItemClick(view, tvRoadAddressName.getText().toString(), placeName);
                             }else {
-                                mListener.onItemClick(view, tvRoadAddress.getText().toString());
+                                mListener.onItemClick(view, tvRoadAddress.getText().toString(), placeName);
                             }
                         }
                     }

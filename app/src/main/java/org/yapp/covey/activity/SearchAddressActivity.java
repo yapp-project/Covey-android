@@ -70,13 +70,11 @@ public class SearchAddressActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<KaKaoMapSearchModel> call, Response<KaKaoMapSearchModel> response) {
                 if (response.code() == 200){
-                    if (response.body().getDocuments().size() == 0){
-                        setResultView(false);
-                    }else{
+                    if (response.body() != null) {
                         setResultView(true);
                         mAdaper.setmSearchList(response.body());
                     }
-                }
+                }else if (response.code() == 400)   setResultView(false);
                 Log.d(TAG, "response success"+ response.code());
             }
 

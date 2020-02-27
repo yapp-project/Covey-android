@@ -2,6 +2,7 @@ package org.yapp.covey.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -46,6 +47,9 @@ public class SearchAddressActivity extends AppCompatActivity {
         });
         binding.recyclerAddress.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         getAddress();
+        DividerItemDecoration itemDecoration = new DividerItemDecoration(this, LinearLayoutManager.VERTICAL);
+        itemDecoration.setDrawable(getResources().getDrawable(R.drawable.divider_vertical_1dp));
+        binding.recyclerAddress.addItemDecoration(itemDecoration);
         binding.recyclerAddress.setAdapter(mAdaper);
     }
 
@@ -66,11 +70,11 @@ public class SearchAddressActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<KaKaoMapSearchModel> call, Response<KaKaoMapSearchModel> response) {
                 if (response.code() == 200){
-                    if (response.body() != null){
+                    if (response.body().getDocuments().size() == 0){
+                        setResultView(false);
+                    }else{
                         setResultView(true);
                         mAdaper.setmSearchList(response.body());
-                    }else{
-                        setResultView(false);
                     }
                 }
                 Log.d(TAG, "response success"+ response.code());
@@ -85,10 +89,12 @@ public class SearchAddressActivity extends AppCompatActivity {
 
     private void setResultView(Boolean hasData){
         if (hasData){
+            binding.editSearchAddress.setBackground(getResources().getDrawable(R.drawable.rounded_rectangle_outline_red));
             binding.tvSearchTip.setVisibility(View.INVISIBLE);
             binding.tvSearchTips.setVisibility(View.INVISIBLE);
             binding.recyclerAddress.setVisibility(View.VISIBLE);
         }else{
+            binding.editSearchAddress.setBackground(getResources().getDrawable(R.drawable.rounded_rectangle_outline_8dp));
             binding.tvSearchTip.setVisibility(View.VISIBLE);
             binding.tvSearchTips.setVisibility(View.VISIBLE);
             binding.recyclerAddress.setVisibility(View.INVISIBLE);

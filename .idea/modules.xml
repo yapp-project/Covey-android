@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Covey.iml" filepath="$PROJECT_DIR$/Covey.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/Covey-android-app.iml" filepath="$PROJECT_DIR$/app/Covey-android-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

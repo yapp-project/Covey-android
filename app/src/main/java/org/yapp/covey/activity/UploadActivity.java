@@ -12,6 +12,7 @@ import com.yongbeom.aircalendar.core.AirCalendarIntent;
 
 import org.yapp.covey.R;
 import org.yapp.covey.adapter.AdapterCustomSpinner;
+import org.yapp.covey.adapter.AdapterUploadImageList;
 import org.yapp.covey.databinding.ActivityUploadBinding;
 import org.yapp.covey.databinding.LayoutUploadImageBinding;
 import org.yapp.covey.etc.CustomAppBar;
@@ -21,11 +22,11 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
-public class UploadActivity extends AppCompatActivity {
+public class UploadActivity extends AppCompatActivity implements View.OnClickListener{
     ActivityUploadBinding binding;
     LayoutUploadImageBinding bindingImageLayout;
     AdapterCustomSpinner mAdapterSpinner;
-
+    AdapterUploadImageList mAdapterImageList = new AdapterUploadImageList();
 
     private String startDate, endDate, selectDate, selectAddress;
 
@@ -52,28 +53,7 @@ public class UploadActivity extends AppCompatActivity {
         setSpinner(binding.spinnerEndTimeHour, hourArray,"시");
         setSpinner(binding.spinnerEndTimeMin, minArray ,"분");
 
-        binding.tvPostDateStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDatePicker();
-            }
-        });
         setCustomAppBar();
-
-        binding.tvSelectAddress.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent intentAddress = new Intent(getApplicationContext(), SearchAddressActivity.class);
-                startActivityForResult(intentAddress, REQUEST_CODE_ADDRESS);
-            }
-        });
-
-        bindingImageLayout.tvAddPhoto.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
     }
     private void setCustomAppBar(){
         CustomAppBar customAppBar = new CustomAppBar(this, getSupportActionBar());
@@ -84,6 +64,10 @@ public class UploadActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void getPermission(){
+
     }
 
     private void setSpinner(Spinner spinner, List<String> spinnerData, String title){
@@ -140,6 +124,17 @@ public class UploadActivity extends AppCompatActivity {
                 selectAddress = data.getStringExtra("select Data");
                 binding.tvSelectAddress.setText(selectAddress);
             }
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (binding.tvSelectAddress.equals(view)) {
+            Intent intentAddress = new Intent(getApplicationContext(), SearchAddressActivity.class);
+            startActivityForResult(intentAddress, REQUEST_CODE_ADDRESS);
+        } else if (binding.tvPostDateStart.equals(view)) {
+            showDatePicker();
+        } else if (bindingImageLayout.tvAddPhoto.equals(view)) {
         }
     }
 }

@@ -5,7 +5,6 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.annotation.SuppressLint;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,7 +13,7 @@ import org.yapp.covey.R;
 import org.yapp.covey.adapter.AdapterApplyImage;
 import org.yapp.covey.databinding.LayoutPostDetailBinding;
 import org.yapp.covey.etc.CustomAppBar;
-import org.yapp.covey.etc.ItemDecorationLinear;
+import org.yapp.covey.helper.ItemDecorationLinear;
 import org.yapp.covey.model.ItemDataModel;
 import org.yapp.covey.util.Singleton;
 

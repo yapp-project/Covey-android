@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.yapp.covey.R;
-import org.yapp.covey.etc.CalculateDate;
+import org.yapp.covey.helper.CalculateDate;
 import org.yapp.covey.model.ItemDataModel;
 
 import java.util.ArrayList;

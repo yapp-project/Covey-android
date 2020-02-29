@@ -26,7 +26,7 @@ import org.yapp.covey.activity.UploadActivity;
 import org.yapp.covey.adapter.AdapterCategoryList;
 import org.yapp.covey.adapter.AdapterLocationList;
 import org.yapp.covey.adapter.AdapterMoneyList;
-import org.yapp.covey.etc.ItemDecorationLinear;
+import org.yapp.covey.helper.ItemDecorationLinear;
 import org.yapp.covey.model.ItemDataModel;
 import org.yapp.covey.util.Singleton;
 

@@ -1,11 +1,11 @@
-package org.yapp.covey.etc;
+package org.yapp.covey.helper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class CalculateDate {
+public class CalculateDateHelper {
     private String today = getCurrentDate();
     int currentYear, currentMonth, currentDay;
 

@@ -16,6 +16,7 @@ import org.yapp.covey.adapter.AdapterUploadImageList;
 import org.yapp.covey.databinding.ActivityUploadBinding;
 import org.yapp.covey.databinding.LayoutUploadImageBinding;
 import org.yapp.covey.etc.CustomAppBar;
+import org.yapp.covey.helper.PermissionHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,6 +28,7 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
     LayoutUploadImageBinding bindingImageLayout;
     AdapterCustomSpinner mAdapterSpinner;
     AdapterUploadImageList mAdapterImageList = new AdapterUploadImageList();
+    PermissionHelper permissionHelper = new PermissionHelper(this);
 
     private String startDate, endDate, selectDate, selectAddress;
 
@@ -54,6 +56,7 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
         setSpinner(binding.spinnerEndTimeMin, minArray ,"분");
 
         setCustomAppBar();
+        getPermission();
     }
     private void setCustomAppBar(){
         CustomAppBar customAppBar = new CustomAppBar(this, getSupportActionBar());
@@ -67,7 +70,7 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void getPermission(){
-
+        permissionHelper.getPermission(100);
     }
 
     private void setSpinner(Spinner spinner, List<String> spinnerData, String title){

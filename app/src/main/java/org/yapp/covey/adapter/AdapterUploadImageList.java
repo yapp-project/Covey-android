@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 
@@ -17,7 +18,16 @@ import org.yapp.covey.R;
 import java.util.ArrayList;
 
 public class AdapterUploadImageList extends RecyclerView.Adapter<AdapterUploadImageList.ViewHolder> {
-    ArrayList<Uri> mUriList = new ArrayList<>();
+    private ArrayList<Uri> mUriList = new ArrayList<>();
+
+    private ItemClick itemClick;
+
+    public interface ItemClick{
+        void onClick(View view, int position);
+    }
+    public void setItemClick(ItemClick itemClick){
+        this.itemClick = itemClick;
+    }
 
     @NonNull
     @Override
@@ -29,7 +39,16 @@ public class AdapterUploadImageList extends RecyclerView.Adapter<AdapterUploadIm
 
     @Override
     public void onBindViewHolder(@NonNull AdapterUploadImageList.ViewHolder holder, int position) {
-        Glide.with(holder.imageView).load(mUriList.get(position)).into(holder.imageView);
+        Uri itemData = mUriList.get(position);
+        Glide.with(holder.itemView).load(itemData)
+                .error(R.drawable.no_image_img)
+                .into(holder.imageAdded);
+        holder.deleteBtn.setOnClickListener(view -> {
+            deleteImageUri(position);
+            if (itemClick!=null){
+                itemClick.onClick(view,position);
+            }
+        });
     }
 
     @Override
@@ -38,27 +57,27 @@ public class AdapterUploadImageList extends RecyclerView.Adapter<AdapterUploadIm
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView imageView;
-
-        public ViewHolder(@NonNull View itemView) {
+        ImageView imageAdded;
+        ImageButton deleteBtn;
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
+            imageAdded = itemView.findViewById(R.id.imageView_upload);
+            deleteBtn = itemView.findViewById(R.id.imageButton_delete);
         }
     }
 
     public void addUriList(ArrayList<Uri> uriList){
-        this.mUriList = uriList;
+        mUriList.addAll(uriList);
         notifyDataSetChanged();
     }
 
-    public void deleteImageUri(int position){
+    private void deleteImageUri(int position){
         mUriList.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeRemoved(position, getItemCount());
     }
 
-    public ArrayList<String> getUriList(){
-        ArrayList<String> stringList = new ArrayList<>();
-        for (int i = 0 ; i<mUriList.size(); i++){
-            stringList.set(i, String.valueOf(mUriList.get(i)));
-        }
-        return stringList;
+    public ArrayList<Uri> getUriList(){
+        return mUriList;
     }
 }

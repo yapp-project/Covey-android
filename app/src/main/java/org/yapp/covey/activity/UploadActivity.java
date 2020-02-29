@@ -1,12 +1,14 @@
 package org.yapp.covey.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.yongbeom.aircalendar.core.AirCalendarIntent;
 
@@ -14,7 +16,6 @@ import org.yapp.covey.R;
 import org.yapp.covey.adapter.AdapterCustomSpinner;
 import org.yapp.covey.adapter.AdapterUploadImageList;
 import org.yapp.covey.databinding.ActivityUploadBinding;
-import org.yapp.covey.databinding.LayoutUploadImageBinding;
 import org.yapp.covey.etc.CustomAppBar;
 import org.yapp.covey.helper.PermissionHelper;
 
@@ -23,9 +24,11 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
-public class UploadActivity extends AppCompatActivity implements View.OnClickListener{
+import gun0912.tedimagepicker.builder.TedImagePicker;
+import gun0912.tedimagepicker.builder.listener.OnMultiSelectedListener;
+
+public class UploadActivity extends AppCompatActivity{
     ActivityUploadBinding binding;
-    LayoutUploadImageBinding bindingImageLayout;
     AdapterCustomSpinner mAdapterSpinner;
     AdapterUploadImageList mAdapterImageList = new AdapterUploadImageList();
     PermissionHelper permissionHelper = new PermissionHelper(this);
@@ -41,8 +44,6 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        bindingImageLayout = DataBindingUtil.setContentView(this, R.layout.layout_upload_image);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_upload);
 
         setHourArray(hourArray);
@@ -57,6 +58,15 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
 
         setCustomAppBar();
         getPermission();
+        binding.recyclerUploadImage.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
+
+        binding.tvSelectAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentAddress = new Intent(getApplicationContext(), SearchAddressActivity.class);
+                startActivityForResult(intentAddress, REQUEST_CODE_ADDRESS);
+            }
+        });
     }
     private void setCustomAppBar(){
         CustomAppBar customAppBar = new CustomAppBar(this, getSupportActionBar());
@@ -130,14 +140,26 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    @Override
-    public void onClick(View view) {
-        if (binding.tvSelectAddress.equals(view)) {
-            Intent intentAddress = new Intent(getApplicationContext(), SearchAddressActivity.class);
-            startActivityForResult(intentAddress, REQUEST_CODE_ADDRESS);
-        } else if (binding.tvPostDateStart.equals(view)) {
-            showDatePicker();
-        } else if (bindingImageLayout.tvAddPhoto.equals(view)) {
-        }
+    public void dateSelect(View view) {
+        showDatePicker();
+    }
+
+    public void addImage(View view) {
+        TedImagePicker.with(this)
+                .cameraTileBackground(R.color.salmon)
+                .buttonBackground(R.color.tomato)
+                .max(3-mAdapterImageList.getItemCount(), "최대 3장까지 선택 가능합니다")
+                .startMultiImage(new OnMultiSelectedListener() {
+                    @Override
+                    public void onSelected(List<? extends Uri> list) {
+                        mAdapterImageList.addUriList((ArrayList<Uri>) list);
+                    }
+                });
+
+//
+//        ImagePicker imagePicker = new ImagePicker(getApplicationContext());
+//        imagePicker.setImagePicker(3 - mAdapterImageList.getItemCount());
+//        mAdapterImageList.addUriList(imagePicker.getSelectedUri());
+        binding.recyclerUploadImage.setAdapter(mAdapterImageList);
     }
 }

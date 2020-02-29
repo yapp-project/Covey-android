@@ -14,7 +14,7 @@
         app:srcCompat="@drawable/no_image_img" />
 
     <ImageButton
-        android:id="@+id/imageButton_close"
+        android:id="@+id/imageButton_delete"
         android:layout_width="20dp"
         android:layout_height="24dp"
         android:background="@color/blank"

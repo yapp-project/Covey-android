@@ -16,7 +16,7 @@
     <ImageButton
         android:id="@+id/imageButton_delete"
         android:layout_width="20dp"
-        android:layout_height="24dp"
+        android:layout_height="20dp"
         android:background="@color/blank"
         app:layout_constraintStart_toEndOf="@+id/imageView_upload"
         app:layout_constraintTop_toTopOf="parent"

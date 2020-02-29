@@ -1,5 +1,6 @@
 package org.yapp.covey.adapter;
 
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.Transformation;
+import com.bumptech.glide.load.resource.bitmap.FitCenter;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 
 import org.yapp.covey.R;
 
@@ -39,9 +44,11 @@ public class AdapterUploadImageList extends RecyclerView.Adapter<AdapterUploadIm
 
     @Override
     public void onBindViewHolder(@NonNull AdapterUploadImageList.ViewHolder holder, int position) {
+        float mScale = holder.imageAdded.getResources().getDisplayMetrics().density;
         Uri itemData = mUriList.get(position);
+
         Glide.with(holder.itemView).load(itemData)
-                .error(R.drawable.no_image_img)
+                .apply(RequestOptions.centerCropTransform())
                 .into(holder.imageAdded);
         holder.deleteBtn.setOnClickListener(view -> {
             deleteImageUri(position);

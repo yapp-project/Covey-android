@@ -15,7 +15,7 @@ public class AdapterCustomSpinner extends BaseAdapter {
     Context context;
     List<String> dataList;
     LayoutInflater inflater;
-    String title;
+    String title, data;
 
     public AdapterCustomSpinner(Context context, List<String> data, String title){
         this.context = context;
@@ -55,7 +55,7 @@ public class AdapterCustomSpinner extends BaseAdapter {
         } else if (position == dataList.size()-1) {
             convertView.setBackgroundResource(R.drawable.rounded_bottom_rectangle_outline_8dp);
         }
-        String data = dataList.get(position);
+        data = dataList.get(position);
         TextView tvData = convertView.findViewById(R.id.tv_spinner_item);
         tvData.setText(data);
         return convertView;

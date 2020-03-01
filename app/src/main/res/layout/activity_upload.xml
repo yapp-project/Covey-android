@@ -280,7 +280,7 @@
                 app:layout_constraintTop_toBottomOf="@id/edit_payment" />
 
             <EditText
-                android:id="@+id/edit_etc"
+                android:id="@+id/edit_description"
                 style="@style/TextThemeRound.15sp"
                 android:inputType="textMultiLine"
                 android:layout_height="wrap_content"
@@ -307,7 +307,7 @@
                 android:layout_height="16dp"
                 android:layout_marginTop="32dp"
                 android:background="@color/white_two"
-                app:layout_constraintTop_toBottomOf="@id/edit_etc" />
+                app:layout_constraintTop_toBottomOf="@id/edit_description" />
 
             <TextView
                 android:id="@+id/tv_photo"

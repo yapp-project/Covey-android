@@ -1,5 +1,7 @@
 package org.yapp.covey.util;
 
+import com.google.gson.JsonObject;
+
 import org.yapp.covey.etc.careerClass;
 import org.yapp.covey.etc.phoneNumClass;
 import org.yapp.covey.etc.userClass;
@@ -8,12 +10,16 @@ import org.yapp.covey.model.ItemDataModel;
 
 import java.util.ArrayList;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
+import retrofit2.http.Field;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -92,8 +98,23 @@ public interface CoveyApiService {
     Call<Void>
     deleteCareer(@Path("careerId") String careerId);
 
-    // apply
-//    @POST("api/apply/{postId}")
-//    Call<JSONArray>
-//    apply(@Path("postId") Integer postId);
+    //upload
+    @POST("api/post")
+    Call<JsonObject>
+    upload(@Part MultipartBody.Part img1
+            , @Part MultipartBody.Part img2
+            , @Part MultipartBody.Part img3
+            , @Field("title") String title
+            , @Field("startDate") String startDate
+            , @Field("endDate") String endDate
+            , @Field("dueDate") String dueDate
+            , @Field("isDue") Boolean isDue
+            , @Field("workingTime") String workingTime
+            , @Field("address1") String address1
+            , @Field("address2") String address2
+            , @Field("address3") String address3
+            , @Field("pay") Integer pay
+            , @Field("description") String description
+            , @Field("category") String category
+    );
 }

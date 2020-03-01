@@ -60,23 +60,15 @@ public class UploadActivity extends AppCompatActivity{
         getPermission();
         binding.recyclerUploadImage.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
 
-        binding.tvSelectAddress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentAddress = new Intent(getApplicationContext(), SearchAddressActivity.class);
-                startActivityForResult(intentAddress, REQUEST_CODE_ADDRESS);
-            }
+        binding.tvSelectAddress.setOnClickListener(view -> {
+            Intent intentAddress = new Intent(getApplicationContext(), SearchAddressActivity.class);
+            startActivityForResult(intentAddress, REQUEST_CODE_ADDRESS);
         });
     }
     private void setCustomAppBar(){
         CustomAppBar customAppBar = new CustomAppBar(this, getSupportActionBar());
         customAppBar.setCustomAppBar("대타 등록하기");
-        customAppBar.setBackClickListener(new CustomAppBar.backClickListener() {
-            @Override
-            public void onBackClick(View v) {
-                finish();
-            }
-        });
+        customAppBar.setBackClickListener(v -> finish());
     }
 
     private void getPermission(){
@@ -105,10 +97,10 @@ public class UploadActivity extends AppCompatActivity{
         intent.isBooking(false);
         intent.isSelect(false);
         intent.isMonthLabels(false);
-        intent.setSelectButtonText("선택"); //the select button text
-        intent.setResetBtnText("리셋"); //the reset button text
+        intent.setSelectButtonText("선택");
+        intent.setResetBtnText("리셋");
         intent.setWeekStart(Calendar.MONDAY);
-        intent.setWeekDaysLanguage(AirCalendarIntent.Language.EN); //language for the weekdays
+        intent.setWeekDaysLanguage(AirCalendarIntent.Language.EN);
 
         ArrayList<String> weekDay = new ArrayList<>();
         weekDay.add("MON");
@@ -149,17 +141,9 @@ public class UploadActivity extends AppCompatActivity{
                 .cameraTileBackground(R.color.salmon)
                 .buttonBackground(R.color.tomato)
                 .max(3-mAdapterImageList.getItemCount(), "최대 3장까지 선택 가능합니다")
-                .startMultiImage(new OnMultiSelectedListener() {
-                    @Override
-                    public void onSelected(List<? extends Uri> list) {
-                        mAdapterImageList.addUriList((ArrayList<Uri>) list);
-                    }
+                .startMultiImage(list -> {
+                    mAdapterImageList.addUriList((ArrayList<Uri>) list);
                 });
-
-//
-//        ImagePicker imagePicker = new ImagePicker(getApplicationContext());
-//        imagePicker.setImagePicker(3 - mAdapterImageList.getItemCount());
-//        mAdapterImageList.addUriList(imagePicker.getSelectedUri());
         binding.recyclerUploadImage.setAdapter(mAdapterImageList);
     }
 }

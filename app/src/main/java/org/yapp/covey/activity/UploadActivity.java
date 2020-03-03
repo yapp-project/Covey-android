@@ -157,6 +157,7 @@ public class UploadActivity extends AppCompatActivity{
         TedImagePicker.with(this)
                 .cameraTileBackground(R.color.salmon)
                 .buttonBackground(R.color.tomato)
+                .mediaType(gun0912.tedimagepicker.builder.type.MediaType.IMAGE)
                 .max(3-mAdapterImageList.getItemCount(), "최대 3장까지 선택 가능합니다")
                 .startMultiImage(list -> {
                     mAdapterImageList.addUriList((ArrayList<Uri>) list);

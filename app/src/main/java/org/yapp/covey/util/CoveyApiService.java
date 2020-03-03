@@ -102,23 +102,22 @@ public interface CoveyApiService {
 
     //upload
     @Multipart
-    @FormUrlEncoded
     @POST("api/post")
     Call<JsonObject>
     upload(@Part MultipartBody.Part img1
             , @Part MultipartBody.Part img2
             , @Part MultipartBody.Part img3
-            , @Field("title") String title
-            , @Field("startDate") String startDate
-            , @Field("endDate") String endDate
-            , @Field("dueDate") String dueDate
-            , @Field("isDue") Boolean isDue
-            , @Field("workingTime") String workingTime
-            , @Field("address1") String address1
-            , @Field("address2") String address2
-            , @Field("address3") String address3
-            , @Field("pay") Integer pay
-            , @Field("description") String description
-            , @Field("category") String category
+            , @Part("title") String title
+            , @Part("startDate") String startDate
+            , @Part("endDate") String endDate
+            , @Part("dueDate") String dueDate
+            , @Part("isDue") Boolean isDue
+            , @Part("workingTime") String workingTime
+            , @Part("address1") String address1
+            , @Part("address2") String address2
+            , @Part("address3") String address3
+            , @Part("pay") Integer pay
+            , @Part("description") String description
+            , @Part("category") String category
     );
 }

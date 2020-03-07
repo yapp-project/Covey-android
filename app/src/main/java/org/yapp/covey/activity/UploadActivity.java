@@ -47,14 +47,12 @@ public class UploadActivity extends AppCompatActivity{
     private String startDate, endDate, selectDate, selectAddress
             , title, description, category, startTime, endTime;
 
-    private String[] addressString;
     private int payment;
 
     private static int REQUEST_CODE = 202;
     private static int REQUEST_CODE_ADDRESS = 204;
 
-    List<String> hourArray = new ArrayList<>();
-    List<String> minArray = new ArrayList<>();
+    List<String> hourArray, minArray = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,15 +117,8 @@ public class UploadActivity extends AppCompatActivity{
         intent.setWeekStart(Calendar.MONDAY);
         intent.setWeekDaysLanguage(AirCalendarIntent.Language.EN);
 
-        ArrayList<String> weekDay = new ArrayList<>();
-        weekDay.add("MON");
-        weekDay.add("TUE");
-        weekDay.add("WED");
-        weekDay.add("THR");
-        weekDay.add("FRI");
-        weekDay.add("SAT");
-        weekDay.add("SUN");
-        intent.setCustomWeekDays(weekDay); //custom weekdays
+        ArrayList<String> weekDay = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.week)));
+        intent.setCustomWeekDays(weekDay);
 
         startActivityForResult(intent, REQUEST_CODE);
     }
@@ -169,13 +160,14 @@ public class UploadActivity extends AppCompatActivity{
         ArrayList<Uri> uriList = mAdapterImageList.getUriList();
         ArrayList<MultipartBody.Part> multipartData = new ArrayList<>();
         for (int i = 0 ; i < uriList.size() ; i++){
-            File file = new File(String.valueOf(uriList.get(i)));
+            File file = new File(uriList.get(i).getPath());
             RequestBody fileReqBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
             MultipartBody.Part part = MultipartBody.Part.createFormData("img"+(i+1), file.getName(), fileReqBody);
             multipartData.add(part);
         }
         getUploadData();
-        String addressDetail = null;
+        String[] addressString = selectAddress.split(" ");
+        String addressDetail = "";
         for (int i = 2 ; i< addressString.length ; i++){
             addressDetail = addressDetail + addressString[i];
         }
@@ -199,7 +191,7 @@ public class UploadActivity extends AppCompatActivity{
                                     break;
                                 }
                                 default:{
-                                    Log.d("upload Error", String.valueOf(response.code()));
+                                    Log.w("upload Error", String.valueOf(response.code()));
                                 }
                             }
                         }
@@ -216,7 +208,5 @@ public class UploadActivity extends AppCompatActivity{
         title = binding.editTitle.getText().toString();
         description = binding.editDescription.getText().toString();
         payment = Integer.parseInt(binding.editPayment.getText().toString());
-
-        addressString = selectAddress.split(" ");
     }
 }

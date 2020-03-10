@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -52,7 +53,8 @@ public class UploadActivity extends AppCompatActivity{
     private static int REQUEST_CODE = 202;
     private static int REQUEST_CODE_ADDRESS = 204;
 
-    List<String> hourArray, minArray = new ArrayList<>();
+    List<String> hourArray = new ArrayList<>();
+    List<String> minArray = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,12 +64,13 @@ public class UploadActivity extends AppCompatActivity{
         setHourArray(hourArray);
         setMinArray(minArray);
 
-        setSpinner(binding.spinnerCategory, Arrays.asList(getResources().getStringArray(R.array.category)),"카테고리를 선택하세요");
-        setSpinner(binding.spinnerStartTimeHour, hourArray,"시");
-        setSpinner(binding.spinnerStartTimeMin, minArray ,"분");
+        setSpinner(binding.spinnerCategory, Arrays.asList(getResources().getStringArray(R.array.category)));
+        setSpinner(binding.spinnerStartTimeHour, hourArray);
+        setSpinner(binding.spinnerStartTimeMin, minArray);
 
-        setSpinner(binding.spinnerEndTimeHour, hourArray,"시");
-        setSpinner(binding.spinnerEndTimeMin, minArray ,"분");
+
+        setSpinner(binding.spinnerEndTimeHour, hourArray);
+        setSpinner(binding.spinnerEndTimeMin, minArray);
 
         setCustomAppBar();
         getPermission();
@@ -90,21 +93,38 @@ public class UploadActivity extends AppCompatActivity{
         permissionHelper.getPermission(100);
     }
 
-    private void setSpinner(Spinner spinner, List<String> spinnerData, String title){
-        mAdapterSpinner = new AdapterCustomSpinner(this,spinnerData, title);
+    private void setSpinner(Spinner spinner, List<String> spinnerData){
+        mAdapterSpinner = new AdapterCustomSpinner(this,spinnerData);
         spinner.setAdapter(mAdapterSpinner);
+        spinner.setSelection(spinnerData.size());
     }
 
     private void setHourArray(List<String> hourArray){
+        hourArray.add("시");
         for (int i = 0 ; i<= 24; i++){
             hourArray.add(String.valueOf(i));
         }
     }
 
     private void setMinArray(List<String> minArray){
+        minArray.add("분");
         for (int i = 0 ; i<= 5 ; i++){
             minArray.add(String.valueOf(i*10));
         }
+    }
+
+    public void getSpinnerData(Spinner selectSpinner){
+        binding.spinnerStartTimeHour.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     public void showDatePicker(){

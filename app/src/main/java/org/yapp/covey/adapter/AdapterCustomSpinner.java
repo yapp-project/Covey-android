@@ -15,12 +15,11 @@ public class AdapterCustomSpinner extends BaseAdapter {
     Context context;
     List<String> dataList;
     LayoutInflater inflater;
-    String title, data;
+    String data;
 
-    public AdapterCustomSpinner(Context context, List<String> data, String title){
+    public AdapterCustomSpinner(Context context, List<String> data){
         this.context = context;
         this.dataList = data;
-        this.title = title;
         inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -42,8 +41,14 @@ public class AdapterCustomSpinner extends BaseAdapter {
     @Override
     public View getView(int position, View view, ViewGroup parent) {
         view = inflater.inflate(R.layout.item_spinner,parent,false);
+        TextView tvItem = view.findViewById(R.id.tv_spinner_hint);
+
+//        if (position == 0){
+//            tvItem.setText("");
+//            tvItem.setHint(dataList.get(0));
+//        }
         String text = dataList.get(position);
-        ((TextView)view.findViewById(R.id.tv_spinner_hint)).setText(text);
+        tvItem.setText(text);
         return view;
     }
 
@@ -60,4 +65,6 @@ public class AdapterCustomSpinner extends BaseAdapter {
         tvData.setText(data);
         return convertView;
     }
+
+
 }

@@ -13,8 +13,6 @@
                 android:radius="8dp"
                 android:topRightRadius="0dp"
                 android:topLeftRadius="0dp" />
-            <solid
-                android:color="#fff"/>
         </shape>
     </item>
 </layer-list>

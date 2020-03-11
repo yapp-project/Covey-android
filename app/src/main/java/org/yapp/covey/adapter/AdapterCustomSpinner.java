@@ -1,6 +1,7 @@
 package org.yapp.covey.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,8 +48,10 @@ public class AdapterCustomSpinner extends BaseAdapter {
         if (position == getCount()){
             tvItem.setText("");
             tvItem.setHint(getItem(getCount()));
+        }else{
+            tvItem.setText(getItem(position));
+            tvItem.setTextColor(Color.BLACK);
         }
-
         return convertView;
     }
 

@@ -31,7 +31,6 @@ import java.util.Calendar;
 import java.util.List;
 
 import gun0912.tedimagepicker.builder.TedImagePicker;
-import gun0912.tedimagepicker.builder.listener.OnMultiSelectedListener;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -41,12 +40,14 @@ import retrofit2.Response;
 
 public class UploadActivity extends AppCompatActivity{
     ActivityUploadBinding binding;
-    AdapterCustomSpinner mAdapterSpinner;
+    AdapterCustomSpinner mAdapterSpinner, mHourAdapterSpinner;
     AdapterUploadImageList mAdapterImageList = new AdapterUploadImageList();
     PermissionHelper permissionHelper = new PermissionHelper(this);
 
     private String startDate, endDate, selectDate, selectAddress
-            , title, description, category, startTime, endTime;
+            , title, description, category, startTime, startHour, startMin, endHour, endMin, endTime;
+
+    private final static String TAG = "UPLOAD_SERVER_ERROR";
 
     private int payment;
 
@@ -55,6 +56,7 @@ public class UploadActivity extends AppCompatActivity{
 
     ArrayList<String> hourArray = new ArrayList<>();
     ArrayList<String> minArray = new ArrayList<>();
+    ArrayList<String> categoryArray = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,17 +66,10 @@ public class UploadActivity extends AppCompatActivity{
         setHourArray(hourArray);
         setMinArray(minArray);
 
-        ArrayList<String> categoryArray = new ArrayList<>();
         categoryArray.addAll(Arrays.asList(getResources().getStringArray(R.array.category)));
         categoryArray.add("카테고리");
-        setSpinner(binding.spinnerCategory, categoryArray);
-        setSpinner(binding.spinnerStartTimeHour, hourArray);
-        setSpinner(binding.spinnerStartTimeMin, minArray);
 
-
-        setSpinner(binding.spinnerEndTimeHour, hourArray);
-        setSpinner(binding.spinnerEndTimeMin, minArray);
-
+        setSpinnerSet();
         setCustomAppBar();
         getPermission();
         binding.recyclerUploadImage.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
@@ -96,10 +91,32 @@ public class UploadActivity extends AppCompatActivity{
         permissionHelper.getPermission(100);
     }
 
+    private void setSpinnerSet(){
+        // set spinner adapter, data
+        setSpinner(binding.spinnerCategory, categoryArray);
+        setSpinnerHour(binding.spinnerStartTimeHour, hourArray);
+        setSpinner(binding.spinnerStartTimeMin, minArray);
+        setSpinner(binding.spinnerEndTimeHour, hourArray);
+        setSpinner(binding.spinnerEndTimeMin, minArray);
+
+        // set spinner item selected Listener
+        setSpinnerSelectedListener(binding.spinnerCategory, 1);
+        setSpinnerSelectedListener(binding.spinnerStartTimeHour, 2);
+        setSpinnerSelectedListener(binding.spinnerStartTimeMin,3);
+        setSpinnerSelectedListener(binding.spinnerEndTimeHour, 4);
+        setSpinnerSelectedListener(binding.spinnerEndTimeMin,5);
+    }
+
     private void setSpinner(Spinner spinner, ArrayList<String> spinnerData){
         mAdapterSpinner = new AdapterCustomSpinner(this,spinnerData);
         spinner.setAdapter(mAdapterSpinner);
         spinner.setSelection(spinnerData.size()-1);
+    }
+
+    private void setSpinnerHour(Spinner spinnerHour, ArrayList<String> spinnerData){
+        mHourAdapterSpinner = new AdapterCustomSpinner(this, spinnerData);
+        spinnerHour.setAdapter(mHourAdapterSpinner);
+        spinnerHour.setSelection(spinnerData.size()-1);
     }
 
     private void setHourArray(List<String> hourArray){
@@ -116,18 +133,50 @@ public class UploadActivity extends AppCompatActivity{
         minArray.add("분");
     }
 
-    public void getSpinnerData(Spinner selectSpinner){
-        binding.spinnerStartTimeHour.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+    public void setSpinnerSelectedListener(Spinner selectedSpinner, int type){
+        if (type == 2 || type == 4){
+            selectedSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                    switch (type){
+                        case 2: startHour = mHourAdapterSpinner.getItem(position); break;
+                        case 4: endHour = mHourAdapterSpinner.getItem(position); break;
+                    }
+                }
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
 
-            }
+                }
+            });
+        }else if(type == 3 || type == 5){
+            selectedSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                    int itemPosition = position -1;
+                    switch (type){
+                        case 3: startMin = minArray.get(position);
+                        case 5: endMin = minArray.get(position);
+                    }
+                }
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+                }
+            });
+        }
+        else{
+            selectedSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                    category = categoryArray.get(position);
+                }
 
-            }
-        });
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+        }
     }
 
     public void showDatePicker(){
@@ -197,9 +246,9 @@ public class UploadActivity extends AppCompatActivity{
 
         Singleton.retrofit.upload(multipartData.get(0),multipartData.get(1),multipartData.get(2)
                 , title, startDate, endDate, endDate, true
-                , "12:00 ~ 14:00"
+                , startTime +" ~ " + endTime
                 , addressString[0], addressString[1], addressDetail
-                , payment, description, "카페")
+                , payment, description, category)
                 .enqueue(new Callback<JsonObject>() {
                     @Override
                     public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
@@ -210,13 +259,16 @@ public class UploadActivity extends AppCompatActivity{
                                     break;
                                 }
                                 case 404:{
-                                    Log.d("upload Error", "NotFound");
+                                    Log.d(TAG, "NotFound");
                                     break;
                                 }
-                                default:{
-                                    Log.w("upload Error", String.valueOf(response.code()));
+                                case 422:{
+                                    Log.w(TAG, String.valueOf(response.code()));
+                                    Toast.makeText(getApplicationContext(), "에러있따에러", Toast.LENGTH_SHORT).show();
+                                    break;
                                 }
                             }
+                            Log.w("TAG",category+startTime + endTime+response.code());
                         }
                     }
 
@@ -231,5 +283,17 @@ public class UploadActivity extends AppCompatActivity{
         title = binding.editTitle.getText().toString();
         description = binding.editDescription.getText().toString();
         payment = Integer.parseInt(binding.editPayment.getText().toString());
+
+        if (startMin.equals("0")){
+            startMin = startMin +"0";
+        }
+
+        if (endMin.equals("0")){
+            endMin = endMin +"0";
+        }
+        startTime = startHour +":"+startMin;
+        endTime = endHour +":"+endMin;
+
+        Log.w("TAG",startTime + endTime);
     }
 }

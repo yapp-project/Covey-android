@@ -25,11 +25,11 @@ public class AdapterCustomSpinner extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return dataList.size();
+        return dataList.size()-1;
     }
 
     @Override
-    public Object getItem(int position) {
+    public String getItem(int position) {
         return dataList.get(position);
     }
 
@@ -39,17 +39,17 @@ public class AdapterCustomSpinner extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View view, ViewGroup parent) {
-        view = inflater.inflate(R.layout.item_spinner,parent,false);
-        TextView tvItem = view.findViewById(R.id.tv_spinner_hint);
+    public View getView(int position, View convertView, ViewGroup parent) {
+        if (convertView == null){
+            convertView = inflater.inflate(R.layout.item_spinner,parent,false);
+        }
+        TextView tvItem = convertView.findViewById(R.id.tv_spinner_hint);
+        if (position == getCount()){
+            tvItem.setText("");
+            tvItem.setHint(getItem(getCount()));
+        }
 
-//        if (position == 0){
-//            tvItem.setText("");
-//            tvItem.setHint(dataList.get(0));
-//        }
-        String text = dataList.get(position);
-        tvItem.setText(text);
-        return view;
+        return convertView;
     }
 
     @Override
@@ -57,7 +57,7 @@ public class AdapterCustomSpinner extends BaseAdapter {
         convertView = inflater.inflate(R.layout.item_spinner_dropdown, parent, false);
         if (position == 0) {
             convertView.setBackgroundResource(R.drawable.rounded_top_rectangle_outline_8dp);
-        } else if (position == dataList.size()-1) {
+        } else if (position == dataList.size()-2) {
             convertView.setBackgroundResource(R.drawable.rounded_bottom_rectangle_outline_8dp);
         }
         data = dataList.get(position);
@@ -65,6 +65,4 @@ public class AdapterCustomSpinner extends BaseAdapter {
         tvData.setText(data);
         return convertView;
     }
-
-
 }

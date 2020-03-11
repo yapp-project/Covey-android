@@ -53,8 +53,8 @@ public class UploadActivity extends AppCompatActivity{
     private static int REQUEST_CODE = 202;
     private static int REQUEST_CODE_ADDRESS = 204;
 
-    List<String> hourArray = new ArrayList<>();
-    List<String> minArray = new ArrayList<>();
+    ArrayList<String> hourArray = new ArrayList<>();
+    ArrayList<String> minArray = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,10 @@ public class UploadActivity extends AppCompatActivity{
         setHourArray(hourArray);
         setMinArray(minArray);
 
-        setSpinner(binding.spinnerCategory, Arrays.asList(getResources().getStringArray(R.array.category)));
+        ArrayList<String> categoryArray = new ArrayList<>();
+        categoryArray.addAll(Arrays.asList(getResources().getStringArray(R.array.category)));
+        categoryArray.add("카테고리");
+        setSpinner(binding.spinnerCategory, categoryArray);
         setSpinner(binding.spinnerStartTimeHour, hourArray);
         setSpinner(binding.spinnerStartTimeMin, minArray);
 
@@ -93,24 +96,24 @@ public class UploadActivity extends AppCompatActivity{
         permissionHelper.getPermission(100);
     }
 
-    private void setSpinner(Spinner spinner, List<String> spinnerData){
+    private void setSpinner(Spinner spinner, ArrayList<String> spinnerData){
         mAdapterSpinner = new AdapterCustomSpinner(this,spinnerData);
         spinner.setAdapter(mAdapterSpinner);
-        spinner.setSelection(spinnerData.size());
+        spinner.setSelection(spinnerData.size()-1);
     }
 
     private void setHourArray(List<String> hourArray){
-        hourArray.add("시");
         for (int i = 0 ; i<= 24; i++){
             hourArray.add(String.valueOf(i));
         }
+        hourArray.add("시");
     }
 
     private void setMinArray(List<String> minArray){
-        minArray.add("분");
         for (int i = 0 ; i<= 5 ; i++){
             minArray.add(String.valueOf(i*10));
         }
+        minArray.add("분");
     }
 
     public void getSpinnerData(Spinner selectSpinner){

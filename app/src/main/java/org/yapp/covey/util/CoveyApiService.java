@@ -11,6 +11,8 @@ import org.yapp.covey.model.ItemDataModel;
 import java.util.ArrayList;
 
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -103,21 +105,21 @@ public interface CoveyApiService {
     //upload
     @Multipart
     @POST("api/post")
-    Call<JsonObject>
-    upload(@Part MultipartBody.Part img1
+    Call<ResponseBody>
+    upload(@Part("title") RequestBody title
+            , @Part("startDate") RequestBody startDate
+            , @Part("endDate") RequestBody endDate
+            , @Part("dueDate") RequestBody dueDate
+            , @Part("isDue") Boolean isDue
+            , @Part("workingTime") RequestBody workingTime
+            , @Part("address1") RequestBody address1
+            , @Part("address2") RequestBody address2
+            , @Part("address3") RequestBody address3
+            , @Part("pay") Integer pay
+            , @Part("description") RequestBody description
+            , @Part("category") RequestBody category
+            , @Part MultipartBody.Part img1
             , @Part MultipartBody.Part img2
             , @Part MultipartBody.Part img3
-            , @Part("title") String title
-            , @Part("startDate") String startDate
-            , @Part("endDate") String endDate
-            , @Part("dueDate") String dueDate
-            , @Part("isDue") Boolean isDue
-            , @Part("workingTime") String workingTime
-            , @Part("address1") String address1
-            , @Part("address2") String address2
-            , @Part("address3") String address3
-            , @Part("pay") Integer pay
-            , @Part("description") String description
-            , @Part("category") String category
     );
 }

@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.google.gson.JsonObject;
 import com.yongbeom.aircalendar.core.AirCalendarIntent;
 
 import org.yapp.covey.R;
@@ -34,6 +33,7 @@ import gun0912.tedimagepicker.builder.TedImagePicker;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -44,8 +44,21 @@ public class UploadActivity extends AppCompatActivity{
     AdapterUploadImageList mAdapterImageList = new AdapterUploadImageList();
     PermissionHelper permissionHelper = new PermissionHelper(this);
 
-    private String startDate, endDate, selectDate, selectAddress
-            , title, description, category, startTime, startHour, startMin, endHour, endMin, endTime;
+    private String startDate;
+    private String endDate;
+    private String selectDate;
+    private String selectAddress;
+    private String title;
+    private String description;
+    private String category;
+    private String startTime;
+    private String startHour;
+    private String startMin;
+    private String endHour;
+    private String endMin;
+    private String endTime;
+
+    private ArrayList<RequestBody> requestBodies = new ArrayList<>();
 
     private final static String TAG = "UPLOAD_SERVER_ERROR";
 
@@ -231,27 +244,25 @@ public class UploadActivity extends AppCompatActivity{
     public void sendUploadData(){
         ArrayList<Uri> uriList = mAdapterImageList.getUriList();
         ArrayList<MultipartBody.Part> multipartData = new ArrayList<>();
-        for (int i = 0 ; i < uriList.size() ; i++){
+        for (int i = 0 ; i < uriList.size()-1 ; i++){
             File file = new File(uriList.get(i).getPath());
             RequestBody fileReqBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
             MultipartBody.Part part = MultipartBody.Part.createFormData("img"+(i+1), file.getName(), fileReqBody);
             multipartData.add(part);
         }
-        getUploadData();
-        String[] addressString = selectAddress.split(" ");
-        String addressDetail = "";
-        for (int i = 2 ; i< addressString.length ; i++){
-            addressDetail = addressDetail + addressString[i];
-        }
 
-        Singleton.retrofit.upload(multipartData.get(0),multipartData.get(1),multipartData.get(2)
-                , title, startDate, endDate, endDate, true
-                , startTime +" ~ " + endTime
-                , addressString[0], addressString[1], addressDetail
-                , payment, description, category)
-                .enqueue(new Callback<JsonObject>() {
+        getUploadData();
+        setRequestBody();
+
+        Singleton.retrofit.upload(requestBodies.get(0), requestBodies.get(1), requestBodies.get(2), requestBodies.get(3)
+                , true
+                , requestBodies.get(4)
+                , requestBodies.get(5), requestBodies.get(6), requestBodies.get(7)
+                , payment, requestBodies.get(8), requestBodies.get(9)
+                ,multipartData.get(0),multipartData.get(1),multipartData.get(2))
+                .enqueue(new Callback<ResponseBody>() {
                     @Override
-                    public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                         if (response.isSuccessful()){
                             switch (response.code()){
                                 case 201:{
@@ -262,18 +273,14 @@ public class UploadActivity extends AppCompatActivity{
                                     Log.d(TAG, "NotFound");
                                     break;
                                 }
-                                case 422:{
-                                    Log.w(TAG, String.valueOf(response.code()));
-                                    Toast.makeText(getApplicationContext(), "에러있따에러", Toast.LENGTH_SHORT).show();
-                                    break;
-                                }
                             }
                             Log.w("TAG",category+startTime + endTime+response.code());
                         }
+                        Log.w("TAG",category+startTime + endTime+response.code());
                     }
 
                     @Override
-                    public void onFailure(Call<JsonObject> call, Throwable t) {
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
                         Log.d("Upload Error", "onFailure"+t);
                     }
                 });
@@ -296,4 +303,28 @@ public class UploadActivity extends AppCompatActivity{
 
         Log.w("TAG",startTime + endTime);
     }
+
+    private void setRequestBody(){
+        String[] addressString = selectAddress.split(" ");
+        String addressDetail = "";
+        for (int i = 2 ; i< addressString.length ; i++){
+            addressDetail = addressDetail + addressString[i];
+        }
+
+        requestBodies.add(changeRequestBody(title));
+        requestBodies.add(changeRequestBody(startDate));
+        requestBodies.add(changeRequestBody(endDate));
+        requestBodies.add(changeRequestBody(endDate));
+        requestBodies.add(changeRequestBody(startTime + "~" + endDate));
+        requestBodies.add(changeRequestBody(addressString[0]));
+        requestBodies.add(changeRequestBody(addressString[1]));
+        requestBodies.add(changeRequestBody(addressDetail));
+
+        requestBodies.add(changeRequestBody(description));
+        requestBodies.add(changeRequestBody(category));
+    }
+    private RequestBody changeRequestBody(String text){
+        return RequestBody.create(MediaType.parse("text/plain"),text);
+    }
+
 }

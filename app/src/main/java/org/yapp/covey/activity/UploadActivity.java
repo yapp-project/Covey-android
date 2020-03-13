@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ import org.yapp.covey.adapter.AdapterUploadImageList;
 import org.yapp.covey.databinding.ActivityUploadBinding;
 import org.yapp.covey.etc.CustomAppBar;
 import org.yapp.covey.helper.PermissionHelper;
+import org.yapp.covey.helper.TextWatchHelper;
 import org.yapp.covey.util.Singleton;
 
 import java.io.File;
@@ -44,12 +46,14 @@ public class UploadActivity extends AppCompatActivity{
     AdapterUploadImageList mAdapterImageList = new AdapterUploadImageList();
     PermissionHelper permissionHelper = new PermissionHelper(this);
 
+//    TextWatchHelper textWatchHelper = new TextWatchHelper();
+
     private String startDate;
     private String endDate;
     private String selectDate;
     private String selectAddress;
     private String title;
-    private String description;
+    private String description = "";
     private String category;
     private String startTime;
     private String startHour;
@@ -61,11 +65,11 @@ public class UploadActivity extends AppCompatActivity{
     private ArrayList<RequestBody> requestBodies = new ArrayList<>();
 
     private final static String TAG = "UPLOAD_SERVER_ERROR";
-
     private int payment;
 
     private static int REQUEST_CODE = 202;
     private static int REQUEST_CODE_ADDRESS = 204;
+    private boolean isTextExisted = false;
 
     ArrayList<String> hourArray = new ArrayList<>();
     ArrayList<String> minArray = new ArrayList<>();
@@ -85,8 +89,8 @@ public class UploadActivity extends AppCompatActivity{
         setSpinnerSet();
         setCustomAppBar();
         getPermission();
-        binding.recyclerUploadImage.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
 
+        binding.recyclerUploadImage.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
         binding.tvSelectAddress.setOnClickListener(view -> {
             Intent intentAddress = new Intent(getApplicationContext(), SearchAddressActivity.class);
             startActivityForResult(intentAddress, REQUEST_CODE_ADDRESS);
@@ -134,13 +138,18 @@ public class UploadActivity extends AppCompatActivity{
 
     private void setHourArray(List<String> hourArray){
         for (int i = 0 ; i<= 24; i++){
-            hourArray.add(String.valueOf(i));
+            if (i<10){
+                hourArray.add("0" + i);
+            }else{
+                hourArray.add(String.valueOf(i));
+            }
         }
         hourArray.add("시");
     }
 
     private void setMinArray(List<String> minArray){
-        for (int i = 0 ; i<= 5 ; i++){
+        minArray.add("00");
+        for (int i = 1 ; i<= 5 ; i++){
             minArray.add(String.valueOf(i*10));
         }
         minArray.add("분");
@@ -165,7 +174,6 @@ public class UploadActivity extends AppCompatActivity{
             selectedSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                    int itemPosition = position -1;
                     switch (type){
                         case 3: startMin = minArray.get(position);
                         case 5: endMin = minArray.get(position);
@@ -242,48 +250,56 @@ public class UploadActivity extends AppCompatActivity{
     }
 
     public void sendUploadData(){
+        getUploadData();
+        setRequestBody();
+
         ArrayList<Uri> uriList = mAdapterImageList.getUriList();
         ArrayList<MultipartBody.Part> multipartData = new ArrayList<>();
-        for (int i = 0 ; i < uriList.size()-1 ; i++){
+        for (int i = 0 ; i < uriList.size() ; i++){
             File file = new File(uriList.get(i).getPath());
             RequestBody fileReqBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
             MultipartBody.Part part = MultipartBody.Part.createFormData("img"+(i+1), file.getName(), fileReqBody);
             multipartData.add(part);
         }
 
-        getUploadData();
-        setRequestBody();
-
-        Singleton.retrofit.upload(requestBodies.get(0), requestBodies.get(1), requestBodies.get(2), requestBodies.get(3)
-                , true
-                , requestBodies.get(4)
-                , requestBodies.get(5), requestBodies.get(6), requestBodies.get(7)
-                , payment, requestBodies.get(8), requestBodies.get(9)
-                ,multipartData.get(0),multipartData.get(1),multipartData.get(2))
-                .enqueue(new Callback<ResponseBody>() {
-                    @Override
-                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                        if (response.isSuccessful()){
-                            switch (response.code()){
-                                case 201:{
-                                    Toast.makeText(getApplicationContext(), "대타 등록 성공", Toast.LENGTH_SHORT).show();
-                                    break;
-                                }
-                                case 404:{
-                                    Log.d(TAG, "NotFound");
-                                    break;
+        if (multipartData.size()<3){
+            Toast.makeText(this,"사진이 없어요",Toast.LENGTH_SHORT).show();
+        }else {
+            Singleton.retrofit.upload(requestBodies.get(0), requestBodies.get(1), requestBodies.get(2), requestBodies.get(3)
+                    , true
+                    , requestBodies.get(4)
+                    , requestBodies.get(5), requestBodies.get(6), requestBodies.get(7)
+                    , payment, requestBodies.get(8), requestBodies.get(9)
+                    , multipartData.get(0), multipartData.get(1), multipartData.get(2))
+                    .enqueue(new Callback<ResponseBody>() {
+                        @Override
+                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                            if (response.isSuccessful()) {
+                                switch (response.code()) {
+                                    case 201: {
+                                        Toast.makeText(getApplicationContext(), "대타 등록 성공", Toast.LENGTH_SHORT).show();
+                                        finish();
+                                        break;
+                                    }
+                                    case 404: {
+                                        Log.d(TAG, "NotFound");
+                                        break;
+                                    }
+                                    case 409: {
+                                        Toast.makeText(getApplicationContext(), "게시글 제목을 바꿔주세요", Toast.LENGTH_LONG).show();
+                                        break;
+                                    }
                                 }
                             }
-                            Log.w("TAG",category+startTime + endTime+response.code());
+                            Log.w("TAG", String.valueOf(response.code()));
                         }
-                        Log.w("TAG",category+startTime + endTime+response.code());
-                    }
 
-                    @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        Log.d("Upload Error", "onFailure"+t);
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+                            Log.d("Upload Error", "onFailure" + t);
+                        }
+                    });
+        }
     }
 
     private void getUploadData(){
@@ -291,13 +307,6 @@ public class UploadActivity extends AppCompatActivity{
         description = binding.editDescription.getText().toString();
         payment = Integer.parseInt(binding.editPayment.getText().toString());
 
-        if (startMin.equals("0")){
-            startMin = startMin +"0";
-        }
-
-        if (endMin.equals("0")){
-            endMin = endMin +"0";
-        }
         startTime = startHour +":"+startMin;
         endTime = endHour +":"+endMin;
 
@@ -311,20 +320,25 @@ public class UploadActivity extends AppCompatActivity{
             addressDetail = addressDetail + addressString[i];
         }
 
+        // type convert requestBody
         requestBodies.add(changeRequestBody(title));
         requestBodies.add(changeRequestBody(startDate));
         requestBodies.add(changeRequestBody(endDate));
         requestBodies.add(changeRequestBody(endDate));
-        requestBodies.add(changeRequestBody(startTime + "~" + endDate));
+        requestBodies.add(changeRequestBody(startTime + "~" + endTime));
         requestBodies.add(changeRequestBody(addressString[0]));
         requestBodies.add(changeRequestBody(addressString[1]));
         requestBodies.add(changeRequestBody(addressDetail));
-
         requestBodies.add(changeRequestBody(description));
-        requestBodies.add(changeRequestBody(category));
+        if (category.length() == 0){
+            requestBodies.add(changeRequestBody("기타"));
+        }else   requestBodies.add(changeRequestBody(category));
     }
     private RequestBody changeRequestBody(String text){
         return RequestBody.create(MediaType.parse("text/plain"),text);
     }
 
+//    private void setTextWatchHelper(EditText editText){
+//        editText.addTextChangedListener(textWatchHelper);
+//    }
 }

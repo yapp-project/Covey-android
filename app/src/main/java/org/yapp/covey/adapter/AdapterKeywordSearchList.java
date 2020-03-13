@@ -65,19 +65,16 @@ public class AdapterKeywordSearchList extends RecyclerView.Adapter<AdapterKeywor
             tvRoadAddressName = itemView.findViewById(R.id.tv_road_address_name_content);
             tvRoadAddress = itemView.findViewById(R.id.tv_road_address_content);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION){
-                        if (mListener != null){
-                            Document addressItem = mSearchList.get(position);
-                            String placeName = " ("+addressItem.getPlaceName()+")";
-                            if (addressItem.getRoadAddressName().length() != 0 ){
-                                mListener.onItemClick(view, tvRoadAddressName.getText().toString(), placeName);
-                            }else {
-                                mListener.onItemClick(view, tvRoadAddress.getText().toString(), placeName);
-                            }
+            itemView.setOnClickListener(view -> {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION){
+                    if (mListener != null){
+                        Document addressItem = mSearchList.get(position);
+                        String placeName = " ("+addressItem.getPlaceName()+")";
+                        if (addressItem.getRoadAddressName().length() != 0 ){
+                            mListener.onItemClick(view, addressItem.getRoadAddressName(), placeName);
+                        }else {
+                            mListener.onItemClick(view, addressItem.getAddressName(), placeName);
                         }
                     }
                 }
@@ -85,7 +82,7 @@ public class AdapterKeywordSearchList extends RecyclerView.Adapter<AdapterKeywor
         }
     }
 
-    public void setmSearchList(KaKaoMapSearchModel searchList){
+    public void setSearchList(KaKaoMapSearchModel searchList){
         this.mSearchList = searchList.getDocuments();
         notifyDataSetChanged();
     }

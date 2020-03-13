@@ -6,8 +6,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -20,6 +19,7 @@
                 android:layout_marginTop="8dp"
                 android:hint="업체명을 입력하세요"
                 style="@style/TextThemeRound.15sp"
+                android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="@id/guideline_end"
                 app:layout_constraintStart_toStartOf="@id/guideline_start"
                 app:layout_constraintTop_toBottomOf="@id/tv_post_title" />
@@ -226,7 +226,7 @@
 
             <TextView
                 android:id="@+id/tv_select_address"
-                android:layout_height="44dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:hint="위치를 입력하세요"
                 style="@style/TextThemeRound.15sp"
@@ -256,7 +256,6 @@
                 app:layout_constraintBottom_toBottomOf="@id/tv_post_payment"
                 app:layout_constraintStart_toEndOf="@id/tv_post_payment" />
 
-
             <EditText
                 android:id="@+id/edit_payment"
                 style="@style/TextThemeRound.15sp"
@@ -264,6 +263,7 @@
                 android:layout_height="44dp"
                 android:layout_marginTop="8dp"
                 android:hint="숫자만 입력하세요"
+                android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="@id/guideline_end"
                 app:layout_constraintStart_toStartOf="@+id/guideline_start"
                 app:layout_constraintTop_toBottomOf="@+id/tv_post_payment" />

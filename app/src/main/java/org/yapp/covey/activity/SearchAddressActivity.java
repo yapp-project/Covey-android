@@ -36,15 +36,12 @@ public class SearchAddressActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this,R.layout.activity_search_address);
 
         setCustomAppBar();
-        binding.editSearchAddress.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
-                if ((keyEvent.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                    getAddress();
-                    return true;
-                }
-                return false;
+        binding.editSearchAddress.setOnKeyListener((view, keyCode, keyEvent) -> {
+            if ((keyEvent.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                getAddress();
+                return true;
             }
+            return false;
         });
         binding.recyclerAddress.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         getAddress();
@@ -58,23 +55,15 @@ public class SearchAddressActivity extends AppCompatActivity {
     private void setCustomAppBar(){
         CustomAppBar customAppBar = new CustomAppBar(this, getSupportActionBar());
         customAppBar.setCustomAppBar("주소 검색");
-        customAppBar.setBackClickListener(new CustomAppBar.backClickListener() {
-            @Override
-            public void onBackClick(View v) {
-                finish();
-            }
-        });
+        customAppBar.setBackClickListener(v -> finish());
     }
 
     public void setFinishAction(){
-        mAdaper.setOnItemClickListener(new AdapterKeywordSearchList.OnItemClickListener() {
-            @Override
-            public void onItemClick(View v, String address, String placeName) {
-                Intent intentAddress = new Intent();
-                intentAddress.putExtra("select Data", address+placeName);
-                setResult(RESULT_OK, intentAddress);
-                finish();
-            }
+        mAdaper.setOnItemClickListener((v, address, placeName) -> {
+            Intent intentAddress = new Intent();
+            intentAddress.putExtra("select Data", address+placeName);
+            setResult(RESULT_OK, intentAddress);
+            finish();
         });
     }
 
@@ -86,7 +75,7 @@ public class SearchAddressActivity extends AppCompatActivity {
                 if (response.code() == 200){
                     if (response.body() != null) {
                         setResultView(true);
-                        mAdaper.setmSearchList(response.body());
+                        mAdaper.setSearchList(response.body());
                     }
                 }else if (response.code() == 400)   setResultView(false);
                 Log.d(TAG, "response success"+ response.code());
@@ -112,5 +101,4 @@ public class SearchAddressActivity extends AppCompatActivity {
             binding.recyclerAddress.setVisibility(View.INVISIBLE);
         }
     }
-
 }

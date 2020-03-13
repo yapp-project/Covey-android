@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.yapp.covey.R;
-import org.yapp.covey.etc.CalculateDate;
+import org.yapp.covey.helper.CalculateDateHelper;
 import org.yapp.covey.model.ItemDataModel;
 import java.util.ArrayList;
 
@@ -45,7 +45,7 @@ public class AdapterApplyRecruit extends RecyclerView.Adapter<AdapterApplyRecrui
     public void onBindViewHolder(@NonNull AdapterApplyRecruit.ViewHolder holder, int position) {
         ItemDataModel mData = mDataList.get(position);
 
-        long dDay = new CalculateDate().calDateBetween(mData.getDueDate());
+        long dDay = new CalculateDateHelper().calDateBetween(mData.getDueDate());
         if (dDay<4){
             holder.tvDDay.setTextColor(R.color.tomato);
         }

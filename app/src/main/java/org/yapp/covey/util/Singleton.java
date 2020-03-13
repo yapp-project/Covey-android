@@ -4,10 +4,13 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Singleton {
-        public static final RetrofitService retrofit = new Retrofit.Builder()
+        public static final CoveyApiService retrofit = new Retrofit.Builder()
                 .baseUrl(Config.serverUrl)
                 .addConverterFactory(GsonConverterFactory.create())
-                .build().create(RetrofitService.class);
-        private Singleton() {
-        }
+                .build().create(CoveyApiService.class);
+
+        public static final KakaoApiService KakaoMaoApi = new Retrofit.Builder()
+                .baseUrl("https://dApi.kakao.com")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build().create(KakaoApiService.class);
 }

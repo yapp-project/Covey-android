@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.yapp.covey.R;
-import org.yapp.covey.etc.CalculateDate;
+import org.yapp.covey.helper.CalculateDateHelper;
 import org.yapp.covey.model.ItemDataModel;
 
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ public class AdapterMoneyList extends RecyclerView.Adapter<AdapterMoneyList.View
     @Override
     public void onBindViewHolder(@NonNull AdapterMoneyList.ViewHolder holder, int position) {
         ItemDataModel data = mDataList.get(position);
-        String dDay = "D-" + new CalculateDate().calDateBetween(data.getDueDate());
+        String dDay = "D-" + new CalculateDateHelper().calDateBetween(data.getDueDate());
 
         holder.tvDDay.setText(dDay + " | ");
         holder.tvContent.setText(data.getDescription());

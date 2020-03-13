@@ -1,4 +1,4 @@
-package org.yapp.covey.etc;
+package org.yapp.covey.helper;
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -8,13 +8,13 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ItemDecorationLinear extends RecyclerView.ItemDecoration{
+public class ItemDecorationGrid extends RecyclerView.ItemDecoration{
     private int MARGIN_WIDTH;
-    private int amount;
+    private int MARGIN_HEIGHT;
 
-    public ItemDecorationLinear(Context context, Float width, int itemAmount) {
+    public ItemDecorationGrid(Context context, Float width, Float height) {
         MARGIN_WIDTH = dpToPx(context, width);
-        this.amount = --itemAmount;
+        MARGIN_HEIGHT = dpToPx(context,height);
     }
 
     @Override
@@ -24,20 +24,20 @@ public class ItemDecorationLinear extends RecyclerView.ItemDecoration{
 
         int position = parent.getChildAdapterPosition(view);
 
-        if(position == 0) {
+        if(position%2 == 0) {
             outRect.left = 0;
             outRect.right = MARGIN_WIDTH;
-        } else if (position == amount){
+        } else if ((position%2)==1){
             outRect.left = MARGIN_WIDTH;
             outRect.right = 0;
-        }else{
-            outRect.right = MARGIN_WIDTH;
-            outRect.left = MARGIN_WIDTH;
         }
+        outRect.top = MARGIN_HEIGHT/2;
+        outRect.bottom = MARGIN_HEIGHT/2;
     }
 
     // dp -> pixel 단위로 변경
     private int dpToPx(Context context, double dp) {
+
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, (float) dp, context.getResources().getDisplayMetrics());
     }
 }

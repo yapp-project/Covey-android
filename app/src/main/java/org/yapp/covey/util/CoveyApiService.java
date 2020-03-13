@@ -1,5 +1,7 @@
 package org.yapp.covey.util;
 
+import com.google.gson.JsonObject;
+
 import org.yapp.covey.etc.careerClass;
 import org.yapp.covey.etc.phoneNumClass;
 import org.yapp.covey.etc.userClass;
@@ -8,17 +10,24 @@ import org.yapp.covey.model.ItemDataModel;
 
 import java.util.ArrayList;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-public interface RetrofitService {
-
+public interface CoveyApiService {
     // post
     @GET("api/post/categoryList/{page}")
     Call<ArrayList<ItemDataModel>>
@@ -93,8 +102,24 @@ public interface RetrofitService {
     Call<Void>
     deleteCareer(@Path("careerId") String careerId);
 
-    // apply
-//    @POST("api/apply/{postId}")
-//    Call<JSONArray>
-//    apply(@Path("postId") Integer postId);
+    //upload
+    @Multipart
+    @POST("api/post")
+    Call<ResponseBody>
+    upload(@Part("title") RequestBody title
+            , @Part("startDate") RequestBody startDate
+            , @Part("endDate") RequestBody endDate
+            , @Part("dueDate") RequestBody dueDate
+            , @Part("isDue") Boolean isDue
+            , @Part("workingTime") RequestBody workingTime
+            , @Part("address1") RequestBody address1
+            , @Part("address2") RequestBody address2
+            , @Part("address3") RequestBody address3
+            , @Part("pay") Integer pay
+            , @Part("description") RequestBody description
+            , @Part("category") RequestBody category
+            , @Part MultipartBody.Part img1
+            , @Part MultipartBody.Part img2
+            , @Part MultipartBody.Part img3
+    );
 }

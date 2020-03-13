@@ -13,10 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import org.yapp.covey.R;
 import org.yapp.covey.adapter.AdapterLocationList;
-import org.yapp.covey.adapter.AdapterLocationMoreList;
 import org.yapp.covey.adapter.AdapterMoneyList;
 import org.yapp.covey.databinding.ActivityMoreItemBinding;
-import org.yapp.covey.etc.ItemDecorationGrid;
+import org.yapp.covey.helper.ItemDecorationGrid;
 import org.yapp.covey.model.ItemDataModel;
 import org.yapp.covey.util.Singleton;
 

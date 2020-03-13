@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.SearchAddressActivity">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_top"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.055"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.044"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.956"/>
+
+        <EditText
+            android:id="@+id/edit_search_address"
+            style="@style/TextThemeRound.15sp"
+            android:layout_height="wrap_content"
+            android:hint="도로명, 건물명, 번지 검색"
+            android:textSize="14sp"
+            android:drawableEnd="@drawable/search_ic"
+            android:singleLine="true"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            app:layout_constraintStart_toEndOf="@id/guideline_start"
+            app:layout_constraintEnd_toStartOf="@id/guideline_end"
+            app:layout_constraintTop_toBottomOf="@id/guideline_top"/>
+
+        <TextView
+            style="@style/TextTheme14sp"
+            android:id="@+id/tv_search_tip"
+            android:text="우편번호 통합검색 Tip"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toEndOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/edit_search_address" />
+
+        <TextView
+            style="@style/TextTheme14sp"
+            android:id="@+id/tv_search_tips"
+            android:text="* 도로명 + 건물번호 (예: 판교로 123)
+        \n* 동/읍/면/리 + 번지 (예: 백현동 1-10)
+        \n* 건물명, 아파트명 (예: 판교알파리움)"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/warm_grey"
+            app:layout_constraintStart_toEndOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/tv_search_tip" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_address"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="invisible"
+            app:layout_constraintTop_toBottomOf="@id/edit_search_address"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

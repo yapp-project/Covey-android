@@ -45,12 +45,7 @@ public class DetailActivity extends AppCompatActivity {
         binding.recyclerImage.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
         binding.recyclerImage.addItemDecoration(new ItemDecorationLinear(this,8f,3));
 
-        binding.btnApply.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickApply(postId);
-            }
-        });
+        binding.btnApply.setOnClickListener(view -> clickApply(postId));
     }
     public void setButtonText(int activityCategory){
         switch (activityCategory){
@@ -82,7 +77,6 @@ public class DetailActivity extends AppCompatActivity {
                     imageUriList.add(itemPostData.getImg3());
                     setImageRecycler(imageUriList);
                     setPostData(itemPostData);
-//                    setButtonText(activityCategory);
             }
                 else if (response.code() ==404){
                     Log.d(TAG, "code 404");
@@ -102,7 +96,7 @@ public class DetailActivity extends AppCompatActivity {
         binding.tvPay.setText("시급\t\t"+itemPostData.getPay()+"원");
         binding.tvStartToEndDate.setText("일시\t\t"+itemPostData.getStartDate().substring(0,10)+" ~ "+itemPostData.getEndDate().substring(0,10));
         binding.tvTime.setText("시간\t\t"+itemPostData.getWorkingTime());
-        binding.tvContent.setText(itemPostData.getDescription());
+        binding.tvDiscription.setText(itemPostData.getDescription());
         binding.tvTitle.setText(itemPostData.getTitle());
     }
 
@@ -115,12 +109,7 @@ public class DetailActivity extends AppCompatActivity {
     private void setCustomAppBar(){
         CustomAppBar customAppBar = new CustomAppBar(this, getSupportActionBar());
         customAppBar.setCustomAppBar("상세 정보");
-        customAppBar.setBackClickListener(new CustomAppBar.backClickListener() {
-            @Override
-            public void onBackClick(View v) {
-                finish();
-            }
-        });
+        customAppBar.setBackClickListener(v -> finish());
     }
     @SuppressLint("ResourceAsColor")
     public void clickApply(String postId){

@@ -22,12 +22,7 @@ public class FilterDialogFragment extends BottomSheetDialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.layout_dialog_filter,container,false);
 
-        binding.tvCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dismiss();
-            }
-        });
+        binding.tvCancel.setOnClickListener(view -> dismiss());
 
         return binding.getRoot();
     }

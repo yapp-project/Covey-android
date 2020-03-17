@@ -1,12 +1,10 @@
 package org.yapp.covey.helper;
 
 import android.content.Context;
-import android.view.View;
 
 import com.yongbeom.aircalendar.core.AirCalendarIntent;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 
 public class DatePickerHelper {

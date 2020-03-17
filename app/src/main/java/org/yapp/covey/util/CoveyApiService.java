@@ -49,6 +49,16 @@ public interface CoveyApiService {
     Call<ArrayList<ItemDataModel>>
     registerList();
 
+    @GET("api/post/list/{page}")
+    Call<ArrayList<ItemDataModel>>
+    filterList(@Path("page") Integer page
+            , @Query("pay") Integer pay
+            ,@Query("category") String category
+            ,@Query("address1") String address1
+            ,@Query("address2") String address2
+            ,@Query("startDate") String startDate
+            ,@Query("endDate") String endDate);
+
     @GET("api/auth/kakao")
     Call<Void>
     kakaoLogin();

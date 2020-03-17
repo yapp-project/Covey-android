@@ -20,7 +20,7 @@
         <TextView
             android:id="@+id/tv_cancel"
             style="@style/TextTheme14sp"
-            android:text="취소"
+            android:text="@string/cancel"
             android:textColor="@color/warm_grey_three"
             app:layout_constraintStart_toStartOf="@+id/guideline_left"
             app:layout_constraintTop_toTopOf="@+id/guideline_top" />
@@ -39,7 +39,7 @@
         <TextView
             android:id="@+id/tv_setting"
             style="@style/TextTheme14sp"
-            android:text="설정"
+            android:text="@string/set"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/tv_filter_title"
             app:layout_constraintEnd_toEndOf="@id/guideline_right"
@@ -56,7 +56,7 @@
         <TextView
             android:id="@+id/tv_start_date"
             style="@style/TextThemeRound"
-            android:hint="시작 날짜"
+            android:hint="@string/start_date"
             android:layout_marginTop="8dp"
             app:layout_constraintHeight_percent="0.085"
             android:drawableEnd="@drawable/calendar_ic"
@@ -67,7 +67,7 @@
         <TextView
             android:id="@+id/tv_end_date"
             style="@style/TextThemeRound"
-            android:hint="종료 날짜"
+            android:hint="@string/end_date"
             android:drawableEnd="@drawable/calendar_ic"
             app:layout_constraintBottom_toBottomOf="@+id/tv_start_date"
             app:layout_constraintEnd_toEndOf="@id/guideline_right"
@@ -150,7 +150,7 @@
 
             <RadioButton
                 style="@style/RadioButtonCustom"
-                android:text="카페"
+                android:text="@string/category_cafe"
                 android:button="@color/blank"
                 android:background="@drawable/rounded_rectangle_left"
                 />
@@ -158,21 +158,21 @@
             <RadioButton
                 style="@style/RadioButtonCustom"
                 android:button="@color/blank"
-                android:text="PC방"
+                android:text="@string/category_pc"
                 android:background="@drawable/rectangle_outline"
                 />
 
             <RadioButton
                 style="@style/RadioButtonCustom"
                 android:button="@color/blank"
-                android:text="식당"
+                android:text="@string/category_restaurant"
                 android:background="@drawable/rectangle_outline"
                 />
 
             <RadioButton
                 style="@style/RadioButtonCustom"
                 android:button="@color/blank"
-                android:text="기타"
+                android:text="@string/category_etc"
                 android:background="@drawable/rounded_rectangle_right"
                 />
         </RadioGroup>

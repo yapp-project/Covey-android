@@ -139,6 +139,7 @@
             />
 
         <RadioGroup
+            android:id="@+id/radioGroup_category"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintHeight_percent="0.085"
@@ -149,29 +150,33 @@
             app:layout_constraintEnd_toEndOf="@id/guideline_right">
 
             <RadioButton
+                android:id="@+id/radio_cafe"
                 style="@style/RadioButtonCustom"
                 android:text="@string/category_cafe"
-                android:button="@color/blank"
+                android:button="@null"
                 android:background="@drawable/rounded_rectangle_left"
                 />
 
             <RadioButton
+                android:id="@+id/radio_pc"
                 style="@style/RadioButtonCustom"
-                android:button="@color/blank"
+                android:button="@null"
                 android:text="@string/category_pc"
                 android:background="@drawable/rectangle_outline"
                 />
 
             <RadioButton
+                android:id="@+id/radio_rest"
                 style="@style/RadioButtonCustom"
-                android:button="@color/blank"
+                android:button="@null"
                 android:text="@string/category_restaurant"
                 android:background="@drawable/rectangle_outline"
                 />
 
             <RadioButton
+                android:id="@+id/radio_etc"
                 style="@style/RadioButtonCustom"
-                android:button="@color/blank"
+                android:button="@null"
                 android:text="@string/category_etc"
                 android:background="@drawable/rounded_rectangle_right"
                 />

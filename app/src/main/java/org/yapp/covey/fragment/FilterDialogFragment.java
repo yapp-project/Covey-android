@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,9 +17,15 @@ import org.yapp.covey.R;
 import org.yapp.covey.activity.CustomCalendarActivity;
 import org.yapp.covey.databinding.LayoutDialogFilterBinding;
 import org.yapp.covey.helper.DatePickerHelper;
+import org.yapp.covey.model.ItemDataModel;
+import org.yapp.covey.util.Singleton;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -28,7 +35,9 @@ public class FilterDialogFragment extends BottomSheetDialogFragment {
 
     private final static int REQUEST_CODE = 202;
 
-    private String startDate, endDate;
+    private String startDate, endDate, address1, address2;
+    private String category = "기타";
+    private int payment = 0;
 
     @Nullable
     @Override
@@ -58,5 +67,27 @@ public class FilterDialogFragment extends BottomSheetDialogFragment {
             binding.tvStartDate.setText(startDate);
             binding.tvEndDate.setText(endDate);
         }
+    }
+
+    private void getInputData(){
+        payment = Integer.parseInt(binding.etPayment.getText().toString());
+        binding.radioGroupCategory.setOnCheckedChangeListener((radioGroup, id) -> {
+
+        });
+    }
+
+    public void sendData(){
+        Singleton.retrofit.filterList(1,payment, category, address1, address2, startDate, endDate)
+                .enqueue(new Callback<ArrayList<ItemDataModel>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<ItemDataModel>> call, Response<ArrayList<ItemDataModel>> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<ArrayList<ItemDataModel>> call, Throwable t) {
+
+                    }
+                });
     }
 }

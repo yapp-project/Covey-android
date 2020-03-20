@@ -158,10 +158,10 @@
                 />
 
             <RadioButton
-                android:id="@+id/radio_pc"
+                android:id="@+id/radio_25"
                 style="@style/RadioButtonCustom"
                 android:button="@null"
-                android:text="@string/category_pc"
+                android:text="@string/category_25"
                 android:background="@drawable/rectangle_outline"
                 />
 

@@ -79,3 +79,4 @@ app/src/main/java/org/yapp/covey/util/Config.java
 
 #appKey
 app/src/man/res/values/app_api_key.xml
+app/src/main/res/values/strings.xml

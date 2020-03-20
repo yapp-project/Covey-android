@@ -11,6 +11,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name="org.yapp.covey.util.GlobalApplication"
@@ -24,6 +27,15 @@
         android:testOnly="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
+        <activity
+            android:name="org.yapp.covey.activity.SearchAddressActivity"
+            android:theme="@style/AppTheme.CustomAppBar" />
+        <activity
+            android:name="com.yongbeom.aircalendar.AirCalendarDatePickerActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name="org.yapp.covey.activity.CustomCalendarActivity"
+            android:theme="@style/Theme.Design.NoActionBar" />
         <activity
             android:name="org.yapp.covey.activity.UploadActivity"
             android:theme="@style/AppTheme.CustomAppBar" />
@@ -48,8 +60,7 @@
         <activity
             android:name="org.yapp.covey.activity.MainActivity"
             android:theme="@style/AppTheme.StatusBarWhite"
-            android:windowSoftInputMode="adjustPan" >
-        </activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="org.yapp.covey.activity.SignupActivity"
             android:theme="@style/AppTheme" >
@@ -68,23 +79,38 @@
             android:value="@string/facebook_app_key" />
 
         <activity
+            android:name="gun0912.tedimagepicker.TedImagePickerActivity"
+            android:theme="@style/TedImagePickerTheme" />
+        <activity
+            android:name="gun0912.tedimagepicker.zoom.TedImageZoomActivity"
+            android:theme="@style/TedImagePickerTheme.Zoom" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="org.yapp.covey.provider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <activity
+            android:name="com.gun0912.tedpermission.TedPermissionActivity"
+            android:configChanges="mcc|mnc|locale|keyboard|keyboardHidden|screenLayout|fontScale|uiMode|orientation|screenSize|layoutDirection"
+            android:screenOrientation="unspecified"
+            android:theme="@style/Theme.Transparent.Permission" />
+        <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:theme="@style/com_facebook_activity_theme" />
         <activity android:name="com.facebook.CustomTabMainActivity" />
         <activity android:name="com.facebook.CustomTabActivity" />
         <activity
-            android:name="com.kakao.auth.authorization.authcode.KakaoWebViewActivity"
-            android:configChanges="orientation|screenSize"
-            android:label="@string/com_kakao_login_button"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="adjustResize" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+            android:name="com.gun0912.tedonactivityresult.ProxyActivity"
+            android:configChanges="mcc|mnc|locale|keyboard|keyboardHidden|screenLayout|fontScale|uiMode|orientation|screenSize|layoutDirection"
+            android:screenOrientation="unspecified"
+            android:theme="@style/android:Theme.Translucent.NoTitleBar" />
         <!--
          The initialization ContentProvider will call FacebookSdk.sdkInitialize automatically
          with the application context. This config is merged in with the host app's manifest,
@@ -106,6 +132,19 @@
                 <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED" />
             </intent-filter>
         </receiver>
+
+        <activity
+            android:name="com.kakao.auth.authorization.authcode.KakaoWebViewActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/com_kakao_login_button"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustResize" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <provider
             android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"

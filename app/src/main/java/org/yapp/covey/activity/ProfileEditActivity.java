@@ -137,7 +137,7 @@ public class ProfileEditActivity extends AppCompatActivity {
                         name.setText(response.body().getUser().getName());
                         age.setText(response.body().getUser().getAge());
                         phone.setText(response.body().getUser().getPhoneNum());
-                        if(response.body().getUser().getGender())
+                        if(response.body().getUser().isGender())
                             gender.setText("남");
                         else
                             gender.setText("여");

@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
@@ -15,6 +17,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import org.yapp.covey.R;
 import org.yapp.covey.activity.CustomCalendarActivity;
+import org.yapp.covey.adapter.AdapterCustomSpinner;
 import org.yapp.covey.databinding.LayoutDialogFilterBinding;
 import org.yapp.covey.helper.DatePickerHelper;
 import org.yapp.covey.model.ItemDataModel;
@@ -32,6 +35,7 @@ import static android.app.Activity.RESULT_OK;
 public class FilterDialogFragment extends BottomSheetDialogFragment {
     private LayoutDialogFilterBinding binding;
     private DatePickerHelper datePickerHelper;
+    AdapterCustomSpinner sCityAdapter, sGuAdapter;
 
     private final static int REQUEST_CODE = 202;
 
@@ -50,13 +54,19 @@ public class FilterDialogFragment extends BottomSheetDialogFragment {
         datePickerHelper = new DatePickerHelper(getContext(), weekList);
         binding.tvStartDate.setOnClickListener(view -> dateSelect());
         binding.tvEndDate.setOnClickListener(view -> dateSelect());
+
+        ArrayList<String> cityList = new ArrayList<>();
+        cityList.addAll(Arrays.asList(getResources().getStringArray(R.array.city)));
+        cityList.add("시");
+        
+        sCityAdapter = new AdapterCustomSpinner(getContext(), Arrays.asList(getResources().getStringArray(R.array.city)));
+        binding.spinnerCity.setAdapter(sCityAdapter);
         return binding.getRoot();
     }
 
     private void dateSelect() {
         startActivityForResult(datePickerHelper.getCalendarIntent(), REQUEST_CODE);
     }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -70,10 +80,17 @@ public class FilterDialogFragment extends BottomSheetDialogFragment {
     }
 
     private void getInputData(){
-        payment = Integer.parseInt(binding.etPayment.getText().toString());
-        binding.radioGroupCategory.setOnCheckedChangeListener((radioGroup, id) -> {
+        spinnerSelectedListener();
+        
 
-        });
+        new Thread(() -> {
+            payment = Integer.parseInt(binding.etPayment.getText().toString());
+            startDate = binding.tvStartDate.getText().toString();
+            endDate = binding.tvEndDate.getText().toString();
+            binding.radioGroupCategory.setOnCheckedChangeListener((radioGroup, id) -> {
+
+            });
+        }).start();
     }
 
     public void sendData(){
@@ -89,5 +106,74 @@ public class FilterDialogFragment extends BottomSheetDialogFragment {
 
                     }
                 });
+    }
+
+    
+    private void spinnerSelectedListener(){
+        binding.spinnerCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                String[] locationDetailStr = null;
+                switch(position) {
+                    case 0:
+                        locationDetailStr = getResources().getStringArray(R.array.seoul);
+                        break;
+                    case 1:
+                        locationDetailStr = getResources().getStringArray(R.array.kyung_gi);
+                        break;
+                    case 2:
+                        locationDetailStr = getResources().getStringArray(R.array.incheon);
+                        break;
+                    case 3:
+                        locationDetailStr = getResources().getStringArray(R.array.busan);
+                        break;
+                    case 4:
+                        locationDetailStr = getResources().getStringArray(R.array.daegu);
+                        break;
+                    case 5:
+                        locationDetailStr = getResources().getStringArray(R.array.daejeon);
+                        break;
+                    case 6:
+                        locationDetailStr = getResources().getStringArray(R.array.ulsan);
+                        break;
+                    case 7:
+                        locationDetailStr = getResources().getStringArray(R.array.gwangju);
+                        break;
+                    case 8:
+                        locationDetailStr = getResources().getStringArray(R.array.gangwon);
+                        break;
+                    case 9:
+                        locationDetailStr = getResources().getStringArray(R.array.chungnam);
+                        break;
+                    case 10:
+                        locationDetailStr = getResources().getStringArray(R.array.chungbuk);
+                        break;
+                    case 11:
+                        locationDetailStr = getResources().getStringArray(R.array.jeonnam);
+                        break;
+                    case 12:
+                        locationDetailStr = getResources().getStringArray(R.array.jeonbuk);
+                        break;
+                    case 13:
+                        locationDetailStr = getResources().getStringArray(R.array.kyungnam);
+                        break;
+                    case 14:
+                        locationDetailStr = getResources().getStringArray(R.array.kyungbuk);
+                        break;
+                    case 15:
+                        locationDetailStr = getResources().getStringArray(R.array.jeju);
+                        break;
+                }
+                ArrayList<String> guList = new ArrayList<>();
+                guList.addAll(Arrays.asList(locationDetailStr));
+                guList.add("도");
+                sGuAdapter = new AdapterCustomSpinner(getContext(), guList);
+                binding.spinnerGu.setAdapter(sGuAdapter);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 }

@@ -2,6 +2,7 @@ package org.yapp.covey.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,7 @@ import org.yapp.covey.util.Singleton;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,12 +41,15 @@ public class FilterDialogFragment extends BottomSheetDialogFragment {
     AdapterCustomSpinner sCityAdapter, sGuAdapter;
 
     private final static int REQUEST_CODE = 202;
+    private final static int SPINNER_TYPE_CITY = 1;
+    private final static int SPINNER_TYPE_GU = 2;
 
     private String startDate, endDate, address1, address2;
     private String category = "기타";
     private int payment = 0;
 
     private ArrayList<String> cityList= new ArrayList<>();
+    ArrayList<String> guList = new ArrayList<>();
 
     @Nullable
     @Override
@@ -58,9 +63,13 @@ public class FilterDialogFragment extends BottomSheetDialogFragment {
         binding.tvStartDate.setOnClickListener(view -> dateSelect());
         binding.tvEndDate.setOnClickListener(view -> dateSelect());
 
+        guList.add("시를 먼저 골라주세요");
+        guList.add("구");
+        setSpinner(binding.spinnerGu, guList, SPINNER_TYPE_GU);
+
         cityList = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.city)));
         cityList.add("시");
-        setSpinner(binding.spinnerCity, cityList);
+        setSpinner(binding.spinnerCity, cityList, SPINNER_TYPE_CITY);
 
         return binding.getRoot();
     }
@@ -80,9 +89,16 @@ public class FilterDialogFragment extends BottomSheetDialogFragment {
         }
     }
 
-    private void setSpinner(Spinner spinner, ArrayList<String> spinnerData){
-        sCityAdapter = new AdapterCustomSpinner(getContext(),spinnerData);
-        spinner.setAdapter(sCityAdapter);
+    private void setSpinner(Spinner spinner, ArrayList<String> spinnerData, int type){
+        if (type == SPINNER_TYPE_CITY){
+            sCityAdapter = new AdapterCustomSpinner(getContext(),spinnerData);
+            spinner.setAdapter(sCityAdapter);
+            spinnerSelectedListener();
+        }
+        if (type == SPINNER_TYPE_GU){
+            sGuAdapter = new AdapterCustomSpinner(getContext(), spinnerData);
+            spinner.setAdapter(sGuAdapter);
+        }
         spinner.setSelection(spinnerData.size()-1);
     }
 
@@ -113,77 +129,75 @@ public class FilterDialogFragment extends BottomSheetDialogFragment {
     }
 
     
-//    private void spinnerSelectedListener(){
-//        ArrayList<String> guList = new ArrayList<>();
-//        binding.spinnerCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-//                String[] locationDetailStr = null;
-//                guList.clear();
-//                switch(position) {
-//                    case 0:
-//                        locationDetailStr = getResources().getStringArray(R.array.seoul);
-//                        break;
-//                    case 1:
-//                        locationDetailStr = getResources().getStringArray(R.array.kyung_gi);
-//                        break;
-//                    case 2:
-//                        locationDetailStr = getResources().getStringArray(R.array.incheon);
-//                        break;
-//                    case 3:
-//                        locationDetailStr = getResources().getStringArray(R.array.busan);
-//                        break;
-//                    case 4:
-//                        locationDetailStr = getResources().getStringArray(R.array.daegu);
-//                        break;
-//                    case 5:
-//                        locationDetailStr = getResources().getStringArray(R.array.daejeon);
-//                        break;
-//                    case 6:
-//                        locationDetailStr = getResources().getStringArray(R.array.ulsan);
-//                        break;
-//                    case 7:
-//                        locationDetailStr = getResources().getStringArray(R.array.gwangju);
-//                        break;
-//                    case 8:
-//                        locationDetailStr = getResources().getStringArray(R.array.gangwon);
-//                        break;
-//                    case 9:
-//                        locationDetailStr = getResources().getStringArray(R.array.chungnam);
-//                        break;
-//                    case 10:
-//                        locationDetailStr = getResources().getStringArray(R.array.chungbuk);
-//                        break;
-//                    case 11:
-//                        locationDetailStr = getResources().getStringArray(R.array.jeonnam);
-//                        break;
-//                    case 12:
-//                        locationDetailStr = getResources().getStringArray(R.array.jeonbuk);
-//                        break;
-//                    case 13:
-//                        locationDetailStr = getResources().getStringArray(R.array.kyungnam);
-//                        break;
-//                    case 14:
-//                        locationDetailStr = getResources().getStringArray(R.array.kyungbuk);
-//                        break;
-//                    case 15:
-//                        locationDetailStr = getResources().getStringArray(R.array.jeju);
-//                        break;
-//                }
-//                guList.addAll(Arrays.asList(locationDetailStr));
-//                guList.add("도");
-//                sGuAdapter = new AdapterCustomSpinner(getContext(), guList);
-//                binding.spinnerGu.setAdapter(sGuAdapter);
-//            }
-//            @Override
-//            public void onNothingSelected(AdapterView<?> adapterView) {
-//                guList.clear();
-//                guList.add("시를 먼저 선택해주세요");
-//                guList.add("도");
-//                sGuAdapter = new AdapterCustomSpinner(getContext(), guList);
-//                binding.spinnerGu.setAdapter(sGuAdapter);
-//            }
-//        }
-//        );
-//    }
+    private void spinnerSelectedListener(){
+        binding.spinnerCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                String[] locationDetailStr = null;
+                guList.clear();
+                switch(position) {
+                    case 0:
+                        locationDetailStr = getResources().getStringArray(R.array.seoul);
+                        break;
+                    case 1:
+                        locationDetailStr = getResources().getStringArray(R.array.kyung_gi);
+                        break;
+                    case 2:
+                        locationDetailStr = getResources().getStringArray(R.array.incheon);
+                        break;
+                    case 3:
+                        locationDetailStr = getResources().getStringArray(R.array.busan);
+                        break;
+                    case 4:
+                        locationDetailStr = getResources().getStringArray(R.array.daegu);
+                        break;
+                    case 5:
+                        locationDetailStr = getResources().getStringArray(R.array.daejeon);
+                        break;
+                    case 6:
+                        locationDetailStr = getResources().getStringArray(R.array.ulsan);
+                        break;
+                    case 7:
+                        locationDetailStr = getResources().getStringArray(R.array.gwangju);
+                        break;
+                    case 8:
+                        locationDetailStr = getResources().getStringArray(R.array.gangwon);
+                        break;
+                    case 9:
+                        locationDetailStr = getResources().getStringArray(R.array.chungnam);
+                        break;
+                    case 10:
+                        locationDetailStr = getResources().getStringArray(R.array.chungbuk);
+                        break;
+                    case 11:
+                        locationDetailStr = getResources().getStringArray(R.array.jeonnam);
+                        break;
+                    case 12:
+                        locationDetailStr = getResources().getStringArray(R.array.jeonbuk);
+                        break;
+                    case 13:
+                        locationDetailStr = getResources().getStringArray(R.array.kyungnam);
+                        break;
+                    case 14:
+                        locationDetailStr = getResources().getStringArray(R.array.kyungbuk);
+                        break;
+                    case 15:
+                        locationDetailStr = getResources().getStringArray(R.array.jeju);
+                        break;
+                }
+                try {
+                    guList.addAll(Arrays.asList(locationDetailStr));
+                }catch (Exception e){
+                    Log.w("null pointer exception", String.valueOf(locationDetailStr == null));
+                }
+                guList.add("도");
+                sGuAdapter = new AdapterCustomSpinner(Objects.requireNonNull(getContext()), guList);
+                binding.spinnerGu.setAdapter(sGuAdapter);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        }
+        );
+    }
 }

@@ -112,7 +112,8 @@
 
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/spinner_city"
-            style="@style/TextThemeRound"
+            style="@style/SpinnerCustom"
+            android:layout_height="0dp"
             android:layout_marginTop="12dp"
             android:dropDownSelector="#f2f2f4"
             app:layout_constraintHeight_percent="0.085"
@@ -122,11 +123,13 @@
 
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/spinner_gu"
-            style="@style/TextThemeRound"
+            style="@style/SpinnerCustom"
+            android:layout_height="0dp"
             android:dropDownSelector="#f2f2f4"
-            app:layout_constraintHeight_percent="0.085"
-            app:layout_constraintTop_toTopOf="@id/spinner_city"
+            android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="@id/guideline_right"
+            app:layout_constraintHeight_percent="0.085"
+            app:layout_constraintTop_toBottomOf="@+id/tv_location"
             app:layout_constraintWidth_percent="0.444" />
 
         <TextView

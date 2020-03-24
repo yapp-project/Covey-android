@@ -60,7 +60,7 @@ public class FilterDialogFragment extends BottomSheetDialogFragment {
 
         cityList = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.city)));
         cityList.add("시");
-//        setSpinner(binding.spinnerCity, cityList);
+        setSpinner(binding.spinnerCity, cityList);
 
         return binding.getRoot();
     }

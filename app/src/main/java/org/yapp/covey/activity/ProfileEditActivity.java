@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import org.yapp.covey.R;
 import org.yapp.covey.etc.CustomAppBar;
+import org.yapp.covey.etc.profileEditClass;
 import org.yapp.covey.etc.userClass;
 import org.yapp.covey.etc.userResponseClass;
 import org.yapp.covey.util.Singleton;
@@ -31,18 +32,36 @@ public class ProfileEditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile_edit);
         setCustomAppBar();
 
-        RelativeLayout editProfile = findViewById(R.id.profile_edit_button);
-        editProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editUser(userResponse);
-            }
-        });
+        getUser();
 
         final Context mContext = getApplicationContext();
         Spinner locationSpinner = findViewById(R.id.profile_edit_spinner_location);
         final Spinner locationDetailSpinner = findViewById(R.id.profile_edit_spinner_location_detail);
         String[] locationStr = getResources().getStringArray(R.array.city);
+        EditText intro = findViewById(R.id.profile_edit_introduction);
+        RelativeLayout editProfile = findViewById(R.id.profile_edit_button);
+
+
+        TextView name = findViewById(R.id.profile_edit_name);
+        TextView gender = findViewById(R.id.profile_edit_gender);
+        TextView age = findViewById(R.id.profile_edit_age);
+
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                profileEditClass body = new profileEditClass();
+                body.setName(name.getText().toString());
+                if(gender.getText().toString().equals("남"))
+                    body.setGender(true);
+                else
+                    body.setGender(false);
+                body.setAge(age.getText().toString());
+                body.setAddress1(locationSpinner.getSelectedItem().toString());
+                body.setAddress2(locationDetailSpinner.getSelectedItem().toString());
+                body.setIntro(intro.getText().toString());
+                editUser(body);
+            }
+        });
 
         ArrayAdapter<String> locationAdapter= new ArrayAdapter<String>(mContext,android.R.layout.simple_spinner_item, locationStr);
         locationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -106,11 +125,7 @@ public class ProfileEditActivity extends AppCompatActivity {
             }
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {}
-
         });
-        getUser();
-
-
     }
     public void setCustomAppBar(){
         CustomAppBar customAppBar = new CustomAppBar(this, getSupportActionBar());
@@ -133,14 +148,16 @@ public class ProfileEditActivity extends AppCompatActivity {
                         TextView gender = findViewById(R.id.profile_edit_gender);
                         TextView age = findViewById(R.id.profile_edit_age);
                         TextView phone = findViewById(R.id.profile_edit_phone);
+                        EditText intro = findViewById(R.id.profile_edit_introduction);
 
                         name.setText(response.body().getUser().getName());
                         age.setText(response.body().getUser().getAge());
                         phone.setText(response.body().getUser().getPhoneNum());
-                        if(response.body().getUser().getGender())
+                        if(response.body().getUser().isGender())
                             gender.setText("남");
                         else
                             gender.setText("여");
+                        intro.setText(response.body().getUser().getIntro());
 
                         userResponse = response.body();
                     }
@@ -156,10 +173,11 @@ public class ProfileEditActivity extends AppCompatActivity {
         });
     }
 
-    private void editUser(userResponseClass body){
-        Singleton.retrofit.editUser(body).enqueue(new Callback<userResponseClass>() {
+    private void editUser(profileEditClass body){
+        Singleton.retrofit.editUser(body).enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<userResponseClass> call, Response<userResponseClass> response) {
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Log.w("asd", String.valueOf(response.code()));
                 if (response.isSuccessful()){
                     if (response.code()==201){
                         Log.d("201", "success");
@@ -171,7 +189,7 @@ public class ProfileEditActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<userResponseClass> call, Throwable t) {
+            public void onFailure(Call<Void> call, Throwable t) {
                 Log.w("asd","OnFailure");
             }
         });

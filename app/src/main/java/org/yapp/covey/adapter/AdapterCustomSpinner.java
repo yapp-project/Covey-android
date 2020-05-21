@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import org.yapp.covey.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterCustomSpinner extends BaseAdapter {
@@ -66,5 +67,13 @@ public class AdapterCustomSpinner extends BaseAdapter {
         TextView tvData = convertView.findViewById(R.id.tv_spinner_item);
         tvData.setText(data);
         return convertView;
+    }
+
+    public void resetSpinnerData(ArrayList<String> list, String spinnerCatepgory){
+        dataList.clear();
+        dataList = list;
+        dataList.add(spinnerCatepgory);
+
+        notifyDataSetChanged();
     }
 }

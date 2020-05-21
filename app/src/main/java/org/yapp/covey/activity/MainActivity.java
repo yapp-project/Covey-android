@@ -38,30 +38,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setBottomNavigationView(BottomNavigationView view){
-        view.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()){
-                    case R.id.menu_home:
-                        changeFragment(fragmentHome);
-                        setStatusBarColor(true);
-                        break;
+        view.setOnNavigationItemSelectedListener(menuItem -> {
+            switch (menuItem.getItemId()){
+                case R.id.menu_home:
+                    changeFragment(fragmentHome);
+                    setStatusBarColor(true);
+                    break;
 
-                    case R.id.menu_apply:
-                        changeFragment(fragmentApply);
-                        setStatusBarColor(false);
-                        break;
-                    case R.id.menu_recruit:
-                        changeFragment(fragmentRecruit);
-                        setStatusBarColor(false);
-                        break;
-                    case R.id.menu_profile:
-                        changeFragment(fragmentProfile);
-                        setStatusBarColor(true);
+                case R.id.menu_apply:
+                    changeFragment(fragmentApply);
+                    setStatusBarColor(false);
+                    break;
+                case R.id.menu_recruit:
+                    changeFragment(fragmentRecruit);
+                    setStatusBarColor(false);
+                    break;
+                case R.id.menu_profile:
+                    changeFragment(fragmentProfile);
+                    setStatusBarColor(true);
 
-                }
-                return true;
             }
+            return true;
         });
     }
     private void setStatusBarColor(boolean enabled) {

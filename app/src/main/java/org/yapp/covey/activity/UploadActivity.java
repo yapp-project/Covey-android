@@ -37,8 +37,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UploadActivity extends AppCompatActivity{
-
-
     ActivityUploadBinding binding;
     AdapterCustomSpinner mAdapterSpinner, mHourAdapterSpinner;
     AdapterUploadImageList mAdapterImageList = new AdapterUploadImageList();

@@ -64,6 +64,7 @@ fastlane/test_output
 fastlane/readme.md
 
 #build
+app/build/
 app/build/outputs/logs/manifest-merger-debug-report.txt
 app/build/intermediates/merged_manifests/debugAndroidTest/AndroidManifest.xml
 app/build/intermediates/merged_manifests/debug/AndroidManifest.xml
@@ -79,3 +80,4 @@ app/src/main/java/org/yapp/covey/util/Config.java
 
 #appKey
 app/src/man/res/values/app_api_key.xml
+app/src/main/res/values/strings.xml

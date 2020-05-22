@@ -63,8 +63,9 @@ public class FilterDialogFragment extends BottomSheetDialogFragment {
         binding.tvStartDate.setOnClickListener(view -> dateSelect());
         binding.tvEndDate.setOnClickListener(view -> dateSelect());
 
-        guList.add("구");
-        setSpinner(binding.spinnerGu, guList, SPINNER_TYPE_GU);
+//        guList.add(0, "시를 선택해주세요");
+//        guList.add(1, "구");
+//        setSpinner(binding.spinnerGu, guList, SPINNER_TYPE_GU);
 
         cityList = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.city)));
         cityList.add("시");
@@ -89,15 +90,94 @@ public class FilterDialogFragment extends BottomSheetDialogFragment {
     }
 
     private void setSpinner(Spinner spinner, ArrayList<String> spinnerData, int type){
-        if (type == SPINNER_TYPE_CITY){
-            sCityAdapter = new AdapterCustomSpinner(getContext(),spinnerData);
-            spinner.setAdapter(sCityAdapter);
-        }
-        if (type == SPINNER_TYPE_GU){
-            sGuAdapter = new AdapterCustomSpinner(getContext(), spinnerData);
-            spinner.setAdapter(sGuAdapter);
+        switch (type){
+            case SPINNER_TYPE_CITY : {
+                sCityAdapter = new AdapterCustomSpinner(getContext(),spinnerData);
+                spinner.setAdapter(sCityAdapter);
+                setItemSelectedListener();
+                break;
+            }
+            case SPINNER_TYPE_GU :{
+                sGuAdapter = new AdapterCustomSpinner(getContext(), spinnerData);
+                spinner.setAdapter(sGuAdapter);
+                break;
+            }
         }
         spinner.setSelection(spinnerData.size()-1);
+    }
+
+    private void setItemSelectedListener() {
+        binding.spinnerCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                String[] locationDetailStr = null;
+                switch (position) {
+                    case 0:
+                        locationDetailStr = getResources().getStringArray(R.array.seoul);
+                        break;
+                    case 1:
+                        locationDetailStr = getResources().getStringArray(R.array.kyung_gi);
+                        break;
+                    case 2:
+                        locationDetailStr = getResources().getStringArray(R.array.incheon);
+                        break;
+                    case 3:
+                        locationDetailStr = getResources().getStringArray(R.array.busan);
+                        break;
+                    case 4:
+                        locationDetailStr = getResources().getStringArray(R.array.daegu);
+                        break;
+                    case 5:
+                        locationDetailStr = getResources().getStringArray(R.array.daejeon);
+                        break;
+                    case 6:
+                        locationDetailStr = getResources().getStringArray(R.array.ulsan);
+                        break;
+                    case 7:
+                        locationDetailStr = getResources().getStringArray(R.array.gwangju);
+                        break;
+                    case 8:
+                        locationDetailStr = getResources().getStringArray(R.array.gangwon);
+                        break;
+                    case 9:
+                        locationDetailStr = getResources().getStringArray(R.array.chungnam);
+                        break;
+                    case 10:
+                        locationDetailStr = getResources().getStringArray(R.array.chungbuk);
+                        break;
+                    case 11:
+                        locationDetailStr = getResources().getStringArray(R.array.jeonnam);
+                        break;
+                    case 12:
+                        locationDetailStr = getResources().getStringArray(R.array.jeonbuk);
+                        break;
+                    case 13:
+                        locationDetailStr = getResources().getStringArray(R.array.kyungnam);
+                        break;
+                    case 14:
+                        locationDetailStr = getResources().getStringArray(R.array.kyungbuk);
+                        break;
+                    case 15:
+                        locationDetailStr = getResources().getStringArray(R.array.jeju);
+                        break;
+                }
+                try {
+                    guList.clear();
+                    guList.addAll(Arrays.asList(locationDetailStr));
+                } catch (Exception e) {
+                    Log.w("null pointer exception", String.valueOf(locationDetailStr == null));
+                }
+
+                if (guList.size() == 0){
+                    guList.add(0, "시를 선택해주세요");
+                }
+                guList.add("구");
+                setSpinner(binding.spinnerGu, guList, SPINNER_TYPE_GU);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
     }
 
     private void getInputData(){

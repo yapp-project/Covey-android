@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 
 import org.yapp.covey.etc.careerClass;
 import org.yapp.covey.etc.phoneNumClass;
+import org.yapp.covey.etc.profileEditClass;
 import org.yapp.covey.etc.userClass;
 import org.yapp.covey.etc.userResponseClass;
 import org.yapp.covey.model.ItemDataModel;
@@ -89,8 +90,8 @@ public interface CoveyApiService {
     getUser();
 
     @PUT("api/user")
-    Call<userResponseClass>
-    editUser(@Body userResponseClass body);
+    Call<Void>
+    editUser(@Body profileEditClass body);
 
     @GET("api/career/list")
     Call<ArrayList<careerClass>>

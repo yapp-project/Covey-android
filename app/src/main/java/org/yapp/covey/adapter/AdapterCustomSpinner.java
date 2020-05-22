@@ -60,6 +60,9 @@ public class AdapterCustomSpinner extends BaseAdapter {
         convertView = inflater.inflate(R.layout.item_spinner_dropdown, parent, false);
         if (position == 0) {
             convertView.setBackgroundResource(R.drawable.rounded_top_rectangle_outline_8dp);
+            if (dataList.size() == 2){
+                convertView.setBackgroundResource(R.drawable.rounded_rectangle_outline_8dp);
+            }
         } else if (position == dataList.size()-2) {
             convertView.setBackgroundResource(R.drawable.rounded_bottom_rectangle_outline_8dp);
         }

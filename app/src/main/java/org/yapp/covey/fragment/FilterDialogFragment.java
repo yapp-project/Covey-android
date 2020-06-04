@@ -51,6 +51,8 @@ public class FilterDialogFragment extends BottomSheetDialogFragment {
     private ArrayList<String> cityList= new ArrayList<>();
     ArrayList<String> guList = new ArrayList<>();
 
+    private Thread sendThread = new sendFilterDataThread();
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -63,13 +65,11 @@ public class FilterDialogFragment extends BottomSheetDialogFragment {
         binding.tvStartDate.setOnClickListener(view -> dateSelect());
         binding.tvEndDate.setOnClickListener(view -> dateSelect());
 
-//        guList.add(0, "시를 선택해주세요");
-//        guList.add(1, "구");
-//        setSpinner(binding.spinnerGu, guList, SPINNER_TYPE_GU);
-
         cityList = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.city)));
         cityList.add("시");
         setSpinner(binding.spinnerCity, cityList, SPINNER_TYPE_CITY);
+
+        binding.tvSetting.setOnClickListener(view -> sendThread.start());
 
         return binding.getRoot();
     }
@@ -191,18 +191,25 @@ public class FilterDialogFragment extends BottomSheetDialogFragment {
         }).start();
     }
 
-    public void sendData(){
-        Singleton.retrofit.filterList(1,payment, category, address1, address2, startDate, endDate)
-                .enqueue(new Callback<ArrayList<ItemDataModel>>() {
-                    @Override
-                    public void onResponse(Call<ArrayList<ItemDataModel>> call, Response<ArrayList<ItemDataModel>> response) {
+    class sendFilterDataThread extends Thread{
+        public void run(){
+            sendData();
+        }
+        void sendData(){
+            Singleton.retrofit.filterList(1,payment, category, address1, address2, startDate, endDate)
+                    .enqueue(new Callback<ArrayList<ItemDataModel>>() {
+                        @Override
+                        public void onResponse(Call<ArrayList<ItemDataModel>> call, Response<ArrayList<ItemDataModel>> response) {
 
-                    }
+                        }
 
-                    @Override
-                    public void onFailure(Call<ArrayList<ItemDataModel>> call, Throwable t) {
+                        @Override
+                        public void onFailure(Call<ArrayList<ItemDataModel>> call, Throwable t) {
 
-                    }
-                });
+                        }
+                    });
+        }
+
     }
 }
+

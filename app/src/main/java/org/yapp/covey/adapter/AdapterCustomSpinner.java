@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import org.yapp.covey.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterCustomSpinner extends BaseAdapter {
@@ -59,6 +60,9 @@ public class AdapterCustomSpinner extends BaseAdapter {
         convertView = inflater.inflate(R.layout.item_spinner_dropdown, parent, false);
         if (position == 0) {
             convertView.setBackgroundResource(R.drawable.rounded_top_rectangle_outline_8dp);
+            if (dataList.size() == 2){
+                convertView.setBackgroundResource(R.drawable.rounded_rectangle_outline_8dp);
+            }
         } else if (position == dataList.size()-2) {
             convertView.setBackgroundResource(R.drawable.rounded_bottom_rectangle_outline_8dp);
         }
@@ -66,5 +70,13 @@ public class AdapterCustomSpinner extends BaseAdapter {
         TextView tvData = convertView.findViewById(R.id.tv_spinner_item);
         tvData.setText(data);
         return convertView;
+    }
+
+    public void resetSpinnerData(ArrayList<String> list, String spinnerCatepgory){
+        dataList.clear();
+        dataList = list;
+        dataList.add(spinnerCatepgory);
+
+        notifyDataSetChanged();
     }
 }

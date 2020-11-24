@@ -74,6 +74,15 @@
         <item name="android:textSize">15sp</item>
     </style>
 
+    <style name="RadioButtonCustom" parent = "Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/cool_grey</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
     <style name="TextThemeRound" parent="TextTheme14sp">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>

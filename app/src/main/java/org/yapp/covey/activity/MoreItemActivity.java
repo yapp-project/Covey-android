@@ -55,20 +55,14 @@ public class MoreItemActivity extends AppCompatActivity {
         }
 
         getDetailData(categoryNum);
-        mLocationAdapter.setOnItemClickListener(new AdapterLocationList.OnItemClickListener() {
-            @Override
-            public void onItemClick(View v, int position) {
-                intentDetail.putExtra("postId",mLocationAdapter.mDataList.get(position).getId());
-                startActivity(intentDetail);
-            }
+        mLocationAdapter.setOnItemClickListener((v, position) -> {
+            intentDetail.putExtra("postId",mLocationAdapter.mDataList.get(position).getId());
+            startActivity(intentDetail);
         });
 
-        mMoneyAdapter.setOnItemClickListener(new AdapterMoneyList.OnItemClickListener() {
-            @Override
-            public void onItemClick(View v, int position) {
-                intentDetail.putExtra("postId",mMoneyAdapter.mDataList.get(position).getId());
-                startActivity(intentDetail);
-            }
+        mMoneyAdapter.setOnItemClickListener((v, position) -> {
+            intentDetail.putExtra("postId",mMoneyAdapter.mDataList.get(position).getId());
+            startActivity(intentDetail);
         });
     }
     public void getDetailData(int categoryNum){

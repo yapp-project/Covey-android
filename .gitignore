@@ -64,6 +64,7 @@ fastlane/test_output
 fastlane/readme.md
 
 #build
+app/build/
 app/build/outputs/logs/manifest-merger-debug-report.txt
 app/build/intermediates/merged_manifests/debugAndroidTest/AndroidManifest.xml
 app/build/intermediates/merged_manifests/debug/AndroidManifest.xml

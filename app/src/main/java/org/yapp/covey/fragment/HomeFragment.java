@@ -32,6 +32,7 @@ import org.yapp.covey.util.Singleton;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,7 +47,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private AdapterMoneyList adapterMoneyList = new AdapterMoneyList();
     private ArrayList<String> mArrayData = new ArrayList<>();
 
-    Intent intentItemDetail;
+    private Intent intentItemDetail;
 
     private static final String TAG = "HOME";
 
@@ -77,22 +78,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         recyclerViewLocation.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
         recyclerViewLocation.addItemDecoration(new ItemDecorationLinear(getContext(),rootView.getWidth()*0.044f, 8));
 
-        adapterLocationPost.setOnItemClickListener(new AdapterLocationList.OnItemClickListener() {
-            @Override
-            public void onItemClick(View v, int position) {
-                intentItemDetail.putExtra("postId",adapterLocationPost.mDataList.get(position).getId());
-                startActivity(intentItemDetail);
-            }
+        adapterLocationPost.setOnItemClickListener((v, position) -> {
+            intentItemDetail.putExtra("postId",adapterLocationPost.mDataList.get(position).getId());
+            startActivity(intentItemDetail);
         });
         recyclerViewLocation.setAdapter(adapterLocationPost);
 
         recyclerViewPay.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
-        adapterMoneyList.setOnItemClickListener(new AdapterMoneyList.OnItemClickListener() {
-            @Override
-            public void onItemClick(View v, int position) {
-                intentItemDetail.putExtra("postId",adapterLocationPost.mDataList.get(position).getId());
-                startActivity(intentItemDetail);
-            }
+        adapterMoneyList.setOnItemClickListener((v, position) -> {
+            intentItemDetail.putExtra("postId",adapterMoneyList.mDataList.get(position).getId());
+            startActivity(intentItemDetail);
         });
         recyclerViewPay.setAdapter(adapterMoneyList);
 
@@ -101,14 +96,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         listViewCategory.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
         listViewCategory.addItemDecoration(new ItemDecorationLinear(getContext(),4f, 8));
 
-        adapterCategory.setOnItemClickListener(new AdapterCategoryList.OnItemClickListener() {
-            @Override
-            public void onItemClick(View v, int position) {
-                Intent intentMoreItem = new Intent(getContext(), MoreItemActivity.class);
-                intentMoreItem.putExtra("category",mArrayData.get(position));
-                intentMoreItem.putExtra("categoryNum",3);
-                startActivity(intentMoreItem);
-            }
+        adapterCategory.setOnItemClickListener((v, position) -> {
+            Intent intentMoreItem = new Intent(getContext(), MoreItemActivity.class);
+            intentMoreItem.putExtra("category",mArrayData.get(position));
+            intentMoreItem.putExtra("categoryNum",3);
+            startActivity(intentMoreItem);
         });
 
         listViewCategory.setAdapter(adapterCategory);
@@ -229,7 +221,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             case R.id.btn_filter:{
 //                showBottomSheetFragment(view);
                 FilterDialogFragment filterDialogFragment = new FilterDialogFragment();
-                filterDialogFragment.show(getFragmentManager(),"filter");
+                filterDialogFragment.show(Objects.requireNonNull(getFragmentManager()),"filter");
                 break;
             }
             case R.id.btn_upload:{

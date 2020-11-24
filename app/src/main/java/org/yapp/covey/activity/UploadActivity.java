@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -14,21 +13,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.yongbeom.aircalendar.core.AirCalendarIntent;
-
 import org.yapp.covey.R;
 import org.yapp.covey.adapter.AdapterCustomSpinner;
 import org.yapp.covey.adapter.AdapterUploadImageList;
 import org.yapp.covey.databinding.ActivityUploadBinding;
 import org.yapp.covey.etc.CustomAppBar;
+import org.yapp.covey.helper.DatePickerHelper;
 import org.yapp.covey.helper.PermissionHelper;
-import org.yapp.covey.helper.TextWatchHelper;
 import org.yapp.covey.util.Singleton;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.List;
 
 import gun0912.tedimagepicker.builder.TedImagePicker;
@@ -45,6 +41,7 @@ public class UploadActivity extends AppCompatActivity{
     AdapterCustomSpinner mAdapterSpinner, mHourAdapterSpinner;
     AdapterUploadImageList mAdapterImageList = new AdapterUploadImageList();
     PermissionHelper permissionHelper = new PermissionHelper(this);
+    DatePickerHelper datePickerHelper;
 
 //    TextWatchHelper textWatchHelper = new TextWatchHelper();
 
@@ -96,6 +93,9 @@ public class UploadActivity extends AppCompatActivity{
             startActivityForResult(intentAddress, REQUEST_CODE_ADDRESS);
         });
         binding.btnUpload.setOnClickListener(view -> sendUploadData());
+
+        ArrayList<String> weekDay = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.week)));
+        datePickerHelper = new DatePickerHelper(this,weekDay);
     }
 
     private void setCustomAppBar(){
@@ -200,21 +200,6 @@ public class UploadActivity extends AppCompatActivity{
         }
     }
 
-    public void showDatePicker(){
-        AirCalendarIntent intent = new AirCalendarIntent(this);
-        intent.isBooking(false);
-        intent.isSelect(false);
-        intent.isMonthLabels(false);
-        intent.setSelectButtonText("선택");
-        intent.setResetBtnText("리셋");
-        intent.setWeekStart(Calendar.MONDAY);
-        intent.setWeekDaysLanguage(AirCalendarIntent.Language.EN);
-
-        ArrayList<String> weekDay = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.week)));
-        intent.setCustomWeekDays(weekDay);
-
-        startActivityForResult(intent, REQUEST_CODE);
-    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -234,7 +219,7 @@ public class UploadActivity extends AppCompatActivity{
     }
 
     public void dateSelect(View view) {
-        showDatePicker();
+        startActivityForResult(datePickerHelper.getCalendarIntent(), REQUEST_CODE);
     }
 
     public void addImage(View view) {
